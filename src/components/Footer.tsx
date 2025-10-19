@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin } from "lucide-react";
-import rcgLogoWhite from "@/assets/rcg-logo-white.png";
+import rcgLogoLight from "@/assets/rcg-logo-light.png";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -12,12 +12,12 @@ const Footer = () => {
           {/* Logo & Tagline */}
           <div>
             <img 
-              src={rcgLogoWhite} 
+              src={rcgLogoLight} 
               alt="Radcliff Construction Group" 
               className="h-16 w-auto mb-6 object-contain"
               style={{
                 imageRendering: '-webkit-optimize-contrast',
-                maxWidth: '280px'
+                maxWidth: '240px'
               }}
             />
             <p className="text-white/80 text-sm leading-relaxed">

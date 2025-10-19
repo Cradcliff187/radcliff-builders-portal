@@ -12,7 +12,14 @@ const Hero = () => {
           alt="Modern healthcare facility interior"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-navy/60" />
+        {/* Stronger overlay to obscure diagonal lines */}
+        <div className="absolute inset-0 bg-navy/85" />
+        
+        {/* Top gradient scrim under header area */}
+        <div 
+          className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-navy to-transparent pointer-events-none"
+          aria-hidden="true"
+        />
       </div>
 
       {/* Content */}
