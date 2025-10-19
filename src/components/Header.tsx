@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import rcgLogoLight from "@/assets/rcg-logo-light.png";
+import rcgLogo from "@/assets/rcg-logo-transparent.png";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -39,22 +39,24 @@ const Header = () => {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center p-6">
-            {/* Desktop: Clean Light Logo */}
+            {/* Desktop: Original Transparent Logo with Filter */}
             <img 
-              src={rcgLogoLight} 
+              src={rcgLogo} 
               alt="Radcliff Construction Group" 
               className="hidden md:block h-16 w-auto transition-all duration-300 object-contain"
               style={{
+                filter: 'brightness(0) invert(1) drop-shadow(0 0 20px rgba(255, 255, 255, 0.3))',
                 imageRendering: '-webkit-optimize-contrast',
                 maxWidth: '240px'
               }}
             />
-            {/* Mobile: Clean Light Logo */}
+            {/* Mobile: Original Transparent Logo with Filter */}
             <img 
-              src={rcgLogoLight} 
+              src={rcgLogo} 
               alt="RCG" 
               className="block md:hidden h-12 w-auto transition-all duration-300 object-contain"
               style={{
+                filter: 'brightness(0) invert(1) drop-shadow(0 0 20px rgba(255, 255, 255, 0.3))',
                 imageRendering: '-webkit-optimize-contrast',
                 maxWidth: '160px'
               }}
