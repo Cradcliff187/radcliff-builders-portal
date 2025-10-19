@@ -14,7 +14,7 @@ const Footer = () => {
             <img 
               src={rcgLogo} 
               alt="Radcliff Construction Group" 
-              className="h-16 w-auto mb-4 object-contain"
+              className="h-16 w-auto mb-6 object-contain"
               style={{
                 imageRendering: '-webkit-optimize-contrast',
                 maxWidth: '280px'
@@ -90,8 +90,10 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-white/10 text-center text-sm text-white/60">
-          <p>&copy; {currentYear} Radcliff Construction Group. All rights reserved.</p>
+        <div className="pt-8 border-t border-white/10 text-center">
+          <p className="font-body text-xs" style={{ color: '#F4F7F9' }}>
+            &copy; 2025 Radcliff Construction Group. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>

@@ -38,11 +38,11 @@ const Header = () => {
       <div className="container mx-auto px-6 lg:px-20">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center">
+          <Link to="/" className="flex items-center p-6">
             <img 
               src={rcgLogo} 
               alt="Radcliff Construction Group" 
-              className={`h-12 w-auto md:h-14 transition-all duration-300 object-contain ${
+              className={`h-12 w-auto md:h-16 transition-all duration-300 object-contain ${
                 !isScrolled && isHome ? 'drop-shadow-lg' : ''
               }`}
               style={{
