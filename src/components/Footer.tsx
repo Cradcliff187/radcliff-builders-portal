@@ -14,7 +14,11 @@ const Footer = () => {
             <img 
               src={rcgLogo} 
               alt="Radcliff Construction Group" 
-              className="h-16 w-auto mb-4"
+              className="h-16 w-auto mb-4 object-contain"
+              style={{
+                imageRendering: '-webkit-optimize-contrast',
+                maxWidth: '280px'
+              }}
             />
             <p className="text-white/80 text-sm leading-relaxed">
               Build Trusted Relationships. Deliver Exceptional Results.

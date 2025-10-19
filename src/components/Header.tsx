@@ -42,7 +42,13 @@ const Header = () => {
             <img 
               src={rcgLogo} 
               alt="Radcliff Construction Group" 
-              className="h-12 w-auto md:h-14 transition-all duration-300"
+              className={`h-12 w-auto md:h-14 transition-all duration-300 object-contain ${
+                !isScrolled && isHome ? 'drop-shadow-lg' : ''
+              }`}
+              style={{
+                imageRendering: '-webkit-optimize-contrast',
+                maxWidth: '280px'
+              }}
             />
           </Link>
 
