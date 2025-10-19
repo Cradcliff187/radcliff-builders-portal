@@ -51,16 +51,15 @@ const Header = () => {
                 filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.9)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.6)) drop-shadow(0 0 24px rgba(255, 255, 255, 0.4))'
               }}
             />
-            {/* Mobile: Monogram */}
+            {/* Mobile: Full Logo with Strong Glow */}
             <img 
-              src={rcgMonogram} 
+              src={rcgLogo} 
               alt="RCG" 
-              className={`block md:hidden h-12 w-auto transition-all duration-300 object-contain ${
-                !isScrolled && isHome ? 'drop-shadow-lg' : ''
-              }`}
+              className="block md:hidden h-12 w-auto transition-all duration-300 object-contain"
               style={{
                 imageRendering: '-webkit-optimize-contrast',
-                maxWidth: '120px'
+                maxWidth: '200px',
+                filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.9)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.6)) drop-shadow(0 0 24px rgba(255, 255, 255, 0.4))'
               }}
             />
           </Link>
