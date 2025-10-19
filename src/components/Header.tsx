@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import rcgLogo from "@/assets/rcg-logo.png";
+import rcgLogoWhite from "@/assets/rcg-logo-white.png";
 import rcgMonogram from "@/assets/rcg-monogram.png";
 
 const Header = () => {
@@ -42,7 +42,7 @@ const Header = () => {
           <Link to="/" className="flex items-center p-6">
             {/* Desktop: Full Logo */}
             <img 
-              src={rcgLogo} 
+              src={rcgLogoWhite} 
               alt="Radcliff Construction Group" 
               className={`hidden md:block h-16 w-auto transition-all duration-300 object-contain ${
                 !isScrolled && isHome ? 'drop-shadow-lg' : ''
