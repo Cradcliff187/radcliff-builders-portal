@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import rcgLogo from "@/assets/rcg-logo.png";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -38,9 +39,11 @@ const Header = () => {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <span className="text-2xl font-heading font-bold text-white tracking-wider">
-              RCG
-            </span>
+            <img 
+              src={rcgLogo} 
+              alt="Radcliff Construction Group" 
+              className="h-12 w-auto md:h-14 transition-all duration-300"
+            />
           </Link>
 
           {/* Desktop Navigation */}
