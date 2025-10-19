@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import rcgLogo from "@/assets/rcg-logo.png";
+import rcgMonogram from "@/assets/rcg-monogram.png";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -39,15 +40,28 @@ const Header = () => {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center p-6">
+            {/* Desktop: Full Logo */}
             <img 
               src={rcgLogo} 
               alt="Radcliff Construction Group" 
-              className={`h-12 w-auto md:h-16 transition-all duration-300 object-contain ${
+              className={`hidden md:block h-16 w-auto transition-all duration-300 object-contain ${
                 !isScrolled && isHome ? 'drop-shadow-lg' : ''
               }`}
               style={{
                 imageRendering: '-webkit-optimize-contrast',
                 maxWidth: '280px'
+              }}
+            />
+            {/* Mobile: Monogram */}
+            <img 
+              src={rcgMonogram} 
+              alt="RCG" 
+              className={`block md:hidden h-12 w-auto transition-all duration-300 object-contain ${
+                !isScrolled && isHome ? 'drop-shadow-lg' : ''
+              }`}
+              style={{
+                imageRendering: '-webkit-optimize-contrast',
+                maxWidth: '120px'
               }}
             />
           </Link>
