@@ -81,7 +81,7 @@ const IndustriesPage = () => {
                 }`}
               >
                 <div className={index % 2 === 1 ? "lg:order-2" : ""}>
-                  <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-secondary/10 mb-6">
+                  <div className="inline-flex items-center justify-center w-20 h-20 rounded-none bg-secondary/10 mb-6">
                     <industry.icon className="w-10 h-10 text-secondary" />
                   </div>
                   <h2 className="mb-6 uppercase">{industry.title}</h2>
@@ -97,8 +97,8 @@ const IndustriesPage = () => {
                     ))}
                   </ul>
                 </div>
-                <div className={`bg-card p-12 rounded-lg ${index % 2 === 1 ? "lg:order-1" : ""}`}>
-                  <div className="aspect-square bg-muted rounded-lg flex items-center justify-center">
+                <div className={`bg-card p-12 rounded-none ${index % 2 === 1 ? "lg:order-1" : ""}`}>
+                  <div className="aspect-square bg-muted rounded-none flex items-center justify-center">
                     <industry.icon className="w-32 h-32 text-secondary/20" />
                   </div>
                 </div>

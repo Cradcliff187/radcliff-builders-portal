@@ -60,19 +60,19 @@ const About = () => {
               </div>
             </div>
             <div className="grid grid-cols-2 gap-6">
-              <div className="bg-card p-8 rounded-lg text-center">
+              <div className="bg-card p-8 rounded-none text-center">
                 <p className="text-5xl font-heading font-bold text-secondary mb-2">100+</p>
                 <p className="text-muted-foreground">Projects Completed</p>
               </div>
-              <div className="bg-card p-8 rounded-lg text-center">
+              <div className="bg-card p-8 rounded-none text-center">
                 <p className="text-5xl font-heading font-bold text-secondary mb-2">25+</p>
                 <p className="text-muted-foreground">Years Experience</p>
               </div>
-              <div className="bg-card p-8 rounded-lg text-center">
+              <div className="bg-card p-8 rounded-none text-center">
                 <p className="text-5xl font-heading font-bold text-secondary mb-2">98%</p>
                 <p className="text-muted-foreground">Client Satisfaction</p>
               </div>
-              <div className="bg-card p-8 rounded-lg text-center">
+              <div className="bg-card p-8 rounded-none text-center">
                 <p className="text-5xl font-heading font-bold text-secondary mb-2">4</p>
                 <p className="text-muted-foreground">Industry Sectors</p>
               </div>
@@ -94,7 +94,7 @@ const About = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {values.map((value) => (
               <div key={value.title} className="text-center">
-                <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-secondary/10 mb-6">
+                <div className="inline-flex items-center justify-center w-20 h-20 rounded-none bg-secondary/10 mb-6">
                   <value.icon className="w-10 h-10 text-secondary" />
                 </div>
                 <h3 className="mb-4 uppercase text-xl">{value.title}</h3>

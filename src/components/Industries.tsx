@@ -38,11 +38,11 @@ const Industries = () => {
           {industries.map((industry) => (
             <div
               key={industry.title}
-              className="bg-card p-8 rounded-lg hover:shadow-lg transition-all duration-300 group"
+              className="bg-card p-8 rounded-none hover:shadow-lg transition-all duration-300 group"
             >
               <div className="flex items-start gap-6">
                 <div className="flex-shrink-0">
-                  <div className="w-16 h-16 rounded-full bg-secondary/10 flex items-center justify-center group-hover:bg-secondary/20 transition-colors">
+                  <div className="w-16 h-16 rounded-none bg-secondary/10 flex items-center justify-center group-hover:bg-secondary/20 transition-colors">
                     <industry.icon className="w-8 h-8 text-secondary" />
                   </div>
                 </div>
