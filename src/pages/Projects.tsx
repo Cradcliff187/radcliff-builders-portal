@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import retailImage from "@/assets/project-retail.jpg";
 import educationImage from "@/assets/project-education.jpg";
 import commercialImage from "@/assets/project-commercial.jpg";
+import healthcareImage from "@/assets/hero-healthcare.jpg";
 
 type Industry = "All" | "Healthcare" | "Education" | "Retail" | "Commercial";
 
@@ -16,7 +17,7 @@ const projects = [
     title: "Regional Medical Center Expansion",
     industry: "Healthcare",
     description: "300,000 sq ft hospital expansion with state-of-the-art patient care facilities",
-    image: retailImage,
+    image: healthcareImage,
   },
   {
     id: 2,
@@ -44,7 +45,7 @@ const projects = [
     title: "Surgical Center Renovation",
     industry: "Healthcare",
     description: "Complete renovation of outpatient surgical facility meeting all ICRA standards",
-    image: retailImage,
+    image: healthcareImage,
   },
   {
     id: 6,
