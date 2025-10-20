@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import retailImage from "@/assets/project-retail.webp";
-import educationImage from "@/assets/project-education.webp";
-import commercialImage from "@/assets/project-commercial.webp";
+import retailImage from "@/assets/project-retail.jpg";
+import educationImage from "@/assets/project-education.jpg";
+import commercialImage from "@/assets/project-commercial.jpg";
 
 const projects = [
   {

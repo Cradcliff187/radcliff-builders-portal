@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import heroImage from "@/assets/hero-healthcare.webp";
+import heroImage from "@/assets/hero-healthcare.jpg";
 
 const Hero = () => {
   return (

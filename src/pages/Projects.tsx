@@ -4,10 +4,10 @@ import Footer from "@/components/Footer";
 import CTASection from "@/components/CTASection";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import retailImage from "@/assets/project-retail.webp";
-import educationImage from "@/assets/project-education.webp";
-import commercialImage from "@/assets/project-commercial.webp";
-import healthcareImage from "@/assets/hero-healthcare.webp";
+import retailImage from "@/assets/project-retail.jpg";
+import educationImage from "@/assets/project-education.jpg";
+import commercialImage from "@/assets/project-commercial.jpg";
+import healthcareImage from "@/assets/hero-healthcare.jpg";
 
 type Industry = "All" | "Healthcare" | "Education" | "Retail" | "Commercial";
 
