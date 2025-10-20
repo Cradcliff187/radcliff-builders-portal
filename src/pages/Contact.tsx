@@ -106,10 +106,10 @@ const Contact = () => {
                 <Mail className="w-8 h-8 text-secondary mb-4" />
                 <h3 className="text-xl font-heading font-semibold mb-2 uppercase">Email</h3>
                 <a
-                  href="mailto:info@radcliffconstructiongroup.com"
+                  href="mailto:info@radcliffcg.com"
                   className="text-muted-foreground hover:text-secondary transition-colors break-all"
                 >
-                  info@radcliffconstructiongroup.com
+                  info@radcliffcg.com
                 </a>
               </Card>
 

@@ -25,8 +25,8 @@ const CTASection = () => {
 
         <div className="flex items-center justify-center gap-2 text-white/80">
           <Mail className="w-5 h-5" />
-          <a href="mailto:info@radcliffconstructiongroup.com" className="hover:text-secondary transition-colors">
-            info@radcliffconstructiongroup.com
+          <a href="mailto:info@radcliffcg.com" className="hover:text-secondary transition-colors">
+            info@radcliffcg.com
           </a>
         </div>
       </div>

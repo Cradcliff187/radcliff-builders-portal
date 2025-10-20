@@ -64,11 +64,11 @@ const Footer = () => {
                 859-816-2314
               </a>
               <a
-                href="mailto:info@radcliffconstructiongroup.com"
+                href="mailto:info@radcliffcg.com"
                 className="flex items-center gap-2 text-white/80 hover:text-secondary transition-colors"
               >
                 <Mail className="w-4 h-4" />
-                info@radcliffconstructiongroup.com
+                info@radcliffcg.com
               </a>
               <div className="flex items-start gap-2 text-white/80">
                 <MapPin className="w-4 h-4 mt-1 flex-shrink-0" />
