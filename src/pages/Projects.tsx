@@ -4,10 +4,10 @@ import Footer from "@/components/Footer";
 import CTASection from "@/components/CTASection";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import retailImage from "@/assets/project-retail.jpg";
-import educationImage from "@/assets/project-education.jpg";
-import commercialImage from "@/assets/project-commercial.jpg";
-import healthcareImage from "@/assets/hero-healthcare.jpg";
+import retailImage from "@/assets/project-retail.webp";
+import educationImage from "@/assets/project-education.webp";
+import commercialImage from "@/assets/project-commercial.webp";
+import healthcareImage from "@/assets/hero-healthcare.webp";
 
 type Industry = "All" | "Healthcare" | "Education" | "Retail" | "Commercial";
 
@@ -106,6 +106,7 @@ const Projects = () => {
                   <img
                     src={project.image}
                     alt={project.title}
+                    loading="lazy"
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-navy/90 to-transparent" />
