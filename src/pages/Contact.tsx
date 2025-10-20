@@ -1,59 +1,74 @@
-import { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card } from "@/components/ui/card";
-import { Label } from "@/components/ui/label";
-import { Phone, Mail, MapPin } from "lucide-react";
+import { Phone, Mail, MapPin, Loader2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useMutation } from "@tanstack/react-query";
+import { supabase } from "@/integrations/supabase/client";
+import { contactFormSchema, type ContactFormData } from "@/lib/validations/contact";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
 
 const Contact = () => {
   const { toast } = useToast();
-  const [formData, setFormData] = useState({
-    name: "",
-    organization: "",
-    email: "",
-    phone: "",
-    scope: "",
-    message: "",
-  });
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    // Basic validation
-    if (!formData.name || !formData.email || !formData.message) {
-      toast({
-        title: "Required Fields Missing",
-        description: "Please fill in all required fields.",
-        variant: "destructive",
-      });
-      return;
-    }
-
-    toast({
-      title: "Message Sent!",
-      description: "We'll get back to you within 24 hours.",
-    });
-
-    // Reset form
-    setFormData({
+  
+  const form = useForm<ContactFormData>({
+    resolver: zodResolver(contactFormSchema),
+    defaultValues: {
       name: "",
       organization: "",
       email: "",
       phone: "",
       scope: "",
       message: "",
-    });
-  };
+    },
+  });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData((prev) => ({
-      ...prev,
-      [e.target.name]: e.target.value,
-    }));
+  const mutation = useMutation({
+    mutationFn: async (data: ContactFormData) => {
+      const { error } = await supabase
+        .from("contact_submissions")
+        .insert({
+          name: data.name,
+          organization: data.organization || null,
+          email: data.email,
+          phone: data.phone || null,
+          project_scope: data.scope || null,
+          message: data.message,
+        });
+      
+      if (error) throw error;
+    },
+    onSuccess: () => {
+      toast({
+        title: "Message Sent Successfully!",
+        description: "We'll get back to you within 24 hours.",
+      });
+      form.reset();
+    },
+    onError: (error) => {
+      toast({
+        title: "Submission Failed",
+        description: "Please try again or contact us directly.",
+        variant: "destructive",
+      });
+      console.error("Form submission error:", error);
+    },
+  });
+
+  const onSubmit = (data: ContactFormData) => {
+    mutation.mutate(data);
   };
 
   return (
@@ -111,87 +126,121 @@ const Contact = () => {
             <div className="lg:col-span-2">
               <Card className="p-8">
                 <h2 className="mb-8 uppercase">Request Consultation</h2>
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <Label htmlFor="name">Name *</Label>
-                      <Input
-                        id="name"
+                <Form {...form}>
+                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <FormField
+                        control={form.control}
                         name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        required
-                        className="mt-2"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Name *</FormLabel>
+                            <FormControl>
+                              <Input {...field} disabled={mutation.isPending} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
                       />
-                    </div>
-                    <div>
-                      <Label htmlFor="organization">Organization</Label>
-                      <Input
-                        id="organization"
+                      <FormField
+                        control={form.control}
                         name="organization"
-                        value={formData.organization}
-                        onChange={handleChange}
-                        className="mt-2"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Organization</FormLabel>
+                            <FormControl>
+                              <Input {...field} disabled={mutation.isPending} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
                       />
                     </div>
-                  </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <Label htmlFor="email">Email *</Label>
-                      <Input
-                        id="email"
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <FormField
+                        control={form.control}
                         name="email"
-                        type="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                        className="mt-2"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Email *</FormLabel>
+                            <FormControl>
+                              <Input {...field} type="email" disabled={mutation.isPending} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
                       />
-                    </div>
-                    <div>
-                      <Label htmlFor="phone">Phone</Label>
-                      <Input
-                        id="phone"
+                      <FormField
+                        control={form.control}
                         name="phone"
-                        type="tel"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        className="mt-2"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Phone</FormLabel>
+                            <FormControl>
+                              <Input {...field} type="tel" disabled={mutation.isPending} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
                       />
                     </div>
-                  </div>
 
-                  <div>
-                    <Label htmlFor="scope">Project Scope</Label>
-                    <Input
-                      id="scope"
+                    <FormField
+                      control={form.control}
                       name="scope"
-                      value={formData.scope}
-                      onChange={handleChange}
-                      placeholder="e.g., Healthcare renovation, New construction"
-                      className="mt-2"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Project Scope</FormLabel>
+                          <FormControl>
+                            <Input
+                              {...field}
+                              placeholder="e.g., Healthcare renovation, New construction"
+                              disabled={mutation.isPending}
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
                     />
-                  </div>
 
-                  <div>
-                    <Label htmlFor="message">Message *</Label>
-                    <Textarea
-                      id="message"
+                    <FormField
+                      control={form.control}
                       name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      required
-                      rows={6}
-                      className="mt-2"
-                      placeholder="Tell us about your project..."
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Message *</FormLabel>
+                          <FormControl>
+                            <Textarea
+                              {...field}
+                              rows={6}
+                              placeholder="Tell us about your project..."
+                              disabled={mutation.isPending}
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
                     />
-                  </div>
 
-                  <Button type="submit" variant="secondary" size="lg" className="w-full md:w-auto">
-                    Send Message
-                  </Button>
-                </form>
+                    <Button
+                      type="submit"
+                      variant="secondary"
+                      size="lg"
+                      disabled={mutation.isPending}
+                      className="w-full md:w-auto"
+                    >
+                      {mutation.isPending ? (
+                        <>
+                          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                          Sending...
+                        </>
+                      ) : (
+                        "Send Message"
+                      )}
+                    </Button>
+                  </form>
+                </Form>
               </Card>
             </div>
           </div>
