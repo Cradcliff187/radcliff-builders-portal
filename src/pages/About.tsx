@@ -36,7 +36,7 @@ const About = () => {
         <div className="container mx-auto px-6 lg:px-20 text-center">
           <h1 className="mb-6 uppercase">Built on Relationships</h1>
           <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
-            Radcliff Construction Group is your trusted partner for exceptional construction across healthcare, education, retail, and commercial sectors.
+            Your trusted partner for compliant, efficient renovations in healthcare, education, and commercial environments.
           </p>
         </div>
       </section>
@@ -52,10 +52,10 @@ const About = () => {
                   Radcliff Construction Group was founded on a simple principle: exceptional results come from trusted relationships. With deep roots in the region and decades of combined experience, we've built our reputation project by project, partnership by partnership.
                 </p>
                 <p>
-                  We specialize in construction that requires precision, expertise, and accountability. From healthcare facilities that demand ICRA certification to educational spaces that inspire learning, retail environments that elevate brands, and commercial projects that drive business success.
+                  We specialize in compliant, efficient renovations in sensitive environments. From healthcare facilities that demand ICRA and ROSS certification to educational spaces that require minimal disruption, our expertise ensures regulatory compliance and operational continuity throughout every project phase.
                 </p>
                 <p>
-                  Our team combines technical excellence with genuine partnership. We listen, we plan, and we deliver—every time, on schedule, and on budget.
+                  Our team combines technical excellence with genuine partnership. We understand the unique challenges of occupied facilities and deliver solutions that prioritize safety, compliance, and minimal disruption—every time, on schedule, and on budget.
                 </p>
               </div>
             </div>

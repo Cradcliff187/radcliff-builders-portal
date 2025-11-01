@@ -7,9 +7,15 @@ export default {
   theme: {
     container: {
       center: true,
-      padding: "2rem",
+      padding: {
+        DEFAULT: "1.5rem",
+        sm: "1.5rem",
+        md: "2.5rem",
+        lg: "5rem",
+        xl: "5rem",
+      },
       screens: {
-        "2xl": "1400px",
+        "2xl": "1440px",
       },
     },
     extend: {
@@ -19,9 +25,10 @@ export default {
       },
       colors: {
         navy: "hsl(var(--navy))",
-        gold: "hsl(var(--gold))",
+        orange: "hsl(var(--orange))",
         charcoal: "hsl(var(--charcoal))",
         "light-grey": "hsl(var(--light-grey))",
+        black: "hsl(var(--black))",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

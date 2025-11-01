@@ -10,9 +10,10 @@ All colors MUST be HSL.
   :root {
     /* RCG Brand Colors */
     --navy: 214 42% 18%;           /* Primary Navy #1B2B43 */
-    --gold: 41 48% 53%;            /* Accent Gold #C4A04A - Official RCG Brand Color */
-    --charcoal: 0 0% 17%;          /* Dark Charcoal #2B2B2B */
-    --light-grey: 200 25% 96%;     /* Light Grey #F4F7F9 */
+    --orange: 26 74% 46%;          /* Accent Orange #CF791D - Official RCG Brand Color */
+    --charcoal: 0 0% 29%;          /* Dark Charcoal #4B4B4B */
+    --light-grey: 0 0% 95%;        /* Light Grey #F2F2F2 */
+    --black: 0 0% 0%;              /* Black #000000 */
     --white: 0 0% 100%;
     
     /* Semantic Token Mapping */
@@ -28,13 +29,13 @@ All colors MUST be HSL.
     --primary: var(--navy);
     --primary-foreground: var(--white);
 
-    --secondary: var(--gold);
+    --secondary: var(--orange);
     --secondary-foreground: var(--white);
 
     --muted: var(--light-grey);
     --muted-foreground: 0 0% 45%;
 
-    --accent: var(--gold);
+    --accent: var(--orange);
     --accent-foreground: var(--white);
 
     --destructive: 0 84.2% 60.2%;
@@ -42,7 +43,7 @@ All colors MUST be HSL.
 
     --border: 214 31.8% 91.4%;
     --input: 214 31.8% 91.4%;
-    --ring: var(--gold);
+    --ring: var(--orange);
 
     --radius: 0rem;
 
@@ -76,13 +77,13 @@ All colors MUST be HSL.
     --primary: var(--white);
     --primary-foreground: var(--navy);
 
-    --secondary: var(--gold);
+    --secondary: var(--orange);
     --secondary-foreground: var(--white);
 
     --muted: 214 42% 25%;
     --muted-foreground: 0 0% 75%;
 
-    --accent: var(--gold);
+    --accent: var(--orange);
     --accent-foreground: var(--white);
 
     --destructive: 0 62.8% 30.6%;
@@ -90,7 +91,7 @@ All colors MUST be HSL.
 
     --border: 214 42% 25%;
     --input: 214 42% 25%;
-    --ring: var(--gold);
+    --ring: var(--orange);
   }
 }
 

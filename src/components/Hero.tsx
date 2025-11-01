@@ -25,11 +25,11 @@ const Hero = () => {
       {/* Content */}
       <div className="relative z-10 container mx-auto px-6 lg:px-20 text-center">
         <h1 className="text-white mb-6 uppercase leading-tight">
-          Build Trusted Relationships.<br />
-          Deliver Exceptional Results.
+          Your Trusted Partner for Compliant,<br />
+          Efficient Renovations
         </h1>
         <p className="text-white/90 text-xl md:text-2xl mb-12 max-w-3xl mx-auto leading-relaxed">
-          Your Portfolio-Wide Construction Partner
+          Specialized in sensitive environments - Healthcare, Education, and Commercial
         </p>
         <Button variant="hero" size="lg" asChild>
           <Link to="/contact">Request Consultation</Link>
