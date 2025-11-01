@@ -22,7 +22,7 @@ const Footer = () => {
               }}
             />
             <p className="text-white/80 text-sm leading-relaxed">
-              Build Trusted Relationships. Deliver Exceptional Results.
+              Your trusted partner for compliant, efficient renovations in sensitive environments.
             </p>
           </div>
 
@@ -35,8 +35,10 @@ const Footer = () => {
               {[
                 { to: "/", label: "Home" },
                 { to: "/about", label: "About" },
+                { to: "/services", label: "Services" },
                 { to: "/projects", label: "Projects" },
                 { to: "/industries", label: "Industries" },
+                { to: "/insights", label: "Insights" },
                 { to: "/contact", label: "Contact" },
               ].map((link) => (
                 <Link
