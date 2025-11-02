@@ -7,7 +7,6 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
-import { getPartnerLogo } from "@/lib/supabase-storage";
 
 interface Logo {
   name: string;
@@ -27,28 +26,28 @@ interface PartnerLogosProps {
 const defaultLogos: Logo[] = [
   {
     name: "Mercy Health",
-    image: getPartnerLogo("mercy-health.png"),
+    image: "/assets/partners/mercy-health.svg",
     alt: "Mercy Health - Healthcare Construction Partner",
     url: "https://www.mercy.com/",
     priority: 1,
   },
   {
     name: "UC Health",
-    image: getPartnerLogo("uc-health.png"),
+    image: "/assets/partners/uc-health.png",
     alt: "UC Health - Healthcare Construction Partner",
     url: "https://www.uchealth.com/",
     priority: 2,
   },
   {
     name: "Big Boy",
-    image: getPartnerLogo("big-boy.png"),
+    image: "/assets/partners/big-boy.svg",
     alt: "Big Boy Restaurant & Bakery - Retail Construction Partner",
     url: "https://www.bigboy.com/",
     priority: 3,
   },
   {
     name: "Cushman & Wakefield",
-    image: getPartnerLogo("cushman-wakefield.png"),
+    image: "/assets/partners/cushman-wakefield.png",
     alt: "Cushman & Wakefield - Commercial Real Estate Partner",
     url: "https://www.cushmanwakefield.com/",
     priority: 4,
