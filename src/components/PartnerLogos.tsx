@@ -26,7 +26,7 @@ interface PartnerLogosProps {
 const defaultLogos: Logo[] = [
   {
     name: "Mercy Health",
-    image: "/assets/partners/mercy-health.svg",
+    image: "/assets/partners/mercy-health.png",
     alt: "Mercy Health - Healthcare Construction Partner",
     url: "https://www.mercy.com/",
     priority: 1,
@@ -40,23 +40,16 @@ const defaultLogos: Logo[] = [
   },
   {
     name: "Big Boy",
-    image: "/assets/partners/big-boy.svg",
+    image: "/assets/partners/big-boy.png",
     alt: "Big Boy Restaurant & Bakery - Retail Construction Partner",
     url: "https://www.bigboy.com/",
     priority: 3,
-  },
-  {
-    name: "Cushman & Wakefield",
-    image: "/assets/partners/cushman-wakefield.png",
-    alt: "Cushman & Wakefield - Commercial Real Estate Partner",
-    url: "https://www.cushmanwakefield.com/",
-    priority: 4,
   },
 ];
 
 const PartnerLogos = ({
   title = "Trusted by leading organizations",
-  subtitle = "Healthcare • Education • Retail • Commercial",
+  subtitle = "Healthcare • Retail",
   logos = defaultLogos,
   maxLogoCount = 8,
 }: PartnerLogosProps) => {
@@ -153,7 +146,7 @@ const PartnerLogos = ({
           </div>
         )}
 
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-items-center">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center justify-items-center">
           {sortedLogos.map((logo, index) => (
             <LogoItem key={`${logo.name}-${index}`} logo={logo} />
           ))}
