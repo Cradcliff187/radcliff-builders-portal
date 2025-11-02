@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
+import PartnerLogos from "@/components/PartnerLogos";
 import FourPillars from "@/components/FourPillars";
 import FeaturedProjects from "@/components/FeaturedProjects";
 import Industries from "@/components/Industries";
@@ -13,6 +14,7 @@ const Home = () => {
     <main className="min-h-screen">
       <Header />
       <Hero />
+      <PartnerLogos />
       <FourPillars />
       <FeaturedProjects />
       <Industries />
