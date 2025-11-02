@@ -77,7 +77,7 @@ const PartnerLogos = ({
           src={logo.image}
           alt={logo.alt}
           loading="lazy"
-          className="max-h-[80px] max-w-[200px] md:max-h-[100px] md:max-w-[220px] lg:max-h-[120px] lg:max-w-[240px] w-auto h-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 hover:scale-105"
+          className="max-h-[80px] max-w-[200px] md:max-h-[100px] md:max-w-[220px] lg:max-h-[120px] lg:max-w-[240px] w-auto h-auto object-contain transition-all duration-300 hover:scale-105"
         />
       </div>
     );
