@@ -2,6 +2,3 @@ project_id = "osothwrzhvgojhomaysk"
 
 [functions.send-contact-email]
 verify_jwt = false
-
-[functions.cleanup-partner-logos]
-verify_jwt = false

@@ -2,7 +2,6 @@ import { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CTASection from "@/components/CTASection";
-import PartnerLogos from "@/components/PartnerLogos";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import retailImage from "@/assets/project-retail.jpg";
@@ -129,7 +128,6 @@ const Projects = () => {
         </div>
       </section>
 
-      <PartnerLogos />
       <CTASection />
       <Footer />
     </main>
