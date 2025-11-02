@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useRef } from "react";
 import {
   Carousel,
   CarouselContent,
@@ -60,7 +60,7 @@ const PartnerLogos = ({
   logos = defaultLogos,
   maxLogoCount = 8,
 }: PartnerLogosProps) => {
-  const [autoplayPlugin] = useState(() =>
+  const autoplayPlugin = useRef(
     Autoplay({ delay: 3500, stopOnInteraction: true })
   );
 
@@ -116,7 +116,7 @@ const PartnerLogos = ({
 
           <Carousel
             opts={{ loop: true }}
-            plugins={[autoplayPlugin]}
+            plugins={[autoplayPlugin.current]}
             className="w-full"
           >
             <CarouselContent className="-ml-6">
