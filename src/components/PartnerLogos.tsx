@@ -44,6 +44,20 @@ const logos: Logo[] = [
     alt: "Lee & Associates - Commercial Real Estate Partner",
     url: "https://www.leeassociates.com/",
     priority: 5
+  },
+  {
+    name: "Simon",
+    image: "/assets/partners/simon.png",
+    alt: "Simon - Retail & Commercial Real Estate Partner",
+    url: "https://www.simon.com/",
+    priority: 6
+  },
+  {
+    name: "Level 4 Construction",
+    image: "/assets/partners/level-4-construction.png",
+    alt: "Level 4 Construction - Construction Industry Partner",
+    url: "https://www.level4construction.com/",
+    priority: 7
   }
 ];
 
@@ -112,7 +126,7 @@ const PartnerLogos = () => {
             </CarouselContent>
           </Carousel>
         ) : (
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 items-center justify-items-center max-w-6xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 items-center justify-items-center max-w-6xl mx-auto">
             {logos
               .sort((a, b) => (a.priority || 999) - (b.priority || 999))
               .map((logo) => (
