@@ -118,14 +118,14 @@ const Contact = () => {
                 <h3 className="text-xl font-heading font-semibold mb-2 uppercase">Service Area</h3>
                 <div className="mt-4 w-full h-48 rounded-none overflow-hidden">
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3141952.158384829!2d-87.26544237658693!3d38.19611544286697!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x884352a00e70879f%3A0x1ad06f7d52a9ca0a!2sKentucky!5e0!3m2!1sen!2sus!4v1647889234567!5m2!1sen!2sus"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5063144.438792156!2d-87.73584875!3d38.9646235!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzjCsDU3JzUyLjYiTiA4NcKwMzAnMDAuMCJX!5e0!3m2!1sen!2sus!4v1647889234567!5m2!1sen!2sus&z=7"
                     width="100%"
                     height="100%"
                     style={{ border: 0 }}
                     allowFullScreen
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
-                    title="RCG Service Area - Kentucky Region"
+                    title="RCG Service Area - Kentucky, Ohio, Tennessee, Indiana"
                   />
                 </div>
               </Card>
