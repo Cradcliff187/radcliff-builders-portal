@@ -38,12 +38,11 @@ const PartnerLogos = () => {
 
   const LogoCard = ({ logo }: { logo: Logo }) => {
     const content = (
-      <div className="flex items-center justify-center p-4 rounded-none hover:shadow-md transition-shadow duration-300">
+      <div className="flex items-center justify-center p-6 md:p-8 rounded-none hover:shadow-md transition-shadow duration-300">
         <img
           src={logo.image}
           alt={logo.alt}
-          className="hover:grayscale hover:opacity-70 transition-all duration-300"
-          style={{ maxHeight: '42px', maxWidth: '160px', objectFit: 'contain' }}
+          className="hover:grayscale hover:opacity-70 transition-all duration-300 h-[50px] md:h-[60px] lg:h-[70px] w-auto max-w-[140px] md:max-w-[180px] lg:max-w-[220px]"
           loading="lazy"
         />
       </div>
@@ -99,7 +98,7 @@ const PartnerLogos = () => {
             </CarouselContent>
           </Carousel>
         ) : (
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-items-center">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8 md:gap-10 lg:gap-12 items-center justify-items-center max-w-4xl mx-auto">
             {logos
               .sort((a, b) => (a.priority || 999) - (b.priority || 999))
               .map((logo) => (
