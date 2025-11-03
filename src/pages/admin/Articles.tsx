@@ -8,7 +8,7 @@ import DataTable, { Column } from "@/components/admin/DataTable";
 import DeleteDialog from "@/components/admin/DeleteDialog";
 import ArticleForm from "@/components/admin/forms/ArticleForm";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Plus, CheckCircle, XCircle, ExternalLink } from "lucide-react";
 import { format } from "date-fns";
 import { ArticleFormData } from "@/lib/validations/cms";
@@ -207,11 +207,17 @@ export default function Articles() {
       />
 
       <Dialog open={isFormOpen} onOpenChange={setIsFormOpen}>
-        <DialogContent className="bg-white rounded-none max-w-2xl max-h-[90vh] overflow-y-auto">
+        <DialogContent 
+          className="bg-white rounded-none max-w-2xl max-h-[90vh] overflow-y-auto"
+          aria-describedby="article-form-description"
+        >
           <DialogHeader>
             <DialogTitle className="text-2xl font-montserrat font-bold text-navy uppercase tracking-wide">
               {selectedArticle ? "Edit Article" : "Create Article"}
             </DialogTitle>
+            <DialogDescription id="article-form-description" className="sr-only">
+              Form to {selectedArticle ? "edit an existing" : "create a new"} article
+            </DialogDescription>
           </DialogHeader>
           <ArticleForm
             initialData={

@@ -8,7 +8,7 @@ import DataTable, { Column } from "@/components/admin/DataTable";
 import DeleteDialog from "@/components/admin/DeleteDialog";
 import ProjectForm from "@/components/admin/forms/ProjectForm";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Plus, CheckCircle, XCircle, Star } from "lucide-react";
 import { ProjectFormData } from "@/lib/validations/cms";
 import { deleteFile } from "@/lib/uploadHelpers";
@@ -209,11 +209,17 @@ export default function Projects() {
       />
 
       <Dialog open={isFormOpen} onOpenChange={setIsFormOpen}>
-        <DialogContent className="bg-white rounded-none max-w-2xl max-h-[90vh] overflow-y-auto">
+        <DialogContent 
+          className="bg-white rounded-none max-w-2xl max-h-[90vh] overflow-y-auto"
+          aria-describedby="project-form-description"
+        >
           <DialogHeader>
             <DialogTitle className="text-2xl font-montserrat font-bold text-navy uppercase tracking-wide">
               {selectedProject ? "Edit Project" : "Create Project"}
             </DialogTitle>
+            <DialogDescription id="project-form-description" className="sr-only">
+              Form to {selectedProject ? "edit an existing" : "create a new"} project
+            </DialogDescription>
           </DialogHeader>
           <ProjectForm
             initialData={

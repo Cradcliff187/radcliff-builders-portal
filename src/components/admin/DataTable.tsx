@@ -104,19 +104,19 @@ export default function DataTable<T extends Record<string, any>>({
                 <TableCell className="text-right">
                   <div className="flex justify-end gap-2">
                     <Button
-                      variant="outline"
+                      variant="admin"
                       size="sm"
                       onClick={() => onEdit(row)}
-                      className="border-navy text-navy hover:bg-navy hover:text-white uppercase tracking-wider rounded-none"
+                      className="rounded-none"
                     >
                       <Pencil className="h-4 w-4 mr-1" />
                       Edit
                     </Button>
                     <Button
-                      variant="outline"
+                      variant="danger"
                       size="sm"
                       onClick={() => onDelete(row)}
-                      className="border-red-600 text-red-600 hover:bg-red-600 hover:text-white uppercase tracking-wider rounded-none"
+                      className="rounded-none"
                     >
                       <Trash2 className="h-4 w-4 mr-1" />
                       Delete

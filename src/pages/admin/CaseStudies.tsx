@@ -8,7 +8,7 @@ import DataTable, { Column } from "@/components/admin/DataTable";
 import DeleteDialog from "@/components/admin/DeleteDialog";
 import CaseStudyForm from "@/components/admin/forms/CaseStudyForm";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Plus, CheckCircle, XCircle, ExternalLink } from "lucide-react";
 import { CaseStudyFormData } from "@/lib/validations/cms";
 
@@ -198,11 +198,17 @@ export default function CaseStudies() {
       />
 
       <Dialog open={isFormOpen} onOpenChange={setIsFormOpen}>
-        <DialogContent className="bg-white rounded-none max-w-2xl max-h-[90vh] overflow-y-auto">
+        <DialogContent 
+          className="bg-white rounded-none max-w-2xl max-h-[90vh] overflow-y-auto"
+          aria-describedby="case-study-form-description"
+        >
           <DialogHeader>
             <DialogTitle className="text-2xl font-montserrat font-bold text-navy uppercase tracking-wide">
               {selectedCaseStudy ? "Edit Case Study" : "Create Case Study"}
             </DialogTitle>
+            <DialogDescription id="case-study-form-description" className="sr-only">
+              Form to {selectedCaseStudy ? "edit an existing" : "create a new"} case study
+            </DialogDescription>
           </DialogHeader>
           <CaseStudyForm
             initialData={

@@ -8,7 +8,7 @@ import DataTable, { Column } from "@/components/admin/DataTable";
 import DeleteDialog from "@/components/admin/DeleteDialog";
 import ResourceForm from "@/components/admin/forms/ResourceForm";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Plus, CheckCircle, XCircle, FileText } from "lucide-react";
 import { ResourceFormData } from "@/lib/validations/cms";
 import { deleteFile } from "@/lib/uploadHelpers";
@@ -197,11 +197,17 @@ export default function Resources() {
       />
 
       <Dialog open={isFormOpen} onOpenChange={setIsFormOpen}>
-        <DialogContent className="bg-white rounded-none max-w-2xl max-h-[90vh] overflow-y-auto">
+        <DialogContent 
+          className="bg-white rounded-none max-w-2xl max-h-[90vh] overflow-y-auto"
+          aria-describedby="resource-form-description"
+        >
           <DialogHeader>
             <DialogTitle className="text-2xl font-montserrat font-bold text-navy uppercase tracking-wide">
               {selectedResource ? "Edit Resource" : "Create Resource"}
             </DialogTitle>
+            <DialogDescription id="resource-form-description" className="sr-only">
+              Form to {selectedResource ? "edit an existing" : "create a new"} resource
+            </DialogDescription>
           </DialogHeader>
           <ResourceForm
             initialData={
