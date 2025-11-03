@@ -1,9 +1,9 @@
 import { supabase } from "@/integrations/supabase/client";
 
 export async function uploadFile(file: File, path: string): Promise<string> {
-  // Validate file size (max 10MB)
-  if (file.size > 10 * 1024 * 1024) {
-    throw new Error("File size must be less than 10MB");
+  // Validate file size (max 5MB)
+  if (file.size > 5 * 1024 * 1024) {
+    throw new Error("File exceeds 5MB limit. Please compress your image before uploading.");
   }
 
   const fileExt = file.name.split(".").pop()?.toLowerCase();
@@ -13,7 +13,7 @@ export async function uploadFile(file: File, path: string): Promise<string> {
 
   // Validate file type based on path
   if (path === "projects" && !["jpg", "jpeg", "png", "webp"].includes(fileExt)) {
-    throw new Error("Project images must be JPG, PNG, or WEBP");
+    throw new Error("Only JPG, PNG, or WEBP images are allowed");
   }
   if (path === "resources" && fileExt !== "pdf") {
     throw new Error("Resources must be PDF files");

@@ -26,7 +26,7 @@ import {
 } from "@/components/ui/select";
 import { projectSchema, ProjectFormData } from "@/lib/validations/cms";
 import { uploadFile, deleteFile } from "@/lib/uploadHelpers";
-import { ImagePlus, CalendarIcon } from "lucide-react";
+import { ImagePlus, CalendarIcon, X } from "lucide-react";
 import { format } from "date-fns";
 import { cn } from "@/lib/utils";
 import ProjectImageUploader, { UploadedImage } from "./ProjectImageUploader";
@@ -51,6 +51,7 @@ export default function ProjectForm({
   isSubmitting,
 }: ProjectFormProps) {
   const [uploading, setUploading] = useState(false);
+  const [uploadError, setUploadError] = useState<string>("");
   const [imagePreview, setImagePreview] = useState(initialData?.image_url || "");
   const [projectImages, setProjectImages] = useState<ProjectImage[]>([]);
   const [unsavedImages, setUnsavedImages] = useState<UploadedImage[]>([]);
@@ -219,14 +220,48 @@ export default function ProjectForm({
     if (!file) return;
 
     setUploading(true);
+    setUploadError("");
     try {
       const url = await uploadFile(file, "projects");
       form.setValue("image_url", url);
       setImagePreview(url);
+      toast({
+        title: "Success",
+        description: "Primary image uploaded successfully.",
+      });
     } catch (error) {
-      console.error("Upload error:", error);
+      const errorMessage = error instanceof Error ? error.message : "Upload failed";
+      setUploadError(errorMessage);
+      toast({
+        title: "Upload Failed",
+        description: errorMessage,
+        variant: "destructive",
+      });
     } finally {
       setUploading(false);
+    }
+  };
+
+  const handleRemoveImage = async () => {
+    if (!imagePreview) return;
+    
+    try {
+      if (imagePreview !== initialData?.image_url) {
+        await deleteFile(imagePreview);
+      }
+      form.setValue("image_url", "");
+      setImagePreview("");
+      setUploadError("");
+      toast({
+        title: "Image Removed",
+        description: "Primary image has been removed.",
+      });
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to remove image.",
+        variant: "destructive",
+      });
     }
   };
 
@@ -324,12 +359,24 @@ export default function ProjectForm({
                   <FormControl>
                     <div className="space-y-4">
                       {imagePreview && (
-                        <div className="relative aspect-video rounded-none overflow-hidden border">
-                          <img
-                            src={imagePreview}
-                            alt="Preview"
-                            className="w-full h-full object-cover"
-                          />
+                        <div className="space-y-2">
+                          <div className="relative aspect-video rounded-none overflow-hidden border">
+                            <img
+                              src={imagePreview}
+                              alt="Preview"
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
+                          <Button
+                            type="button"
+                            variant="outline"
+                            size="sm"
+                            onClick={handleRemoveImage}
+                            className="border-2 border-red-500 text-red-500 hover:bg-red-500 hover:text-white rounded-none uppercase tracking-wider"
+                          >
+                            <X className="h-4 w-4 mr-2" />
+                            Remove Image
+                          </Button>
                         </div>
                       )}
                       <div className="flex items-center gap-2">
@@ -349,9 +396,12 @@ export default function ProjectForm({
                           <ImagePlus className="h-4 w-4" />
                         </Button>
                       </div>
+                      {uploadError && (
+                        <p className="text-sm text-red-600 font-medium">{uploadError}</p>
+                      )}
                     </div>
                   </FormControl>
-                  <FormDescription>Main project image (JPG, PNG, or WEBP)</FormDescription>
+                  <FormDescription>Main project image (JPG, PNG, or WEBP • Max 5MB)</FormDescription>
                   <FormMessage />
                 </FormItem>
               )}

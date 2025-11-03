@@ -31,13 +31,13 @@ export default function ProjectImageUploader({
 
   const validateFile = (file: File): string | null => {
     const validTypes = ["image/jpeg", "image/jpg", "image/png", "image/webp"];
-    const maxSize = 10 * 1024 * 1024; // 10MB
+    const maxSize = 5 * 1024 * 1024; // 5MB
 
     if (!validTypes.includes(file.type)) {
       return `${file.name}: Invalid file type. Use JPG, PNG, or WEBP.`;
     }
     if (file.size > maxSize) {
-      return `${file.name}: File size exceeds 10MB.`;
+      return `${file.name}: File exceeds 5MB limit. Please compress your image.`;
     }
     return null;
   };
@@ -136,12 +136,12 @@ export default function ProjectImageUploader({
         title: "Upload Complete",
         description: `${uploadedImages.length} image(s) uploaded successfully.`,
       });
+      
+      // Only clear successful uploads after delay
+      setTimeout(() => {
+        setUploadQueue((prev) => prev.filter((img) => img.error));
+      }, 3000);
     }
-
-    // Clear queue after a delay
-    setTimeout(() => {
-      setUploadQueue([]);
-    }, 2000);
   };
 
   const handleDragOver = (e: React.DragEvent) => {
@@ -178,6 +178,17 @@ export default function ProjectImageUploader({
     setUploadQueue((prev) => prev.filter((img) => img.tempId !== tempId));
   };
 
+  const retryUpload = async (tempId: string) => {
+    const imageToRetry = uploadQueue.find((img) => img.tempId === tempId);
+    if (!imageToRetry) return;
+
+    toast({
+      title: "Retry Upload",
+      description: "Please select the file again to retry.",
+    });
+    fileInputRef.current?.click();
+  };
+
   return (
     <div className="space-y-4">
       <div
@@ -195,7 +206,7 @@ export default function ProjectImageUploader({
           Drag & Drop Images Here
         </p>
         <p className="text-sm text-charcoal/60 mb-4">
-          or click to browse (JPG, PNG, WEBP • Max 10MB each • Max 10 files)
+          or click to browse (JPG, PNG, WEBP • Max 5MB each • Max 10 files)
         </p>
         <Button
           type="button"
@@ -225,7 +236,9 @@ export default function ProjectImageUploader({
           {uploadQueue.map((image) => (
             <div
               key={image.tempId}
-              className="flex items-center gap-4 p-3 bg-light-grey rounded-none"
+              className={`flex items-center gap-4 p-3 rounded-none ${
+                image.error ? "bg-red-50 border-2 border-red-200" : "bg-light-grey"
+              }`}
             >
               {image.uploading && (
                 <Loader2 className="h-5 w-5 animate-spin text-navy" />
@@ -236,14 +249,14 @@ export default function ProjectImageUploader({
                 </div>
               )}
               {image.error && (
-                <div className="h-5 w-5 rounded-full bg-red-500 flex items-center justify-center text-white text-xs">
-                  ✕
+                <div className="h-6 w-6 rounded-full bg-red-500 flex items-center justify-center text-white font-bold">
+                  !
                 </div>
               )}
               
               <div className="flex-1">
                 <div className="flex items-center justify-between mb-1">
-                  <span className="text-sm font-medium text-charcoal">
+                  <span className={`text-sm font-medium ${image.error ? "text-red-700" : "text-charcoal"}`}>
                     Image {image.display_order + 1}
                   </span>
                   <span className="text-xs text-charcoal/60">
@@ -259,7 +272,7 @@ export default function ProjectImageUploader({
                   />
                 </div>
                 {image.error && (
-                  <p className="text-xs text-red-600 mt-1">{image.error}</p>
+                  <p className="text-sm text-red-700 font-medium mt-2">{image.error}</p>
                 )}
               </div>
 
