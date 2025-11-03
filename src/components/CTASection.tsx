@@ -15,7 +15,12 @@ const CTASection = () => {
           <Button variant="hero" size="lg" asChild>
             <Link to="/contact">Request Consultation</Link>
           </Button>
-          <Button variant="outline" size="lg" asChild className="border-white text-white hover:bg-white hover:text-primary">
+          <Button 
+            variant="secondary" 
+            size="lg" 
+            asChild 
+            className="bg-white/10 border-2 border-white text-white hover:bg-white hover:text-navy backdrop-blur-sm"
+          >
             <a href="tel:859-816-2314">
               <Phone className="w-5 h-5" />
               859-816-2314
