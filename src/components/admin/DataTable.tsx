@@ -95,13 +95,13 @@ export default function DataTable<T extends Record<string, any>>({
             filteredData.map((row, index) => (
               <TableRow key={row.id || index} className="hover:bg-light-grey transition-colors">
                 {columns.map((column) => (
-                  <TableCell key={String(column.key)} className="text-charcoal">
-                    {column.render
-                      ? column.render(row)
-                      : String(row[column.key as keyof T] || "")}
-                  </TableCell>
+                <TableCell key={String(column.key)} className="text-charcoal align-middle">
+                  {column.render
+                    ? column.render(row)
+                    : String(row[column.key as keyof T] || "")}
+                </TableCell>
                 ))}
-                <TableCell className="text-right">
+                <TableCell className="text-right align-middle">
                   <div className="flex justify-end gap-2">
                     <Button
                       variant="admin"
