@@ -38,7 +38,7 @@ const PartnerLogos = () => {
 
   const LogoCard = ({ logo }: { logo: Logo }) => {
     const content = (
-      <div className="flex items-center justify-center p-4 bg-white rounded-none shadow-sm hover:shadow-md transition-shadow duration-300">
+      <div className="flex items-center justify-center p-4 rounded-none hover:shadow-md transition-shadow duration-300">
         <img
           src={logo.image}
           alt={logo.alt}
