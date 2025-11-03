@@ -231,7 +231,8 @@ export default function Projects() {
       <div className="mb-6">
         <Button
           onClick={handleCreate}
-          className="bg-gold text-white hover:bg-gold/90 uppercase tracking-wider rounded-none shadow-lg hover:shadow-xl transition-all"
+          variant="admin"
+          className="rounded-none shadow-lg hover:shadow-xl uppercase tracking-wider"
         >
           <Plus className="h-5 w-5 mr-2" />
           Add Project
