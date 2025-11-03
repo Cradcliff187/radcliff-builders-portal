@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CTASection from "@/components/CTASection";
@@ -69,31 +70,32 @@ const Projects = () => {
               </div>
             ) : (
               filteredProjects.map((project) => (
-                <Card
-                  key={project.id}
-                  className="overflow-hidden group hover:shadow-xl transition-all duration-300"
-                >
-                  <div className="relative h-64 overflow-hidden">
-                    <img
-                      src={project.image_url}
-                      alt={project.title}
-                      loading="lazy"
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-navy/90 to-transparent" />
-                    <div className="absolute bottom-4 left-4 right-4">
-                      <p className="text-secondary text-xs font-heading font-semibold uppercase tracking-wider mb-1">
-                        {project.industry}
+                <Link key={project.id} to={`/projects/${project.slug}`}>
+                  <Card
+                    className="overflow-hidden group hover:shadow-xl transition-all duration-300"
+                  >
+                    <div className="relative h-64 overflow-hidden">
+                      <img
+                        src={project.image_url}
+                        alt={project.title}
+                        loading="lazy"
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-navy/90 to-transparent" />
+                      <div className="absolute bottom-4 left-4 right-4">
+                        <p className="text-secondary text-xs font-heading font-semibold uppercase tracking-wider mb-1">
+                          {project.industry}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="p-6">
+                      <h3 className="text-xl mb-3">{project.title}</h3>
+                      <p className="text-muted-foreground text-sm leading-relaxed">
+                        {project.description}
                       </p>
                     </div>
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-xl mb-3">{project.title}</h3>
-                    <p className="text-muted-foreground text-sm leading-relaxed">
-                      {project.description}
-                    </p>
-                  </div>
-                </Card>
+                  </Card>
+                </Link>
               ))
             )}
           </div>

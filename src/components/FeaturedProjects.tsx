@@ -29,25 +29,26 @@ const FeaturedProjects = () => {
             ))
           ) : (
             projects.map((project) => (
-              <Card
-                key={project.id}
-                className="overflow-hidden group cursor-pointer hover:shadow-xl transition-all duration-300"
-              >
-                <div className="relative h-64 overflow-hidden">
-                  <img
-                    src={project.image_url}
-                    alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </div>
-                <div className="p-6">
-                  <p className="text-secondary text-sm font-heading font-semibold uppercase tracking-wider mb-2">
-                    {project.industry}
-                  </p>
-                  <h3 className="text-xl mb-0">{project.title}</h3>
-                </div>
-              </Card>
+              <Link key={project.id} to={`/projects/${project.slug}`}>
+                <Card
+                  className="overflow-hidden group cursor-pointer hover:shadow-xl transition-all duration-300"
+                >
+                  <div className="relative h-64 overflow-hidden">
+                    <img
+                      src={project.image_url}
+                      alt={project.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-navy/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  </div>
+                  <div className="p-6">
+                    <p className="text-secondary text-sm font-heading font-semibold uppercase tracking-wider mb-2">
+                      {project.industry}
+                    </p>
+                    <h3 className="text-xl mb-0">{project.title}</h3>
+                  </div>
+                </Card>
+              </Link>
             ))
           )}
         </div>

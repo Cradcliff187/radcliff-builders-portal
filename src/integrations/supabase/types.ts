@@ -158,40 +158,111 @@ export type Database = {
         }
         Relationships: []
       }
+      project_images: {
+        Row: {
+          caption: string | null
+          created_at: string | null
+          display_order: number | null
+          id: string
+          image_url: string
+          project_id: string
+          updated_at: string | null
+        }
+        Insert: {
+          caption?: string | null
+          created_at?: string | null
+          display_order?: number | null
+          id?: string
+          image_url: string
+          project_id: string
+          updated_at?: string | null
+        }
+        Update: {
+          caption?: string | null
+          created_at?: string | null
+          display_order?: number | null
+          id?: string
+          image_url?: string
+          project_id?: string
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "project_images_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "projects"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       projects: {
         Row: {
+          challenges: string | null
+          client_name: string | null
+          completion_date: string | null
           created_at: string | null
           description: string
+          detailed_description: string | null
           display_order: number | null
           featured: boolean | null
           id: string
           image_url: string
           industry: string
+          location: string | null
+          outcomes: string | null
+          project_value: string | null
           published: boolean | null
+          slug: string
+          solutions: string | null
+          square_footage: number | null
+          start_date: string | null
           title: string
           updated_at: string | null
         }
         Insert: {
+          challenges?: string | null
+          client_name?: string | null
+          completion_date?: string | null
           created_at?: string | null
           description: string
+          detailed_description?: string | null
           display_order?: number | null
           featured?: boolean | null
           id?: string
           image_url: string
           industry: string
+          location?: string | null
+          outcomes?: string | null
+          project_value?: string | null
           published?: boolean | null
+          slug: string
+          solutions?: string | null
+          square_footage?: number | null
+          start_date?: string | null
           title: string
           updated_at?: string | null
         }
         Update: {
+          challenges?: string | null
+          client_name?: string | null
+          completion_date?: string | null
           created_at?: string | null
           description?: string
+          detailed_description?: string | null
           display_order?: number | null
           featured?: boolean | null
           id?: string
           image_url?: string
           industry?: string
+          location?: string | null
+          outcomes?: string | null
+          project_value?: string | null
           published?: boolean | null
+          slug?: string
+          solutions?: string | null
+          square_footage?: number | null
+          start_date?: string | null
           title?: string
           updated_at?: string | null
         }
