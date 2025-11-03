@@ -5,66 +5,20 @@ import CTASection from "@/components/CTASection";
 import PartnerLogos from "@/components/PartnerLogos";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import retailImage from "@/assets/project-retail.jpg";
-import professionalImage from "@/assets/project-professional.jpg";
-import commercialImage from "@/assets/project-commercial.jpg";
-import healthcareImage from "@/assets/hero-healthcare.jpg";
+import { Skeleton } from "@/components/ui/skeleton";
+import { useProjects } from "@/hooks/useCMSContent";
 
 type Industry = "All" | "Healthcare" | "Professional" | "Retail" | "Commercial";
 
-const projects = [
-  {
-    id: 1,
-    title: "Regional Medical Center Expansion",
-    industry: "Healthcare",
-    description: "300,000 sq ft hospital expansion with state-of-the-art patient care facilities",
-    image: healthcareImage,
-  },
-  {
-    id: 2,
-    title: "Retail Excellence Center",
-    industry: "Retail",
-    description: "Modern retail space featuring innovative display systems and customer experience zones",
-    image: retailImage,
-  },
-  {
-    id: 3,
-    title: "Corporate Office Campus",
-    industry: "Professional",
-    description: "75,000 sq ft Class A office space with advanced technology and collaborative work areas",
-    image: professionalImage,
-  },
-  {
-    id: 4,
-    title: "Corporate Office Campus",
-    industry: "Commercial",
-    description: "120,000 sq ft Class A office space with sustainable design features",
-    image: commercialImage,
-  },
-  {
-    id: 5,
-    title: "Surgical Center Renovation",
-    industry: "Healthcare",
-    description: "Complete renovation of outpatient surgical facility meeting all ICRA standards",
-    image: healthcareImage,
-  },
-  {
-    id: 6,
-    title: "Financial Services Office",
-    industry: "Professional",
-    description: "New 45,000 sq ft secure office facility for financial services firm",
-    image: professionalImage,
-  },
-];
-
 const Projects = () => {
   const [selectedIndustry, setSelectedIndustry] = useState<Industry>("All");
+  const { data: allProjects = [], isLoading } = useProjects();
 
   const industries: Industry[] = ["All", "Healthcare", "Professional", "Retail", "Commercial"];
 
   const filteredProjects = selectedIndustry === "All"
-    ? projects
-    : projects.filter((p) => p.industry === selectedIndustry);
+    ? allProjects
+    : allProjects.filter((p) => p.industry === selectedIndustry);
 
   return (
     <main className="min-h-screen">
@@ -98,33 +52,50 @@ const Projects = () => {
 
           {/* Projects Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredProjects.map((project) => (
-              <Card
-                key={project.id}
-                className="overflow-hidden group hover:shadow-xl transition-all duration-300"
-              >
-                <div className="relative h-64 overflow-hidden">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    loading="lazy"
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy/90 to-transparent" />
-                  <div className="absolute bottom-4 left-4 right-4">
-                    <p className="text-secondary text-xs font-heading font-semibold uppercase tracking-wider mb-1">
-                      {project.industry}
+            {isLoading ? (
+              Array.from({ length: 6 }).map((_, i) => (
+                <Card key={i} className="overflow-hidden">
+                  <Skeleton className="h-64 w-full rounded-none" />
+                  <div className="p-6 space-y-3">
+                    <Skeleton className="h-4 w-20" />
+                    <Skeleton className="h-6 w-3/4" />
+                    <Skeleton className="h-16 w-full" />
+                  </div>
+                </Card>
+              ))
+            ) : filteredProjects.length === 0 ? (
+              <div className="col-span-full text-center py-12">
+                <p className="text-muted-foreground">No projects found.</p>
+              </div>
+            ) : (
+              filteredProjects.map((project) => (
+                <Card
+                  key={project.id}
+                  className="overflow-hidden group hover:shadow-xl transition-all duration-300"
+                >
+                  <div className="relative h-64 overflow-hidden">
+                    <img
+                      src={project.image_url}
+                      alt={project.title}
+                      loading="lazy"
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-navy/90 to-transparent" />
+                    <div className="absolute bottom-4 left-4 right-4">
+                      <p className="text-secondary text-xs font-heading font-semibold uppercase tracking-wider mb-1">
+                        {project.industry}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-xl mb-3">{project.title}</h3>
+                    <p className="text-muted-foreground text-sm leading-relaxed">
+                      {project.description}
                     </p>
                   </div>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl mb-3">{project.title}</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">
-                    {project.description}
-                  </p>
-                </div>
-              </Card>
-            ))}
+                </Card>
+              ))
+            )}
           </div>
         </div>
       </section>

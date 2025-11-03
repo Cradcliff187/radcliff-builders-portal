@@ -5,14 +5,35 @@ import CTASection from "@/components/CTASection";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Skeleton } from "@/components/ui/skeleton";
 import { Calendar, ArrowRight, FileText, Lightbulb, TrendingUp } from "lucide-react";
 import { Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/hooks/use-toast";
+import { useArticles, useCaseStudies, useResources } from "@/hooks/useCMSContent";
+import { format } from "date-fns";
+
+// Helper function to map category to icon
+const getCategoryIcon = (category: string) => {
+  switch (category) {
+    case "Healthcare":
+      return FileText;
+    case "Best Practices":
+      return Lightbulb;
+    case "Professional":
+      return TrendingUp;
+    default:
+      return FileText;
+  }
+};
 
 const Insights = () => {
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  
+  const { data: articles = [], isLoading: articlesLoading } = useArticles();
+  const { data: caseStudies = [], isLoading: casesLoading } = useCaseStudies();
+  const { data: resources = [], isLoading: resourcesLoading } = useResources();
 
   const handleNewsletterSignup = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -60,74 +81,6 @@ const Insights = () => {
       setIsSubmitting(false);
     }
   };
-  const articles = [
-    {
-      category: "Healthcare",
-      icon: FileText,
-      title: "ICRA Compliance: Essential Protocols for Healthcare Renovations",
-      excerpt: "Understanding infection control risk assessment requirements and best practices for maintaining patient safety during occupied facility construction.",
-      date: "March 15, 2025",
-      readTime: "5 min read",
-    },
-    {
-      category: "Best Practices",
-      icon: Lightbulb,
-      title: "Minimizing Disruption: Phased Construction in Active Facilities",
-      excerpt: "Strategic approaches to project phasing that maintain operational continuity while delivering on-time, high-quality renovation results.",
-      date: "March 8, 2025",
-      readTime: "4 min read",
-    },
-    {
-      category: "Professional",
-      icon: TrendingUp,
-      title: "After-Hours Construction: Maximizing Professional Facility Upgrades",
-      excerpt: "How to plan and execute major renovation projects during off-hours to minimize impact on staff and clients while staying on budget.",
-      date: "February 28, 2025",
-      readTime: "6 min read",
-    },
-  ];
-
-  const caseStudies = [
-    {
-      title: "Regional Medical Center ICU Expansion",
-      industry: "Healthcare",
-      challenge: "Complete 8,000 sq ft ICU renovation in occupied hospital wing without patient relocation",
-      solution: "Phased ICRA-compliant construction with 24/7 infection control monitoring and strategic containment",
-      result: "100% on-time delivery, zero operational disruptions, full regulatory compliance",
-    },
-    {
-      title: "Corporate Office Tower Modernization",
-      industry: "Professional",
-      challenge: "Upgrade 20,000 sq ft office space during business hours with ongoing operations in adjacent areas",
-      solution: "After-hours and weekend construction schedule with comprehensive security protocols and dust control",
-      result: "Project completed on schedule, minimal operational disruption, under budget",
-    },
-    {
-      title: "Multi-Tenant Office Building Renovation",
-      industry: "Commercial",
-      challenge: "Modernize common areas and tenant spaces while maintaining full building operations",
-      solution: "Rolling phased approach with flexible scheduling and proactive tenant communication",
-      result: "All tenants retained, positive feedback, 98% satisfaction rating",
-    },
-  ];
-
-  const resources = [
-    {
-      title: "ICRA Certification Guide",
-      description: "Comprehensive overview of infection control requirements for healthcare construction",
-      type: "Whitepaper",
-    },
-    {
-      title: "Project Planning Checklist",
-      description: "Essential steps for planning compliant renovations in sensitive environments",
-      type: "Resource",
-    },
-    {
-      title: "Regulatory Compliance Matrix",
-      description: "Key regulations and standards for healthcare, professional, and commercial projects",
-      type: "Guide",
-    },
-  ];
 
   return (
     <main className="min-h-screen">
@@ -154,41 +107,61 @@ const Insights = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {articles.map((article) => (
-              <Card key={article.title} className="rounded-none overflow-hidden group hover:shadow-xl transition-shadow">
-                <div className="p-6">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-10 h-10 rounded-none bg-secondary/10 flex items-center justify-center">
-                      <article.icon className="w-5 h-5 text-secondary" />
-                    </div>
-                    <span className="text-xs font-heading font-semibold uppercase tracking-wider text-secondary">
-                      {article.category}
-                    </span>
+            {articlesLoading ? (
+              Array.from({ length: 3 }).map((_, i) => (
+                <Card key={i} className="rounded-none overflow-hidden">
+                  <div className="p-6 space-y-4">
+                    <Skeleton className="h-10 w-10 rounded-none" />
+                    <Skeleton className="h-6 w-3/4" />
+                    <Skeleton className="h-20 w-full" />
+                    <Skeleton className="h-4 w-1/2" />
                   </div>
-                  
-                  <h3 className="text-xl font-heading font-semibold uppercase mb-3 leading-tight">
-                    {article.title}
-                  </h3>
-                  
-                  <p className="text-muted-foreground text-sm leading-relaxed mb-4">
-                    {article.excerpt}
-                  </p>
-                  
-                  <div className="flex items-center justify-between text-xs text-muted-foreground mb-4">
-                    <div className="flex items-center gap-2">
-                      <Calendar className="w-4 h-4" />
-                      <span>{article.date}</span>
+                </Card>
+              ))
+            ) : articles.length === 0 ? (
+              <div className="col-span-full text-center py-12">
+                <p className="text-muted-foreground">No articles available yet.</p>
+              </div>
+            ) : (
+              articles.map((article) => {
+                const IconComponent = getCategoryIcon(article.category);
+                return (
+                  <Card key={article.id} className="rounded-none overflow-hidden group hover:shadow-xl transition-shadow">
+                    <div className="p-6">
+                      <div className="flex items-center gap-3 mb-4">
+                        <div className="w-10 h-10 rounded-none bg-secondary/10 flex items-center justify-center">
+                          <IconComponent className="w-5 h-5 text-secondary" />
+                        </div>
+                        <span className="text-xs font-heading font-semibold uppercase tracking-wider text-secondary">
+                          {article.category}
+                        </span>
+                      </div>
+                      
+                      <h3 className="text-xl font-heading font-semibold uppercase mb-3 leading-tight">
+                        {article.title}
+                      </h3>
+                      
+                      <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+                        {article.excerpt}
+                      </p>
+                      
+                      <div className="flex items-center justify-between text-xs text-muted-foreground mb-4">
+                        <div className="flex items-center gap-2">
+                          <Calendar className="w-4 h-4" />
+                          <span>{format(new Date(article.date), 'MMMM d, yyyy')}</span>
+                        </div>
+                        <span>{article.read_time}</span>
+                      </div>
+                      
+                      <button className="flex items-center gap-2 text-sm font-heading font-semibold uppercase text-secondary hover:gap-4 transition-all">
+                        Read More
+                        <ArrowRight className="w-4 h-4" />
+                      </button>
                     </div>
-                    <span>{article.readTime}</span>
-                  </div>
-                  
-                  <button className="flex items-center gap-2 text-sm font-heading font-semibold uppercase text-secondary hover:gap-4 transition-all">
-                    Read More
-                    <ArrowRight className="w-4 h-4" />
-                  </button>
-                </div>
-              </Card>
-            ))}
+                  </Card>
+                );
+              })
+            )}
           </div>
         </div>
       </section>
@@ -204,8 +177,26 @@ const Insights = () => {
           </div>
 
           <div className="space-y-8">
-            {caseStudies.map((study) => (
-              <Card key={study.title} className="p-8 rounded-none hover:shadow-xl transition-shadow">
+            {casesLoading ? (
+              Array.from({ length: 3 }).map((_, i) => (
+                <Card key={i} className="p-8 rounded-none">
+                  <Skeleton className="h-6 w-32 mb-4" />
+                  <Skeleton className="h-8 w-3/4 mb-6" />
+                  <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+                    <Skeleton className="h-20 w-full" />
+                    <Skeleton className="h-20 w-full" />
+                    <Skeleton className="h-20 w-full" />
+                    <Skeleton className="h-20 w-full" />
+                  </div>
+                </Card>
+              ))
+            ) : caseStudies.length === 0 ? (
+              <div className="text-center py-12">
+                <p className="text-muted-foreground">No case studies available yet.</p>
+              </div>
+            ) : (
+              caseStudies.map((study) => (
+                <Card key={study.id} className="p-8 rounded-none hover:shadow-xl transition-shadow">
                 <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
                   <div className="lg:col-span-4">
                     <div className="flex items-center gap-3 mb-4">
@@ -250,7 +241,8 @@ const Insights = () => {
                   </div>
                 </div>
               </Card>
-            ))}
+              ))
+            )}
           </div>
         </div>
       </section>
@@ -266,8 +258,26 @@ const Insights = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {resources.map((resource) => (
-              <Card key={resource.title} className="p-6 rounded-none hover:shadow-xl transition-shadow group">
+            {resourcesLoading ? (
+              Array.from({ length: 3 }).map((_, i) => (
+                <Card key={i} className="p-6 rounded-none">
+                  <div className="flex items-start gap-4">
+                    <Skeleton className="w-12 h-12 rounded-none flex-shrink-0" />
+                    <div className="flex-1 space-y-3">
+                      <Skeleton className="h-4 w-20" />
+                      <Skeleton className="h-6 w-full" />
+                      <Skeleton className="h-16 w-full" />
+                    </div>
+                  </div>
+                </Card>
+              ))
+            ) : resources.length === 0 ? (
+              <div className="col-span-full text-center py-12">
+                <p className="text-muted-foreground">No resources available yet.</p>
+              </div>
+            ) : (
+              resources.map((resource) => (
+                <Card key={resource.id} className="p-6 rounded-none hover:shadow-xl transition-shadow group">
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 rounded-none bg-secondary/10 flex items-center justify-center flex-shrink-0">
                     <FileText className="w-6 h-6 text-secondary" />
@@ -289,7 +299,8 @@ const Insights = () => {
                   </div>
                 </div>
               </Card>
-            ))}
+              ))
+            )}
           </div>
         </div>
       </section>
