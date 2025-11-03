@@ -1,7 +1,7 @@
 import { FileCheck, Lock } from "lucide-react";
 
 const certifications = [
-  { image: "/assets/certifications/osha-30-logo-v2.png", label: "OSHA 30 Certified" },
+  { image: "/assets/certifications/osha-30-logo-v3.png", label: "OSHA 30 Certified" },
   { image: "/assets/certifications/icra-logo.png", label: "ICRA Certified" },
   { icon: FileCheck, label: "Licensed" },
   { icon: Lock, label: "Bonded" },
@@ -15,12 +15,12 @@ const Certifications = () => {
           {certifications.map((cert) => (
             <div key={cert.label} className="flex flex-col items-center gap-3">
               {'icon' in cert ? (
-                <cert.icon className="w-16 h-16 text-secondary" />
+                <cert.icon className="w-24 h-24 text-secondary" />
               ) : (
                 <img 
                   src={cert.image} 
                   alt={cert.label}
-                  className="h-16 w-16 object-contain transition-transform duration-300 hover:scale-110"
+                  className="h-24 w-24 object-contain transition-transform duration-300 hover:scale-110"
                 />
               )}
               <span className="text-white font-heading font-semibold uppercase tracking-wider text-sm">
