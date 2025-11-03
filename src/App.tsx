@@ -14,6 +14,10 @@ import NotFound from "./pages/NotFound";
 import ProtectedRoute from "./components/admin/ProtectedRoute";
 import Login from "./pages/admin/Login";
 import Dashboard from "./pages/admin/Dashboard";
+import Articles from "./pages/admin/Articles";
+import CaseStudies from "./pages/admin/CaseStudies";
+import Resources from "./pages/admin/Resources";
+import AdminProjects from "./pages/admin/Projects";
 
 const queryClient = new QueryClient();
 
@@ -36,7 +40,10 @@ const App = () => (
           <Route path="/admin" element={<Login />} />
           <Route element={<ProtectedRoute />}>
             <Route path="/admin/dashboard" element={<Dashboard />} />
-            {/* Phase 4 will add: /admin/articles, /admin/projects, etc. */}
+            <Route path="/admin/articles" element={<Articles />} />
+            <Route path="/admin/case-studies" element={<CaseStudies />} />
+            <Route path="/admin/resources" element={<Resources />} />
+            <Route path="/admin/projects" element={<AdminProjects />} />
           </Route>
           
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
