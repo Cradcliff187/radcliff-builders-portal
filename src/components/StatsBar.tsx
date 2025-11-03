@@ -1,0 +1,48 @@
+import { Award, Briefcase, MapPin, Shield } from "lucide-react";
+
+const stats = [
+  {
+    icon: Briefcase,
+    number: "25+",
+    label: "Years Experience",
+  },
+  {
+    icon: Award,
+    number: "500+",
+    label: "Projects Completed",
+  },
+  {
+    icon: Shield,
+    number: "OSHA & ICRA",
+    label: "Certified",
+  },
+  {
+    icon: MapPin,
+    number: "4-State",
+    label: "Coverage",
+  },
+];
+
+const StatsBar = () => {
+  return (
+    <section className="py-12 bg-primary">
+      <div className="container mx-auto px-6 lg:px-20">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          {stats.map((stat) => (
+            <div key={stat.label} className="text-center group">
+              <stat.icon className="w-8 h-8 text-secondary mx-auto mb-3 group-hover:scale-110 transition-transform" />
+              <div className="text-secondary text-4xl md:text-5xl font-heading font-bold mb-2">
+                {stat.number}
+              </div>
+              <div className="text-white/90 text-sm uppercase tracking-wider">
+                {stat.label}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default StatsBar;
