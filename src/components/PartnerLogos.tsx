@@ -49,7 +49,7 @@ const PartnerLogos = () => {
         <img
           src={logo.image}
           alt={logo.alt}
-          className="hover:grayscale hover:opacity-70 transition-all duration-300 h-[50px] md:h-[60px] lg:h-[70px] w-auto max-w-[140px] md:max-w-[180px] lg:max-w-[220px]"
+          className="hover:grayscale hover:opacity-70 transition-all duration-300 h-[clamp(50px,6vw,70px)] w-auto max-w-[180px] md:max-w-[220px]"
           loading="lazy"
         />
       </div>
@@ -74,7 +74,7 @@ const PartnerLogos = () => {
 
   return (
     <section 
-      className="py-24 bg-[#F2F2F2]"
+      className="py-14 md:py-16 bg-[#F2F2F2]"
       aria-label="Client and partner logos"
     >
       <div className="container mx-auto px-6 lg:px-20">
@@ -91,13 +91,13 @@ const PartnerLogos = () => {
             plugins={[Autoplay({ delay: 3500, stopOnInteraction: true })]}
             className="w-full"
           >
-            <CarouselContent className="-ml-6">
+            <CarouselContent className="-ml-4">
               {logos
                 .sort((a, b) => (a.priority || 999) - (b.priority || 999))
                 .map((logo) => (
                   <CarouselItem 
                     key={logo.name} 
-                    className="pl-6 basis-1/2 md:basis-1/4 lg:basis-1/6"
+                    className="pl-4 basis-1/2 md:basis-1/4 lg:basis-1/6"
                   >
                     <LogoCard logo={logo} />
                   </CarouselItem>
@@ -105,7 +105,7 @@ const PartnerLogos = () => {
             </CarouselContent>
           </Carousel>
         ) : (
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8 md:gap-10 lg:gap-12 items-center justify-items-center max-w-4xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 items-center justify-items-center max-w-6xl mx-auto">
             {logos
               .sort((a, b) => (a.priority || 999) - (b.priority || 999))
               .map((logo) => (
