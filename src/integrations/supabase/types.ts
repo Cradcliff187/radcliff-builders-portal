@@ -14,6 +14,42 @@ export type Database = {
   }
   public: {
     Tables: {
+      case_studies: {
+        Row: {
+          challenge: string
+          created_at: string | null
+          id: string
+          industry: string
+          published: boolean | null
+          result: string
+          solution: string
+          title: string
+          updated_at: string | null
+        }
+        Insert: {
+          challenge: string
+          created_at?: string | null
+          id?: string
+          industry: string
+          published?: boolean | null
+          result: string
+          solution: string
+          title: string
+          updated_at?: string | null
+        }
+        Update: {
+          challenge?: string
+          created_at?: string | null
+          id?: string
+          industry?: string
+          published?: boolean | null
+          result?: string
+          solution?: string
+          title?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
       contact_submissions: {
         Row: {
           created_at: string | null
@@ -53,6 +89,42 @@ export type Database = {
         }
         Relationships: []
       }
+      insights_articles: {
+        Row: {
+          category: string
+          created_at: string | null
+          date: string
+          excerpt: string
+          id: string
+          published: boolean | null
+          read_time: string
+          title: string
+          updated_at: string | null
+        }
+        Insert: {
+          category: string
+          created_at?: string | null
+          date: string
+          excerpt: string
+          id?: string
+          published?: boolean | null
+          read_time: string
+          title: string
+          updated_at?: string | null
+        }
+        Update: {
+          category?: string
+          created_at?: string | null
+          date?: string
+          excerpt?: string
+          id?: string
+          published?: boolean | null
+          read_time?: string
+          title?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
       newsletter_subscribers: {
         Row: {
           created_at: string
@@ -74,6 +146,78 @@ export type Database = {
           id?: string
           status?: string
           subscribed_at?: string
+        }
+        Relationships: []
+      }
+      projects: {
+        Row: {
+          created_at: string | null
+          description: string
+          display_order: number | null
+          featured: boolean | null
+          id: string
+          image_url: string
+          industry: string
+          published: boolean | null
+          title: string
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          description: string
+          display_order?: number | null
+          featured?: boolean | null
+          id?: string
+          image_url: string
+          industry: string
+          published?: boolean | null
+          title: string
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          description?: string
+          display_order?: number | null
+          featured?: boolean | null
+          id?: string
+          image_url?: string
+          industry?: string
+          published?: boolean | null
+          title?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      resources: {
+        Row: {
+          created_at: string | null
+          description: string
+          file_url: string | null
+          id: string
+          published: boolean | null
+          title: string
+          type: string
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          description: string
+          file_url?: string | null
+          id?: string
+          published?: boolean | null
+          title: string
+          type: string
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          description?: string
+          file_url?: string | null
+          id?: string
+          published?: boolean | null
+          title?: string
+          type?: string
+          updated_at?: string | null
         }
         Relationships: []
       }
