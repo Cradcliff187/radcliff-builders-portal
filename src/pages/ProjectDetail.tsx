@@ -152,7 +152,6 @@ const ProjectDetail = () => {
         squareFootage={project.square_footage}
         durationWeeks={project.duration_weeks}
         projectValue={project.project_value}
-        industry={project.industry}
         projectType={project.project_type}
       />
 

@@ -1,10 +1,9 @@
-import { Building2, Clock, DollarSign, Tag, Wrench } from "lucide-react";
+import { Building2, Clock, DollarSign, Wrench } from "lucide-react";
 
 interface ProjectStatsBarProps {
   squareFootage?: number;
   durationWeeks?: number;
   projectValue?: string;
-  industry: string;
   projectType?: string;
 }
 
@@ -12,7 +11,6 @@ const ProjectStatsBar = ({
   squareFootage,
   durationWeeks,
   projectValue,
-  industry,
   projectType,
 }: ProjectStatsBarProps) => {
   const stats = [
@@ -30,11 +28,6 @@ const ProjectStatsBar = ({
       icon: DollarSign,
       value: projectValue || null,
       label: "Project Value",
-    },
-    {
-      icon: Tag,
-      value: industry,
-      label: "Industry",
     },
     {
       icon: Wrench,
