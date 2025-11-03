@@ -25,6 +25,13 @@ const logos: Logo[] = [
     priority: 2
   },
   {
+    name: "State Farm",
+    image: "/assets/partners/state-farm.png",
+    alt: "State Farm - Insurance Partner",
+    url: "https://www.statefarm.com/",
+    priority: 3
+  },
+  {
     name: "Big Boy",
     image: "/assets/partners/big-boy-new.png",
     alt: "Big Boy - Retail Partner",
