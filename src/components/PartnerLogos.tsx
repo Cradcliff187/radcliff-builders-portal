@@ -93,14 +93,14 @@ const PartnerLogos = () => {
 
   return (
     <section 
-      className="py-14 md:py-16 bg-[#F2F2F2]"
+      className="py-12 md:py-14 bg-[#F2F2F2]"
       aria-label="Client and partner logos"
     >
       <div className="container mx-auto px-6 lg:px-20">
-        <h2 className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl uppercase tracking-wide text-center text-charcoal mb-4">
+        <h2 className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl uppercase tracking-wide text-center text-charcoal mb-3">
           Trusted by leading organizations
         </h2>
-        <p className="text-center text-charcoal/80 text-lg md:text-xl mb-12">
+        <p className="text-center text-charcoal/80 text-lg md:text-xl mb-8 md:mb-10">
           Healthcare • Professional • Retail • Commercial
         </p>
 
