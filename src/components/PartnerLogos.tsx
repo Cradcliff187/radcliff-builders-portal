@@ -62,8 +62,6 @@ const logos: Logo[] = [
 ];
 
 const PartnerLogos = () => {
-  const useCarousel = logos.length > 8;
-
   const LogoCard = ({ logo }: { logo: Logo }) => {
     const content = (
       <div className="flex items-center justify-center p-6 md:p-8 rounded-none hover:shadow-md transition-shadow duration-300">
@@ -106,35 +104,25 @@ const PartnerLogos = () => {
           Healthcare • Education • Retail • Commercial
         </p>
 
-        {useCarousel ? (
-          <Carousel
-            opts={{ loop: true }}
-            plugins={[Autoplay({ delay: 3500, stopOnInteraction: true })]}
-            className="w-full"
-          >
-            <CarouselContent className="-ml-4">
-              {logos
-                .sort((a, b) => (a.priority || 999) - (b.priority || 999))
-                .map((logo) => (
-                  <CarouselItem 
-                    key={logo.name} 
-                    className="pl-4 basis-1/2 md:basis-1/4 lg:basis-1/6"
-                  >
-                    <LogoCard logo={logo} />
-                  </CarouselItem>
-                ))}
-            </CarouselContent>
-            <CarouselDots />
-          </Carousel>
-        ) : (
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 items-center justify-items-center max-w-6xl mx-auto">
+        <Carousel
+          opts={{ loop: true }}
+          plugins={[Autoplay({ delay: 3500, stopOnInteraction: true })]}
+          className="w-full"
+        >
+          <CarouselContent className="-ml-4">
             {logos
               .sort((a, b) => (a.priority || 999) - (b.priority || 999))
               .map((logo) => (
-                <LogoCard key={logo.name} logo={logo} />
+                <CarouselItem 
+                  key={logo.name} 
+                  className="pl-4 basis-1/2 md:basis-1/4 lg:basis-1/6"
+                >
+                  <LogoCard logo={logo} />
+                </CarouselItem>
               ))}
-          </div>
-        )}
+          </CarouselContent>
+          <CarouselDots />
+        </Carousel>
       </div>
     </section>
   );
