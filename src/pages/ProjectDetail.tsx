@@ -1,11 +1,13 @@
 import { useParams, Link } from "react-router-dom";
 import { useProjectDetail } from "@/hooks/useProjectDetail";
 import { useProjects } from "@/hooks/useCMSContent";
+import { getValidatedContent, isValidArray } from "@/lib/contentValidation";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ProjectImageGallery from "@/components/ProjectImageGallery";
 import ProjectStatsBar from "@/components/ProjectStatsBar";
 import ProjectTestimonial from "@/components/ProjectTestimonial";
+import ContentComingSoon from "@/components/ContentComingSoon";
 import CTASection from "@/components/CTASection";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Card, CardContent } from "@/components/ui/card";
@@ -87,6 +89,17 @@ const ProjectDetail = () => {
     .filter((p: any) => p.industry === project.industry && p.id !== project.id)
     .slice(0, 3);
 
+  // Validate content quality
+  const validDescription = getValidatedContent(project.detailed_description);
+  const validChallenges = getValidatedContent(project.challenges);
+  const validSolutions = getValidatedContent(project.solutions);
+  const validOutcomes = getValidatedContent(project.outcomes);
+  const validKeyFeatures = isValidArray(project.key_features);
+  const hasValidTestimonial = 
+    getValidatedContent(project.testimonial_quote) && 
+    getValidatedContent(project.testimonial_author) && 
+    getValidatedContent(project.testimonial_title);
+
   return (
     <>
       <Header />
@@ -149,21 +162,23 @@ const ProjectDetail = () => {
             {/* Main Content Column */}
             <div className="lg:col-span-2 space-y-12">
               {/* Project Overview */}
-              {project.detailed_description && (
-                <div>
-                  <h2 className="text-3xl md:text-4xl font-heading font-semibold text-primary mb-6 uppercase tracking-wide">
-                    Project Overview
-                  </h2>
+              <div>
+                <h2 className="text-3xl md:text-4xl font-heading font-semibold text-primary mb-6 uppercase tracking-wide">
+                  Project Overview
+                </h2>
+                {validDescription ? (
                   <div className="prose prose-lg max-w-none">
-                    <p className="text-xl text-muted-foreground leading-relaxed whitespace-pre-line">
-                      {project.detailed_description}
+                    <p className="text-lg text-muted-foreground leading-[1.8] tracking-[0.01em] max-w-[65ch] whitespace-pre-line">
+                      {validDescription}
                     </p>
                   </div>
-                </div>
-              )}
+                ) : (
+                  <ContentComingSoon />
+                )}
+              </div>
 
               {/* The Challenge */}
-              {project.challenges && (
+              {validChallenges ? (
                 <Card className="bg-light-grey border-none rounded-none shadow-none">
                   <CardContent className="p-8">
                     <div className="flex items-start gap-4 mb-4">
@@ -173,16 +188,16 @@ const ProjectDetail = () => {
                       </h2>
                     </div>
                     <div className="prose prose-lg max-w-none">
-                      <p className="text-muted-foreground leading-relaxed whitespace-pre-line">
-                        {project.challenges}
+                      <p className="text-base text-muted-foreground leading-[1.8] tracking-[0.01em] max-w-[65ch] whitespace-pre-line">
+                        {validChallenges}
                       </p>
                     </div>
                   </CardContent>
                 </Card>
-              )}
+              ) : null}
 
               {/* Our Solution */}
-              {project.solutions && (
+              {validSolutions ? (
                 <div>
                   <div className="flex items-start gap-4 mb-6">
                     <Lightbulb className="w-8 h-8 text-gold flex-shrink-0 mt-1" />
@@ -191,15 +206,15 @@ const ProjectDetail = () => {
                     </h2>
                   </div>
                   <div className="prose prose-lg max-w-none">
-                    <p className="text-muted-foreground leading-relaxed whitespace-pre-line">
-                      {project.solutions}
+                    <p className="text-base text-muted-foreground leading-[1.8] tracking-[0.01em] max-w-[65ch] whitespace-pre-line">
+                      {validSolutions}
                     </p>
                   </div>
                 </div>
-              )}
+              ) : null}
 
               {/* Results & Outcomes */}
-              {project.outcomes && (
+              {validOutcomes ? (
                 <div>
                   <div className="flex items-start gap-4 mb-6">
                     <CheckCircle className="w-8 h-8 text-gold flex-shrink-0 mt-1" />
@@ -209,16 +224,16 @@ const ProjectDetail = () => {
                   </div>
                   <div className="prose prose-lg max-w-none">
                     <div className="grid md:grid-cols-2 gap-4">
-                      {project.outcomes.split('\n').filter(line => line.trim()).map((outcome, index) => (
+                      {validOutcomes.split('\n').filter(line => line.trim()).map((outcome, index) => (
                         <div key={index} className="flex items-start gap-3">
                           <CheckCircle className="w-5 h-5 text-gold flex-shrink-0 mt-1" />
-                          <p className="text-muted-foreground leading-relaxed">{outcome}</p>
+                          <p className="text-base text-muted-foreground leading-[1.8] tracking-[0.01em]">{outcome}</p>
                         </div>
                       ))}
                     </div>
                   </div>
                 </div>
-              )}
+              ) : null}
 
               {/* Project Images */}
               {project.project_images && project.project_images.length > 0 && (
@@ -297,7 +312,7 @@ const ProjectDetail = () => {
                     </div>
 
                     {/* Key Features */}
-                    {project.key_features && project.key_features.length > 0 && (
+                    {validKeyFeatures && (
                       <div className="pt-6 border-t border-gray-200">
                         <h3 className="text-xl font-heading font-semibold text-primary mb-4 uppercase tracking-wide">
                           Key Features
@@ -306,7 +321,7 @@ const ProjectDetail = () => {
                           {project.key_features.map((feature, index) => (
                             <div key={index} className="flex items-start gap-3">
                               <Check className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
-                              <span className="text-muted-foreground text-sm leading-relaxed">{feature}</span>
+                              <span className="text-muted-foreground text-sm leading-[1.7]">{feature}</span>
                             </div>
                           ))}
                         </div>
@@ -350,11 +365,11 @@ const ProjectDetail = () => {
       </section>
 
       {/* Client Testimonial */}
-      {project.testimonial_quote && project.testimonial_author && project.testimonial_title && (
+      {hasValidTestimonial && (
         <ProjectTestimonial
-          quote={project.testimonial_quote}
-          author={project.testimonial_author}
-          title={project.testimonial_title}
+          quote={project.testimonial_quote!}
+          author={project.testimonial_author!}
+          title={project.testimonial_title!}
         />
       )}
 
