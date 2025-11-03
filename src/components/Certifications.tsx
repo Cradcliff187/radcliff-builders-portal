@@ -15,7 +15,7 @@ const Certifications = () => {
           {certifications.map((cert) => (
             <div key={cert.label} className="flex flex-col items-center gap-3">
               {'icon' in cert ? (
-                <cert.icon className="w-12 h-12 text-secondary" />
+                <cert.icon className="w-16 h-16 text-secondary" />
               ) : (
                 <img 
                   src={cert.image} 
