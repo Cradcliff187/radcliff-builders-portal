@@ -208,7 +208,7 @@ export default function Resources() {
               selectedResource
                 ? {
                     ...selectedResource,
-                    type: selectedResource.type as any,
+                    type: selectedResource.type as "Guide" | "Checklist" | "Whitepaper" | "Template",
                     file_url: selectedResource.file_url || undefined,
                   }
                 : undefined

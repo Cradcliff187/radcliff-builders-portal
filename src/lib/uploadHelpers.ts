@@ -1,7 +1,24 @@
 import { supabase } from "@/integrations/supabase/client";
 
 export async function uploadFile(file: File, path: string): Promise<string> {
-  const fileExt = file.name.split(".").pop();
+  // Validate file size (max 10MB)
+  if (file.size > 10 * 1024 * 1024) {
+    throw new Error("File size must be less than 10MB");
+  }
+
+  const fileExt = file.name.split(".").pop()?.toLowerCase();
+  if (!fileExt) {
+    throw new Error("File must have an extension");
+  }
+
+  // Validate file type based on path
+  if (path === "projects" && !["jpg", "jpeg", "png", "webp"].includes(fileExt)) {
+    throw new Error("Project images must be JPG, PNG, or WEBP");
+  }
+  if (path === "resources" && fileExt !== "pdf") {
+    throw new Error("Resources must be PDF files");
+  }
+
   const fileName = `${path}/${Date.now()}-${Math.random().toString(36).substring(7)}.${fileExt}`;
 
   const { error: uploadError } = await supabase.storage

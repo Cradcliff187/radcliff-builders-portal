@@ -106,7 +106,7 @@ export default function ResourceForm({
                     <SelectValue placeholder="Select a type" />
                   </SelectTrigger>
                 </FormControl>
-                <SelectContent className="bg-white rounded-none z-50">
+                <SelectContent className="bg-white rounded-none z-[100]">
                   <SelectItem value="Guide">Guide</SelectItem>
                   <SelectItem value="Checklist">Checklist</SelectItem>
                   <SelectItem value="Whitepaper">Whitepaper</SelectItem>

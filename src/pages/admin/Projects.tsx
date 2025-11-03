@@ -220,7 +220,8 @@ export default function Projects() {
               selectedProject
                 ? {
                     ...selectedProject,
-                    industry: selectedProject.industry as any,
+                    industry: selectedProject.industry as "Healthcare" | "Education" | "Retail" | "Commercial",
+                    display_order: selectedProject.display_order ?? 0,
                   }
                 : undefined
             }

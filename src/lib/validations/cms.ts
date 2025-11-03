@@ -43,7 +43,7 @@ export const projectSchema = z.object({
   image_url: z.string().min(1, "Image is required"),
   featured: z.boolean().default(false),
   published: z.boolean().default(false),
-  display_order: z.number().int().min(0).default(0),
+  display_order: z.number().int().min(0).nullable().default(0),
 });
 
 export type ArticleFormData = z.infer<typeof articleSchema>;

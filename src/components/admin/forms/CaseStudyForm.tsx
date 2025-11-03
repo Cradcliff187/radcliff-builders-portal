@@ -79,7 +79,7 @@ export default function CaseStudyForm({
                     <SelectValue placeholder="Select an industry" />
                   </SelectTrigger>
                 </FormControl>
-                <SelectContent className="bg-white rounded-none z-50">
+                <SelectContent className="bg-white rounded-none z-[100]">
                   <SelectItem value="Healthcare">Healthcare</SelectItem>
                   <SelectItem value="Education">Education</SelectItem>
                   <SelectItem value="Retail">Retail</SelectItem>

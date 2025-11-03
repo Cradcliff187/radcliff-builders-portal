@@ -88,7 +88,7 @@ export default function ArticleForm({
                     <SelectValue placeholder="Select a category" />
                   </SelectTrigger>
                 </FormControl>
-                <SelectContent className="bg-white rounded-none z-50">
+                <SelectContent className="bg-white rounded-none z-[100]">
                   <SelectItem value="Industry Insights">Industry Insights</SelectItem>
                   <SelectItem value="Best Practices">Best Practices</SelectItem>
                   <SelectItem value="Case Studies">Case Studies</SelectItem>

@@ -195,7 +195,7 @@ export default function Articles() {
                 ? {
                     ...selectedArticle,
                     date: new Date(selectedArticle.date),
-                    category: selectedArticle.category as any,
+                    category: selectedArticle.category as "Industry Insights" | "Best Practices" | "Case Studies",
                   }
                 : undefined
             }
