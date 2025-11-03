@@ -88,11 +88,11 @@ const ProjectImageGallery = ({ images, primaryImage }: ProjectImageGalleryProps)
           </Button>
 
             {/* Image */}
-            <div className="w-full h-full flex items-center justify-center p-2 sm:p-4 md:p-8 lg:p-12">
+            <div className="absolute inset-0 flex items-center justify-center p-2 sm:p-4 md:p-8 lg:p-12">
               <img
                 src={allImages[currentIndex].image_url}
                 alt={allImages[currentIndex].caption || `Project image ${currentIndex + 1}`}
-                className="max-w-full max-h-full object-contain"
+                className="w-auto h-auto max-w-full max-h-full object-contain"
               />
             </div>
 
@@ -108,7 +108,7 @@ const ProjectImageGallery = ({ images, primaryImage }: ProjectImageGalleryProps)
 
             {/* Caption */}
           {allImages[currentIndex].caption && (
-            <div className="absolute bottom-12 left-2 right-2 sm:bottom-6 sm:left-4 sm:right-4 md:left-1/2 md:right-auto md:-translate-x-1/2 md:bottom-8 bg-navy/95 text-white px-3 py-2 sm:px-4 md:px-6 md:py-3 rounded-none max-w-full md:max-w-3xl backdrop-blur-sm">
+            <div className="absolute bottom-12 left-2 right-2 sm:bottom-6 sm:left-4 sm:right-4 md:left-1/2 md:right-auto md:-translate-x-1/2 md:bottom-8 bg-navy/95 text-white px-3 py-2 sm:px-4 md:px-6 md:py-3 rounded-none max-w-full md:max-w-3xl backdrop-blur-sm z-50">
               <p className="text-center text-xs leading-tight sm:text-sm md:text-base md:leading-relaxed line-clamp-3 md:line-clamp-2">
                 {allImages[currentIndex].caption}
               </p>
