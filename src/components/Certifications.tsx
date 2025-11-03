@@ -1,8 +1,8 @@
-import { Shield, FileCheck, Award, Lock } from "lucide-react";
+import { FileCheck, Award, Lock } from "lucide-react";
 
 const certifications = [
   { icon: Award, label: "ROSS Certified" },
-  { icon: Shield, label: "ICRA Certified" },
+  { image: "/assets/certifications/icra-logo.png", label: "ICRA Certified" },
   { icon: FileCheck, label: "Licensed" },
   { icon: Lock, label: "Bonded" },
 ];
@@ -14,7 +14,15 @@ const Certifications = () => {
         <div className="flex flex-wrap justify-center items-center gap-12 lg:gap-20">
           {certifications.map((cert) => (
             <div key={cert.label} className="flex flex-col items-center gap-3">
-              <cert.icon className="w-12 h-12 text-secondary" />
+              {'icon' in cert ? (
+                <cert.icon className="w-12 h-12 text-secondary" />
+              ) : (
+                <img 
+                  src={cert.image} 
+                  alt={cert.label}
+                  className="h-16 w-16 object-contain transition-transform duration-300 hover:scale-110"
+                />
+              )}
               <span className="text-white font-heading font-semibold uppercase tracking-wider text-sm">
                 {cert.label}
               </span>
