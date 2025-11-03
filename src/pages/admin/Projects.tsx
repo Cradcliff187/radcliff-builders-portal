@@ -24,6 +24,12 @@ type Project = {
   display_order: number;
   created_at: string;
   updated_at: string;
+  project_images?: {
+    id: string;
+    image_url: string;
+    caption: string;
+    display_order: number;
+  }[];
 };
 
 export default function Projects() {
@@ -37,14 +43,24 @@ export default function Projects() {
   const columns: Column<Project>[] = [
     {
       key: "image_url",
-      label: "Image",
-      render: (project) => (
-        <img
-          src={project.image_url}
-          alt={project.title}
-          className="h-12 w-20 object-cover rounded-none"
-        />
-      ),
+      label: "Images",
+      render: (project) => {
+        const imageCount = project.project_images?.length || 0;
+        return (
+          <div className="flex items-center gap-2">
+            <img
+              src={project.image_url}
+              alt={project.title}
+              className="h-12 w-20 object-cover rounded-none"
+            />
+            {imageCount > 0 && (
+              <span className="bg-navy text-white text-xs font-bold px-2 py-1 rounded-none">
+                +{imageCount}
+              </span>
+            )}
+          </div>
+        );
+      },
     },
     { key: "title", label: "Title" },
     { key: "industry", label: "Industry" },

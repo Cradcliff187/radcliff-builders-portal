@@ -25,7 +25,15 @@ export const useAdminProjects = () => {
     queryFn: async () => {
       const { data, error } = await supabase
         .from("projects")
-        .select("*")
+        .select(`
+          *,
+          project_images (
+            id,
+            image_url,
+            caption,
+            display_order
+          )
+        `)
         .order("display_order", { ascending: true });
       
       if (error) throw error;

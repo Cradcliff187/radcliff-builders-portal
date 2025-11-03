@@ -25,13 +25,20 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { projectSchema, ProjectFormData } from "@/lib/validations/cms";
-import { uploadFile } from "@/lib/uploadHelpers";
+import { uploadFile, deleteFile } from "@/lib/uploadHelpers";
 import { ImagePlus, CalendarIcon } from "lucide-react";
 import { format } from "date-fns";
 import { cn } from "@/lib/utils";
+import ProjectImageUploader, { UploadedImage } from "./ProjectImageUploader";
+import ProjectImageGallery, { ProjectImage } from "./ProjectImageGallery";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
 
 interface ProjectFormProps {
-  initialData?: Partial<ProjectFormData> & { id?: string };
+  initialData?: Partial<ProjectFormData> & { 
+    id?: string;
+    project_images?: ProjectImage[];
+  };
   onSubmit: (data: ProjectFormData) => Promise<void>;
   onCancel: () => void;
   isSubmitting: boolean;
@@ -45,6 +52,9 @@ export default function ProjectForm({
 }: ProjectFormProps) {
   const [uploading, setUploading] = useState(false);
   const [imagePreview, setImagePreview] = useState(initialData?.image_url || "");
+  const [projectImages, setProjectImages] = useState<ProjectImage[]>([]);
+  const [unsavedImages, setUnsavedImages] = useState<UploadedImage[]>([]);
+  const { toast } = useToast();
 
   const form = useForm<ProjectFormData>({
     resolver: zodResolver(projectSchema),
@@ -82,6 +92,128 @@ export default function ProjectForm({
     }
   }, [watchTitle, initialData?.slug, form]);
 
+  // Load existing images when editing
+  useEffect(() => {
+    if (initialData?.project_images) {
+      const sortedImages = [...initialData.project_images].sort(
+        (a, b) => a.display_order - b.display_order
+      );
+      setProjectImages(sortedImages);
+    }
+  }, [initialData]);
+
+  const handleImagesUploaded = async (newImages: UploadedImage[]) => {
+    if (initialData?.id) {
+      // Existing project: Save to DB immediately
+      try {
+        const imagesToInsert = newImages.map((img, index) => ({
+          project_id: initialData.id,
+          image_url: img.image_url,
+          caption: img.caption || "",
+          display_order: projectImages.length + index,
+        }));
+
+        const { data, error } = await supabase
+          .from("project_images")
+          .insert(imagesToInsert)
+          .select();
+
+        if (error) throw error;
+
+        if (data) {
+          setProjectImages((prev) => [...prev, ...data]);
+          toast({
+            title: "Images Saved",
+            description: `${data.length} image(s) added to project.`,
+          });
+        }
+      } catch (error) {
+        console.error("Error saving images:", error);
+        toast({
+          title: "Error",
+          description: "Failed to save images. Please try again.",
+          variant: "destructive",
+        });
+      }
+    } else {
+      // New project: Store temporarily
+      setUnsavedImages((prev) => [...prev, ...newImages]);
+    }
+  };
+
+  const handleImageReorder = async (reorderedImages: ProjectImage[]) => {
+    setProjectImages(reorderedImages);
+
+    if (initialData?.id) {
+      try {
+        const updates = reorderedImages.map((img, index) =>
+          supabase
+            .from("project_images")
+            .update({ display_order: index })
+            .eq("id", img.id)
+        );
+
+        await Promise.all(updates);
+      } catch (error) {
+        console.error("Error reordering images:", error);
+      }
+    }
+  };
+
+  const handleImageDelete = async (imageId: string) => {
+    const imageToDelete = projectImages.find((img) => img.id === imageId);
+    if (!imageToDelete) return;
+
+    try {
+      // Delete from database
+      const { error } = await supabase
+        .from("project_images")
+        .delete()
+        .eq("id", imageId);
+
+      if (error) throw error;
+
+      // Delete from storage
+      await deleteFile(imageToDelete.image_url);
+
+      // Update state
+      setProjectImages((prev) => prev.filter((img) => img.id !== imageId));
+    } catch (error) {
+      console.error("Error deleting image:", error);
+      toast({
+        title: "Error",
+        description: "Failed to delete image.",
+        variant: "destructive",
+      });
+    }
+  };
+
+  const handleCaptionUpdate = async (imageId: string, caption: string) => {
+    try {
+      const { error } = await supabase
+        .from("project_images")
+        .update({ caption })
+        .eq("id", imageId);
+
+      if (error) throw error;
+
+      setProjectImages((prev) =>
+        prev.map((img) => (img.id === imageId ? { ...img, caption } : img))
+      );
+    } catch (error) {
+      console.error("Error updating caption:", error);
+    }
+  };
+
+  const handleFormSubmit = async (data: ProjectFormData) => {
+    await onSubmit(data);
+
+    // If new project with unsaved images, save them now
+    // Note: The parent component should provide the new project ID after creation
+    // This is a limitation - for now, unsaved images won't be saved automatically
+    // User should save project first, then upload images
+  };
+
   const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -100,10 +232,11 @@ export default function ProjectForm({
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+      <form onSubmit={form.handleSubmit(handleFormSubmit)} className="space-y-6">
         <Tabs defaultValue="basic" className="w-full">
-          <TabsList className="grid w-full grid-cols-3">
+          <TabsList className="grid w-full grid-cols-4">
             <TabsTrigger value="basic">Basic Info</TabsTrigger>
+            <TabsTrigger value="images">Images</TabsTrigger>
             <TabsTrigger value="details">Project Details</TabsTrigger>
             <TabsTrigger value="content">Case Study</TabsTrigger>
           </TabsList>
@@ -267,6 +400,77 @@ export default function ProjectForm({
                   </FormItem>
                 )}
               />
+            </div>
+          </TabsContent>
+
+          {/* Images Tab */}
+          <TabsContent value="images" className="space-y-6 mt-4">
+            <div className="space-y-4">
+              <div>
+                <h3 className="text-lg font-montserrat font-semibold text-navy uppercase tracking-wide mb-2">
+                  Primary Image
+                </h3>
+                <p className="text-sm text-charcoal/60 mb-4">
+                  This image is shown on project cards and as the hero image on the detail page.
+                </p>
+                {imagePreview && (
+                  <div className="relative aspect-video rounded-none overflow-hidden border mb-4 max-w-md">
+                    <img
+                      src={imagePreview}
+                      alt="Primary preview"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                )}
+              </div>
+
+              {initialData?.id && (
+                <>
+                  <div>
+                    <h3 className="text-lg font-montserrat font-semibold text-navy uppercase tracking-wide mb-2">
+                      Additional Images ({projectImages.length})
+                    </h3>
+                    <p className="text-sm text-charcoal/60 mb-4">
+                      Manage project gallery images. Drag to reorder, click to edit captions.
+                    </p>
+                    {projectImages.length > 0 && (
+                      <div className="mb-6">
+                        <ProjectImageGallery
+                          images={projectImages}
+                          onReorder={handleImageReorder}
+                          onDelete={handleImageDelete}
+                          onCaptionUpdate={handleCaptionUpdate}
+                        />
+                      </div>
+                    )}
+                  </div>
+
+                  <div>
+                    <h3 className="text-lg font-montserrat font-semibold text-navy uppercase tracking-wide mb-2">
+                      Upload New Images
+                    </h3>
+                    <p className="text-sm text-charcoal/60 mb-4">
+                      Add more images to the project gallery (up to 10 at once).
+                    </p>
+                    <ProjectImageUploader
+                      projectId={initialData.id}
+                      onImagesUploaded={handleImagesUploaded}
+                    />
+                  </div>
+                </>
+              )}
+
+              {!initialData?.id && (
+                <div className="bg-light-grey p-6 rounded-none border-2 border-charcoal/20">
+                  <p className="text-charcoal text-center">
+                    <strong>Save the project first</strong> to enable multi-image upload.
+                    <br />
+                    <span className="text-sm text-charcoal/60">
+                      After creating the project, you can return to edit it and add gallery images.
+                    </span>
+                  </p>
+                </div>
+              )}
             </div>
           </TabsContent>
 

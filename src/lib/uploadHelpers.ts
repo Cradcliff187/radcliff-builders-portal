@@ -53,3 +53,22 @@ export async function deleteFile(url: string): Promise<void> {
     console.error("Error deleting file:", error);
   }
 }
+
+export async function uploadMultipleFiles(
+  files: File[],
+  path: string,
+  onProgress?: (fileIndex: number, progress: number) => void
+): Promise<string[]> {
+  const uploadPromises = files.map(async (file, index) => {
+    try {
+      const url = await uploadFile(file, path);
+      onProgress?.(index, 100);
+      return url;
+    } catch (error) {
+      onProgress?.(index, 0);
+      throw error;
+    }
+  });
+
+  return Promise.all(uploadPromises);
+}
