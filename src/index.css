@@ -10,7 +10,7 @@ All colors MUST be HSL.
   :root {
     /* RCG Brand Colors */
     --navy: 214 42% 18%;           /* Primary Navy #1B2B43 */
-    --gold: 41 48% 53%;            /* Accent Gold #C4A04A - Official RCG Brand Color */
+    --gold: 25 77% 46%;            /* Accent Gold #CF791D - Official RCG Brand Color */
     --charcoal: 0 0% 17%;          /* Dark Charcoal #2B2B2B */
     --light-grey: 200 25% 96%;     /* Light Grey #F4F7F9 */
     --black: 0 0% 0%;              /* Black #000000 */
