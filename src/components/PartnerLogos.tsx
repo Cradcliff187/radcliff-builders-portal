@@ -30,6 +30,13 @@ const logos: Logo[] = [
     alt: "Big Boy - Retail Partner",
     url: "https://www.bigboy.com/",
     priority: 3
+  },
+  {
+    name: "Cushman & Wakefield",
+    image: "/assets/partners/cushman-wakefield.png",
+    alt: "Cushman & Wakefield - Commercial Real Estate Partner",
+    url: "https://www.cushmanwakefield.com/",
+    priority: 4
   }
 ];
 
