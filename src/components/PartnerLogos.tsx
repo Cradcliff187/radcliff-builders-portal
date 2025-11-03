@@ -11,13 +11,26 @@ interface Logo {
 
 const logos: Logo[] = [
   {
+    name: "Mercy Health",
+    image: "/assets/partners/mercy-health.png",
+    alt: "Mercy Health - Healthcare Partner",
+    url: "https://www.mercy.com/",
+    priority: 1
+  },
+  {
     name: "UC Health",
     image: "/assets/partners/uc-health.png",
     alt: "UC Health - Healthcare Partner",
     url: "https://www.uchealth.com/",
-    priority: 1
+    priority: 2
+  },
+  {
+    name: "Big Boy",
+    image: "/assets/partners/big-boy.png",
+    alt: "Big Boy - Retail Partner",
+    url: "https://www.bigboy.com/",
+    priority: 3
   }
-  // Add more partners: Mercy Health, St. Elizabeth, TriHealth per blueprint
 ];
 
 const PartnerLogos = () => {
