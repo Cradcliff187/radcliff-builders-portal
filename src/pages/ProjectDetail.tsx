@@ -5,7 +5,6 @@ import { getValidatedContent, isValidArray } from "@/lib/contentValidation";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ProjectImageGallery from "@/components/ProjectImageGallery";
-import ProjectStatsBar from "@/components/ProjectStatsBar";
 import ProjectTestimonial from "@/components/ProjectTestimonial";
 import ContentComingSoon from "@/components/ContentComingSoon";
 import CTASection from "@/components/CTASection";
@@ -146,14 +145,6 @@ const ProjectDetail = () => {
           </div>
         </div>
       </section>
-
-      {/* Project Stats Bar */}
-      <ProjectStatsBar
-        squareFootage={project.square_footage}
-        durationWeeks={project.duration_weeks}
-        projectValue={project.project_value}
-        projectType={project.project_type}
-      />
 
       {/* Main Content */}
       <section className="py-24">
