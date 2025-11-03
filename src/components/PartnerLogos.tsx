@@ -29,7 +29,7 @@ const logos: Logo[] = [
     image: "/assets/partners/big-boy-new.png",
     alt: "Big Boy - Retail Partner",
     url: "https://www.bigboy.com/",
-    priority: 3
+    priority: 8
   },
   {
     name: "Cushman & Wakefield",
