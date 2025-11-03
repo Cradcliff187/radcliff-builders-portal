@@ -101,7 +101,7 @@ const PartnerLogos = () => {
           Trusted by leading organizations
         </h2>
         <p className="text-center text-charcoal/80 text-lg md:text-xl mb-12">
-          Healthcare • Education • Retail • Commercial
+          Healthcare • Professional • Retail • Commercial
         </p>
 
         <Carousel

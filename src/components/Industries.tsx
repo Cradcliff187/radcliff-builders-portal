@@ -1,4 +1,4 @@
-import { Hospital, GraduationCap, ShoppingBag, Building2 } from "lucide-react";
+import { Hospital, Briefcase, ShoppingBag, Building2 } from "lucide-react";
 
 const industries = [
   {
@@ -7,9 +7,9 @@ const industries = [
     description: "ICRA certified with specialized expertise in medical facilities, from clinics to hospitals.",
   },
   {
-    icon: GraduationCap,
-    title: "Education",
-    description: "Creating inspiring learning environments for K-12 schools, universities, and training facilities.",
+    icon: Briefcase,
+    title: "Professional",
+    description: "Modern office spaces, administrative facilities, and professional environments designed for productivity and client experience.",
   },
   {
     icon: ShoppingBag,

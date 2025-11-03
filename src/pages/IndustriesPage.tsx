@@ -1,7 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CTASection from "@/components/CTASection";
-import { Hospital, GraduationCap, ShoppingBag, Building2, CheckCircle2 } from "lucide-react";
+import { Hospital, Briefcase, ShoppingBag, Building2, CheckCircle2 } from "lucide-react";
 
 const industries = [
   {
@@ -17,15 +17,15 @@ const industries = [
     ],
   },
   {
-    icon: GraduationCap,
-    title: "Education",
-    description: "Creating inspiring learning environments from K-12 schools to universities, designed for both students and faculty.",
+    icon: Briefcase,
+    title: "Professional",
+    description: "Sophisticated office spaces, corporate facilities, and professional environments that enhance productivity and reflect your brand.",
     features: [
-      "Occupied Campus Experience",
-      "Summer Schedule Expertise",
+      "Class A Office Construction",
+      "Flexible Workspace Design",
       "Technology Infrastructure",
-      "Safety & Security Focus",
-      "Flexible Learning Spaces",
+      "Security & Access Control",
+      "Minimal Business Disruption",
     ],
   },
   {

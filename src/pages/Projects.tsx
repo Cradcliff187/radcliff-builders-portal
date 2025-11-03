@@ -6,11 +6,11 @@ import PartnerLogos from "@/components/PartnerLogos";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import retailImage from "@/assets/project-retail.jpg";
-import educationImage from "@/assets/project-education.jpg";
+import professionalImage from "@/assets/project-professional.jpg";
 import commercialImage from "@/assets/project-commercial.jpg";
 import healthcareImage from "@/assets/hero-healthcare.jpg";
 
-type Industry = "All" | "Healthcare" | "Education" | "Retail" | "Commercial";
+type Industry = "All" | "Healthcare" | "Professional" | "Retail" | "Commercial";
 
 const projects = [
   {
@@ -29,10 +29,10 @@ const projects = [
   },
   {
     id: 3,
-    title: "University Learning Commons",
-    industry: "Education",
-    description: "75,000 sq ft collaborative learning facility with advanced technology integration",
-    image: educationImage,
+    title: "Corporate Office Campus",
+    industry: "Professional",
+    description: "75,000 sq ft Class A office space with advanced technology and collaborative work areas",
+    image: professionalImage,
   },
   {
     id: 4,
@@ -50,17 +50,17 @@ const projects = [
   },
   {
     id: 6,
-    title: "K-12 STEM Building",
-    industry: "Education",
-    description: "New 45,000 sq ft science and technology facility for growing school district",
-    image: educationImage,
+    title: "Financial Services Office",
+    industry: "Professional",
+    description: "New 45,000 sq ft secure office facility for financial services firm",
+    image: professionalImage,
   },
 ];
 
 const Projects = () => {
   const [selectedIndustry, setSelectedIndustry] = useState<Industry>("All");
 
-  const industries: Industry[] = ["All", "Healthcare", "Education", "Retail", "Commercial"];
+  const industries: Industry[] = ["All", "Healthcare", "Professional", "Retail", "Commercial"];
 
   const filteredProjects = selectedIndustry === "All"
     ? projects

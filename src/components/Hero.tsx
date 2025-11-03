@@ -29,7 +29,7 @@ const Hero = () => {
           Efficient Renovations
         </h1>
         <p className="text-white/90 text-xl md:text-2xl mb-12 max-w-3xl mx-auto leading-relaxed">
-          Specialized in sensitive environments - Healthcare, Education, and Commercial
+          Specialized in sensitive environments - Healthcare, Professional, and Commercial
         </p>
         <Button variant="hero" size="lg" asChild>
           <Link to="/contact">Request Consultation</Link>

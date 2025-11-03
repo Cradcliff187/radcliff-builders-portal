@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import retailImage from "@/assets/project-retail.jpg";
-import educationImage from "@/assets/project-education.jpg";
+import professionalImage from "@/assets/project-professional.jpg";
 import commercialImage from "@/assets/project-commercial.jpg";
 
 const projects = [
@@ -14,9 +14,9 @@ const projects = [
   },
   {
     id: 2,
-    title: "University Learning Commons",
-    industry: "Education",
-    image: educationImage,
+    title: "Corporate Office Campus",
+    industry: "Professional",
+    image: professionalImage,
   },
   {
     id: 3,

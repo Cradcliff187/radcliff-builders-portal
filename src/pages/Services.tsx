@@ -19,13 +19,13 @@ const Services = () => {
     },
     {
       icon: FileCheck,
-      title: "Educational Facility Upgrades",
-      description: "Strategic renovations in active educational environments with flexible scheduling to minimize disruption to students, staff, and operations.",
+      title: "Professional Facility Upgrades",
+      description: "Strategic renovations in active professional environments with flexible scheduling to minimize disruption to staff, clients, and operations.",
       features: [
-        "Summer and off-hours scheduling",
+        "After-hours and weekend scheduling",
         "Phased project delivery",
-        "Safety-first protocols",
-        "Minimal learning disruption",
+        "Security and safety protocols",
+        "Minimal business disruption",
       ],
     },
     {
@@ -95,7 +95,7 @@ const Services = () => {
         <div className="container mx-auto px-6 lg:px-20 text-center">
           <h1 className="mb-6 uppercase">Our Services</h1>
           <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
-            Specialized renovation services for healthcare, education, and commercial environments requiring compliance expertise and minimal disruption.
+            Specialized renovation services for healthcare, professional, and commercial environments requiring compliance expertise and minimal disruption.
           </p>
         </div>
       </section>

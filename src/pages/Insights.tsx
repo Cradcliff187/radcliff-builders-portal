@@ -78,10 +78,10 @@ const Insights = () => {
       readTime: "4 min read",
     },
     {
-      category: "Education",
+      category: "Professional",
       icon: TrendingUp,
-      title: "Summer Construction: Maximizing Educational Facility Upgrades",
-      excerpt: "How to plan and execute major renovation projects during academic breaks to minimize impact on students and staff while staying on budget.",
+      title: "After-Hours Construction: Maximizing Professional Facility Upgrades",
+      excerpt: "How to plan and execute major renovation projects during off-hours to minimize impact on staff and clients while staying on budget.",
       date: "February 28, 2025",
       readTime: "6 min read",
     },
@@ -96,11 +96,11 @@ const Insights = () => {
       result: "100% on-time delivery, zero operational disruptions, full regulatory compliance",
     },
     {
-      title: "University Science Building Modernization",
-      industry: "Education",
-      challenge: "Upgrade 20,000 sq ft lab space during academic year with ongoing classes in adjacent areas",
-      solution: "Night and weekend construction schedule with comprehensive safety protocols and dust control",
-      result: "Project completed during intersession, minimal class disruption, under budget",
+      title: "Corporate Office Tower Modernization",
+      industry: "Professional",
+      challenge: "Upgrade 20,000 sq ft office space during business hours with ongoing operations in adjacent areas",
+      solution: "After-hours and weekend construction schedule with comprehensive security protocols and dust control",
+      result: "Project completed on schedule, minimal operational disruption, under budget",
     },
     {
       title: "Multi-Tenant Office Building Renovation",
@@ -124,7 +124,7 @@ const Insights = () => {
     },
     {
       title: "Regulatory Compliance Matrix",
-      description: "Key regulations and standards for healthcare, education, and commercial projects",
+      description: "Key regulations and standards for healthcare, professional, and commercial projects",
       type: "Guide",
     },
   ];

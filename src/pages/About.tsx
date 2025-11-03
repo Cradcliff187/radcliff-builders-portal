@@ -37,7 +37,7 @@ const About = () => {
         <div className="container mx-auto px-6 lg:px-20 text-center">
           <h1 className="mb-6 uppercase">Built on Relationships</h1>
           <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
-            Your trusted partner for compliant, efficient renovations in healthcare, education, and commercial environments.
+            Your trusted partner for compliant, efficient renovations in healthcare, professional, and commercial environments.
           </p>
         </div>
       </section>
@@ -53,7 +53,7 @@ const About = () => {
                   Radcliff Construction Group was founded on a simple principle: exceptional results come from trusted relationships. With deep roots in the region and decades of combined experience, we've built our reputation project by project, partnership by partnership.
                 </p>
                 <p>
-                  We specialize in compliant, efficient renovations in sensitive environments. From healthcare facilities that demand ICRA and ROSS certification to educational spaces that require minimal disruption, our expertise ensures regulatory compliance and operational continuity throughout every project phase.
+                  We specialize in compliant, efficient renovations in sensitive environments. From healthcare facilities that demand ICRA and ROSS certification to professional office spaces that require minimal disruption, our expertise ensures regulatory compliance and operational continuity throughout every project phase.
                 </p>
                 <p>
                   Our team combines technical excellence with genuine partnership. We understand the unique challenges of occupied facilities and deliver solutions that prioritize safety, compliance, and minimal disruption—every time, on schedule, and on budget.
