@@ -153,10 +153,19 @@ const Insights = () => {
                         <span>{article.read_time}</span>
                       </div>
                       
-                      <button className="flex items-center gap-2 text-sm font-heading font-semibold uppercase text-secondary hover:gap-4 transition-all">
-                        Read More
-                        <ArrowRight className="w-4 h-4" />
-                      </button>
+                      {(article as any).article_url ? (
+                        <a 
+                          href={(article as any).article_url} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-2 text-sm font-heading font-semibold uppercase text-secondary hover:gap-4 transition-all"
+                        >
+                          Read More
+                          <ArrowRight className="w-4 h-4" />
+                        </a>
+                      ) : (
+                        <span className="text-sm text-muted-foreground italic">Coming Soon</span>
+                      )}
                     </div>
                   </Card>
                 );
@@ -231,13 +240,25 @@ const Insights = () => {
                   </div>
                   
                   <div className="flex items-end">
-                    <Link 
-                      to="/projects" 
-                      className="inline-flex items-center gap-2 text-sm font-heading font-semibold uppercase text-secondary hover:gap-4 transition-all"
-                    >
-                      View All Projects
-                      <ArrowRight className="w-4 h-4" />
-                    </Link>
+                    {(study as any).case_study_url ? (
+                      <a 
+                        href={(study as any).case_study_url} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 text-sm font-heading font-semibold uppercase text-secondary hover:gap-4 transition-all"
+                      >
+                        View Case Study
+                        <ArrowRight className="w-4 h-4" />
+                      </a>
+                    ) : (
+                      <Link 
+                        to="/projects" 
+                        className="inline-flex items-center gap-2 text-sm font-heading font-semibold uppercase text-secondary hover:gap-4 transition-all"
+                      >
+                        View All Projects
+                        <ArrowRight className="w-4 h-4" />
+                      </Link>
+                    )}
                   </div>
                 </div>
               </Card>

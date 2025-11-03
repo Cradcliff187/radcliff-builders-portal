@@ -10,6 +10,8 @@ export const articleSchema = z.object({
   }),
   excerpt: z.string().min(50, "Excerpt must be at least 50 characters").max(500, "Excerpt must be less than 500 characters"),
   read_time: z.string().min(1, "Read time is required"),
+  article_url: z.string().url("Must be a valid URL").optional().or(z.literal("")),
+  content: z.string().optional(),
   published: z.boolean().default(false),
 });
 
@@ -21,6 +23,7 @@ export const caseStudySchema = z.object({
   challenge: z.string().min(50, "Challenge must be at least 50 characters"),
   solution: z.string().min(50, "Solution must be at least 50 characters"),
   result: z.string().min(50, "Result must be at least 50 characters"),
+  case_study_url: z.string().url("Must be a valid URL").optional().or(z.literal("")),
   published: z.boolean().default(false),
 });
 

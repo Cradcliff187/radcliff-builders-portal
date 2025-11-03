@@ -16,6 +16,7 @@ export type Database = {
     Tables: {
       case_studies: {
         Row: {
+          case_study_url: string | null
           challenge: string
           created_at: string | null
           id: string
@@ -27,6 +28,7 @@ export type Database = {
           updated_at: string | null
         }
         Insert: {
+          case_study_url?: string | null
           challenge: string
           created_at?: string | null
           id?: string
@@ -38,6 +40,7 @@ export type Database = {
           updated_at?: string | null
         }
         Update: {
+          case_study_url?: string | null
           challenge?: string
           created_at?: string | null
           id?: string
@@ -91,7 +94,9 @@ export type Database = {
       }
       insights_articles: {
         Row: {
+          article_url: string | null
           category: string
+          content: string | null
           created_at: string | null
           date: string
           excerpt: string
@@ -102,7 +107,9 @@ export type Database = {
           updated_at: string | null
         }
         Insert: {
+          article_url?: string | null
           category: string
+          content?: string | null
           created_at?: string | null
           date: string
           excerpt: string
@@ -113,7 +120,9 @@ export type Database = {
           updated_at?: string | null
         }
         Update: {
+          article_url?: string | null
           category?: string
+          content?: string | null
           created_at?: string | null
           date?: string
           excerpt?: string

@@ -51,6 +51,8 @@ export default function ArticleForm({
       date: initialData?.date || new Date(),
       excerpt: initialData?.excerpt || "",
       read_time: initialData?.read_time || "",
+      article_url: initialData?.article_url || "",
+      content: initialData?.content || "",
       published: initialData?.published || false,
     },
   });
@@ -167,6 +169,39 @@ export default function ArticleForm({
               </FormLabel>
               <FormControl>
                 <Textarea {...field} rows={4} className="rounded-none" />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="article_url"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className="text-navy font-montserrat font-semibold uppercase tracking-wide">
+                Article URL (Optional)
+              </FormLabel>
+              <FormControl>
+                <Input {...field} placeholder="https://example.com/full-article" className="rounded-none" />
+              </FormControl>
+              <p className="text-sm text-muted-foreground">Leave blank to host content internally</p>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="content"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className="text-navy font-montserrat font-semibold uppercase tracking-wide">
+                Full Content (Optional)
+              </FormLabel>
+              <FormControl>
+                <Textarea {...field} rows={8} placeholder="Full article content for internal hosting" className="rounded-none" />
               </FormControl>
               <FormMessage />
             </FormItem>

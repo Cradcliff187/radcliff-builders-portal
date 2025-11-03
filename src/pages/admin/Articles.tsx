@@ -9,7 +9,7 @@ import DeleteDialog from "@/components/admin/DeleteDialog";
 import ArticleForm from "@/components/admin/forms/ArticleForm";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { Plus, CheckCircle, XCircle } from "lucide-react";
+import { Plus, CheckCircle, XCircle, ExternalLink } from "lucide-react";
 import { format } from "date-fns";
 import { ArticleFormData } from "@/lib/validations/cms";
 
@@ -42,6 +42,26 @@ export default function Articles() {
       render: (article) => format(new Date(article.date), "MMM dd, yyyy"),
     },
     { key: "read_time", label: "Read Time" },
+    {
+      key: "article_url",
+      label: "URL",
+      render: (article: any) => {
+        const url = article.article_url;
+        return url ? (
+          <a 
+            href={url} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="text-gold hover:underline flex items-center gap-1"
+          >
+            <ExternalLink className="h-3 w-3" />
+            Link
+          </a>
+        ) : (
+          <span className="text-muted-foreground">—</span>
+        );
+      },
+    },
     {
       key: "published",
       label: "Status",
@@ -90,6 +110,8 @@ export default function Articles() {
             date: data.date.toISOString().split("T")[0],
             excerpt: data.excerpt,
             read_time: data.read_time,
+            article_url: data.article_url || null,
+            content: data.content || null,
             published: data.published,
           })
           .eq("id", selectedArticle.id);
@@ -107,6 +129,8 @@ export default function Articles() {
           date: data.date.toISOString().split("T")[0],
           excerpt: data.excerpt,
           read_time: data.read_time,
+          article_url: data.article_url || null,
+          content: data.content || null,
           published: data.published,
         });
 

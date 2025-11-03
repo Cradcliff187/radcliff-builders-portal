@@ -42,6 +42,7 @@ export default function CaseStudyForm({
       challenge: initialData?.challenge || "",
       solution: initialData?.solution || "",
       result: initialData?.result || "",
+      case_study_url: initialData?.case_study_url || "",
       published: initialData?.published || false,
     },
   });
@@ -134,6 +135,23 @@ export default function CaseStudyForm({
               <FormControl>
                 <Textarea {...field} rows={4} className="rounded-none" />
               </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="case_study_url"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className="text-navy font-montserrat font-semibold uppercase tracking-wide">
+                Case Study URL (Optional)
+              </FormLabel>
+              <FormControl>
+                <Input {...field} placeholder="https://example.com/case-study.pdf" className="rounded-none" />
+              </FormControl>
+              <p className="text-sm text-muted-foreground">Optional: Link to full case study PDF or web page</p>
               <FormMessage />
             </FormItem>
           )}

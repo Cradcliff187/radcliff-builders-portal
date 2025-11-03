@@ -9,7 +9,7 @@ import DeleteDialog from "@/components/admin/DeleteDialog";
 import CaseStudyForm from "@/components/admin/forms/CaseStudyForm";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { Plus, CheckCircle, XCircle } from "lucide-react";
+import { Plus, CheckCircle, XCircle, ExternalLink } from "lucide-react";
 import { CaseStudyFormData } from "@/lib/validations/cms";
 
 type CaseStudy = {
@@ -35,6 +35,26 @@ export default function CaseStudies() {
   const columns: Column<CaseStudy>[] = [
     { key: "title", label: "Title" },
     { key: "industry", label: "Industry" },
+    {
+      key: "case_study_url",
+      label: "URL",
+      render: (caseStudy: any) => {
+        const url = caseStudy.case_study_url;
+        return url ? (
+          <a 
+            href={url} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="text-gold hover:underline flex items-center gap-1"
+          >
+            <ExternalLink className="h-3 w-3" />
+            Link
+          </a>
+        ) : (
+          <span className="text-muted-foreground">—</span>
+        );
+      },
+    },
     {
       key: "published",
       label: "Status",
@@ -83,6 +103,7 @@ export default function CaseStudies() {
             challenge: data.challenge,
             solution: data.solution,
             result: data.result,
+            case_study_url: data.case_study_url || null,
             published: data.published,
           })
           .eq("id", selectedCaseStudy.id);
@@ -100,6 +121,7 @@ export default function CaseStudies() {
           challenge: data.challenge,
           solution: data.solution,
           result: data.result,
+          case_study_url: data.case_study_url || null,
           published: data.published,
         });
 
