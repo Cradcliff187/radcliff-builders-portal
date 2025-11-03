@@ -50,7 +50,7 @@ export default function AdminLayout({ children, title }: AdminLayoutProps) {
                 variant="outline"
                 size="sm"
                 onClick={() => window.open("/", "_blank")}
-                className="border-2 border-gold bg-navy text-gold hover:bg-gold hover:text-navy transition-colors rounded-none uppercase tracking-wider"
+                className="border-2 border-navy bg-white text-navy hover:bg-navy hover:text-white transition-colors rounded-none uppercase tracking-wider"
               >
                 View Site
               </Button>
@@ -58,7 +58,7 @@ export default function AdminLayout({ children, title }: AdminLayoutProps) {
                 variant="outline"
                 size="sm"
                 onClick={handleLogout}
-                className="border-2 border-gold bg-navy text-gold hover:bg-gold hover:text-navy transition-colors rounded-none uppercase tracking-wider"
+                className="border-2 border-navy bg-white text-navy hover:bg-navy hover:text-white transition-colors rounded-none uppercase tracking-wider"
               >
                 <LogOut className="h-4 w-4 mr-2" />
                 Sign Out

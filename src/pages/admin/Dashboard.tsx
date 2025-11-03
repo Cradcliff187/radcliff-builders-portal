@@ -90,10 +90,10 @@ const Dashboard = () => {
             </div>
             <div className="flex items-center gap-4">
               <Button
-                variant="ghost"
+                variant="outline"
                 size="sm"
                 asChild
-                className="text-white hover:text-secondary"
+                className="border-2 border-navy bg-white text-navy hover:bg-navy hover:text-white transition-colors rounded-none uppercase tracking-wider"
               >
                 <Link to="/">
                   <Home className="w-4 h-4 mr-2" />
@@ -101,10 +101,10 @@ const Dashboard = () => {
                 </Link>
               </Button>
               <Button
-                variant="ghost"
+                variant="outline"
                 size="sm"
                 onClick={handleLogout}
-                className="text-white hover:text-secondary"
+                className="border-2 border-navy bg-white text-navy hover:bg-navy hover:text-white transition-colors rounded-none uppercase tracking-wider"
               >
                 <LogOut className="w-4 h-4 mr-2" />
                 Sign Out
