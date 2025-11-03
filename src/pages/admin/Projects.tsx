@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
-import { useProjects } from "@/hooks/useCMSContent";
+import { useAdminProjects } from "@/hooks/useAdminCMS";
 import { toast } from "@/hooks/use-toast";
 import AdminLayout from "@/components/admin/AdminLayout";
 import DataTable, { Column } from "@/components/admin/DataTable";
@@ -27,7 +27,7 @@ type Project = {
 };
 
 export default function Projects() {
-  const { data: projects, isLoading } = useProjects();
+  const { data: projects, isLoading } = useAdminProjects();
   const queryClient = useQueryClient();
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
@@ -137,6 +137,7 @@ export default function Projects() {
         });
       }
 
+      queryClient.invalidateQueries({ queryKey: ["admin_projects"] });
       queryClient.invalidateQueries({ queryKey: ["projects"] });
       queryClient.invalidateQueries({ queryKey: ["featured_projects"] });
       setIsFormOpen(false);
@@ -173,6 +174,7 @@ export default function Projects() {
         description: "The project has been deleted successfully.",
       });
 
+      queryClient.invalidateQueries({ queryKey: ["admin_projects"] });
       queryClient.invalidateQueries({ queryKey: ["projects"] });
       queryClient.invalidateQueries({ queryKey: ["featured_projects"] });
       setIsDeleteOpen(false);

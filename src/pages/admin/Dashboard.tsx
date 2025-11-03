@@ -2,7 +2,9 @@ import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import { toast } from "@/hooks/use-toast";
+import { useContentCounts } from "@/hooks/useAdminCMS";
 import { 
   FileText, 
   FolderOpen, 
@@ -16,6 +18,7 @@ import rcgLogo from "@/assets/rcg-logo-transparent.png";
 
 const Dashboard = () => {
   const navigate = useNavigate();
+  const { data: counts } = useContentCounts();
 
   const handleLogout = async () => {
     try {
@@ -42,6 +45,7 @@ const Dashboard = () => {
       icon: FileText,
       path: "/admin/articles",
       color: "bg-blue-500/10 text-blue-600",
+      count: counts?.articles,
     },
     {
       title: "Projects",
@@ -49,6 +53,7 @@ const Dashboard = () => {
       icon: FolderOpen,
       path: "/admin/projects",
       color: "bg-purple-500/10 text-purple-600",
+      count: counts?.projects,
     },
     {
       title: "Case Studies",
@@ -56,6 +61,7 @@ const Dashboard = () => {
       icon: BookOpen,
       path: "/admin/case-studies",
       color: "bg-green-500/10 text-green-600",
+      count: counts?.caseStudies,
     },
     {
       title: "Resources",
@@ -63,6 +69,7 @@ const Dashboard = () => {
       icon: Download,
       path: "/admin/resources",
       color: "bg-orange-500/10 text-orange-600",
+      count: counts?.resources,
     },
   ];
 
@@ -122,8 +129,15 @@ const Dashboard = () => {
           {sections.map((section) => (
             <Link key={section.path} to={section.path}>
               <Card className="p-6 rounded-none hover:shadow-xl transition-all duration-300 group cursor-pointer">
-                <div className={`w-12 h-12 rounded-none ${section.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
-                  <section.icon className="w-6 h-6" />
+                <div className="flex items-start justify-between mb-4">
+                  <div className={`w-12 h-12 rounded-none ${section.color} flex items-center justify-center group-hover:scale-110 transition-transform`}>
+                    <section.icon className="w-6 h-6" />
+                  </div>
+                  {section.count !== undefined && (
+                    <Badge variant="secondary" className="rounded-none font-semibold">
+                      {section.count}
+                    </Badge>
+                  )}
                 </div>
                 <h3 className="text-lg font-heading font-semibold uppercase mb-2">
                   {section.title}

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
-import { useCaseStudies } from "@/hooks/useCMSContent";
+import { useAdminCaseStudies } from "@/hooks/useAdminCMS";
 import { toast } from "@/hooks/use-toast";
 import AdminLayout from "@/components/admin/AdminLayout";
 import DataTable, { Column } from "@/components/admin/DataTable";
@@ -25,7 +25,7 @@ type CaseStudy = {
 };
 
 export default function CaseStudies() {
-  const { data: caseStudies, isLoading } = useCaseStudies();
+  const { data: caseStudies, isLoading } = useAdminCaseStudies();
   const queryClient = useQueryClient();
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
@@ -111,6 +111,7 @@ export default function CaseStudies() {
         });
       }
 
+      queryClient.invalidateQueries({ queryKey: ["admin_case_studies"] });
       queryClient.invalidateQueries({ queryKey: ["case_studies"] });
       setIsFormOpen(false);
     } catch (error) {
@@ -141,6 +142,7 @@ export default function CaseStudies() {
         description: "The case study has been deleted successfully.",
       });
 
+      queryClient.invalidateQueries({ queryKey: ["admin_case_studies"] });
       queryClient.invalidateQueries({ queryKey: ["case_studies"] });
       setIsDeleteOpen(false);
     } catch (error) {

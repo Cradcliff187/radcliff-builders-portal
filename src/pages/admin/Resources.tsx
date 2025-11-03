@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
-import { useResources } from "@/hooks/useCMSContent";
+import { useAdminResources } from "@/hooks/useAdminCMS";
 import { toast } from "@/hooks/use-toast";
 import AdminLayout from "@/components/admin/AdminLayout";
 import DataTable, { Column } from "@/components/admin/DataTable";
@@ -25,7 +25,7 @@ type Resource = {
 };
 
 export default function Resources() {
-  const { data: resources, isLoading } = useResources();
+  const { data: resources, isLoading } = useAdminResources();
   const queryClient = useQueryClient();
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
@@ -127,6 +127,7 @@ export default function Resources() {
         });
       }
 
+      queryClient.invalidateQueries({ queryKey: ["admin_resources"] });
       queryClient.invalidateQueries({ queryKey: ["resources"] });
       setIsFormOpen(false);
     } catch (error) {
@@ -162,6 +163,7 @@ export default function Resources() {
         description: "The resource has been deleted successfully.",
       });
 
+      queryClient.invalidateQueries({ queryKey: ["admin_resources"] });
       queryClient.invalidateQueries({ queryKey: ["resources"] });
       setIsDeleteOpen(false);
     } catch (error) {
