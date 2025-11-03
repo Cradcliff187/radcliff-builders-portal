@@ -1,14 +1,34 @@
-import { Link, useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useProjectDetail } from "@/hooks/useProjectDetail";
 import { useProjects } from "@/hooks/useCMSContent";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import CTASection from "@/components/CTASection";
 import ProjectImageGallery from "@/components/ProjectImageGallery";
-import { Card } from "@/components/ui/card";
+import ProjectStatsBar from "@/components/ProjectStatsBar";
+import ProjectTestimonial from "@/components/ProjectTestimonial";
+import CTASection from "@/components/CTASection";
 import { Skeleton } from "@/components/ui/skeleton";
-import { ChevronRight, MapPin, Calendar, TrendingUp, DollarSign } from "lucide-react";
-import { format } from "date-fns";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
+import { 
+  AlertCircle, 
+  Lightbulb, 
+  CheckCircle, 
+  MapPin, 
+  Calendar, 
+  Building, 
+  Tag as TagIcon, 
+  Briefcase, 
+  Check 
+} from "lucide-react";
 
 const ProjectDetail = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -43,13 +63,15 @@ const ProjectDetail = () => {
         <Header />
         <div className="pt-32 pb-24 text-center">
           <div className="container mx-auto px-6 lg:px-20">
-            <h1 className="mb-6">Project Not Found</h1>
+            <h1 className="text-4xl font-heading font-bold text-primary mb-6 uppercase tracking-wide">
+              Project Not Found
+            </h1>
             <p className="text-muted-foreground mb-8">
               The project you're looking for doesn't exist or has been removed.
             </p>
             <Link
               to="/projects"
-              className="inline-flex items-center text-secondary hover:underline"
+              className="inline-flex items-center text-secondary hover:underline uppercase tracking-wider"
             >
               ← Back to Projects
             </Link>
@@ -69,179 +91,303 @@ const ProjectDetail = () => {
     <>
       <Header />
 
-      {/* Hero Section */}
-      <section className="pt-32 pb-12 bg-primary text-white">
-        <div className="container mx-auto px-6 lg:px-20">
-          {/* Breadcrumb */}
-          <nav className="flex items-center text-sm text-white/70 mb-6">
-            <Link to="/" className="hover:text-white">
-              Home
-            </Link>
-            <ChevronRight className="w-4 h-4 mx-2" />
-            <Link to="/projects" className="hover:text-white">
-              Projects
-            </Link>
-            <ChevronRight className="w-4 h-4 mx-2" />
-            <span className="text-white">{project.title}</span>
-          </nav>
+      {/* Hero Section with Large Background Image */}
+      <section 
+        className="relative min-h-[60vh] flex items-end bg-cover bg-center"
+        style={{ backgroundImage: `url(${project.image_url})` }}
+      >
+        {/* Navy Overlay */}
+        <div className="absolute inset-0 bg-primary/70"></div>
+        
+        {/* Content */}
+        <div className="relative z-10 w-full pb-12 pt-32">
+          <div className="container mx-auto px-6 lg:px-20">
+            <Breadcrumb className="mb-8">
+              <BreadcrumbList>
+                <BreadcrumbItem>
+                  <BreadcrumbLink asChild>
+                    <Link to="/" className="text-white/90 hover:text-white">Home</Link>
+                  </BreadcrumbLink>
+                </BreadcrumbItem>
+                <BreadcrumbSeparator className="text-white/60" />
+                <BreadcrumbItem>
+                  <BreadcrumbLink asChild>
+                    <Link to="/projects" className="text-white/90 hover:text-white">Projects</Link>
+                  </BreadcrumbLink>
+                </BreadcrumbItem>
+                <BreadcrumbSeparator className="text-white/60" />
+                <BreadcrumbItem>
+                  <BreadcrumbPage className="text-white font-semibold">{project.title}</BreadcrumbPage>
+                </BreadcrumbItem>
+              </BreadcrumbList>
+            </Breadcrumb>
 
-          <h1 className="mb-6">{project.title}</h1>
-
-          <div className="flex flex-wrap gap-6 text-sm">
-            <div className="flex items-center gap-2">
-              <span className="inline-block px-3 py-1 bg-secondary text-white text-xs uppercase tracking-wider rounded-none">
-                {project.industry}
-              </span>
-            </div>
-            {project.location && (
-              <div className="flex items-center gap-2">
-                <MapPin className="w-4 h-4" />
-                <span>{project.location}</span>
-              </div>
-            )}
-            {project.square_footage && (
-              <div className="flex items-center gap-2">
-                <TrendingUp className="w-4 h-4" />
-                <span>{project.square_footage.toLocaleString()} sq ft</span>
-              </div>
-            )}
-            {project.completion_date && (
-              <div className="flex items-center gap-2">
-                <Calendar className="w-4 h-4" />
-                <span>Completed {format(new Date(project.completion_date), "MMMM yyyy")}</span>
-              </div>
-            )}
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white mb-6 uppercase tracking-wide max-w-4xl">
+              {project.title}
+            </h1>
+            
+            <Badge variant="secondary" className="text-sm md:text-base uppercase tracking-wider rounded-none px-6 py-2">
+              {project.industry}
+            </Badge>
           </div>
         </div>
       </section>
 
-      {/* Image Gallery */}
-      {(project.project_images?.length > 0 || project.image_url) && (
-        <section className="py-12 bg-light-grey">
-          <div className="container mx-auto px-6 lg:px-20">
-            <ProjectImageGallery
-              images={project.project_images || []}
-              primaryImage={project.image_url}
-            />
-          </div>
-        </section>
-      )}
+      {/* Project Stats Bar */}
+      <ProjectStatsBar
+        squareFootage={project.square_footage}
+        durationWeeks={project.duration_weeks}
+        projectValue={project.project_value}
+        industry={project.industry}
+        projectType={project.project_type}
+      />
 
-      {/* Project Overview */}
+      {/* Main Content */}
       <section className="py-24">
         <div className="container mx-auto px-6 lg:px-20">
-          <div className="grid lg:grid-cols-3 gap-12">
-            {/* Main Content */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+            {/* Main Content Column */}
             <div className="lg:col-span-2 space-y-12">
-              <div>
-                <h2 className="mb-6">Project Overview</h2>
-                <p className="text-muted-foreground text-lg leading-relaxed">
-                  {project.detailed_description || project.description}
-                </p>
-              </div>
-
-              {project.challenges && (
+              {/* Project Overview */}
+              {project.detailed_description && (
                 <div>
-                  <h3 className="mb-4">The Challenge</h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    {project.challenges}
-                  </p>
+                  <h2 className="text-3xl md:text-4xl font-heading font-semibold text-primary mb-6 uppercase tracking-wide">
+                    Project Overview
+                  </h2>
+                  <div className="prose prose-lg max-w-none">
+                    <p className="text-xl text-muted-foreground leading-relaxed whitespace-pre-line">
+                      {project.detailed_description}
+                    </p>
+                  </div>
                 </div>
               )}
 
+              {/* The Challenge */}
+              {project.challenges && (
+                <Card className="bg-light-grey border-none rounded-none shadow-none">
+                  <CardContent className="p-8">
+                    <div className="flex items-start gap-4 mb-4">
+                      <AlertCircle className="w-8 h-8 text-gold flex-shrink-0 mt-1" />
+                      <h2 className="text-3xl md:text-4xl font-heading font-semibold text-primary uppercase tracking-wide">
+                        The Challenge
+                      </h2>
+                    </div>
+                    <div className="prose prose-lg max-w-none">
+                      <p className="text-muted-foreground leading-relaxed whitespace-pre-line">
+                        {project.challenges}
+                      </p>
+                    </div>
+                  </CardContent>
+                </Card>
+              )}
+
+              {/* Our Solution */}
               {project.solutions && (
                 <div>
-                  <h3 className="mb-4">Our Solution</h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    {project.solutions}
-                  </p>
+                  <div className="flex items-start gap-4 mb-6">
+                    <Lightbulb className="w-8 h-8 text-gold flex-shrink-0 mt-1" />
+                    <h2 className="text-3xl md:text-4xl font-heading font-semibold text-primary uppercase tracking-wide">
+                      Our Solution
+                    </h2>
+                  </div>
+                  <div className="prose prose-lg max-w-none">
+                    <p className="text-muted-foreground leading-relaxed whitespace-pre-line">
+                      {project.solutions}
+                    </p>
+                  </div>
                 </div>
               )}
 
+              {/* Results & Outcomes */}
               {project.outcomes && (
                 <div>
-                  <h3 className="mb-4">Results</h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    {project.outcomes}
-                  </p>
+                  <div className="flex items-start gap-4 mb-6">
+                    <CheckCircle className="w-8 h-8 text-gold flex-shrink-0 mt-1" />
+                    <h2 className="text-3xl md:text-4xl font-heading font-semibold text-primary uppercase tracking-wide">
+                      Results & Outcomes
+                    </h2>
+                  </div>
+                  <div className="prose prose-lg max-w-none">
+                    <div className="grid md:grid-cols-2 gap-4">
+                      {project.outcomes.split('\n').filter(line => line.trim()).map((outcome, index) => (
+                        <div key={index} className="flex items-start gap-3">
+                          <CheckCircle className="w-5 h-5 text-gold flex-shrink-0 mt-1" />
+                          <p className="text-muted-foreground leading-relaxed">{outcome}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Project Images */}
+              {project.project_images && project.project_images.length > 0 && (
+                <div>
+                  <h2 className="text-3xl md:text-4xl font-heading font-semibold text-primary mb-6 uppercase tracking-wide">
+                    Project Gallery
+                  </h2>
+                  <ProjectImageGallery 
+                    images={project.project_images}
+                    primaryImage={project.image_url}
+                  />
                 </div>
               )}
             </div>
 
             {/* Sidebar */}
-            <div>
-              <Card className="p-6 rounded-none sticky top-32">
-                <h4 className="mb-6 uppercase tracking-wider text-sm font-heading font-semibold">
-                  Project Details
-                </h4>
-                <dl className="space-y-4">
-                  <div>
-                    <dt className="text-sm text-muted-foreground mb-1">Industry</dt>
-                    <dd className="font-semibold">{project.industry}</dd>
-                  </div>
-                  {project.client_name && (
+            <div className="lg:col-span-1">
+              <div className="space-y-6">
+                {/* Quick Facts Card */}
+                <Card className="sticky top-32 bg-white shadow-lg rounded-none border-none">
+                  <CardContent className="p-8 space-y-8">
                     <div>
-                      <dt className="text-sm text-muted-foreground mb-1">Client</dt>
-                      <dd className="font-semibold">{project.client_name}</dd>
+                      <h3 className="text-xl font-heading font-semibold text-primary mb-6 uppercase tracking-wide">
+                        Quick Facts
+                      </h3>
+                      <div className="space-y-4">
+                        {project.location && (
+                          <div className="flex items-start gap-3">
+                            <MapPin className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
+                            <div>
+                              <div className="text-sm font-semibold text-primary uppercase tracking-wide">Location</div>
+                              <div className="text-muted-foreground">{project.location}</div>
+                            </div>
+                          </div>
+                        )}
+                        {project.completion_date && (
+                          <div className="flex items-start gap-3">
+                            <Calendar className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
+                            <div>
+                              <div className="text-sm font-semibold text-primary uppercase tracking-wide">Completion</div>
+                              <div className="text-muted-foreground">
+                                {new Date(project.completion_date).toLocaleDateString('en-US', {
+                                  year: 'numeric',
+                                  month: 'long',
+                                })}
+                              </div>
+                            </div>
+                          </div>
+                        )}
+                        {project.client_name && (
+                          <div className="flex items-start gap-3">
+                            <Building className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
+                            <div>
+                              <div className="text-sm font-semibold text-primary uppercase tracking-wide">Client</div>
+                              <div className="text-muted-foreground">{project.client_name}</div>
+                            </div>
+                          </div>
+                        )}
+                        <div className="flex items-start gap-3">
+                          <TagIcon className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
+                          <div>
+                            <div className="text-sm font-semibold text-primary uppercase tracking-wide">Industry</div>
+                            <div className="text-muted-foreground">{project.industry}</div>
+                          </div>
+                        </div>
+                        {project.project_type && (
+                          <div className="flex items-start gap-3">
+                            <Briefcase className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
+                            <div>
+                              <div className="text-sm font-semibold text-primary uppercase tracking-wide">Project Type</div>
+                              <div className="text-muted-foreground">{project.project_type}</div>
+                            </div>
+                          </div>
+                        )}
+                      </div>
                     </div>
-                  )}
-                  {project.location && (
-                    <div>
-                      <dt className="text-sm text-muted-foreground mb-1">Location</dt>
-                      <dd className="font-semibold">{project.location}</dd>
-                    </div>
-                  )}
-                  {project.square_footage && (
-                    <div>
-                      <dt className="text-sm text-muted-foreground mb-1">Size</dt>
-                      <dd className="font-semibold">{project.square_footage.toLocaleString()} sq ft</dd>
-                    </div>
-                  )}
-                  {project.project_value && (
-                    <div>
-                      <dt className="text-sm text-muted-foreground mb-1">Project Value</dt>
-                      <dd className="font-semibold">{project.project_value}</dd>
-                    </div>
-                  )}
-                  {(project.start_date || project.completion_date) && (
-                    <div>
-                      <dt className="text-sm text-muted-foreground mb-1">Timeline</dt>
-                      <dd className="font-semibold">
-                        {project.start_date && format(new Date(project.start_date), "MMM yyyy")}
-                        {project.start_date && project.completion_date && " - "}
-                        {project.completion_date && format(new Date(project.completion_date), "MMM yyyy")}
-                      </dd>
-                    </div>
-                  )}
-                </dl>
-              </Card>
+
+                    {/* Key Features */}
+                    {project.key_features && project.key_features.length > 0 && (
+                      <div className="pt-6 border-t border-gray-200">
+                        <h3 className="text-xl font-heading font-semibold text-primary mb-4 uppercase tracking-wide">
+                          Key Features
+                        </h3>
+                        <div className="space-y-3">
+                          {project.key_features.map((feature, index) => (
+                            <div key={index} className="flex items-start gap-3">
+                              <Check className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
+                              <span className="text-muted-foreground text-sm leading-relaxed">{feature}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Related Projects */}
+                    {relatedProjects && relatedProjects.length > 0 && (
+                      <div className="pt-6 border-t border-gray-200">
+                        <h3 className="text-xl font-heading font-semibold text-primary mb-4 uppercase tracking-wide">
+                          Related Projects
+                        </h3>
+                        <div className="space-y-4">
+                          {relatedProjects.slice(0, 2).map((relatedProject) => (
+                            <Link
+                              key={relatedProject.id}
+                              to={`/projects/${relatedProject.slug}`}
+                              className="block group"
+                            >
+                              <div className="relative overflow-hidden rounded-none mb-2">
+                                <img
+                                  src={relatedProject.image_url}
+                                  alt={relatedProject.title}
+                                  className="w-full h-32 object-cover transition-transform duration-500 group-hover:scale-110"
+                                />
+                              </div>
+                              <h4 className="text-sm font-heading font-semibold text-primary group-hover:text-gold transition-colors uppercase tracking-wide">
+                                {relatedProject.title}
+                              </h4>
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </CardContent>
+                </Card>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Related Projects */}
-      {relatedProjects.length > 0 && (
-        <section className="py-24 bg-light-grey">
+      {/* Client Testimonial */}
+      {project.testimonial_quote && project.testimonial_author && project.testimonial_title && (
+        <ProjectTestimonial
+          quote={project.testimonial_quote}
+          author={project.testimonial_author}
+          title={project.testimonial_title}
+        />
+      )}
+
+      {/* More Projects from Same Industry */}
+      {relatedProjects && relatedProjects.length > 2 && (
+        <section className="py-24 bg-white">
           <div className="container mx-auto px-6 lg:px-20">
-            <h2 className="mb-12 text-center">More {project.industry} Projects</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {relatedProjects.map((relatedProject: any) => (
-                <Link key={relatedProject.id} to={`/projects/${relatedProject.slug}`}>
-                  <Card className="overflow-hidden group cursor-pointer hover:shadow-xl transition-all duration-300">
+            <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-12 uppercase tracking-wide text-center">
+              More {project.industry} Projects
+            </h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {relatedProjects.slice(0, 3).map((relatedProject) => (
+                <Link
+                  key={relatedProject.id}
+                  to={`/projects/${relatedProject.slug}`}
+                  className="group"
+                >
+                  <Card className="overflow-hidden rounded-none border-none shadow-md hover:shadow-xl transition-all duration-300">
                     <div className="relative h-64 overflow-hidden">
                       <img
                         src={relatedProject.image_url}
                         alt={relatedProject.title}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                       />
                     </div>
-                    <div className="p-6">
-                      <p className="text-secondary text-sm font-heading font-semibold uppercase tracking-wider mb-2">
-                        {relatedProject.industry}
+                    <CardContent className="p-6">
+                      <h3 className="text-xl font-heading font-semibold text-primary mb-2 uppercase tracking-wide group-hover:text-gold transition-colors">
+                        {relatedProject.title}
+                      </h3>
+                      <p className="text-muted-foreground line-clamp-2">
+                        {relatedProject.description}
                       </p>
-                      <h3 className="text-xl mb-0">{relatedProject.title}</h3>
-                    </div>
+                    </CardContent>
                   </Card>
                 </Link>
               ))}

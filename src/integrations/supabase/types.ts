@@ -198,6 +198,7 @@ export type Database = {
       }
       projects: {
         Row: {
+          case_study_pdf_url: string | null
           challenges: string | null
           client_name: string | null
           completion_date: string | null
@@ -205,22 +206,29 @@ export type Database = {
           description: string
           detailed_description: string | null
           display_order: number | null
+          duration_weeks: number | null
           featured: boolean | null
           id: string
           image_url: string
           industry: string
+          key_features: string[] | null
           location: string | null
           outcomes: string | null
+          project_type: string | null
           project_value: string | null
           published: boolean | null
           slug: string
           solutions: string | null
           square_footage: number | null
           start_date: string | null
+          testimonial_author: string | null
+          testimonial_quote: string | null
+          testimonial_title: string | null
           title: string
           updated_at: string | null
         }
         Insert: {
+          case_study_pdf_url?: string | null
           challenges?: string | null
           client_name?: string | null
           completion_date?: string | null
@@ -228,22 +236,29 @@ export type Database = {
           description: string
           detailed_description?: string | null
           display_order?: number | null
+          duration_weeks?: number | null
           featured?: boolean | null
           id?: string
           image_url: string
           industry: string
+          key_features?: string[] | null
           location?: string | null
           outcomes?: string | null
+          project_type?: string | null
           project_value?: string | null
           published?: boolean | null
           slug: string
           solutions?: string | null
           square_footage?: number | null
           start_date?: string | null
+          testimonial_author?: string | null
+          testimonial_quote?: string | null
+          testimonial_title?: string | null
           title: string
           updated_at?: string | null
         }
         Update: {
+          case_study_pdf_url?: string | null
           challenges?: string | null
           client_name?: string | null
           completion_date?: string | null
@@ -251,18 +266,24 @@ export type Database = {
           description?: string
           detailed_description?: string | null
           display_order?: number | null
+          duration_weeks?: number | null
           featured?: boolean | null
           id?: string
           image_url?: string
           industry?: string
+          key_features?: string[] | null
           location?: string | null
           outcomes?: string | null
+          project_type?: string | null
           project_value?: string | null
           published?: boolean | null
           slug?: string
           solutions?: string | null
           square_footage?: number | null
           start_date?: string | null
+          testimonial_author?: string | null
+          testimonial_quote?: string | null
+          testimonial_title?: string | null
           title?: string
           updated_at?: string | null
         }
