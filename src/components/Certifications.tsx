@@ -20,7 +20,9 @@ const Certifications = () => {
                 <img 
                   src={cert.image} 
                   alt={cert.label}
-                  className="h-24 w-24 object-contain transition-transform duration-300 hover:scale-110"
+                  className={`${
+                    cert.label === "OSHA 30 Certified" ? "h-32 w-32" : "h-24 w-24"
+                  } object-contain transition-transform duration-300 hover:scale-110`}
                 />
               )}
               <span className="text-white font-heading font-semibold uppercase tracking-wider text-sm">
