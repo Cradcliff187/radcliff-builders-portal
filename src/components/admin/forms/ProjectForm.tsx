@@ -100,7 +100,7 @@ export default function ProjectForm({
       );
       setProjectImages(sortedImages);
     }
-  }, [initialData]);
+  }, [initialData?.project_images]);
 
   const handleImagesUploaded = async (newImages: UploadedImage[]) => {
     if (initialData?.id) {

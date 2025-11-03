@@ -152,26 +152,26 @@ export default function ProjectImageGallery({
               )}
 
               {/* Actions */}
-              <div className="flex gap-2">
+              <div className="flex gap-2 w-full">
                 <Button
                   type="button"
                   variant="outline"
                   size="sm"
                   onClick={() => startEditCaption(image)}
-                  className="flex-1 text-navy border-navy hover:bg-navy hover:text-white uppercase tracking-wider rounded-none text-xs"
+                  className="flex-1 min-w-0 text-navy border-navy hover:bg-navy hover:text-white uppercase tracking-wider rounded-none text-xs whitespace-nowrap"
                 >
-                  <Edit2 className="h-3 w-3 mr-1" />
-                  Edit
+                  <Edit2 className="h-3 w-3 mr-1 flex-shrink-0" />
+                  <span className="truncate">Edit</span>
                 </Button>
                 <Button
                   type="button"
                   variant="outline"
                   size="sm"
                   onClick={() => setDeleteImageId(image.id)}
-                  className="flex-1 text-red-600 border-red-600 hover:bg-red-600 hover:text-white uppercase tracking-wider rounded-none text-xs"
+                  className="flex-1 min-w-0 text-red-600 border-red-600 hover:bg-red-600 hover:text-white uppercase tracking-wider rounded-none text-xs whitespace-nowrap"
                 >
-                  <Trash2 className="h-3 w-3 mr-1" />
-                  Delete
+                  <Trash2 className="h-3 w-3 mr-1 flex-shrink-0" />
+                  <span className="truncate">Delete</span>
                 </Button>
               </div>
             </div>
