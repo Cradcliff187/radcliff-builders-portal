@@ -31,10 +31,12 @@ const StatsBar = () => {
           {stats.map((stat) => (
             <div key={stat.label} className="text-center group">
               <stat.icon className="w-8 h-8 text-secondary mx-auto mb-3 group-hover:scale-110 transition-transform" />
-              <div className="text-secondary text-4xl md:text-5xl font-heading font-bold mb-2">
-                {stat.number}
+              <div className="h-[88px] md:h-[100px] flex items-center justify-center mb-2">
+                <div className="text-secondary text-4xl md:text-5xl font-heading font-bold leading-tight">
+                  {stat.number}
+                </div>
               </div>
-              <div className="text-white/90 text-sm uppercase tracking-wider">
+              <div className="text-white/90 text-sm uppercase tracking-wider mt-2">
                 {stat.label}
               </div>
             </div>
