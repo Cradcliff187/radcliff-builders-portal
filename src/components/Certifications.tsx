@@ -1,7 +1,7 @@
-import { FileCheck, Award, Lock } from "lucide-react";
+import { FileCheck, Lock } from "lucide-react";
 
 const certifications = [
-  { icon: Award, label: "ROSS Certified" },
+  { image: "/assets/certifications/osha-30-logo.png", label: "OSHA 30 Certified" },
   { image: "/assets/certifications/icra-logo.png", label: "ICRA Certified" },
   { icon: FileCheck, label: "Licensed" },
   { icon: Lock, label: "Bonded" },
