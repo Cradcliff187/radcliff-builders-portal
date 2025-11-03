@@ -27,6 +27,7 @@ import {
   MapPin, 
   Calendar, 
   Building, 
+  Building2,
   Tag as TagIcon, 
   Briefcase, 
   Check 
@@ -158,9 +159,9 @@ const ProjectDetail = () => {
       {/* Main Content */}
       <section className="py-24">
         <div className="container mx-auto px-6 lg:px-20">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
             {/* Main Content Column */}
-            <div className="lg:col-span-2 space-y-12">
+            <div className="lg:col-span-2 space-y-12 max-w-full">
               {/* Project Overview */}
               <div>
                 <h2 className="text-3xl md:text-4xl font-heading font-semibold text-primary mb-6 uppercase tracking-wide">
@@ -260,6 +261,15 @@ const ProjectDetail = () => {
                         Quick Facts
                       </h3>
                       <div className="space-y-4">
+                        {project.square_footage && (
+                          <div className="flex items-start gap-3">
+                            <Building2 className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
+                            <div>
+                              <div className="text-sm font-semibold text-primary uppercase tracking-wide">Square Footage</div>
+                              <div className="text-muted-foreground">{project.square_footage.toLocaleString()} SF</div>
+                            </div>
+                          </div>
+                        )}
                         {project.location && (
                           <div className="flex items-start gap-3">
                             <MapPin className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
