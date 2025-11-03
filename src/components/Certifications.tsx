@@ -13,19 +13,21 @@ const Certifications = () => {
       <div className="container mx-auto px-6 lg:px-20">
         <div className="flex flex-wrap justify-center items-center gap-12 lg:gap-20">
           {certifications.map((cert) => (
-            <div key={cert.label} className="flex flex-col items-center gap-3">
-              {'icon' in cert ? (
-                <cert.icon className="w-16 h-16 text-secondary" />
-              ) : (
-                <img 
-                  src={cert.image} 
-                  alt={cert.label}
-                  className={`${
-                    cert.label === "OSHA 30 Certified" ? "h-40 w-40" : "h-24 w-24"
-                  } object-contain transition-transform duration-300 hover:scale-110`}
-                />
-              )}
-              <span className="text-white font-heading font-semibold uppercase tracking-wider text-sm">
+            <div key={cert.label} className="flex flex-col items-center gap-3 w-40">
+              <div className="flex items-center justify-center h-32">
+                {'icon' in cert ? (
+                  <cert.icon className="w-16 h-16 text-secondary" />
+                ) : (
+                  <img 
+                    src={cert.image} 
+                    alt={cert.label}
+                    className={`${
+                      cert.label === "OSHA 30 Certified" ? "h-32" : "h-24"
+                    } w-auto object-contain transition-transform duration-300 hover:scale-110`}
+                  />
+                )}
+              </div>
+              <span className="text-white font-heading font-semibold uppercase tracking-wider text-sm text-center">
                 {cert.label}
               </span>
             </div>
