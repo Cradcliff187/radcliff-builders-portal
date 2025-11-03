@@ -1,4 +1,4 @@
-import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
+import { Carousel, CarouselContent, CarouselItem, CarouselDots } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 
 interface Logo {
@@ -124,6 +124,7 @@ const PartnerLogos = () => {
                   </CarouselItem>
                 ))}
             </CarouselContent>
+            <CarouselDots />
           </Carousel>
         ) : (
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 items-center justify-items-center max-w-6xl mx-auto">
