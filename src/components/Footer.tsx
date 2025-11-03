@@ -93,10 +93,16 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-white/10 text-center">
+        <div className="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
           <p className="font-body text-xs" style={{ color: '#F4F7F9' }}>
             &copy; 2025 Radcliff Construction Group. All rights reserved.
           </p>
+          <Link 
+            to="/admin" 
+            className="font-body text-xs text-white/40 hover:text-white/60 transition-colors"
+          >
+            Team Portal
+          </Link>
         </div>
       </div>
     </footer>
