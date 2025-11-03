@@ -29,7 +29,7 @@ const PartnerLogos = () => {
         <img
           src={logo.image}
           alt={logo.alt}
-          className="grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+          className="hover:grayscale hover:opacity-70 transition-all duration-300"
           style={{ maxHeight: '42px', maxWidth: '160px', objectFit: 'contain' }}
           loading="lazy"
         />
