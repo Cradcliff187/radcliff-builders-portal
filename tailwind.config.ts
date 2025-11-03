@@ -25,7 +25,7 @@ export default {
       },
       colors: {
         navy: "hsl(var(--navy))",
-        orange: "hsl(var(--orange))",
+        gold: "hsl(var(--gold))",
         charcoal: "hsl(var(--charcoal))",
         "light-grey": "hsl(var(--light-grey))",
         black: "hsl(var(--black))",
