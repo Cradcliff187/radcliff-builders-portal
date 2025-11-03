@@ -44,7 +44,6 @@ export const projectSchema = z.object({
     required_error: "Please select an industry",
   }),
   description: z.string().min(50, "Description must be at least 50 characters").max(500, "Short description must be less than 500 characters"),
-  detailed_description: z.string().min(200, "Detailed description must be at least 200 characters").optional(),
   image_url: z.string().min(1, "Primary image is required"),
   client_name: z.string().max(200).optional(),
   location: z.string().max(200).optional(),

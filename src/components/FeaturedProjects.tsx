@@ -45,7 +45,10 @@ const FeaturedProjects = () => {
                     <p className="text-secondary text-sm font-heading font-semibold uppercase tracking-wider mb-2">
                       {project.industry}
                     </p>
-                    <h3 className="text-xl mb-0">{project.title}</h3>
+                    <h3 className="text-xl mb-2">{project.title}</h3>
+                    <p className="text-muted-foreground text-sm leading-relaxed line-clamp-2">
+                      {project.description}
+                    </p>
                   </div>
                 </Card>
               </Link>

@@ -64,7 +64,6 @@ export default function ProjectForm({
       slug: initialData?.slug || "",
       industry: initialData?.industry || undefined,
       description: initialData?.description || "",
-      detailed_description: initialData?.detailed_description || "",
       image_url: initialData?.image_url || "",
       client_name: initialData?.client_name || "",
       location: initialData?.location || "",
@@ -336,15 +335,15 @@ export default function ProjectForm({
               name="description"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Short Description</FormLabel>
+                  <FormLabel>Description</FormLabel>
                   <FormControl>
                     <Textarea
-                      placeholder="Brief description for project cards (50-500 characters)"
+                      placeholder="Project description (50-500 characters)"
                       className="min-h-[100px]"
                       {...field}
                     />
                   </FormControl>
-                  <FormDescription>Shown on project cards and previews</FormDescription>
+                  <FormDescription>Used on project cards, featured projects, and detail page intro</FormDescription>
                   <FormMessage />
                 </FormItem>
               )}
@@ -663,25 +662,6 @@ export default function ProjectForm({
                 )}
               />
             </div>
-
-            <FormField
-              control={form.control}
-              name="detailed_description"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Detailed Description (Optional)</FormLabel>
-                  <FormControl>
-                    <Textarea
-                      placeholder="Comprehensive project overview for detail page (200+ characters)"
-                      className="min-h-[150px]"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormDescription>Shown on project detail page</FormDescription>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
           </TabsContent>
 
           {/* Case Study Tab */}

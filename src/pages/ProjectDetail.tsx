@@ -91,7 +91,7 @@ const ProjectDetail = () => {
     .slice(0, 3);
 
   // Validate content quality
-  const validDescription = getValidatedContent(project.detailed_description);
+  const validDescription = getValidatedContent(project.description);
   const validChallenges = getValidatedContent(project.challenges);
   const validSolutions = getValidatedContent(project.solutions);
   const validOutcomes = getValidatedContent(project.outcomes);
