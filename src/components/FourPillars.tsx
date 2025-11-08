@@ -9,7 +9,7 @@ const pillars = [
   {
     icon: Award,
     title: "Certified & Safe",
-    description: "ROSS and ICRA certified with rigorous safety protocols. We operate with the certifications, licensing, and bonding that sensitive environments demand.",
+    description: "OSHA 30 and ICRA certified with rigorous safety protocols. We operate with the certifications and licensing that sensitive environments demand.",
   },
   {
     icon: Zap,

@@ -85,9 +85,9 @@ const Footer = () => {
               Certifications
             </h4>
             <ul className="flex flex-col gap-2 text-sm text-white/80">
-              <li>ROSS Certified</li>
+              <li>OSHA 30 Certified</li>
               <li>ICRA Certified</li>
-              <li>Licensed & Bonded</li>
+              <li>Fully Licensed</li>
             </ul>
           </div>
         </div>

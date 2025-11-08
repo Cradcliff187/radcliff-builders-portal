@@ -9,9 +9,9 @@ const Services = () => {
     {
       icon: Building2,
       title: "Healthcare Renovations & Compliance",
-      description: "ICRA and ROSS certified renovations in occupied medical facilities. From patient rooms to surgical suites, we deliver infection control, safety, and zero interruptions to care.",
+      description: "ICRA and OSHA 30 certified renovations in occupied medical facilities. From patient rooms to surgical suites, we deliver infection control, safety, and zero interruptions to care.",
       features: [
-        "Full ICRA and ROSS certification",
+        "Full ICRA and OSHA 30 certification",
         "Infection control barriers and protocols",
         "Phased scheduling to maintain operations",
         "Regulatory compliance built in",
@@ -151,12 +151,12 @@ const Services = () => {
         <div className="container mx-auto px-6 lg:px-20 text-center">
           <h2 className="mb-6 uppercase text-white">Certified Excellence</h2>
           <p className="text-white/90 text-lg max-w-3xl mx-auto leading-relaxed mb-12">
-            Our ROSS and ICRA certifications ensure your project meets the highest standards for safety, compliance, and quality in sensitive environments.
+            Our OSHA 30 and ICRA certifications ensure your project meets the highest standards for safety, compliance, and quality in sensitive environments.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-12">
             <div className="text-center">
-              <p className="text-4xl font-heading font-bold text-secondary mb-2">ROSS</p>
-              <p className="text-white/80 text-sm">Certified Construction</p>
+              <p className="text-4xl font-heading font-bold text-secondary mb-2">OSHA 30</p>
+              <p className="text-white/80 text-sm">Safety Certified</p>
             </div>
             <div className="text-center">
               <p className="text-4xl font-heading font-bold text-secondary mb-2">ICRA</p>
@@ -164,7 +164,7 @@ const Services = () => {
             </div>
             <div className="text-center">
               <p className="text-4xl font-heading font-bold text-secondary mb-2">Licensed</p>
-              <p className="text-white/80 text-sm">Fully Bonded & Insured</p>
+              <p className="text-white/80 text-sm">Fully Licensed & Insured</p>
             </div>
           </div>
         </div>

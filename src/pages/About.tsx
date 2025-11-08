@@ -56,7 +56,7 @@ const About = () => {
                   We're not the biggest contractor in the region—but we're the one clients call back. Why? Because we show up, we listen, and we deliver. Every time. On budget. On schedule. With zero drama.
                 </p>
                 <p>
-                  We specialize in renovations and buildouts in environments where downtime isn't an option—healthcare facilities, professional offices, retail spaces, and commercial properties. These aren't easy projects. They require ICRA and ROSS certifications, strict safety protocols, flexible scheduling, and the kind of communication that keeps everyone aligned.
+                  We specialize in renovations and buildouts in environments where downtime isn't an option—healthcare facilities, professional offices, retail spaces, and commercial properties. These aren't easy projects. They require ICRA and OSHA 30 certifications, strict safety protocols, flexible scheduling, and the kind of communication that keeps everyone aligned.
                 </p>
                 <p>
                   That's where we shine. We don't just manage projects—we solve problems. We coordinate with your teams. We minimize disruption. And when something unexpected happens (because it always does), we handle it without pointing fingers.

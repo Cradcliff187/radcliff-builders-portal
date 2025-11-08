@@ -4,7 +4,7 @@ const industries = [
   {
     icon: Hospital,
     title: "Healthcare",
-    description: "Hospitals, outpatient facilities, and medical offices where infection control and patient safety aren't optional—they're essential. We're ICRA and ROSS certified because your patients depend on it.",
+    description: "Hospitals, outpatient facilities, and medical offices where infection control and patient safety aren't optional—they're essential. We're ICRA and OSHA 30 certified because your patients depend on it.",
   },
   {
     icon: Briefcase,
