@@ -78,9 +78,12 @@ const Contact = () => {
       {/* Hero Banner */}
       <section className="pt-32 pb-20 bg-primary text-white">
         <div className="container mx-auto px-6 lg:px-20 text-center">
-          <h1 className="mb-6 uppercase">Contact Us</h1>
+          <h1 className="mb-6 uppercase">Let's Build Something That Lasts.</h1>
+          <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed mb-6">
+            Whether you're planning a healthcare renovation, professional office upgrade, or commercial buildout, we're here to help.
+          </p>
           <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
-            Ready to start your project? Let's discuss how RCG can help bring your vision to life.
+            Give us a call, send an email, or fill out the form below. We'll get back to you within 24 hours to discuss your project, answer questions, and schedule a site walk or consultation—no pressure, just conversation.
           </p>
         </div>
       </section>

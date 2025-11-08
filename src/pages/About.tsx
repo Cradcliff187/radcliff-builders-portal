@@ -35,9 +35,9 @@ const About = () => {
       {/* Hero Banner */}
       <section className="pt-32 pb-20 bg-primary text-white">
         <div className="container mx-auto px-6 lg:px-20 text-center">
-          <h1 className="mb-6 uppercase">Built on Relationships</h1>
+          <h1 className="mb-6 uppercase">Built on Relationships. Defined by Reliability.</h1>
           <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
-            Your trusted partner for compliant, efficient renovations in healthcare, professional, and commercial environments.
+            We're more than contractors—we're partners who show up, deliver, and stand behind every project we build.
           </p>
         </div>
       </section>
@@ -50,13 +50,16 @@ const About = () => {
               <h2 className="mb-6 uppercase">Our Story</h2>
               <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <p>
-                  Radcliff Construction Group was founded on a simple principle: exceptional results come from trusted relationships. With deep roots in the region and decades of combined experience, we've built our reputation project by project, partnership by partnership.
+                  Radcliff Construction Group was built on a simple belief: great projects come from great relationships.
                 </p>
                 <p>
-                  We specialize in compliant, efficient renovations in sensitive environments. From healthcare facilities that demand ICRA and ROSS certification to professional office spaces that require minimal disruption, our expertise ensures regulatory compliance and operational continuity throughout every project phase.
+                  We're not the biggest contractor in the region—but we're the one clients call back. Why? Because we show up, we listen, and we deliver. Every time. On budget. On schedule. With zero drama.
                 </p>
                 <p>
-                  Our team combines technical excellence with genuine partnership. We understand the unique challenges of occupied facilities and deliver solutions that prioritize safety, compliance, and minimal disruption—every time, on schedule, and on budget.
+                  We specialize in renovations and buildouts in environments where downtime isn't an option—healthcare facilities, professional offices, retail spaces, and commercial properties. These aren't easy projects. They require ICRA and ROSS certifications, strict safety protocols, flexible scheduling, and the kind of communication that keeps everyone aligned.
+                </p>
+                <p>
+                  That's where we shine. We don't just manage projects—we solve problems. We coordinate with your teams. We minimize disruption. And when something unexpected happens (because it always does), we handle it without pointing fingers.
                 </p>
               </div>
             </div>

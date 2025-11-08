@@ -30,7 +30,7 @@ const Projects = () => {
         <div className="container mx-auto px-6 lg:px-20 text-center">
           <h1 className="mb-6 uppercase">Our Projects</h1>
           <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
-            Explore our portfolio of exceptional construction projects delivered with precision and partnership
+            Real projects. Real results. See how we deliver renovations and buildouts that meet deadlines, budgets, and expectations—every time.
           </p>
         </div>
       </section>

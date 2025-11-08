@@ -6,14 +6,14 @@ const CTASection = () => {
   return (
     <section className="py-24 bg-primary text-white">
       <div className="container mx-auto px-6 lg:px-20 text-center">
-        <h2 className="mb-6 uppercase text-white">Ready to Start Your Project?</h2>
+        <h2 className="mb-6 uppercase text-white">Ready to Build Something That Lasts?</h2>
         <p className="text-white/90 text-xl mb-12 max-w-2xl mx-auto leading-relaxed">
-          Let's discuss how RCG can bring your construction vision to life with partnership and professionalism.
+          Whether it's a healthcare renovation, professional facility upgrade, or commercial buildout, we're here to deliver exceptional results with minimal disruption. Let's talk about your project.
         </p>
         
         <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-12">
           <Button variant="hero" size="lg" asChild>
-            <Link to="/contact">Request Consultation</Link>
+            <Link to="/contact">Start a Conversation</Link>
           </Button>
           <Button 
             variant="secondary" 

@@ -3,23 +3,23 @@ import { Handshake, Award, Zap, MapPin } from "lucide-react";
 const pillars = [
   {
     icon: Handshake,
-    title: "Partnership",
-    description: "We build lasting relationships based on trust, transparency, and mutual success.",
+    title: "Partnership First",
+    description: "We're not just contractors—we're your partners. From the first site walk to project closeout, we're with you every step of the way.",
   },
   {
     icon: Award,
-    title: "Certified",
-    description: "ROSS and ICRA certified with full licensing and bonding for your peace of mind.",
+    title: "Certified & Safe",
+    description: "ROSS and ICRA certified with rigorous safety protocols. We operate with the certifications, licensing, and bonding that sensitive environments demand.",
   },
   {
     icon: Zap,
-    title: "Efficient",
-    description: "Strategic project management that delivers on time and on budget, every time.",
+    title: "Precision & Consistency",
+    description: "Every project. On time. On budget. With minimal disruption. That's our standard—and our reputation depends on it.",
   },
   {
     icon: MapPin,
-    title: "Regional",
-    description: "Deep roots in the region with the expertise to serve your portfolio nationwide.",
+    title: "Regional Reach",
+    description: "Headquartered in Kentucky with deep regional roots and the reach to serve multi-site clients across state lines.",
   },
 ];
 

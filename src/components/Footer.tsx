@@ -22,7 +22,7 @@ const Footer = () => {
               }}
             />
             <p className="text-white/80 text-sm leading-relaxed">
-              Your trusted partner for compliant, efficient renovations in sensitive environments.
+              Building relationships. Delivering results.
             </p>
           </div>
 

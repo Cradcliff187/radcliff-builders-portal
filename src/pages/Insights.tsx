@@ -91,7 +91,7 @@ const Insights = () => {
         <div className="container mx-auto px-6 lg:px-20 text-center">
           <h1 className="mb-6 uppercase">Insights & Resources</h1>
           <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
-            Expert knowledge, case studies, and best practices for compliant renovations in sensitive environments.
+            Practical guidance, case studies, and insights from the field—built on real projects, real challenges, and real solutions.
           </p>
         </div>
       </section>

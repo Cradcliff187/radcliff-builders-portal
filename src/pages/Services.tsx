@@ -8,57 +8,46 @@ const Services = () => {
   const services = [
     {
       icon: Building2,
-      title: "Healthcare Renovations",
-      description: "ICRA-certified renovations in occupied healthcare facilities with full infection control protocols, regulatory compliance, and minimal patient disruption.",
+      title: "Healthcare Renovations & Compliance",
+      description: "ICRA and ROSS certified renovations in occupied medical facilities. From patient rooms to surgical suites, we deliver infection control, safety, and zero interruptions to care.",
       features: [
-        "ICRA and ROSS certified teams",
-        "Infection control protocols",
-        "Phased construction scheduling",
-        "24/7 occupied facility support",
+        "Full ICRA and ROSS certification",
+        "Infection control barriers and protocols",
+        "Phased scheduling to maintain operations",
+        "Regulatory compliance built in",
       ],
     },
     {
       icon: FileCheck,
-      title: "Professional Facility Upgrades",
-      description: "Strategic renovations in active professional environments with flexible scheduling to minimize disruption to staff, clients, and operations.",
+      title: "Professional & Office Renovations",
+      description: "Tenant improvements, office upgrades, and professional facility renovations designed around your business hours. We work when you don't—so your team stays productive.",
       features: [
         "After-hours and weekend scheduling",
-        "Phased project delivery",
-        "Security and safety protocols",
-        "Minimal business disruption",
+        "Minimal disruption to staff and clients",
+        "Security-conscious site management",
+        "Fast-track delivery options",
       ],
     },
     {
       icon: Wrench,
-      title: "Commercial Renovations",
-      description: "Efficient tenant improvements and renovations that maintain business continuity while delivering on-time, on-budget results.",
+      title: "Retail & Commercial Buildouts",
+      description: "New construction, tenant improvements, and renovations for retail, restaurant, and commercial spaces. Fast timelines. Flexible scheduling. Zero excuses.",
       features: [
-        "Flexible scheduling options",
-        "Tenant coordination expertise",
-        "Code compliance specialists",
-        "Budget-conscious solutions",
+        "Accelerated project timelines",
+        "Coordinated tenant and property management",
+        "Code compliance expertise",
+        "Budget transparency from day one",
       ],
     },
     {
       icon: ClipboardList,
-      title: "Project Management",
-      description: "Strategic planning and execution that ensures regulatory compliance, operational continuity, and exceptional results on every project.",
+      title: "Full Project Management",
+      description: "From preconstruction through closeout, we handle it all—planning, permits, coordination, safety, quality control, and communication. You get one point of contact and zero surprises.",
       features: [
-        "Comprehensive project planning",
-        "Regulatory compliance management",
-        "Quality control systems",
-        "Transparent communication",
-      ],
-    },
-    {
-      icon: Users,
-      title: "Partnership Approach",
-      description: "We don't just build—we partner with you throughout the entire process to ensure your vision becomes reality with minimal stress.",
-      features: [
-        "Dedicated project teams",
-        "Proactive communication",
-        "Collaborative problem-solving",
-        "Long-term relationship focus",
+        "Preconstruction planning and budgeting",
+        "Permit and regulatory coordination",
+        "On-site safety and quality control",
+        "Real-time project updates",
       ],
     },
   ];
@@ -95,7 +84,7 @@ const Services = () => {
         <div className="container mx-auto px-6 lg:px-20 text-center">
           <h1 className="mb-6 uppercase">Our Services</h1>
           <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
-            Specialized renovation services for healthcare, professional, and commercial environments requiring compliance expertise and minimal disruption.
+            From healthcare renovations to commercial buildouts, we deliver precision, safety, and results—with minimal disruption to your operations.
           </p>
         </div>
       </section>

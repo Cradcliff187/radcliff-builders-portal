@@ -3,19 +3,9 @@ import { Quote } from "lucide-react";
 
 const testimonials = [
   {
-    quote: "RCG's professionalism and attention to detail made our hospital expansion project a complete success. They truly understand healthcare construction.",
-    author: "Sarah Mitchell",
-    position: "Facilities Director, Regional Medical Center",
-  },
-  {
-    quote: "Working with Radcliff Construction Group was seamless. Their team delivered our new campus building on time and exceeded our expectations.",
-    author: "David Chen",
-    position: "VP Operations, State University",
-  },
-  {
-    quote: "The RCG team brought our retail vision to life. Their expertise and partnership approach made all the difference.",
-    author: "Jennifer Torres",
-    position: "Director of Development, National Retail Chain",
+    quote: "What sets RCG apart isn't just their technical expertise—it's how they show up as true partners. They care about our facilities, our patients, and our mission. When challenges arise, they solve them. When timelines matter, they deliver. That's why we keep coming back.",
+    author: "Regional Healthcare Facilities Director",
+    position: "Multi-Site Healthcare System",
   },
 ];
 

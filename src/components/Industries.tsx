@@ -4,22 +4,22 @@ const industries = [
   {
     icon: Hospital,
     title: "Healthcare",
-    description: "ICRA certified with specialized expertise in medical facilities, from clinics to hospitals.",
+    description: "Hospitals, outpatient facilities, and medical offices where infection control and patient safety aren't optional—they're essential. We're ICRA and ROSS certified because your patients depend on it.",
   },
   {
     icon: Briefcase,
     title: "Professional",
-    description: "Modern office spaces, administrative facilities, and professional environments designed for productivity and client experience.",
+    description: "Law firms, corporate offices, and administrative facilities where business continuity matters. We work around your schedule so your team stays productive.",
   },
   {
     icon: ShoppingBag,
     title: "Retail",
-    description: "Building customer-focused spaces that enhance brand experience and drive business success.",
+    description: "Stores, restaurants, and customer-facing spaces where downtime means lost revenue. We deliver fast, efficient renovations that keep your doors open.",
   },
   {
     icon: Building2,
     title: "Commercial",
-    description: "Professional office spaces and commercial developments that meet modern business needs.",
+    description: "Office buildings, warehouses, and mixed-use developments that require flexible scheduling, code compliance, and zero surprises.",
   },
 ];
 
@@ -28,9 +28,9 @@ const Industries = () => {
     <section className="py-24 bg-background">
       <div className="container mx-auto px-6 lg:px-20">
         <div className="text-center mb-16">
-          <h2 className="mb-6 uppercase">Industries We Serve</h2>
+          <h2 className="mb-6 uppercase">Trusted in These Environments</h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Specialized construction expertise across diverse sectors
+            Where precision, compliance, and partnership matter most
           </p>
         </div>
 
