@@ -7,6 +7,21 @@ const testimonials = [
     author: "Regional Healthcare Facilities Director",
     position: "Multi-Site Healthcare System",
   },
+  {
+    quote: "We needed a contractor who understood the unique challenges of working in an occupied school. RCG delivered a flawless summer renovation—on time, within budget, and ready for students on day one. Their communication and safety protocols were exceptional.",
+    author: "Director of Facilities & Operations",
+    position: "Regional School District",
+  },
+  {
+    quote: "In retail, downtime equals lost revenue. RCG completed our store buildout in record time without sacrificing quality. Their attention to detail and ability to adapt to our tight timeline made them the partner we didn't know we needed.",
+    author: "Regional Construction Manager",
+    position: "National Retail Chain",
+  },
+  {
+    quote: "RCG brings a level of professionalism and reliability that's rare in commercial construction. From preconstruction planning to final walkthrough, they treated our project like it was their own. We've worked with a lot of contractors—RCG stands out.",
+    author: "Property Development Manager",
+    position: "Commercial Real Estate Firm",
+  },
 ];
 
 const Testimonials = () => {
