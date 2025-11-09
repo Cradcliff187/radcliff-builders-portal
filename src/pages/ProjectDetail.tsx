@@ -159,7 +159,7 @@ const ProjectDetail = () => {
                 </h2>
                 {validDescription ? (
                   <div className="prose prose-lg max-w-none">
-                    <p className="text-base text-muted-foreground leading-[1.8] tracking-[0.01em] max-w-[65ch] whitespace-pre-line">
+                    <p className="text-lg text-charcoal leading-relaxed max-w-[65ch] font-body whitespace-pre-line">
                       {validDescription}
                     </p>
                   </div>
