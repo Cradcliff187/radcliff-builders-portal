@@ -61,7 +61,7 @@ const Industries = () => {
                   <p className="text-muted-foreground leading-relaxed mb-6">
                     {industry.description}
                   </p>
-                  <Button variant="outline" size="sm" asChild className="group">
+                  <Button variant="outline" size="sm" asChild className="group w-full md:w-auto">
                     <Link to={industry.ctaLink}>
                       {industry.ctaText}
                       <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
