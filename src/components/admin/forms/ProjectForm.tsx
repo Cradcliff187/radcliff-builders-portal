@@ -77,7 +77,6 @@ export default function ProjectForm({
       featured: initialData?.featured || false,
       published: initialData?.published || false,
       display_order: initialData?.display_order ?? 0,
-      detailed_description: initialData?.detailed_description || "",
     },
   });
 
@@ -336,36 +335,15 @@ export default function ProjectForm({
               name="description"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Project Specifications (Bullet Points)</FormLabel>
+                  <FormLabel>Project Overview</FormLabel>
                   <FormControl>
                     <Textarea
-                      placeholder="• Tenant: State Farm Insurance&#10;• Project Type: Full Renovation&#10;• Completion: March 2024"
+                      placeholder="Describe the project comprehensively. Include key specifications, project scope, notable features, and context. Can include bullet points or narrative paragraphs."
                       className="min-h-[100px]"
                       {...field}
                     />
                   </FormControl>
-                  <FormDescription>Bullet-point list of specifications. Displayed on project cards and detail page.</FormDescription>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
-              name="detailed_description"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Narrative Introduction (Optional)</FormLabel>
-                  <FormControl>
-                    <Textarea
-                      placeholder="When [Client] approached us for their [industry] project in [location], they needed a trusted partner who could deliver exceptional results on time and within budget..."
-                      className="min-h-[120px]"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormDescription>
-                    Opening paragraph for project detail page. If left blank, auto-generates from project details.
-                  </FormDescription>
+                  <FormDescription>Main project description displayed on cards and detail page. Supports both bullet points and narrative text (50-1000 characters).</FormDescription>
                   <FormMessage />
                 </FormItem>
               )}

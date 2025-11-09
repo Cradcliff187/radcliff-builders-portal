@@ -204,7 +204,6 @@ export type Database = {
           completion_date: string | null
           created_at: string | null
           description: string
-          detailed_description: string | null
           display_order: number | null
           duration_weeks: number | null
           featured: boolean | null
@@ -234,7 +233,6 @@ export type Database = {
           completion_date?: string | null
           created_at?: string | null
           description: string
-          detailed_description?: string | null
           display_order?: number | null
           duration_weeks?: number | null
           featured?: boolean | null
@@ -264,7 +262,6 @@ export type Database = {
           completion_date?: string | null
           created_at?: string | null
           description?: string
-          detailed_description?: string | null
           display_order?: number | null
           duration_weeks?: number | null
           featured?: boolean | null
