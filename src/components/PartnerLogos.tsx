@@ -65,6 +65,12 @@ const logos: Logo[] = [
     alt: "Level 4 Construction - Construction Industry Partner",
     url: "https://www.level4construction.com/",
     priority: 7
+  },
+  {
+    name: "Perspectives Skills for Life",
+    image: "/assets/partners/perspectives.png",
+    alt: "Perspectives Skills for Life - Education Partner",
+    priority: 9
   }
 ];
 
