@@ -100,7 +100,7 @@ const PartnerLogos = () => {
 
   return (
     <section 
-      className="py-12 md:py-14 bg-[#F2F2F2]"
+      className="py-16 md:py-24 bg-light-grey"
       aria-label="Client and partner logos"
     >
       <div className="container mx-auto px-6 lg:px-20">

@@ -22,8 +22,8 @@ const Home = () => {
       <FeaturedProjects />
       <Industries />
       <FourPillars />
-      <Process />
       <Certifications />
+      <Process />
       <Testimonials />
       <PartnerLogos />
       <CTASection />
