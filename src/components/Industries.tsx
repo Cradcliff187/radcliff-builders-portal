@@ -50,15 +50,15 @@ const Industries = () => {
               key={industry.title}
               className="bg-card p-8 rounded-none hover:shadow-lg transition-all duration-300 group"
             >
-              <div className="flex items-start gap-6">
-                <div className="flex-shrink-0">
+              <div className="flex flex-col md:flex-row items-start gap-6">
+                <div className="flex-shrink-0 w-full md:w-auto flex md:block justify-center md:justify-start">
                   <div className="w-16 h-16 rounded-none bg-secondary/10 flex items-center justify-center group-hover:bg-secondary/20 transition-colors">
                     <industry.icon className="w-8 h-8 text-secondary" />
                   </div>
                 </div>
-                <div>
-                  <h3 className="mb-3 uppercase text-2xl">{industry.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed mb-6">
+                <div className="w-full">
+                  <h3 className="mb-3 uppercase text-2xl text-center md:text-left">{industry.title}</h3>
+                  <p className="text-muted-foreground leading-relaxed mb-6 text-center md:text-left">
                     {industry.description}
                   </p>
                   <Button variant="outline" size="sm" asChild className="group w-full md:w-auto">
