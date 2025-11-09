@@ -26,32 +26,32 @@ export default function AdminLayout({ children, title }: AdminLayoutProps) {
     <div className="min-h-screen bg-light-grey">
       {/* Header */}
       <header className="bg-navy border-b border-navy/10 sticky top-0 z-50">
-        <div className="container mx-auto px-6 lg:px-20">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center gap-6">
+        <div className="container mx-auto px-4 lg:px-20">
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 py-3 md:h-16">
+            <div className="flex items-center gap-2 md:gap-6">
               <Link to="/admin/dashboard" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
                 <img 
                   src={rcgLogo} 
                   alt="RCG Logo" 
-                  className="h-10"
+                  className="h-8 md:h-10"
                 />
                 <div className="flex flex-col">
-                  <span className="text-white font-montserrat font-bold text-sm uppercase tracking-wide">
+                  <span className="text-white font-montserrat font-bold text-xs md:text-sm uppercase tracking-wide">
                     Content Manager
                   </span>
-                  <span className="text-gold text-xs font-montserrat uppercase tracking-wider">
+                  <span className="text-gold text-[10px] md:text-xs font-montserrat uppercase tracking-wider">
                     Team Portal
                   </span>
                 </div>
               </Link>
             </div>
 
-            <div className="flex items-center gap-4">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 w-full md:w-auto">
               <Button
                 variant="outline"
                 size="sm"
                 asChild
-                className="border-2 border-navy bg-white text-navy hover:bg-navy hover:text-white transition-colors rounded-none uppercase tracking-wider"
+                className="border-2 border-navy bg-white text-navy hover:bg-navy hover:text-white transition-colors rounded-none uppercase tracking-wider text-xs md:text-sm w-full sm:w-auto"
               >
                 <Link to="/">
                   <Home className="h-4 w-4 mr-2" />
@@ -62,7 +62,7 @@ export default function AdminLayout({ children, title }: AdminLayoutProps) {
                 variant="outline"
                 size="sm"
                 onClick={handleLogout}
-                className="border-2 border-navy bg-white text-navy hover:bg-navy hover:text-white transition-colors rounded-none uppercase tracking-wider"
+                className="border-2 border-navy bg-white text-navy hover:bg-navy hover:text-white transition-colors rounded-none uppercase tracking-wider text-xs md:text-sm w-full sm:w-auto"
               >
                 <LogOut className="h-4 w-4 mr-2" />
                 Sign Out
@@ -73,7 +73,7 @@ export default function AdminLayout({ children, title }: AdminLayoutProps) {
       </header>
 
       {/* Main Content */}
-      <main className="container mx-auto px-6 lg:px-20 py-8">
+      <main className="container mx-auto px-4 md:px-6 lg:px-20 py-6 md:py-8">
         <div className="mb-6">
           <Link
             to="/admin/dashboard"
@@ -85,7 +85,7 @@ export default function AdminLayout({ children, title }: AdminLayoutProps) {
         </div>
 
         <div className="mb-8">
-          <h1 className="text-4xl font-montserrat font-bold text-navy uppercase tracking-wide">
+          <h1 className="text-2xl md:text-4xl font-montserrat font-bold text-navy uppercase tracking-wide">
             {title}
           </h1>
         </div>

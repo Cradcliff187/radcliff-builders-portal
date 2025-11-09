@@ -149,7 +149,7 @@ const ProjectDetail = () => {
       {/* Main Content */}
       <section className="py-24">
         <div className="container mx-auto px-6 lg:px-20">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-16">
             {/* Main Content Column */}
             <div className="lg:col-span-2 space-y-12 max-w-full">
               {/* Project Overview */}
@@ -214,7 +214,7 @@ const ProjectDetail = () => {
                     </h2>
                   </div>
                   <div className="prose prose-lg max-w-none">
-                    <div className="grid md:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       {validOutcomes.split('\n').filter(line => line.trim()).map((outcome, index) => (
                         <div key={index} className="flex items-start gap-3">
                           <CheckCircle className="w-5 h-5 text-gold flex-shrink-0 mt-1" />
@@ -244,7 +244,7 @@ const ProjectDetail = () => {
             <div className="lg:col-span-1">
               <div className="space-y-6">
                 {/* Quick Facts Card */}
-                <Card className="sticky top-32 bg-white shadow-lg rounded-none border-none">
+                <Card className="lg:sticky lg:top-32 bg-white shadow-lg rounded-none border-none">
                   <CardContent className="p-8 space-y-8">
                     <div>
                       <h3 className="text-xl font-heading font-semibold text-primary mb-6 uppercase tracking-wide">

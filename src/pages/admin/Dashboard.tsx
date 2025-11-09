@@ -77,23 +77,23 @@ const Dashboard = () => {
     <div className="min-h-screen bg-background">
       {/* Header */}
       <header className="bg-navy text-white py-6 border-b border-white/10">
-        <div className="container mx-auto px-6 lg:px-20">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-4">
-              <img src={rcgLogo} alt="RCG" className="h-12" />
+        <div className="container mx-auto px-4 lg:px-20">
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+            <div className="flex items-center gap-2 md:gap-4">
+              <img src={rcgLogo} alt="RCG" className="h-8 md:h-12" />
               <div>
-                <h1 className="text-xl font-heading font-semibold uppercase tracking-wide">
+                <h1 className="text-sm md:text-xl font-heading font-semibold uppercase tracking-wide">
                   Content Manager
                 </h1>
-                <p className="text-white/60 text-sm">Team Portal</p>
+                <p className="text-white/60 text-xs md:text-sm">Team Portal</p>
               </div>
             </div>
-            <div className="flex items-center gap-4">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 w-full md:w-auto">
               <Button
                 variant="outline"
                 size="sm"
                 asChild
-                className="border-2 border-navy bg-white text-navy hover:bg-navy hover:text-white transition-colors rounded-none uppercase tracking-wider"
+                className="border-2 border-navy bg-white text-navy hover:bg-navy hover:text-white transition-colors rounded-none uppercase tracking-wider text-xs md:text-sm w-full sm:w-auto"
               >
                 <Link to="/">
                   <Home className="w-4 h-4 mr-2" />
@@ -104,7 +104,7 @@ const Dashboard = () => {
                 variant="outline"
                 size="sm"
                 onClick={handleLogout}
-                className="border-2 border-navy bg-white text-navy hover:bg-navy hover:text-white transition-colors rounded-none uppercase tracking-wider"
+                className="border-2 border-navy bg-white text-navy hover:bg-navy hover:text-white transition-colors rounded-none uppercase tracking-wider text-xs md:text-sm w-full sm:w-auto"
               >
                 <LogOut className="w-4 h-4 mr-2" />
                 Sign Out
@@ -115,9 +115,9 @@ const Dashboard = () => {
       </header>
 
       {/* Main Content */}
-      <main className="container mx-auto px-6 lg:px-20 py-12">
+      <main className="container mx-auto px-4 md:px-6 lg:px-20 py-8 md:py-12">
         <div className="mb-8">
-          <h2 className="text-3xl font-heading font-semibold uppercase tracking-wide mb-2">
+          <h2 className="text-2xl md:text-3xl font-heading font-semibold uppercase tracking-wide mb-2">
             Content Sections
           </h2>
           <p className="text-muted-foreground">
