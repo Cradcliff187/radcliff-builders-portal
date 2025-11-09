@@ -119,7 +119,6 @@ export default function ProjectImageGallery({
             {/* Display Order Badge */}
             <div className="absolute top-2 right-2 z-10">
               <div className="bg-navy text-white text-xs font-bold px-2 py-1 rounded-none flex items-center gap-1">
-                {index === 0 && <Crown className="h-3 w-3" />}
                 <span>{index + 1}</span>
               </div>
             </div>
