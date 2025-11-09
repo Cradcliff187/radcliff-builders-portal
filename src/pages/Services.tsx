@@ -153,18 +153,43 @@ const Services = () => {
           <p className="text-white/90 text-lg max-w-3xl mx-auto leading-relaxed mb-12">
             Our OSHA 30 and ICRA certifications ensure your project meets the highest standards for safety, compliance, and quality in sensitive environments.
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-12">
-            <div className="text-center">
-              <p className="text-4xl font-heading font-bold text-secondary mb-2">OSHA 30</p>
-              <p className="text-white/80 text-sm">Safety Certified</p>
+          <div className="flex flex-wrap justify-center items-center gap-12 lg:gap-20">
+            {/* OSHA 30 Certification */}
+            <div className="flex flex-col items-center gap-3 w-40">
+              <div className="flex items-center justify-center h-32">
+                <img 
+                  src="/assets/certifications/osha-logo-new.png" 
+                  alt="OSHA 30 Certified"
+                  className="h-32 w-auto object-contain transition-transform duration-300 hover:scale-110"
+                />
+              </div>
+              <span className="text-white font-heading font-semibold uppercase tracking-wider text-sm text-center">
+                OSHA 30 Certified
+              </span>
             </div>
-            <div className="text-center">
-              <p className="text-4xl font-heading font-bold text-secondary mb-2">ICRA</p>
-              <p className="text-white/80 text-sm">Infection Control</p>
+
+            {/* ICRA Certification */}
+            <div className="flex flex-col items-center gap-3 w-40">
+              <div className="flex items-center justify-center h-32">
+                <img 
+                  src="/assets/certifications/icra-logo.png" 
+                  alt="ICRA Certified"
+                  className="h-24 w-auto object-contain transition-transform duration-300 hover:scale-110"
+                />
+              </div>
+              <span className="text-white font-heading font-semibold uppercase tracking-wider text-sm text-center">
+                ICRA Certified
+              </span>
             </div>
-            <div className="text-center">
-              <p className="text-4xl font-heading font-bold text-secondary mb-2">Licensed</p>
-              <p className="text-white/80 text-sm">Fully Licensed & Insured</p>
+
+            {/* Licensed */}
+            <div className="flex flex-col items-center gap-3 w-40">
+              <div className="flex items-center justify-center h-32">
+                <FileCheck className="w-16 h-16 text-secondary" />
+              </div>
+              <span className="text-white font-heading font-semibold uppercase tracking-wider text-sm text-center">
+                Licensed
+              </span>
             </div>
           </div>
         </div>
