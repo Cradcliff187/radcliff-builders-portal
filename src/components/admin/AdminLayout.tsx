@@ -2,7 +2,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/hooks/use-toast";
-import { ArrowLeft, LogOut } from "lucide-react";
+import { ArrowLeft, LogOut, Home } from "lucide-react";
+import rcgLogo from "@/assets/rcg-logo-transparent.png";
 
 interface AdminLayoutProps {
   children: React.ReactNode;
@@ -30,16 +31,16 @@ export default function AdminLayout({ children, title }: AdminLayoutProps) {
             <div className="flex items-center gap-6">
               <Link to="/admin/dashboard" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
                 <img 
-                  src="/src/assets/rcg-logo-transparent.png" 
+                  src={rcgLogo} 
                   alt="RCG Logo" 
                   className="h-10"
                 />
                 <div className="flex flex-col">
                   <span className="text-white font-montserrat font-bold text-sm uppercase tracking-wide">
-                    RCG Construction
+                    Content Manager
                   </span>
                   <span className="text-gold text-xs font-montserrat uppercase tracking-wider">
-                    Admin Portal
+                    Team Portal
                   </span>
                 </div>
               </Link>
@@ -49,10 +50,13 @@ export default function AdminLayout({ children, title }: AdminLayoutProps) {
               <Button
                 variant="outline"
                 size="sm"
-                onClick={() => window.open("/", "_blank")}
+                asChild
                 className="border-2 border-navy bg-white text-navy hover:bg-navy hover:text-white transition-colors rounded-none uppercase tracking-wider"
               >
-                View Site
+                <Link to="/">
+                  <Home className="h-4 w-4 mr-2" />
+                  View Site
+                </Link>
               </Button>
               <Button
                 variant="outline"
