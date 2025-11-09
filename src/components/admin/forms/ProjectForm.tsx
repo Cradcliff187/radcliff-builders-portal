@@ -273,7 +273,7 @@ export default function ProjectForm({
             <TabsTrigger value="basic">Basic Info</TabsTrigger>
             <TabsTrigger value="images">Images</TabsTrigger>
             <TabsTrigger value="details">Project Details</TabsTrigger>
-            <TabsTrigger value="content">Case Study</TabsTrigger>
+            <TabsTrigger value="content">Project Story</TabsTrigger>
           </TabsList>
 
           {/* Basic Info Tab */}
@@ -686,8 +686,15 @@ export default function ProjectForm({
             </div>
           </TabsContent>
 
-          {/* Case Study Tab */}
+          {/* Project Story Tab */}
           <TabsContent value="content" className="space-y-4 mt-4">
+            <div className="bg-light-grey p-4 rounded-none border-l-4 border-gold mb-4">
+              <p className="text-sm text-charcoal">
+                <strong>Optional Project Narrative:</strong> Add storytelling content to showcase the project's challenges, solutions, and outcomes. 
+                Empty sections won't display on the live project page. Minimum 50 characters required per field for content to appear.
+              </p>
+            </div>
+
             <FormField
               control={form.control}
               name="challenges"
