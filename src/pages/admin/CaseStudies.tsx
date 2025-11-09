@@ -215,7 +215,7 @@ export default function CaseStudies() {
               selectedCaseStudy
                 ? {
                     ...selectedCaseStudy,
-                    industry: selectedCaseStudy.industry as "Healthcare" | "Education" | "Retail" | "Commercial",
+                    industry: selectedCaseStudy.industry as "Healthcare" | "Professional" | "Retail" | "Commercial",
                   }
                 : undefined
             }

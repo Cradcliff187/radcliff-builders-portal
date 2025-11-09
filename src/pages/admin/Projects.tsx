@@ -263,7 +263,7 @@ export default function Projects() {
               selectedProject
                 ? {
                     ...(projects?.find(p => p.id === selectedProject.id) || selectedProject),
-                    industry: (projects?.find(p => p.id === selectedProject.id)?.industry || selectedProject.industry) as "Healthcare" | "Education" | "Retail" | "Commercial",
+                    industry: (projects?.find(p => p.id === selectedProject.id)?.industry || selectedProject.industry) as "Healthcare" | "Professional" | "Retail" | "Commercial",
                     display_order: (projects?.find(p => p.id === selectedProject.id)?.display_order || selectedProject.display_order) ?? 0,
                   }
                 : undefined
