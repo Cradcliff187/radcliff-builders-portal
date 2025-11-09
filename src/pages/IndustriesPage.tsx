@@ -1,7 +1,9 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CTASection from "@/components/CTASection";
-import { Hospital, Briefcase, ShoppingBag, Building2, CheckCircle2 } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
+import { Hospital, Briefcase, ShoppingBag, Building2, CheckCircle2, ArrowRight } from "lucide-react";
 
 const industries = [
   {
@@ -96,6 +98,17 @@ const IndustriesPage = () => {
                       </li>
                     ))}
                   </ul>
+                  <Button 
+                    variant="default" 
+                    size="lg" 
+                    asChild 
+                    className="mt-8 bg-primary text-white hover:bg-primary/90 uppercase tracking-wider"
+                  >
+                    <Link to={`/contact?industry=${industry.title}`}>
+                      Get Started with {industry.title}
+                      <ArrowRight className="w-5 h-5 ml-2" />
+                    </Link>
+                  </Button>
                 </div>
                 <div className={`bg-card p-12 rounded-none ${index % 2 === 1 ? "lg:order-1" : ""}`}>
                   <div className="aspect-square bg-muted rounded-none flex items-center justify-center">
