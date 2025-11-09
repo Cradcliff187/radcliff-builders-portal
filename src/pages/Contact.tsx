@@ -11,6 +11,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { contactFormSchema, type ContactFormData } from "@/lib/validations/contact";
+import { useSearchParams } from "react-router-dom";
 import {
   Form,
   FormControl,
@@ -20,8 +21,33 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 
+const industryContent = {
+  Healthcare: {
+    title: "Healthcare Facility Assessment",
+    subtitle: "ICRA-certified teams ready to support your medical facility project with zero disruption to patient care.",
+    scopePlaceholder: "e.g., Patient care area renovation, Surgical suite expansion",
+  },
+  Professional: {
+    title: "Plan Your Office Buildout",
+    subtitle: "Create a professional workspace that enhances productivity while minimizing business disruption.",
+    scopePlaceholder: "e.g., Office renovation, Corporate headquarters buildout",
+  },
+  Retail: {
+    title: "Multi-Site Rollout Estimate",
+    subtitle: "Fast-track scheduling and brand standards compliance for single or multi-location retail projects.",
+    scopePlaceholder: "e.g., Store renovation, Multi-site retail rollout",
+  },
+  Commercial: {
+    title: "Commercial Project Consultation",
+    subtitle: "Flexible scheduling and code compliance for office buildings, warehouses, and mixed-use developments.",
+    scopePlaceholder: "e.g., Office building renovation, Warehouse expansion",
+  },
+};
+
 const Contact = () => {
   const { toast } = useToast();
+  const [searchParams] = useSearchParams();
+  const industryParam = searchParams.get('industry') as "Healthcare" | "Professional" | "Retail" | "Commercial" | null;
   
   const form = useForm<ContactFormData>({
     resolver: zodResolver(contactFormSchema),
@@ -32,6 +58,7 @@ const Contact = () => {
       phone: "",
       scope: "",
       message: "",
+      industry: industryParam || undefined,
     },
   });
 
@@ -46,6 +73,7 @@ const Contact = () => {
           phone: data.phone || null,
           project_scope: data.scope || null,
           message: data.message,
+          industry: data.industry || null,
         });
       
       if (error) throw error;
@@ -78,9 +106,15 @@ const Contact = () => {
       {/* Hero Banner */}
       <section className="pt-32 pb-20 bg-primary text-white">
         <div className="container mx-auto px-6 lg:px-20 text-center">
-          <h1 className="mb-6 uppercase">Let's Build Something That Lasts.</h1>
+          <h1 className="mb-6 uppercase">
+            {industryParam && industryContent[industryParam] 
+              ? industryContent[industryParam].title 
+              : "Let's Build Something That Lasts."}
+          </h1>
           <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed mb-6">
-            Whether you're planning a healthcare renovation, professional office upgrade, or commercial buildout, we're here to help.
+            {industryParam && industryContent[industryParam]
+              ? industryContent[industryParam].subtitle
+              : "Whether you're planning a healthcare renovation, professional office upgrade, or commercial buildout, we're here to help."}
           </p>
           <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
             Give us a call, send an email, or fill out the form below. We'll get back to you within 24 hours to discuss your project, answer questions, and schedule a site walk or consultation—no pressure, just conversation.
@@ -207,7 +241,11 @@ const Contact = () => {
                           <FormControl>
                             <Input
                               {...field}
-                              placeholder="e.g., Healthcare renovation, New construction"
+                              placeholder={
+                                industryParam && industryContent[industryParam]
+                                  ? industryContent[industryParam].scopePlaceholder
+                                  : "e.g., Healthcare renovation, New construction"
+                              }
                               disabled={mutation.isPending}
                             />
                           </FormControl>
