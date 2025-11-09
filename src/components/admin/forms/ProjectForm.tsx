@@ -482,7 +482,7 @@ export default function ProjectForm({
                   Primary Image
                 </h3>
                 <p className="text-sm text-charcoal/60 mb-4">
-                  This image is shown on project cards and as the hero image on the detail page.
+                  This image is shown on project cards, as the hero image on the detail page, <strong>and appears first in the project gallery lightbox</strong>.
                 </p>
                 {imagePreview && (
                   <div className="relative aspect-video rounded-none overflow-hidden border mb-4 max-w-md">
@@ -502,7 +502,7 @@ export default function ProjectForm({
                       Additional Images ({projectImages.length})
                     </h3>
                     <p className="text-sm text-charcoal/60 mb-4">
-                      Manage project gallery images. Drag to reorder, click to edit captions.
+                      Manage project gallery images. <strong>These appear after the primary image in the gallery.</strong> Drag to reorder, click to edit captions.
                     </p>
                     {projectImages.length > 0 && (
                       <div className="mb-6">
