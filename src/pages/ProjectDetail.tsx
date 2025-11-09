@@ -161,7 +161,9 @@ const ProjectDetail = () => {
                   <div className="prose prose-lg max-w-none space-y-6">
                     {/* Narrative Introduction */}
                     <p className="text-lg text-charcoal leading-relaxed max-w-[65ch] font-body">
-                      When {project.client_name || "our client"} approached us for their {project.industry.toLowerCase()} project{project.location ? ` in ${project.location}` : ""}, they needed a trusted partner who could deliver exceptional results on time and within budget. This {project.square_footage ? `${project.square_footage.toLocaleString()} square foot` : ""} {project.project_type?.toLowerCase() || "construction"} project exemplifies our commitment to building lasting relationships while executing complex construction challenges with precision and expertise.
+                      {project.detailed_description || 
+                        `When ${project.client_name || "our client"} approached us for their ${project.industry.toLowerCase()} project${project.location ? ` in ${project.location}` : ""}, they needed a trusted partner who could deliver exceptional results on time and within budget. This ${project.square_footage ? `${project.square_footage.toLocaleString()} square foot` : ""} ${project.project_type?.toLowerCase() || "construction"} project exemplifies our commitment to building lasting relationships while executing complex construction challenges with precision and expertise.`
+                      }
                     </p>
                     
                     {/* Technical Details - bullet points flow naturally */}
