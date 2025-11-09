@@ -95,18 +95,18 @@ const Services = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {services.map((service) => (
               <Card key={service.title} className="p-8 rounded-none hover:shadow-xl transition-shadow">
-                <div className="flex items-start gap-6">
-                  <div className="flex-shrink-0">
+                <div className="flex flex-col md:flex-row items-start gap-6">
+                  <div className="flex-shrink-0 w-full md:w-auto flex md:block justify-center md:justify-start">
                     <div className="w-16 h-16 rounded-none bg-secondary/10 flex items-center justify-center">
                       <service.icon className="w-8 h-8 text-secondary" />
                     </div>
                   </div>
-                  <div className="flex-1">
-                    <h3 className="text-xl font-heading font-semibold uppercase mb-3">{service.title}</h3>
-                    <p className="text-muted-foreground leading-relaxed mb-4">
+                  <div className="flex-1 w-full">
+                    <h3 className="text-xl font-heading font-semibold uppercase mb-3 text-center md:text-left">{service.title}</h3>
+                    <p className="text-muted-foreground leading-relaxed mb-4 text-center md:text-left">
                       {service.description}
                     </p>
-                    <ul className="space-y-2">
+                    <ul className="space-y-2 flex flex-col items-center md:items-start">
                       {service.features.map((feature) => (
                         <li key={feature} className="flex items-start gap-2 text-sm text-muted-foreground">
                           <CheckCircle className="w-4 h-4 text-secondary flex-shrink-0 mt-0.5" />
