@@ -446,6 +446,9 @@ export default function ProjectForm({
                         onChange={(e) => field.onChange(parseInt(e.target.value) || 0)}
                       />
                     </FormControl>
+                    <FormDescription>
+                      Controls display order (lower numbers appear first). Featured projects: only the 3 lowest-ordered will show on homepage. All projects use this for the Projects page.
+                    </FormDescription>
                   </FormItem>
                 )}
               />
