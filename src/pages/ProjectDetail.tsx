@@ -164,15 +164,10 @@ const ProjectDetail = () => {
                       When {project.client_name || "our client"} approached us for their {project.industry.toLowerCase()} project{project.location ? ` in ${project.location}` : ""}, they needed a trusted partner who could deliver exceptional results on time and within budget. This {project.square_footage ? `${project.square_footage.toLocaleString()} square foot` : ""} {project.project_type?.toLowerCase() || "construction"} project exemplifies our commitment to building lasting relationships while executing complex construction challenges with precision and expertise.
                     </p>
                     
-                    {/* Technical Specifications */}
-                    <div>
-                      <h3 className="text-base font-heading font-semibold text-primary mb-3 uppercase tracking-wide">
-                        Project Specifications
-                      </h3>
-                      <p className="text-base text-muted-foreground leading-[1.8] tracking-[0.01em] max-w-[65ch] whitespace-pre-line">
-                        {validDescription}
-                      </p>
-                    </div>
+                    {/* Technical Details - bullet points flow naturally */}
+                    <p className="text-base text-muted-foreground leading-[1.8] tracking-[0.01em] max-w-[65ch] whitespace-pre-line">
+                      {validDescription}
+                    </p>
                   </div>
                 ) : (
                   <ContentComingSoon />
