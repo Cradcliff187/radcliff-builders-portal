@@ -82,7 +82,7 @@ export default function CaseStudyForm({
                 </FormControl>
                 <SelectContent className="bg-white rounded-none z-[100]">
                   <SelectItem value="Healthcare">Healthcare</SelectItem>
-                  <SelectItem value="Education">Education</SelectItem>
+                  <SelectItem value="Professional">Professional</SelectItem>
                   <SelectItem value="Retail">Retail</SelectItem>
                   <SelectItem value="Commercial">Commercial</SelectItem>
                 </SelectContent>

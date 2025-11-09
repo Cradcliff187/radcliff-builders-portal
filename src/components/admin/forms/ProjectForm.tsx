@@ -320,7 +320,7 @@ export default function ProjectForm({
                     </FormControl>
                     <SelectContent>
                       <SelectItem value="Healthcare">Healthcare</SelectItem>
-                      <SelectItem value="Education">Education</SelectItem>
+                      <SelectItem value="Professional">Professional</SelectItem>
                       <SelectItem value="Retail">Retail</SelectItem>
                       <SelectItem value="Commercial">Commercial</SelectItem>
                     </SelectContent>

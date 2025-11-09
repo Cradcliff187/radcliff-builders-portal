@@ -17,7 +17,7 @@ export const articleSchema = z.object({
 
 export const caseStudySchema = z.object({
   title: z.string().min(5, "Title must be at least 5 characters").max(200, "Title must be less than 200 characters"),
-  industry: z.enum(["Healthcare", "Education", "Retail", "Commercial"], {
+  industry: z.enum(["Healthcare", "Professional", "Retail", "Commercial"], {
     required_error: "Please select an industry",
   }),
   challenge: z.string().min(50, "Challenge must be at least 50 characters"),
@@ -40,7 +40,7 @@ export const resourceSchema = z.object({
 export const projectSchema = z.object({
   title: z.string().min(5, "Title must be at least 5 characters").max(200, "Title must be less than 200 characters"),
   slug: z.string().min(3, "Slug must be at least 3 characters").max(200, "Slug must be less than 200 characters").regex(/^[a-z0-9-]+$/, "Slug can only contain lowercase letters, numbers, and hyphens"),
-  industry: z.enum(["Healthcare", "Education", "Retail", "Commercial"], {
+  industry: z.enum(["Healthcare", "Professional", "Retail", "Commercial"], {
     required_error: "Please select an industry",
   }),
   description: z.string().min(50, "Project overview must be at least 50 characters").max(1000, "Project overview must be less than 1000 characters"),
