@@ -29,9 +29,9 @@ const FourPillars = () => {
       <div className="container mx-auto px-6 lg:px-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {pillars.map((pillar) => (
-            <div key={pillar.title} className="text-center group">
-              <div className="inline-flex items-center justify-center w-20 h-20 rounded-none bg-secondary/10 mb-6 group-hover:bg-secondary/20 transition-colors">
-                <pillar.icon className="w-10 h-10 text-secondary" />
+            <div key={pillar.title} className="group">
+              <div className="w-16 h-16 md:w-20 md:h-20 rounded-none bg-secondary/10 mb-6 group-hover:bg-secondary/20 transition-colors flex items-center justify-center">
+                <pillar.icon className="w-8 h-8 md:w-10 md:h-10 text-secondary" />
               </div>
               <h3 className="mb-4 uppercase">{pillar.title}</h3>
               <p className="text-muted-foreground leading-relaxed">
