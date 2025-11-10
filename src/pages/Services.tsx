@@ -94,19 +94,19 @@ const Services = () => {
         <div className="container mx-auto px-6 lg:px-20">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {services.map((service) => (
-              <Card key={service.title} className="p-8 rounded-none hover:shadow-xl transition-shadow">
-                <div className="flex flex-col md:flex-row items-start gap-6">
-                  <div className="flex-shrink-0 w-full md:w-auto flex md:block justify-center md:justify-start">
-                    <div className="w-16 h-16 rounded-none bg-secondary/10 flex items-center justify-center">
-                      <service.icon className="w-8 h-8 text-secondary" />
+              <Card key={service.title} className="p-6 md:p-8 rounded-none hover:shadow-xl transition-shadow">
+                <div className="flex flex-col md:flex-row items-start gap-4 md:gap-6">
+                  <div className="flex-shrink-0">
+                    <div className="w-12 h-12 md:w-16 md:h-16 rounded-none bg-secondary/10 flex items-center justify-center">
+                      <service.icon className="w-6 h-6 md:w-8 md:h-8 text-secondary" />
                     </div>
                   </div>
                   <div className="flex-1 w-full">
-                    <h3 className="text-xl font-heading font-semibold uppercase mb-3 text-center md:text-left">{service.title}</h3>
-                    <p className="text-muted-foreground leading-relaxed mb-4 text-center md:text-left">
+                    <h3 className="text-xl font-heading font-semibold uppercase mb-3">{service.title}</h3>
+                    <p className="text-muted-foreground leading-relaxed mb-4">
                       {service.description}
                     </p>
-                    <ul className="space-y-2 flex flex-col items-center md:items-start">
+                    <ul className="space-y-2">
                       {service.features.map((feature) => (
                         <li key={feature} className="flex items-start gap-2 text-sm text-muted-foreground">
                           <CheckCircle className="w-4 h-4 text-secondary flex-shrink-0 mt-0.5" />
