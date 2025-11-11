@@ -11,7 +11,8 @@ import {
   BookOpen, 
   Download, 
   LogOut,
-  Home
+  Home,
+  Users
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import rcgLogo from "@/assets/rcg-logo-transparent.png";
@@ -70,6 +71,14 @@ const Dashboard = () => {
       path: "/admin/resources",
       color: "bg-orange-500/10 text-orange-600",
       count: counts?.resources,
+    },
+    {
+      title: "Team Members",
+      description: "Manage team member profiles",
+      icon: Users,
+      path: "/admin/team-members",
+      color: "bg-teal-500/10 text-teal-600",
+      count: counts?.teamMembers,
     },
   ];
 

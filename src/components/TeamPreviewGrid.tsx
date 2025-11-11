@@ -1,38 +1,43 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { useTeamMembers } from "@/hooks/useCMSContent";
+import { Skeleton } from "@/components/ui/skeleton";
 
 interface TeamMember {
+  id: string;
   name: string;
   title: string;
   headshot_url: string;
   bio_short: string;
-  profile_href: string;
+  anchor_id: string;
 }
 
 const TeamPreviewGrid = () => {
-  const teamMembers: TeamMember[] = [
-    {
-      name: "Matt Radcliff",
-      title: "President & Founder",
-      headshot_url: "/images/team/matt-radcliff-2025.jpg",
-      bio_short: "With 20+ years in construction, Matt leads RCG with a hands-on approach focused on trust, safety, and precision.",
-      profile_href: "/team#matt-radcliff",
-    },
-    {
-      name: "Tony Kelly",
-      title: "Vice President",
-      headshot_url: "/images/team/tony-kelly.jpg",
-      bio_short: "Entrepreneurial leader with deep operational discipline—focused on safe, efficient execution and client satisfaction.",
-      profile_href: "/team#tony-kelly",
-    },
-    {
-      name: "Chris Radcliff",
-      title: "Vice President",
-      headshot_url: "/images/team/chris-radcliff.jpg",
-      bio_short: "Executive experience across healthcare, commercial, and professional sectors—driving predictable, compliant delivery.",
-      profile_href: "/team#chris-radcliff",
-    },
-  ];
+  const { data: teamMembers, isLoading } = useTeamMembers();
+
+  if (isLoading) {
+    return (
+      <section className="py-24 bg-light-grey">
+        <div className="container mx-auto px-6 lg:px-20">
+          <div className="text-center mb-16">
+            <h2 className="mb-6 uppercase">Meet the Team</h2>
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+              Hands-on leadership committed to safety, predictability, and partnership.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[1, 2, 3].map((i) => (
+              <Skeleton key={i} className="h-96 rounded-none" />
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (!teamMembers || teamMembers.length === 0) {
+    return null;
+  }
 
   return (
     <section className="py-24 bg-light-grey">
@@ -47,8 +52,8 @@ const TeamPreviewGrid = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           {teamMembers.map((member) => (
             <Link
-              key={member.name}
-              to={member.profile_href}
+              key={member.id}
+              to={`/team#${member.anchor_id}`}
               className="group bg-card rounded-none shadow-md hover:shadow-xl transition-all duration-300"
             >
               <div className="overflow-hidden">

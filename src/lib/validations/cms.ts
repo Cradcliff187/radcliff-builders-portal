@@ -67,7 +67,19 @@ export const projectImageSchema = z.object({
   display_order: z.number().int().min(0).default(0),
 });
 
+export const teamMemberSchema = z.object({
+  name: z.string().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
+  title: z.string().min(1, "Title is required").max(100, "Title must be less than 100 characters"),
+  headshot_url: z.string().min(1, "Headshot image is required"),
+  bio_short: z.string().min(10, "Short bio must be at least 10 characters").max(300, "Short bio must be less than 300 characters"),
+  bio_long: z.string().min(50, "Full bio must be at least 50 characters").max(2000, "Full bio must be less than 2000 characters"),
+  anchor_id: z.string().min(1, "Anchor ID is required").max(50, "Anchor ID must be less than 50 characters").regex(/^[a-z0-9-]+$/, "Anchor ID can only contain lowercase letters, numbers, and hyphens"),
+  display_order: z.number().int().min(0).nullable().default(0),
+  published: z.boolean().default(false),
+});
+
 export type ArticleFormData = z.infer<typeof articleSchema>;
 export type CaseStudyFormData = z.infer<typeof caseStudySchema>;
 export type ResourceFormData = z.infer<typeof resourceSchema>;
 export type ProjectFormData = z.infer<typeof projectSchema>;
+export type TeamMemberFormData = z.infer<typeof teamMemberSchema>;

@@ -85,3 +85,20 @@ export const useResources = () => {
     },
   });
 };
+
+// Hook for team members (public view)
+export const useTeamMembers = () => {
+  return useQuery({
+    queryKey: ["team_members"],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("team_members")
+        .select("*")
+        .eq("published", true)
+        .order("display_order", { ascending: true });
+      
+      if (error) throw error;
+      return data;
+    },
+  });
+};

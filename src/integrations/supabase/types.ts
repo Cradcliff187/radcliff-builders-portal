@@ -322,6 +322,48 @@ export type Database = {
         }
         Relationships: []
       }
+      team_members: {
+        Row: {
+          anchor_id: string
+          bio_long: string
+          bio_short: string
+          created_at: string
+          display_order: number | null
+          headshot_url: string
+          id: string
+          name: string
+          published: boolean | null
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          anchor_id: string
+          bio_long: string
+          bio_short: string
+          created_at?: string
+          display_order?: number | null
+          headshot_url: string
+          id?: string
+          name: string
+          published?: boolean | null
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          anchor_id?: string
+          bio_long?: string
+          bio_short?: string
+          created_at?: string
+          display_order?: number | null
+          headshot_url?: string
+          id?: string
+          name?: string
+          published?: boolean | null
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           created_at: string | null

@@ -179,16 +179,56 @@ export const useAdminResources = () => {
   });
 };
 
+export const useAdminTeamMembers = () => {
+  const queryClient = useQueryClient();
+
+  useEffect(() => {
+    const channel = supabase
+      .channel('admin-team-members-changes')
+      .on(
+        'postgres_changes',
+        {
+          event: '*',
+          schema: 'public',
+          table: 'team_members'
+        },
+        () => {
+          queryClient.invalidateQueries({ queryKey: ["admin_team_members"] });
+          queryClient.invalidateQueries({ queryKey: ["team_members"] });
+        }
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
+  }, [queryClient]);
+
+  return useQuery({
+    queryKey: ["admin_team_members"],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("team_members")
+        .select("*")
+        .order("display_order", { ascending: true });
+      
+      if (error) throw error;
+      return data;
+    },
+  });
+};
+
 // Hook for content counts (used in dashboard)
 export const useContentCounts = () => {
   return useQuery({
     queryKey: ["content_counts"],
     queryFn: async () => {
-      const [articles, projects, caseStudies, resources] = await Promise.all([
+      const [articles, projects, caseStudies, resources, teamMembers] = await Promise.all([
         supabase.from("insights_articles").select("*", { count: "exact", head: true }),
         supabase.from("projects").select("*", { count: "exact", head: true }),
         supabase.from("case_studies").select("*", { count: "exact", head: true }),
         supabase.from("resources").select("*", { count: "exact", head: true }),
+        supabase.from("team_members").select("*", { count: "exact", head: true }),
       ]);
 
       return {
@@ -196,6 +236,7 @@ export const useContentCounts = () => {
         projects: projects.count || 0,
         caseStudies: caseStudies.count || 0,
         resources: resources.count || 0,
+        teamMembers: teamMembers.count || 0,
       };
     },
   });
