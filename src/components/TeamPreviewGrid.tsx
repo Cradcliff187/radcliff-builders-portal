@@ -57,7 +57,7 @@ const TeamPreviewGrid = () => {
                     src={member.headshot_url}
                     alt={`Photo of ${member.name}, ${member.title} of Radcliff Construction Group`}
                     className={`w-full h-full object-cover rounded-full p-8 group-hover:scale-105 transition-transform duration-500 ${
-                      member.name === "Matt Radcliff" ? "scale-125 object-[center_50%]" : ""
+                      member.name === "Matt Radcliff" ? "object-[center_top]" : ""
                     }`}
                     onError={(e) => {
                       // Fallback to a placeholder if image doesn't exist
