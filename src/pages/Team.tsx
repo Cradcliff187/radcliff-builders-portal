@@ -92,7 +92,9 @@ const Team = () => {
                     <img
                       src={member.headshot_url}
                       alt={`Photo of ${member.name}, ${member.title} of Radcliff Construction Group`}
-                      className="w-full h-full object-cover"
+                      className={`w-full h-full object-cover ${
+                        member.name === "Matt Radcliff" ? "object-[center_30%]" : ""
+                      }`}
                       onError={(e) => {
                         // Fallback to a placeholder if image doesn't exist
                         e.currentTarget.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(member.name)}&size=500&background=1B2B43&color=CF791D&bold=true`;
