@@ -19,18 +19,18 @@ const TeamPreviewGrid = () => {
       profile_href: "/team#matt-radcliff",
     },
     {
-      name: "Chris Radcliff",
-      title: "Vice President",
-      headshot_url: "/images/team/chris-radcliff.jpg",
-      bio_short: "Executive experience across healthcare, commercial, and professional sectors—driving predictable, compliant delivery.",
-      profile_href: "/team#chris-radcliff",
-    },
-    {
       name: "Tony Kelly",
       title: "Vice President",
       headshot_url: "/images/team/tony-kelly.jpg",
       bio_short: "Entrepreneurial leader with deep operational discipline—focused on safe, efficient execution and client satisfaction.",
       profile_href: "/team#tony-kelly",
+    },
+    {
+      name: "Chris Radcliff",
+      title: "Vice President",
+      headshot_url: "/images/team/chris-radcliff.jpg",
+      bio_short: "Executive experience across healthcare, commercial, and professional sectors—driving predictable, compliant delivery.",
+      profile_href: "/team#chris-radcliff",
     },
   ];
 
@@ -57,7 +57,7 @@ const TeamPreviewGrid = () => {
                     src={member.headshot_url}
                     alt={`Photo of ${member.name}, ${member.title} of Radcliff Construction Group`}
                     className={`w-full h-full object-cover rounded-full p-8 group-hover:scale-105 transition-transform duration-500 ${
-                      member.name === "Matt Radcliff" ? "object-[center_30%]" : ""
+                      member.name === "Matt Radcliff" ? "scale-125 object-[center_50%]" : ""
                     }`}
                     onError={(e) => {
                       // Fallback to a placeholder if image doesn't exist

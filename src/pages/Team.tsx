@@ -30,20 +30,20 @@ const Team = () => {
       bio_long: "With over two decades of experience in construction and facility renovation, Matt Radcliff leads Radcliff Construction Group with a hands-on approach and a simple philosophy — build lasting relationships by delivering results that earn trust. Starting his career in the field, Matt developed a deep understanding of craftsmanship, communication, and accountability — principles that still guide every RCG project today.\n\nUnder his leadership, RCG has become a trusted partner for healthcare, commercial, and institutional clients across the region. Matt is known for his focus on safety, quality, and compliance — ensuring that even the most complex renovations are completed efficiently and with minimal disruption to operations. His leadership style blends technical precision with a genuine commitment to people — clients, crews, and communities alike.",
     },
     {
-      anchor_id: "chris-radcliff",
-      name: "Chris Radcliff",
-      title: "Vice President",
-      headshot_url: "/images/team/chris-radcliff.jpg",
-      bio_short: "Executive experience across healthcare, commercial, and professional sectors—driving predictable, compliant delivery.",
-      bio_long: "Chris Radcliff brings executive-level experience and a multi-industry perspective to RCG's leadership team. His background spans healthcare, commercial, and professional services, where he directed operations and client relationships at the executive level. That experience shapes his disciplined approach to project delivery — combining business insight with an operational understanding of what it takes to keep facilities running safely and efficiently.\n\nAt RCG, Chris bridges strategy and execution. He focuses on scope clarity, proactive communication, and keeping teams aligned — ensuring that projects stay predictable, compliant, and client-centered from start to finish. His leadership reinforces RCG's reputation for professionalism and reliability across sensitive environments where downtime isn't an option.",
-    },
-    {
       anchor_id: "tony-kelly",
       name: "Tony Kelly",
       title: "Vice President",
       headshot_url: "/images/team/tony-kelly.jpg",
       bio_short: "Entrepreneurial leader with deep operational discipline—focused on safe, efficient execution and client satisfaction.",
       bio_long: "Tony Kelly brings nearly two decades of entrepreneurial leadership to Radcliff Construction Group. Before joining RCG, he co-founded and led A&A Lawncare & Landscaping, growing it from a small local business into one of the region's most recognized commercial service providers. Through that experience, Tony developed a deep understanding of operations, workforce management, and customer relationships — skills that translate directly into RCG's commitment to consistent quality and client satisfaction.\n\nAt RCG, Tony focuses on project execution and operational excellence. His background in running a large, service-driven organization gives him a unique ability to balance field realities with client expectations — ensuring every job is handled safely, efficiently, and to standard. Known for his approachable leadership and steady reliability, Tony plays a key role in maintaining RCG's culture of accountability, teamwork, and trusted delivery.",
+    },
+    {
+      anchor_id: "chris-radcliff",
+      name: "Chris Radcliff",
+      title: "Vice President",
+      headshot_url: "/images/team/chris-radcliff.jpg",
+      bio_short: "Executive experience across healthcare, commercial, and professional sectors—driving predictable, compliant delivery.",
+      bio_long: "Chris Radcliff brings executive-level experience and a multi-industry perspective to RCG's leadership team. His background spans healthcare, commercial, and professional services, where he directed operations and client relationships at the executive level. That experience shapes his disciplined approach to project delivery — combining business insight with an operational understanding of what it takes to keep facilities running safely and efficiently.\n\nAt RCG, Chris bridges strategy and execution. He focuses on scope clarity, proactive communication, and keeping teams aligned — ensuring that projects stay predictable, compliant, and client-centered from start to finish. His leadership reinforces RCG's reputation for professionalism and reliability across sensitive environments where downtime isn't an option.",
     },
   ];
 
@@ -93,7 +93,7 @@ const Team = () => {
                       src={member.headshot_url}
                       alt={`Photo of ${member.name}, ${member.title} of Radcliff Construction Group`}
                       className={`w-full h-full object-cover ${
-                        member.name === "Matt Radcliff" ? "object-[center_30%]" : ""
+                        member.name === "Matt Radcliff" ? "scale-125 object-[center_50%]" : ""
                       }`}
                       onError={(e) => {
                         // Fallback to a placeholder if image doesn't exist
