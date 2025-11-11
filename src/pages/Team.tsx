@@ -25,7 +25,7 @@ const Team = () => {
       anchor_id: "matt-radcliff",
       name: "Matt Radcliff",
       title: "President & Founder",
-      headshot_url: "/images/team/matt-radcliff.jpg",
+      headshot_url: "/images/team/matt-radcliff-2025.jpg",
       bio_short: "With 20+ years in construction, Matt leads RCG with a hands-on approach focused on trust, safety, and precision.",
       bio_long: "With over two decades of experience in construction and facility renovation, Matt Radcliff leads Radcliff Construction Group with a hands-on approach and a simple philosophy — build lasting relationships by delivering results that earn trust. Starting his career in the field, Matt developed a deep understanding of craftsmanship, communication, and accountability — principles that still guide every RCG project today.\n\nUnder his leadership, RCG has become a trusted partner for healthcare, commercial, and institutional clients across the region. Matt is known for his focus on safety, quality, and compliance — ensuring that even the most complex renovations are completed efficiently and with minimal disruption to operations. His leadership style blends technical precision with a genuine commitment to people — clients, crews, and communities alike.",
     },

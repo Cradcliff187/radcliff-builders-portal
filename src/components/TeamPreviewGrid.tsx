@@ -14,7 +14,7 @@ const TeamPreviewGrid = () => {
     {
       name: "Matt Radcliff",
       title: "President & Founder",
-      headshot_url: "/images/team/matt-radcliff.jpg",
+      headshot_url: "/images/team/matt-radcliff-2025.jpg",
       bio_short: "With 20+ years in construction, Matt leads RCG with a hands-on approach focused on trust, safety, and precision.",
       profile_href: "/team#matt-radcliff",
     },
