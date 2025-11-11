@@ -1,96 +1,40 @@
 import { Carousel, CarouselContent, CarouselItem, CarouselDots } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
-
-interface Logo {
-  name: string;
-  image: string;
-  alt: string;
-  url?: string;
-  priority?: number;
-}
-
-const logos: Logo[] = [
-  {
-    name: "Mercy Health",
-    image: "/assets/partners/mercy-health.png",
-    alt: "Mercy Health - Healthcare Partner",
-    url: "https://www.mercy.com/",
-    priority: 1
-  },
-  {
-    name: "UC Health",
-    image: "/assets/partners/uc-health.png",
-    alt: "UC Health - Healthcare Partner",
-    url: "https://www.uchealth.com/",
-    priority: 2
-  },
-  {
-    name: "State Farm",
-    image: "/assets/partners/state-farm.png",
-    alt: "State Farm - Insurance Partner",
-    url: "https://www.statefarm.com/",
-    priority: 3
-  },
-  {
-    name: "Big Boy",
-    image: "/assets/partners/big-boy-new.png",
-    alt: "Big Boy - Retail Partner",
-    url: "https://www.bigboy.com/",
-    priority: 8
-  },
-  {
-    name: "Cushman & Wakefield",
-    image: "/assets/partners/cushman-wakefield.png",
-    alt: "Cushman & Wakefield - Commercial Real Estate Partner",
-    url: "https://www.cushmanwakefield.com/",
-    priority: 4
-  },
-  {
-    name: "Lee & Associates",
-    image: "/assets/partners/lee-associates.png",
-    alt: "Lee & Associates - Commercial Real Estate Partner",
-    url: "https://www.leeassociates.com/",
-    priority: 5
-  },
-  {
-    name: "Simon",
-    image: "/assets/partners/simon.png",
-    alt: "Simon - Retail & Commercial Real Estate Partner",
-    url: "https://www.simon.com/",
-    priority: 6
-  },
-  {
-    name: "Level 4 Construction",
-    image: "/assets/partners/level-4-construction.png",
-    alt: "Level 4 Construction - Construction Industry Partner",
-    url: "https://www.level4construction.com/",
-    priority: 7
-  },
-  {
-    name: "Perspectives Skills for Life",
-    image: "/assets/partners/perspectives.png",
-    alt: "Perspectives Skills for Life - Education Partner",
-    priority: 9
-  }
-];
+import { usePartnerLogos } from "@/hooks/useCMSContent";
 
 const PartnerLogos = () => {
-  const LogoCard = ({ logo }: { logo: Logo }) => {
+  const { data: logos, isLoading } = usePartnerLogos();
+
+  if (isLoading) {
+    return (
+      <section className="py-16 md:py-24 bg-light-grey" aria-label="Client and partner logos">
+        <div className="container mx-auto px-6 lg:px-20">
+          <div className="text-center text-charcoal">Loading partners...</div>
+        </div>
+      </section>
+    );
+  }
+
+  if (!logos || logos.length === 0) {
+    return null;
+  }
+
+  const LogoCard = ({ logo }: { logo: any }) => {
     const content = (
       <div className="flex items-center justify-center p-6 md:p-8 rounded-none hover:shadow-md transition-shadow duration-300">
         <img
-          src={logo.image}
-          alt={logo.alt}
+          src={logo.image_url}
+          alt={logo.alt_text}
           className="hover:grayscale hover:opacity-70 transition-all duration-300 h-[clamp(50px,6vw,70px)] w-auto max-w-[180px] md:max-w-[220px]"
           loading="lazy"
         />
       </div>
     );
 
-    if (logo.url) {
+    if (logo.website_url) {
       return (
         <a
-          href={logo.url}
+          href={logo.website_url}
           target="_blank"
           rel="noopener noreferrer"
           className="block"
@@ -123,16 +67,14 @@ const PartnerLogos = () => {
           className="w-full"
         >
           <CarouselContent className="-ml-4">
-            {logos
-              .sort((a, b) => (a.priority || 999) - (b.priority || 999))
-              .map((logo) => (
-                <CarouselItem 
-                  key={logo.name} 
-                  className="pl-4 basis-1/2 md:basis-1/4 lg:basis-1/6"
-                >
-                  <LogoCard logo={logo} />
-                </CarouselItem>
-              ))}
+            {logos.map((logo) => (
+              <CarouselItem 
+                key={logo.id} 
+                className="pl-4 basis-1/2 md:basis-1/4 lg:basis-1/6"
+              >
+                <LogoCard logo={logo} />
+              </CarouselItem>
+            ))}
           </CarouselContent>
           <CarouselDots />
         </Carousel>

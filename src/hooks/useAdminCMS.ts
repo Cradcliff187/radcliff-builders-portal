@@ -218,17 +218,57 @@ export const useAdminTeamMembers = () => {
   });
 };
 
+export const useAdminPartnerLogos = () => {
+  const queryClient = useQueryClient();
+
+  useEffect(() => {
+    const channel = supabase
+      .channel('admin-partner-logos-changes')
+      .on(
+        'postgres_changes',
+        {
+          event: '*',
+          schema: 'public',
+          table: 'partner_logos'
+        },
+        () => {
+          queryClient.invalidateQueries({ queryKey: ["admin_partner_logos"] });
+          queryClient.invalidateQueries({ queryKey: ["partner_logos"] });
+        }
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
+  }, [queryClient]);
+
+  return useQuery({
+    queryKey: ["admin_partner_logos"],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("partner_logos")
+        .select("*")
+        .order("priority", { ascending: true });
+      
+      if (error) throw error;
+      return data;
+    },
+  });
+};
+
 // Hook for content counts (used in dashboard)
 export const useContentCounts = () => {
   return useQuery({
     queryKey: ["content_counts"],
     queryFn: async () => {
-      const [articles, projects, caseStudies, resources, teamMembers] = await Promise.all([
+      const [articles, projects, caseStudies, resources, teamMembers, partnerLogos] = await Promise.all([
         supabase.from("insights_articles").select("*", { count: "exact", head: true }),
         supabase.from("projects").select("*", { count: "exact", head: true }),
         supabase.from("case_studies").select("*", { count: "exact", head: true }),
         supabase.from("resources").select("*", { count: "exact", head: true }),
         supabase.from("team_members").select("*", { count: "exact", head: true }),
+        supabase.from("partner_logos").select("*", { count: "exact", head: true }),
       ]);
 
       return {
@@ -237,6 +277,7 @@ export const useContentCounts = () => {
         caseStudies: caseStudies.count || 0,
         resources: resources.count || 0,
         teamMembers: teamMembers.count || 0,
+        partnerLogos: partnerLogos.count || 0,
       };
     },
   });

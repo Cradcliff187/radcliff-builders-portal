@@ -161,6 +161,42 @@ export type Database = {
         }
         Relationships: []
       }
+      partner_logos: {
+        Row: {
+          alt_text: string
+          created_at: string | null
+          id: string
+          image_url: string
+          name: string
+          priority: number | null
+          published: boolean | null
+          updated_at: string | null
+          website_url: string | null
+        }
+        Insert: {
+          alt_text: string
+          created_at?: string | null
+          id?: string
+          image_url: string
+          name: string
+          priority?: number | null
+          published?: boolean | null
+          updated_at?: string | null
+          website_url?: string | null
+        }
+        Update: {
+          alt_text?: string
+          created_at?: string | null
+          id?: string
+          image_url?: string
+          name?: string
+          priority?: number | null
+          published?: boolean | null
+          updated_at?: string | null
+          website_url?: string | null
+        }
+        Relationships: []
+      }
       project_images: {
         Row: {
           caption: string | null

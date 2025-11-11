@@ -80,6 +80,14 @@ const Dashboard = () => {
       color: "bg-teal-500/10 text-teal-600",
       count: counts?.teamMembers,
     },
+    {
+      title: "Partner Logos",
+      description: "Manage partner and client logos",
+      icon: Users,
+      path: "/admin/partner-logos",
+      color: "bg-pink-500/10 text-pink-600",
+      count: counts?.partnerLogos,
+    },
   ];
 
   return (
@@ -134,7 +142,7 @@ const Dashboard = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {sections.map((section) => (
             <Link key={section.path} to={section.path}>
               <Card className="p-6 rounded-none hover:shadow-xl transition-all duration-300 group cursor-pointer">

@@ -102,3 +102,20 @@ export const useTeamMembers = () => {
     },
   });
 };
+
+// Hook for partner logos (public view)
+export const usePartnerLogos = () => {
+  return useQuery({
+    queryKey: ["partner_logos"],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("partner_logos")
+        .select("*")
+        .eq("published", true)
+        .order("priority", { ascending: true });
+      
+      if (error) throw error;
+      return data;
+    },
+  });
+};

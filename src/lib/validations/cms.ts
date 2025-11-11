@@ -78,8 +78,18 @@ export const teamMemberSchema = z.object({
   published: z.boolean().default(false),
 });
 
+export const partnerLogoSchema = z.object({
+  name: z.string().min(1, "Partner name is required").max(100),
+  image_url: z.string().url("Must be a valid URL").min(1, "Logo image is required"),
+  alt_text: z.string().min(10, "Alt text should be descriptive (min 10 characters)").max(200),
+  website_url: z.string().url("Must be a valid URL").optional().or(z.literal("")),
+  priority: z.number().int().min(0).nullable().default(0),
+  published: z.boolean().default(false),
+});
+
 export type ArticleFormData = z.infer<typeof articleSchema>;
 export type CaseStudyFormData = z.infer<typeof caseStudySchema>;
 export type ResourceFormData = z.infer<typeof resourceSchema>;
 export type ProjectFormData = z.infer<typeof projectSchema>;
 export type TeamMemberFormData = z.infer<typeof teamMemberSchema>;
+export type PartnerLogoFormData = z.infer<typeof partnerLogoSchema>;
