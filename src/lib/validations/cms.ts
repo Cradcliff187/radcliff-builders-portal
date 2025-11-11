@@ -80,7 +80,7 @@ export const teamMemberSchema = z.object({
 
 export const partnerLogoSchema = z.object({
   name: z.string().min(1, "Partner name is required").max(100),
-  image_url: z.string().url("Must be a valid URL").min(1, "Logo image is required"),
+  image_url: z.string().min(1, "Logo image is required"),
   alt_text: z.string().min(10, "Alt text should be descriptive (min 10 characters)").max(200),
   website_url: z.string().url("Must be a valid URL").optional().or(z.literal("")),
   priority: z.number().int().min(0).nullable().default(0),
