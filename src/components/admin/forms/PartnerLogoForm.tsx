@@ -124,7 +124,21 @@ export default function PartnerLogoForm({
       <div className="space-y-2">
         <Label htmlFor="image">Logo Image *</Label>
         <div className="space-y-3">
-          {imagePreview ? (
+          {/* File input ALWAYS visible */}
+          <div className="flex items-center gap-3">
+            <Input
+              id="image"
+              type="file"
+              accept="image/*"
+              onChange={handleImageChange}
+              className="rounded-none"
+              disabled={uploading}
+            />
+            <Upload className="h-5 w-5 text-muted-foreground" />
+          </div>
+          
+          {/* Preview shows BELOW the file input when image exists */}
+          {imagePreview && (
             <div className="relative inline-block">
               <img
                 src={imagePreview}
@@ -141,16 +155,13 @@ export default function PartnerLogoForm({
                 <X className="h-4 w-4" />
               </Button>
             </div>
-          ) : (
-            <div className="flex items-center gap-3">
-              <Input
-                id="image"
-                type="file"
-                accept="image/*"
-                onChange={handleImageChange}
-                className="rounded-none"
-              />
-              <Upload className="h-5 w-5 text-muted-foreground" />
+          )}
+          
+          {/* Upload progress indicator */}
+          {uploading && (
+            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              <Loader2 className="w-4 h-4 animate-spin" />
+              Uploading...
             </div>
           )}
         </div>
