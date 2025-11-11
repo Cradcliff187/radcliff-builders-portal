@@ -192,8 +192,12 @@ const TeamMembers = () => {
   return (
     <AdminLayout title="Team Members">
       <div className="mb-6">
-        <Button onClick={handleCreate} className="rounded-none">
-          <Plus className="w-4 h-4 mr-2" />
+        <Button
+          onClick={handleCreate}
+          variant="admin"
+          className="rounded-none shadow-lg hover:shadow-xl uppercase tracking-wider"
+        >
+          <Plus className="h-5 w-5 mr-2" />
           Add Team Member
         </Button>
       </div>
