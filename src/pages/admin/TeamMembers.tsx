@@ -9,8 +9,8 @@ import TeamMemberForm from "@/components/admin/forms/TeamMemberForm";
 import DeleteDialog from "@/components/admin/DeleteDialog";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { Badge } from "@/components/ui/badge";
-import { Plus } from "lucide-react";
+
+import { Plus, CheckCircle, XCircle } from "lucide-react";
 
 interface TeamMember {
   id: string;
@@ -67,9 +67,19 @@ const TeamMembers = () => {
       key: "published",
       label: "Status",
       render: (member: TeamMember) => (
-        <Badge variant={member.published ? "default" : "secondary"}>
-          {member.published ? "Published" : "Draft"}
-        </Badge>
+        <div className="flex items-center gap-2">
+          {member.published ? (
+            <>
+              <CheckCircle className="h-4 w-4 text-green-600" />
+              <span className="text-green-600 font-medium">Published</span>
+            </>
+          ) : (
+            <>
+              <XCircle className="h-4 w-4 text-gray-400" />
+              <span className="text-gray-400">Draft</span>
+            </>
+          )}
+        </div>
       ),
     },
     {
