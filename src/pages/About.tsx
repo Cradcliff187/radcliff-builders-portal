@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CTASection from "@/components/CTASection";
 import PartnerLogos from "@/components/PartnerLogos";
+import TeamPreviewGrid from "@/components/TeamPreviewGrid";
 import { Award, Users, Target, TrendingUp } from "lucide-react";
 
 const About = () => {
@@ -112,6 +113,8 @@ const About = () => {
           </div>
         </div>
       </section>
+
+      <TeamPreviewGrid />
 
       <CTASection />
       <Footer />
