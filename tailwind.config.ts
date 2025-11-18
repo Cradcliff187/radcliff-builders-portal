@@ -13,8 +13,12 @@ export default {
         md: "2.5rem",
         lg: "5rem",
         xl: "5rem",
+        "2xl": "5rem", // 80px = 5rem
       },
       screens: {
+        "2xl": "1440px",
+      },
+      maxWidth: {
         "2xl": "1440px",
       },
     },

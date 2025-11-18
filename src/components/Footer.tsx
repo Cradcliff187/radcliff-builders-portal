@@ -7,7 +7,7 @@ const Footer = () => {
 
   return (
     <footer className="bg-navy text-white py-12">
-      <div className="container mx-auto px-6 lg:px-20">
+      <div className="max-w-[1440px] mx-auto px-6 lg:px-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Logo & Tagline */}
           <div>
@@ -67,11 +67,11 @@ const Footer = () => {
                 859-816-2314
               </a>
               <a
-                href="mailto:info@radcliffcg.com"
+                href="mailto:info@radcliffconstructiongroup.com"
                 className="flex items-center gap-2 text-white/80 hover:text-secondary transition-colors"
               >
                 <Mail className="w-4 h-4" />
-                info@radcliffcg.com
+                info@radcliffconstructiongroup.com
               </a>
               <div className="flex items-start gap-2 text-white/80">
                 <MapPin className="w-4 h-4 mt-1 flex-shrink-0" />

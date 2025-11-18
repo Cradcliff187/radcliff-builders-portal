@@ -1,4 +1,5 @@
 import { Award, Briefcase, MapPin, Shield } from "lucide-react";
+import PageContainer from "@/components/PageContainer";
 
 const stats = [
   {
@@ -26,7 +27,7 @@ const stats = [
 const StatsBar = () => {
   return (
     <section className="py-12 bg-primary">
-      <div className="container mx-auto px-6 lg:px-20">
+      <PageContainer>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {stats.map((stat) => (
             <div key={stat.label} className="text-center group">
@@ -42,7 +43,7 @@ const StatsBar = () => {
             </div>
           ))}
         </div>
-      </div>
+      </PageContainer>
     </section>
   );
 };

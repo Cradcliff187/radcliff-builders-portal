@@ -8,10 +8,10 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* RCG Brand Colors */
-    --navy: 214 42% 18%;           /* Primary Navy #1B2B43 */
-    --gold: 25 77% 46%;            /* Accent Orange #CF791D - Official RCG Brand Color */
-    --charcoal: 0 0% 17%;          /* Dark Charcoal #2B2B2B */
+    /* RCG Brand Colors - Exact Hex Values */
+    --navy: 214 43% 18%;           /* Primary Navy #1B2B43 */
+    --gold: 25 75% 46%;             /* Accent Orange #CF791D - Official RCG Brand Color */
+    --charcoal: 0 0% 29%;          /* Dark Charcoal #4B4B4B */
     --light-grey: 0 0% 95%;        /* Light Grey #F2F2F2 */
     --black: 0 0% 0%;              /* Black #000000 */
     --white: 0 0% 100%;
@@ -45,7 +45,7 @@ All colors MUST be HSL.
     --input: 214 31.8% 91.4%;
     --ring: var(--gold);
 
-    --radius: 0rem;
+    --radius: 0.375rem; /* Medium radius (6px) */
 
     --sidebar-background: 0 0% 98%;
 

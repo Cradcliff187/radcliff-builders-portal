@@ -3,39 +3,44 @@ import Footer from "@/components/Footer";
 import CTASection from "@/components/CTASection";
 import PartnerLogos from "@/components/PartnerLogos";
 import TeamPreviewGrid from "@/components/TeamPreviewGrid";
+import SEO from "@/components/SEO";
 import { Award, Users, Target, TrendingUp } from "lucide-react";
 
 const About = () => {
   const values = [
     {
       icon: Users,
-      title: "Partnership First",
-      description: "We believe in building relationships, not just buildings. Every project is a partnership.",
+      title: "Partnership",
+      description: "We believe in building relationships, not just buildings. Every project is a partnership built on trust and communication.",
     },
     {
       icon: Award,
-      title: "Quality Commitment",
-      description: "From concept to completion, we maintain the highest standards of craftsmanship and safety.",
+      title: "Reliability",
+      description: "From concept to completion, we maintain the highest standards. On time. On budget. Every time.",
     },
     {
       icon: Target,
-      title: "On-Time Delivery",
-      description: "Strategic planning and efficient execution ensure your project stays on schedule and budget.",
+      title: "Safety",
+      description: "OSHA 30 and ICRA certified with rigorous safety protocols. Your team's safety is our priority.",
     },
     {
       icon: TrendingUp,
-      title: "Continuous Growth",
-      description: "We invest in our team and technology to deliver innovative construction solutions.",
+      title: "Communication",
+      description: "Real-time updates, transparent processes, and proactive problem-solving keep everyone aligned.",
     },
   ];
 
   return (
     <main className="min-h-screen">
+      <SEO
+        title="About Us | Radcliff Construction Group (RCG)"
+        description="Radcliff Construction Group: Partnership-first construction specializing in $25K-$500K renovations for healthcare, office, and multi-site portfolios. ICRA and OSHA 30 certified."
+      />
       <Header />
       
       {/* Hero Banner */}
-      <section className="pt-32 pb-20 bg-primary text-white">
-        <div className="container mx-auto px-6 lg:px-20 text-center">
+      <section className="pt-20 pb-12 md:pt-24 md:pb-16 bg-primary text-white">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-20 text-center">
           <h1 className="mb-6 uppercase">Built on Relationships. Defined by Reliability.</h1>
           <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
             We're more than contractors—we're partners who show up, deliver, and stand behind every project we build.
@@ -45,7 +50,7 @@ const About = () => {
 
       {/* Our Story */}
       <section className="py-24 bg-background">
-        <div className="container mx-auto px-6 lg:px-20">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-20">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
               <h2 className="mb-6 uppercase">Our Story</h2>
@@ -58,6 +63,9 @@ const About = () => {
                 </p>
                 <p>
                   We specialize in renovations and buildouts in environments where downtime isn't an option—healthcare facilities, professional offices, retail spaces, and commercial properties. These aren't easy projects. They require ICRA and OSHA 30 certifications, strict safety protocols, flexible scheduling, and the kind of communication that keeps everyone aligned.
+                </p>
+                <p className="font-semibold text-foreground">
+                  We focus on small- to mid-sized projects ($25K–$500K) and recurring work for clients managing multiple facilities and sites.
                 </p>
                 <p>
                   That's where we shine. We don't just manage projects—we solve problems. We coordinate with your teams. We minimize disruption. And when something unexpected happens (because it always does), we handle it without pointing fingers.
@@ -90,7 +98,7 @@ const About = () => {
 
       {/* Core Values */}
       <section className="py-24 bg-card">
-        <div className="container mx-auto px-6 lg:px-20">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-20">
           <div className="text-center mb-16">
             <h2 className="mb-6 uppercase">Our Core Values</h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">

@@ -1,36 +1,37 @@
 import { ClipboardList, Calendar, Hammer, CheckSquare } from "lucide-react";
+import PageContainer from "@/components/PageContainer";
 
 const steps = [
   {
     icon: ClipboardList,
     number: "01",
     title: "Consultation",
-    description: "We assess your needs, review compliance requirements, and develop a detailed project scope.",
+    description: "Assess needs, review compliance, develop project scope.",
   },
   {
     icon: Calendar,
     number: "02",
     title: "Planning",
-    description: "Strategic scheduling, resource allocation, and risk mitigation plans tailored to your operations.",
+    description: "Strategic scheduling and resource allocation tailored to your operations.",
   },
   {
     icon: Hammer,
     number: "03",
     title: "Execution",
-    description: "Expert craftsmanship with real-time updates, minimal disruption, and strict compliance protocols.",
+    description: "Expert craftsmanship with minimal disruption and strict compliance.",
   },
   {
     icon: CheckSquare,
     number: "04",
     title: "Closeout",
-    description: "Final inspections, documentation, and training to ensure seamless facility operations.",
+    description: "Final inspections and documentation for seamless operations.",
   },
 ];
 
 const Process = () => {
   return (
     <section className="py-24 bg-background">
-      <div className="container mx-auto px-6 lg:px-20">
+      <PageContainer>
         <div className="text-center mb-16">
           <h2 className="mb-4 uppercase">Our Proven Process</h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed">
@@ -66,7 +67,7 @@ const Process = () => {
             </div>
           ))}
         </div>
-      </div>
+      </PageContainer>
     </section>
   );
 };

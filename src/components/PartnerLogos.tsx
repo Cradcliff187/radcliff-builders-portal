@@ -1,6 +1,7 @@
 import { Carousel, CarouselContent, CarouselItem, CarouselDots } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import { usePartnerLogos } from "@/hooks/useCMSContent";
+import PageContainer from "@/components/PageContainer";
 
 const PartnerLogos = () => {
   const { data: logos, isLoading } = usePartnerLogos();
@@ -8,9 +9,9 @@ const PartnerLogos = () => {
   if (isLoading) {
     return (
       <section className="py-16 md:py-24 bg-light-grey" aria-label="Client and partner logos">
-        <div className="container mx-auto px-6 lg:px-20">
+        <PageContainer>
           <div className="text-center text-charcoal">Loading partners...</div>
-        </div>
+        </PageContainer>
       </section>
     );
   }
@@ -53,7 +54,7 @@ const PartnerLogos = () => {
       className="py-16 md:py-24 bg-light-grey"
       aria-label="Client and partner logos"
     >
-      <div className="container mx-auto px-6 lg:px-20">
+      <PageContainer>
         <h2 className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl uppercase tracking-wide text-center text-charcoal mb-3">
           Trusted by leading organizations
         </h2>
@@ -78,7 +79,7 @@ const PartnerLogos = () => {
           </CarouselContent>
           <CarouselDots />
         </Carousel>
-      </div>
+      </PageContainer>
     </section>
   );
 };

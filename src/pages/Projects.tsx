@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Header from "@/components/Header";
+import SEO from "@/components/SEO";
 import Footer from "@/components/Footer";
 import CTASection from "@/components/CTASection";
 import PartnerLogos from "@/components/PartnerLogos";
@@ -23,11 +24,15 @@ const Projects = () => {
 
   return (
     <main className="min-h-screen">
+      <SEO
+        title="Our Projects | Radcliff Construction Group (RCG)"
+        description="View Radcliff Construction Group's portfolio of healthcare, professional, retail, and commercial renovation projects. ICRA-certified construction across Greater Cincinnati, Dayton, Lexington, and Northern Kentucky."
+      />
       <Header />
       
       {/* Hero Banner */}
-      <section className="pt-32 pb-20 bg-primary text-white">
-        <div className="container mx-auto px-6 lg:px-20 text-center">
+      <section className="pt-20 pb-12 md:pt-24 md:pb-16 bg-primary text-white">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-20 text-center">
           <h1 className="mb-6 uppercase">Our Projects</h1>
           <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
             Real projects. Real results. See how we deliver renovations and buildouts that meet deadlines, budgets, and expectations—every time.
@@ -37,7 +42,7 @@ const Projects = () => {
 
       {/* Filter & Projects */}
       <section className="py-24 bg-background">
-        <div className="container mx-auto px-6 lg:px-20">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-20">
           {/* Filter Buttons */}
           <div className="flex flex-wrap justify-center gap-4 mb-16">
             {industries.map((industry) => (
@@ -77,7 +82,7 @@ const Projects = () => {
                     <div className="relative h-64 overflow-hidden">
                       <img
                         src={project.image_url}
-                        alt={project.title}
+                        alt={`${project.industry} renovation project: ${project.title}`}
                         loading="lazy"
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                       />
@@ -88,9 +93,9 @@ const Projects = () => {
                         </p>
                       </div>
                     </div>
-                    <div className="p-6 h-36">
-                      <h3 className="text-xl mb-3">{project.title}</h3>
-                      <p className="text-muted-foreground text-sm leading-relaxed line-clamp-3">
+                    <div className="p-6 min-h-[144px]">
+                      <h3 className="text-xl mb-3 break-words">{project.title}</h3>
+                      <p className="text-muted-foreground text-sm leading-relaxed line-clamp-3 break-words">
                         {project.description}
                       </p>
                     </div>

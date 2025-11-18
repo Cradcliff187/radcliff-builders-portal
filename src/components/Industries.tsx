@@ -1,33 +1,34 @@
 import { Hospital, Briefcase, ShoppingBag, Building2, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import PageContainer from "@/components/PageContainer";
 
 const industries = [
   {
     icon: Hospital,
     title: "Healthcare",
-    description: "Hospitals, outpatient facilities, and medical offices where infection control and patient safety aren't optional—they're essential. We're ICRA and OSHA 30 certified because your patients depend on it.",
-    ctaText: "Schedule a Healthcare Facility Assessment",
+    description: "Specialized construction for hospitals, clinics, and medical offices where infection control and patient safety are non-negotiable. Our ICRA-certified teams deliver compliant, efficient renovations in fully operational environments.",
+    ctaText: "Start Your Healthcare Project",
     ctaLink: "/contact?industry=Healthcare",
   },
   {
     icon: Briefcase,
     title: "Professional",
-    description: "Law firms, corporate offices, and administrative facilities where business continuity matters. We work around your schedule so your team stays productive.",
-    ctaText: "Plan Your Next Office Buildout",
+    description: "Law firms, corporate offices, and administrative spaces where business continuity matters. We work around your schedule to deliver precise, disruption-free upgrades that keep teams productive.",
+    ctaText: "Plan Your Office Buildout",
     ctaLink: "/contact?industry=Professional",
   },
   {
     icon: ShoppingBag,
-    title: "Retail",
-    description: "Stores, restaurants, and customer-facing spaces where downtime means lost revenue. We deliver fast, efficient renovations that keep your doors open.",
-    ctaText: "Request a Multi-Site Rollout Estimate",
+    title: "Retail & Multi-Site",
+    description: "Stores, restaurants, banks, and customer-facing spaces where downtime means lost revenue. We deliver fast, consistent renovations across regional portfolios, keeping your doors open and your brand aligned.",
+    ctaText: "Request a Multi-Site Estimate",
     ctaLink: "/contact?industry=Retail",
   },
   {
     icon: Building2,
     title: "Commercial",
-    description: "Office buildings, warehouses, and mixed-use developments that require flexible scheduling, code compliance, and zero surprises.",
+    description: "Office buildings, mixed-use spaces, and operational environments requiring flexible scheduling, code compliance, and zero surprises. We deliver safe, predictable results for high-stakes commercial spaces.",
     ctaText: "Start Your Commercial Project",
     ctaLink: "/contact?industry=Commercial",
   },
@@ -36,7 +37,7 @@ const industries = [
 const Industries = () => {
   return (
     <section className="py-24 bg-background">
-      <div className="container mx-auto px-6 lg:px-20">
+      <PageContainer>
         <div className="text-center mb-16">
           <h2 className="mb-6 uppercase">Trusted in These Environments</h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
@@ -44,32 +45,60 @@ const Industries = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {/* Desktop: 2x2 Grid */}
+        <div className="hidden md:grid md:grid-cols-2 gap-8">
           {industries.map((industry) => (
-            <div
+            <Link
               key={industry.title}
-              className="bg-card p-6 md:p-8 rounded-none hover:shadow-lg transition-all duration-300 group"
+              to={industry.ctaLink}
+              className="bg-light-grey p-6 rounded-none hover:shadow-md transition-all duration-300 group block h-full flex flex-col"
             >
-              <div className="flex flex-col md:flex-row items-start gap-4 md:gap-6">
-                <div className="flex-shrink-0 w-full md:w-auto flex md:block justify-center md:justify-start">
-                  <div className="w-12 h-12 md:w-16 md:h-16 rounded-none bg-secondary/10 flex items-center justify-center group-hover:bg-secondary/20 transition-colors">
-                    <industry.icon className="w-6 h-6 md:w-8 md:h-8 text-secondary" />
-                  </div>
+              <div className="flex items-start gap-4 mb-4">
+                <div className="flex-shrink-0">
+                  <industry.icon className="w-8 h-8 text-secondary" />
                 </div>
-                <div className="w-full">
-                  <h3 className="mb-3 uppercase text-2xl text-center md:text-left">{industry.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed mb-4 md:mb-6 text-center md:text-left">
-                    {industry.description}
-                  </p>
-                  <Button variant="outline" size="sm" asChild className="group w-full md:w-auto text-xs md:text-sm">
-                    <Link to={industry.ctaLink}>
-                      <span className="hidden md:inline">{industry.ctaText}</span>
-                      <span className="md:hidden">Get Started</span>
-                      <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                    </Link>
-                  </Button>
-                </div>
+                <h3 className="uppercase text-xl font-heading font-semibold break-words">{industry.title}</h3>
               </div>
+              <p className="text-muted-foreground leading-relaxed mb-4 flex-grow">
+                {industry.description}
+              </p>
+              <div className="mt-auto">
+                <span className="text-sm font-heading font-semibold uppercase text-secondary">
+                  {industry.ctaText}
+                </span>
+                <ArrowRight className="ml-2 w-4 h-4 inline text-secondary group-hover:translate-x-1 transition-transform" />
+              </div>
+            </Link>
+          ))}
+        </div>
+
+        {/* Mobile: Stacked Vertical */}
+        <div className="flex flex-col gap-0 md:hidden">
+          {industries.map((industry, index) => (
+            <div key={industry.title}>
+              <Link
+                to={industry.ctaLink}
+                className="bg-light-grey p-6 block hover:bg-light-grey/80 transition-colors"
+              >
+                <div className="flex items-start gap-3 mb-3">
+                  <div className="flex-shrink-0">
+                    <industry.icon className="w-5 h-5 text-secondary" />
+                  </div>
+                  <h3 className="uppercase text-lg font-heading font-semibold break-words">{industry.title}</h3>
+                </div>
+                <p className="text-muted-foreground leading-relaxed mb-4 text-sm">
+                  {industry.description}
+                </p>
+                <div>
+                  <span className="text-xs font-heading font-semibold uppercase text-secondary">
+                    {industry.ctaText}
+                  </span>
+                  <ArrowRight className="ml-2 w-3 h-3 inline text-secondary" />
+                </div>
+              </Link>
+              {index < industries.length - 1 && (
+                <div className="h-px bg-border" />
+              )}
             </div>
           ))}
         </div>
@@ -89,7 +118,7 @@ const Industries = () => {
             </Link>
           </Button>
         </div>
-      </div>
+      </PageContainer>
     </section>
   );
 };

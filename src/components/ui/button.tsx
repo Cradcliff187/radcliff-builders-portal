@@ -18,6 +18,8 @@ const buttonVariants = cva(
         hero: "bg-secondary text-secondary-foreground hover:bg-secondary/90 shadow-lg hover:shadow-xl hover:scale-105",
         admin: "border-2 border-navy bg-white text-navy hover:bg-navy hover:text-white transition-colors",
         danger: "border-2 border-red-600 bg-white text-red-600 hover:bg-red-600 hover:text-white transition-colors",
+        primary: "bg-secondary text-secondary-foreground hover:bg-secondary/90 shadow-md hover:shadow-lg rounded-md",
+        "secondary-button": "bg-white border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground rounded-md",
       },
       size: {
         default: "h-12 px-8 py-3 text-sm",

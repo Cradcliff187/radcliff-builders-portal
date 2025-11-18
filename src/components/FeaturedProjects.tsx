@@ -3,12 +3,13 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useFeaturedProjects } from "@/hooks/useCMSContent";
+import PageContainer from "@/components/PageContainer";
 
 const FeaturedProjects = () => {
   const { data: projects = [], isLoading } = useFeaturedProjects();
   return (
     <section className="py-24 bg-card">
-      <div className="container mx-auto px-6 lg:px-20">
+      <PageContainer>
         <div className="text-center mb-16">
           <h2 className="mb-6 uppercase">Featured Projects</h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
@@ -36,17 +37,18 @@ const FeaturedProjects = () => {
                   <div className="relative h-64 overflow-hidden">
                     <img
                       src={project.image_url}
-                      alt={project.title}
+                      alt={`${project.industry} project: ${project.title}`}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      loading="lazy"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-navy/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </div>
-                  <div className="p-6 h-36">
-                    <p className="text-secondary text-sm font-heading font-semibold uppercase tracking-wider mb-2">
+                  <div className="p-6 min-h-[144px]">
+                    <p className="text-secondary text-sm font-heading font-semibold uppercase tracking-wider mb-2 break-words">
                       {project.industry}
                     </p>
-                    <h3 className="text-xl mb-2">{project.title}</h3>
-                    <p className="text-muted-foreground text-sm leading-relaxed line-clamp-2">
+                    <h3 className="text-xl mb-2 break-words">{project.title}</h3>
+                    <p className="text-muted-foreground text-sm leading-relaxed line-clamp-2 break-words">
                       {project.description}
                     </p>
                   </div>
@@ -61,7 +63,7 @@ const FeaturedProjects = () => {
             <Link to="/projects">View All Projects</Link>
           </Button>
         </div>
-      </div>
+      </PageContainer>
     </section>
   );
 };

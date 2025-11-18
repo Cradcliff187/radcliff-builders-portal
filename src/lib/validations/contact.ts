@@ -9,9 +9,8 @@ export const contactFormSchema = z.object({
   organization: z
     .string()
     .trim()
-    .max(100, "Organization name must be less than 100 characters")
-    .optional()
-    .or(z.literal("")),
+    .min(2, "Organization must be at least 2 characters")
+    .max(100, "Organization name must be less than 100 characters"),
   email: z
     .string()
     .trim()

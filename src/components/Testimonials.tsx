@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Quote } from "lucide-react";
+import PageContainer from "@/components/PageContainer";
 
 const testimonials = [
   {
@@ -39,7 +40,7 @@ const Testimonials = () => {
 
   return (
     <section className="py-24 bg-card">
-      <div className="container mx-auto px-6 lg:px-20">
+      <PageContainer>
         <div className="max-w-4xl mx-auto text-center">
           <Quote className="w-12 h-12 text-secondary mx-auto mb-8" />
           
@@ -73,7 +74,7 @@ const Testimonials = () => {
             ))}
           </div>
         </div>
-      </div>
+      </PageContainer>
     </section>
   );
 };

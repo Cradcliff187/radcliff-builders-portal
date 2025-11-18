@@ -1,69 +1,53 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CTASection from "@/components/CTASection";
-import { Button } from "@/components/ui/button";
+import SEO from "@/components/SEO";
 import { Link } from "react-router-dom";
-import { Hospital, Briefcase, ShoppingBag, Building2, CheckCircle2, ArrowRight } from "lucide-react";
+import { Hospital, Briefcase, ShoppingBag, Building2, ArrowRight } from "lucide-react";
 
 const industries = [
   {
     icon: Hospital,
     title: "Healthcare",
-    description: "Specialized construction for medical facilities requiring the highest standards of safety, compliance, and precision.",
-    features: [
-      "ICRA Certified Teams",
-      "Infection Control Protocols",
-      "24/7 Occupied Facility Experience",
-      "Medical Equipment Coordination",
-      "HIPAA Compliant Practices",
-    ],
+    description: "Specialized construction for hospitals, clinics, and medical offices where infection control and patient safety are non-negotiable. Our ICRA-certified teams deliver compliant, efficient renovations in fully operational environments.",
+    ctaText: "Start Your Healthcare Project",
+    routingKey: "Healthcare",
   },
   {
     icon: Briefcase,
     title: "Professional",
-    description: "Sophisticated office spaces, corporate facilities, and professional environments that enhance productivity and reflect your brand.",
-    features: [
-      "Class A Office Construction",
-      "Flexible Workspace Design",
-      "Technology Infrastructure",
-      "Security & Access Control",
-      "Minimal Business Disruption",
-    ],
+    description: "Law firms, corporate offices, and administrative spaces where business continuity matters. We work around your schedule to deliver precise, disruption-free upgrades that keep teams productive.",
+    ctaText: "Plan Your Office Buildout",
+    routingKey: "Professional",
   },
   {
     icon: ShoppingBag,
-    title: "Retail",
-    description: "Building customer-focused retail spaces that enhance brand experience while meeting tight delivery schedules.",
-    features: [
-      "Fast-Track Scheduling",
-      "Brand Standards Compliance",
-      "After-Hours Construction",
-      "Tenant Coordination",
-      "Customer Experience Focus",
-    ],
+    title: "Retail & Multi-Site",
+    description: "Stores, restaurants, banks, and customer-facing spaces where downtime means lost revenue. We deliver fast, consistent renovations across regional portfolios, keeping your doors open and your brand aligned.",
+    ctaText: "Request a Multi-Site Estimate",
+    routingKey: "Retail",
   },
   {
     icon: Building2,
     title: "Commercial",
-    description: "Professional office and commercial spaces designed to meet modern business needs and sustainability goals.",
-    features: [
-      "Class A Office Experience",
-      "Sustainable Building Practices",
-      "Technology Integration",
-      "Flexible Workspace Design",
-      "Minimal Business Disruption",
-    ],
+    description: "Office buildings, mixed-use spaces, and operational environments requiring flexible scheduling, code compliance, and zero surprises. We deliver safe, predictable results for high-stakes commercial spaces.",
+    ctaText: "Start Your Commercial Project",
+    routingKey: "Commercial",
   },
 ];
 
 const IndustriesPage = () => {
   return (
     <main className="min-h-screen">
+      <SEO
+        title="Industries We Serve | Radcliff Construction Group (RCG)"
+        description="ICRA-certified healthcare construction, professional office renovations, retail and multi-site buildouts, commercial construction. Serving Greater Cincinnati, Dayton, Lexington, and Northern Kentucky."
+      />
       <Header />
       
       {/* Hero Banner */}
-      <section className="pt-32 pb-20 bg-primary text-white">
-        <div className="container mx-auto px-6 lg:px-20 text-center">
+      <section className="pt-20 pb-12 md:pt-24 md:pb-16 bg-primary text-white">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-20 text-center">
           <h1 className="mb-6 uppercase">Industries We Serve</h1>
           <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
             Specialized expertise across diverse construction sectors with a commitment to excellence
@@ -73,48 +57,61 @@ const IndustriesPage = () => {
 
       {/* Industries Detail */}
       <section className="py-24 bg-background">
-        <div className="container mx-auto px-6 lg:px-20">
-          <div className="space-y-24">
-            {industries.map((industry, index) => (
-              <div
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-20">
+          {/* Desktop: 2x2 Grid */}
+          <div className="hidden md:grid md:grid-cols-2 gap-8">
+            {industries.map((industry) => (
+              <Link
                 key={industry.title}
-                className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${
-                  index % 2 === 1 ? "lg:flex-row-reverse" : ""
-                }`}
+                to={`/contact?industry=${industry.routingKey}`}
+                className="bg-light-grey p-8 rounded-none hover:shadow-md transition-all duration-300 group block h-full flex flex-col"
               >
-                <div className={index % 2 === 1 ? "lg:order-2" : ""}>
-                  <div className="inline-flex items-center justify-center w-20 h-20 rounded-none bg-secondary/10 mb-6">
+                <div className="flex items-start gap-4 mb-4">
+                  <div className="flex-shrink-0">
                     <industry.icon className="w-10 h-10 text-secondary" />
                   </div>
-                  <h2 className="mb-6 uppercase">{industry.title}</h2>
-                  <p className="text-muted-foreground text-lg leading-relaxed mb-8">
+                  <h2 className="uppercase text-2xl font-heading font-semibold break-words">{industry.title}</h2>
+                </div>
+                <p className="text-muted-foreground text-lg leading-relaxed mb-6 flex-grow">
+                  {industry.description}
+                </p>
+                <div className="mt-auto">
+                  <span className="text-sm font-heading font-semibold uppercase text-secondary">
+                    {industry.ctaText}
+                  </span>
+                  <ArrowRight className="ml-2 w-4 h-4 inline text-secondary group-hover:translate-x-1 transition-transform" />
+                </div>
+              </Link>
+            ))}
+          </div>
+
+          {/* Mobile: Stacked Vertical */}
+          <div className="flex flex-col gap-0 md:hidden">
+            {industries.map((industry, index) => (
+              <div key={industry.title}>
+                <Link
+                  to={`/contact?industry=${industry.routingKey}`}
+                  className="bg-light-grey p-6 block hover:bg-light-grey/80 transition-colors"
+                >
+                  <div className="flex items-start gap-3 mb-3">
+                    <div className="flex-shrink-0">
+                      <industry.icon className="w-6 h-6 text-secondary" />
+                    </div>
+                    <h2 className="uppercase text-xl font-heading font-semibold break-words">{industry.title}</h2>
+                  </div>
+                  <p className="text-muted-foreground leading-relaxed mb-4 text-sm">
                     {industry.description}
                   </p>
-                  <ul className="space-y-3">
-                    {industry.features.map((feature) => (
-                      <li key={feature} className="flex items-start gap-3">
-                        <CheckCircle2 className="w-6 h-6 text-secondary flex-shrink-0 mt-0.5" />
-                        <span className="text-foreground">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <Button 
-                    variant="default" 
-                    size="lg" 
-                    asChild 
-                    className="mt-8 bg-primary text-white hover:bg-primary/90 uppercase tracking-wider"
-                  >
-                    <Link to={`/contact?industry=${industry.title}`}>
-                      Get Started with {industry.title}
-                      <ArrowRight className="w-5 h-5 ml-2" />
-                    </Link>
-                  </Button>
-                </div>
-                <div className={`bg-card p-12 rounded-none ${index % 2 === 1 ? "lg:order-1" : ""}`}>
-                  <div className="aspect-square bg-muted rounded-none flex items-center justify-center">
-                    <industry.icon className="w-32 h-32 text-secondary/20" />
+                  <div>
+                    <span className="text-xs font-heading font-semibold uppercase text-secondary">
+                      {industry.ctaText}
+                    </span>
+                    <ArrowRight className="ml-2 w-3 h-3 inline text-secondary" />
                   </div>
-                </div>
+                </Link>
+                {index < industries.length - 1 && (
+                  <div className="h-px bg-border" />
+                )}
               </div>
             ))}
           </div>

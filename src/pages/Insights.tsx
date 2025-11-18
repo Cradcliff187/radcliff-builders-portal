@@ -2,6 +2,7 @@ import { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CTASection from "@/components/CTASection";
+import SEO from "@/components/SEO";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -84,11 +85,15 @@ const Insights = () => {
 
   return (
     <main className="min-h-screen">
+      <SEO
+        title="Insights & Resources | Radcliff Construction Group (RCG)"
+        description="Construction insights, case studies, and resources from Radcliff Construction Group. Practical guidance for healthcare renovations, commercial buildouts, and multi-site projects."
+      />
       <Header />
       
       {/* Hero Banner */}
-      <section className="pt-32 pb-20 bg-primary text-white">
-        <div className="container mx-auto px-6 lg:px-20 text-center">
+      <section className="pt-20 pb-12 md:pt-24 md:pb-16 bg-primary text-white">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-20 text-center">
           <h1 className="mb-6 uppercase">Insights & Resources</h1>
           <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
             Practical guidance, case studies, and insights from the field—built on real projects, real challenges, and real solutions.
@@ -98,7 +103,7 @@ const Insights = () => {
 
       {/* Latest Articles */}
       <section className="py-24 bg-background">
-        <div className="container mx-auto px-6 lg:px-20">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-20">
           <div className="mb-12">
             <h2 className="mb-4 uppercase">Latest Articles</h2>
             <p className="text-muted-foreground text-lg">
@@ -177,7 +182,7 @@ const Insights = () => {
 
       {/* Case Studies */}
       <section className="py-24 bg-card">
-        <div className="container mx-auto px-6 lg:px-20">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-20">
           <div className="mb-12">
             <h2 className="mb-4 uppercase">Case Studies</h2>
             <p className="text-muted-foreground text-lg">
@@ -213,28 +218,28 @@ const Insights = () => {
                         {study.industry}
                       </span>
                     </div>
-                    <h3 className="text-2xl font-heading font-semibold uppercase mb-6">
+                    <h3 className="text-2xl font-heading font-semibold uppercase mb-6 break-words">
                       {study.title}
                     </h3>
                   </div>
                   
                   <div>
                     <h4 className="text-sm font-heading font-semibold uppercase text-secondary mb-2">Challenge</h4>
-                    <p className="text-muted-foreground text-sm leading-relaxed">
+                    <p className="text-muted-foreground text-sm leading-relaxed break-words">
                       {study.challenge}
                     </p>
                   </div>
                   
                   <div>
                     <h4 className="text-sm font-heading font-semibold uppercase text-secondary mb-2">Solution</h4>
-                    <p className="text-muted-foreground text-sm leading-relaxed">
+                    <p className="text-muted-foreground text-sm leading-relaxed break-words">
                       {study.solution}
                     </p>
                   </div>
                   
                   <div>
                     <h4 className="text-sm font-heading font-semibold uppercase text-secondary mb-2">Result</h4>
-                    <p className="text-muted-foreground text-sm leading-relaxed">
+                    <p className="text-muted-foreground text-sm leading-relaxed break-words">
                       {study.result}
                     </p>
                   </div>
@@ -270,7 +275,7 @@ const Insights = () => {
 
       {/* Resources Section */}
       <section className="py-24 bg-background">
-        <div className="container mx-auto px-6 lg:px-20">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-20">
           <div className="mb-12">
             <h2 className="mb-4 uppercase">Resources & Downloads</h2>
             <p className="text-muted-foreground text-lg">

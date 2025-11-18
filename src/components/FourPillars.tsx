@@ -1,4 +1,5 @@
 import { Handshake, Award, Zap, MapPin } from "lucide-react";
+import PageContainer from "@/components/PageContainer";
 
 const pillars = [
   {
@@ -26,7 +27,7 @@ const pillars = [
 const FourPillars = () => {
   return (
     <section className="py-24 bg-background">
-      <div className="container mx-auto px-6 lg:px-20">
+      <PageContainer>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {pillars.map((pillar) => (
             <div key={pillar.title} className="group">
@@ -40,7 +41,7 @@ const FourPillars = () => {
             </div>
           ))}
         </div>
-      </div>
+      </PageContainer>
     </section>
   );
 };

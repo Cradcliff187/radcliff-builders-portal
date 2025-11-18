@@ -41,8 +41,8 @@ const ProjectDetail = () => {
     return (
       <>
         <Header />
-        <div className="pt-32 pb-24">
-          <div className="container mx-auto px-6 lg:px-20">
+        <div className="pt-20 pb-12 md:pt-24 md:pb-16">
+          <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-20">
             <Skeleton className="h-12 w-3/4 mb-8" />
             <Skeleton className="h-64 w-full mb-12" />
             <div className="grid lg:grid-cols-3 gap-12">
@@ -64,7 +64,7 @@ const ProjectDetail = () => {
       <>
         <Header />
         <div className="pt-32 pb-24 text-center">
-          <div className="container mx-auto px-6 lg:px-20">
+          <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-20">
             <h1 className="text-4xl font-heading font-bold text-primary mb-6 uppercase tracking-wide">
               Project Not Found
             </h1>
@@ -114,7 +114,7 @@ const ProjectDetail = () => {
         
         {/* Content */}
         <div className="relative z-10 w-full pb-12 pt-32">
-          <div className="container mx-auto px-6 lg:px-20">
+          <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-20">
             <Breadcrumb className="mb-8">
               <BreadcrumbList>
                 <BreadcrumbItem>
@@ -376,7 +376,7 @@ const ProjectDetail = () => {
       {/* More Projects from Same Industry */}
       {relatedProjects && relatedProjects.length > 2 && (
         <section className="py-24 bg-white">
-          <div className="container mx-auto px-6 lg:px-20">
+          <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-20">
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-12 uppercase tracking-wide text-center">
               More {project.industry} Projects
             </h2>
@@ -396,10 +396,10 @@ const ProjectDetail = () => {
                       />
                     </div>
                     <CardContent className="p-6">
-                      <h3 className="text-xl font-heading font-semibold text-primary mb-2 uppercase tracking-wide group-hover:text-gold transition-colors">
+                      <h3 className="text-xl font-heading font-semibold text-primary mb-2 uppercase tracking-wide group-hover:text-gold transition-colors break-words">
                         {relatedProject.title}
                       </h3>
-                      <p className="text-muted-foreground line-clamp-2">
+                      <p className="text-muted-foreground line-clamp-2 break-words">
                         {relatedProject.description}
                       </p>
                     </CardContent>

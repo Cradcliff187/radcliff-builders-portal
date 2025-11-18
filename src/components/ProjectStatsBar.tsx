@@ -40,7 +40,7 @@ const ProjectStatsBar = ({
 
   return (
     <section className="bg-primary py-8 border-b border-primary/20">
-      <div className="container mx-auto px-6 lg:px-20">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-20">
         <div className={`grid grid-cols-2 md:grid-cols-3 lg:grid-cols-${stats.length} gap-6`}>
           {stats.map((stat) => (
             <div key={stat.label} className="text-center">

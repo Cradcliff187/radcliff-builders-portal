@@ -18,7 +18,7 @@ const TeamPreviewGrid = () => {
   if (isLoading) {
     return (
       <section className="py-24 bg-light-grey">
-        <div className="container mx-auto px-6 lg:px-20">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-20">
           <div className="text-center mb-16">
             <h2 className="mb-6 uppercase">Meet the Team</h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">

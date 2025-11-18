@@ -9,7 +9,7 @@ interface ProjectTestimonialProps {
 const ProjectTestimonial = ({ quote, author, title }: ProjectTestimonialProps) => {
   return (
     <section className="py-24 bg-light-grey">
-      <div className="container mx-auto px-6 lg:px-20">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-20">
         <div className="max-w-4xl mx-auto text-center">
           <Quote className="w-12 h-12 text-gold mx-auto mb-8" />
           <blockquote className="text-2xl md:text-3xl font-body text-charcoal leading-relaxed mb-8 italic">
