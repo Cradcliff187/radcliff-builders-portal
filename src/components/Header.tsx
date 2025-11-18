@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import rcgLogo from "@/assets/rcg-logo-transparent.png";
+import rcgLogoColor from "@/assets/rcg-logo-color.png";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -42,26 +43,26 @@ const Header = () => {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center p-6">
-            {/* Desktop: Original Transparent Logo with Filter */}
+            {/* Desktop: New Color Logo */}
             <img 
-              src={rcgLogo} 
+              src={rcgLogoColor} 
               alt="Radcliff Construction Group" 
               className="hidden md:block h-16 w-auto transition-all duration-300 object-contain"
               style={{
-                filter: 'brightness(0) invert(1) drop-shadow(0 0 20px rgba(255, 255, 255, 0.3))',
+                filter: 'drop-shadow(0 0 20px rgba(255, 255, 255, 0.3))',
                 imageRendering: '-webkit-optimize-contrast',
-                maxWidth: '240px'
+                maxWidth: '280px'
               }}
             />
-            {/* Mobile: Original Transparent Logo with Filter */}
+            {/* Mobile: New Color Logo */}
             <img 
-              src={rcgLogo} 
+              src={rcgLogoColor} 
               alt="RCG" 
               className="block md:hidden h-12 w-auto transition-all duration-300 object-contain"
               style={{
-                filter: 'brightness(0) invert(1) drop-shadow(0 0 20px rgba(255, 255, 255, 0.3))',
+                filter: 'drop-shadow(0 0 20px rgba(255, 255, 255, 0.3))',
                 imageRendering: '-webkit-optimize-contrast',
-                maxWidth: '160px'
+                maxWidth: '200px'
               }}
             />
           </Link>
