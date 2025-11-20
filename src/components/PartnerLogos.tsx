@@ -62,23 +62,25 @@ const PartnerLogos = () => {
           Healthcare • Professional • Retail • Commercial
         </p>
 
-        <Carousel
-          opts={{ loop: true }}
-          plugins={[Autoplay({ delay: 3500, stopOnInteraction: true })]}
-          className="w-full"
-        >
-          <CarouselContent className="-ml-4">
-            {logos.map((logo) => (
-              <CarouselItem 
-                key={logo.id} 
-                className="pl-4 basis-1/2 md:basis-1/4 lg:basis-1/6"
-              >
-                <LogoCard logo={logo} />
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <CarouselDots />
-        </Carousel>
+        <div className="px-2 sm:px-0">
+          <Carousel
+            opts={{ loop: true }}
+            plugins={[Autoplay({ delay: 3500, stopOnInteraction: true })]}
+            className="w-full"
+          >
+            <CarouselContent className="-ml-4">
+              {logos.map((logo) => (
+                <CarouselItem 
+                  key={logo.id} 
+                  className="pl-4 basis-1/2 md:basis-1/4 lg:basis-1/6"
+                >
+                  <LogoCard logo={logo} />
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselDots />
+          </Carousel>
+        </div>
       </PageContainer>
     </section>
   );
