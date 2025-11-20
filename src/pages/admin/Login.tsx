@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
 import { toast } from "@/hooks/use-toast";
 import { Lock, Mail, Eye, EyeOff } from "lucide-react";
-import rcgLogo from "@/assets/rcg-logo-transparent.png";
+import rcgLogoColor from "@/assets/rcg-logo-color.png";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -63,9 +63,12 @@ const Login = () => {
       <Card className="w-full max-w-md p-8 rounded-none shadow-xl">
         <div className="text-center mb-8">
           <img 
-            src={rcgLogo} 
+            src={rcgLogoColor} 
             alt="RCG" 
-            className="h-16 mx-auto mb-6"
+            className="h-16 mx-auto mb-6 object-contain"
+            style={{
+              maxWidth: '240px'
+            }}
           />
           <h1 className="text-2xl font-heading font-semibold uppercase tracking-wide mb-2">
             Team Portal
