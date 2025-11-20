@@ -15,7 +15,7 @@ import {
   Users
 } from "lucide-react";
 import { Link } from "react-router-dom";
-import rcgLogo from "@/assets/rcg-logo-transparent.png";
+import rcgLogoColor from "@/assets/rcg-logo-color.png";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -97,7 +97,16 @@ const Dashboard = () => {
         <div className="container mx-auto px-4 lg:px-20">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
             <div className="flex items-center gap-2 md:gap-4">
-              <img src={rcgLogo} alt="RCG" className="h-8 md:h-12" />
+              <img 
+                src={rcgLogoColor} 
+                alt="RCG" 
+                className="h-8 md:h-12 object-contain hover:scale-105 transform-gpu transition-all duration-300"
+                style={{
+                  filter: 'drop-shadow(0 0 10px rgba(255, 255, 255, 0.2))',
+                  imageRendering: '-webkit-optimize-contrast',
+                  maxWidth: '180px'
+                }}
+              />
               <div>
                 <h1 className="text-sm md:text-xl font-heading font-semibold uppercase tracking-wide">
                   Content Manager
