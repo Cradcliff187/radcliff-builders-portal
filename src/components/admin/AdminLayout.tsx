@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/hooks/use-toast";
 import { ArrowLeft, LogOut, Home } from "lucide-react";
-import rcgLogo from "@/assets/rcg-logo-transparent.png";
+import rcgLogoColor from "@/assets/rcg-logo-color.png";
 
 interface AdminLayoutProps {
   children: React.ReactNode;
@@ -31,9 +31,14 @@ export default function AdminLayout({ children, title }: AdminLayoutProps) {
             <div className="flex items-center gap-2 md:gap-6">
               <Link to="/admin/dashboard" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
                 <img 
-                  src={rcgLogo} 
+                  src={rcgLogoColor} 
                   alt="RCG Logo" 
-                  className="h-8 md:h-10"
+                  className="h-8 md:h-10 object-contain"
+                  style={{
+                    filter: 'drop-shadow(0 0 10px rgba(255, 255, 255, 0.2))',
+                    imageRendering: '-webkit-optimize-contrast',
+                    maxWidth: '180px'
+                  }}
                 />
                 <div className="flex flex-col">
                   <span className="text-white font-montserrat font-bold text-xs md:text-sm uppercase tracking-wide">
