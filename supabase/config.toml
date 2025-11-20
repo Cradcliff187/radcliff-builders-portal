@@ -2,3 +2,6 @@ project_id = "osothwrzhvgojhomaysk"
 
 [functions.send-contact-email]
 verify_jwt = false
+
+[functions.create-admin-users]
+verify_jwt = false
