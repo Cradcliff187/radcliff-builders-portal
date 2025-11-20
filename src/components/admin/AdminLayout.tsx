@@ -35,7 +35,7 @@ export default function AdminLayout({ children, title }: AdminLayoutProps) {
                   alt="RCG Logo" 
                   className="h-8 md:h-10 object-contain"
                   style={{
-                    filter: 'drop-shadow(0 0 10px rgba(255, 255, 255, 0.2))',
+                    filter: 'brightness(1.1) contrast(1.15) drop-shadow(0 0 8px rgba(255, 255, 255, 0.3))',
                     imageRendering: '-webkit-optimize-contrast',
                     maxWidth: '180px'
                   }}
