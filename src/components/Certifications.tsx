@@ -8,8 +8,17 @@ const certifications = [
 
 const Certifications = () => {
   return (
-    <section className="py-24 bg-light-grey">
+    <section className="py-24 bg-navy">
       <div className="max-w-[1440px] mx-auto px-6 lg:px-20">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-white uppercase tracking-wide mb-6">
+            Fully Licensed and Certified
+          </h2>
+          <p className="text-white/90 text-lg max-w-3xl mx-auto">
+            Your peace of mind is our priority. We maintain the highest industry standards and certifications.
+          </p>
+        </div>
+        
         <div className="flex flex-wrap justify-center items-center gap-12 lg:gap-20">
           {certifications.map((cert) => (
             <div key={cert.label} className="flex flex-col items-center gap-3 w-40">
@@ -26,7 +35,7 @@ const Certifications = () => {
                   />
                 )}
               </div>
-              <span className="text-foreground font-heading font-semibold uppercase tracking-wider text-sm text-center">
+              <span className="text-white font-heading font-semibold uppercase tracking-wider text-sm text-center">
                 {cert.label}
               </span>
             </div>
