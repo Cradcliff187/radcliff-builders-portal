@@ -47,7 +47,7 @@ const Header = () => {
             <img 
               src={rcgLogoColor} 
               alt="Radcliff Construction Group" 
-              className="hidden md:block h-16 w-auto transition-all duration-300 object-contain"
+              className="hidden md:block h-16 w-auto transition-all duration-300 object-contain hover:scale-105 transform-gpu"
               style={{
                 filter: 'drop-shadow(0 0 20px rgba(255, 255, 255, 0.3))',
                 imageRendering: '-webkit-optimize-contrast',
@@ -58,7 +58,7 @@ const Header = () => {
             <img 
               src={rcgLogoColor} 
               alt="RCG" 
-              className="block md:hidden h-12 w-auto transition-all duration-300 object-contain"
+              className="block md:hidden h-12 w-auto transition-all duration-300 object-contain hover:scale-105 transform-gpu"
               style={{
                 filter: 'drop-shadow(0 0 20px rgba(255, 255, 255, 0.3))',
                 imageRendering: '-webkit-optimize-contrast',
