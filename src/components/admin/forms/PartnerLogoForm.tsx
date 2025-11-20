@@ -59,6 +59,7 @@ export default function PartnerLogoForm({
       }
       setImageFile(file);
       setImagePreview(URL.createObjectURL(file));
+      setValue("image_url", "pending_upload");
     }
   };
 
