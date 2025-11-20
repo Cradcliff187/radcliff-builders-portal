@@ -102,7 +102,7 @@ const Dashboard = () => {
                 alt="RCG" 
                 className="h-8 md:h-12 object-contain hover:scale-105 transform-gpu transition-all duration-300"
                 style={{
-                  filter: 'drop-shadow(0 0 10px rgba(255, 255, 255, 0.2))',
+                  filter: 'brightness(1.1) contrast(1.15) drop-shadow(0 0 8px rgba(255, 255, 255, 0.3))',
                   imageRendering: '-webkit-optimize-contrast',
                   maxWidth: '180px'
                 }}
