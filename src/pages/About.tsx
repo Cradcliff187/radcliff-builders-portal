@@ -65,7 +65,7 @@ const About = () => {
                   We specialize in renovations and buildouts in environments where downtime isn't an option—healthcare facilities, professional offices, retail spaces, and commercial properties. These aren't easy projects. They require ICRA and OSHA 30 certifications, strict safety protocols, flexible scheduling, and the kind of communication that keeps everyone aligned.
                 </p>
                 <p className="font-semibold text-foreground">
-                  We focus on small- to mid-sized projects ($25K–$500K) and recurring work for clients managing multiple facilities and sites.
+                  We focus on small- to mid-sized projects and recurring work for clients managing multiple facilities and sites.
                 </p>
                 <p>
                   That's where we shine. We don't just manage projects—we solve problems. We coordinate with your teams. We minimize disruption. And when something unexpected happens (because it always does), we handle it without pointing fingers.
