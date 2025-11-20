@@ -32,7 +32,7 @@ const Footer = () => {
             <h4 className="font-heading font-semibold uppercase tracking-wider mb-4 text-sm">
               Quick Links
             </h4>
-            <nav className="flex flex-col gap-2">
+            <nav className="grid grid-cols-2 gap-x-8 gap-y-2">
               {[
                 { to: "/", label: "Home" },
                 { to: "/about", label: "About" },
