@@ -27,7 +27,7 @@ const Header = () => {
     { to: "/services", label: "Services" },
     { to: "/projects", label: "Projects" },
     { to: "/industries", label: "Industries" },
-    { to: "/insights", label: "Insights" },
+    // { to: "/insights", label: "Insights" }, // Hidden until content is ready
     { to: "/contact", label: "Contact" },
   ];
 
