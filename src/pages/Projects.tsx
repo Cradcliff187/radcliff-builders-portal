@@ -5,6 +5,7 @@ import SEO from "@/components/SEO";
 import Footer from "@/components/Footer";
 import CTASection from "@/components/CTASection";
 import PartnerLogos from "@/components/PartnerLogos";
+import ContentComingSoon from "@/components/ContentComingSoon";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -70,8 +71,11 @@ const Projects = () => {
                 </Card>
               ))
             ) : filteredProjects.length === 0 ? (
-              <div className="col-span-full text-center py-12">
-                <p className="text-muted-foreground">No projects found.</p>
+              <div className="col-span-full">
+                <ContentComingSoon
+                  title={`${selectedIndustry} Projects Coming Soon`}
+                  message={`We're currently updating our ${selectedIndustry.toLowerCase()} project portfolio. Check back soon to see our latest work in this sector.`}
+                />
               </div>
             ) : (
               filteredProjects.map((project) => (
