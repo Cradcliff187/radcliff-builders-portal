@@ -32,7 +32,7 @@ const FeaturedProjects = () => {
             projects.map((project) => (
               <Link key={project.id} to={`/projects/${project.slug}`}>
                 <Card
-                  className="overflow-hidden group cursor-pointer hover:shadow-xl transition-all duration-300"
+                  className="overflow-hidden group cursor-pointer hover:shadow-2xl hover:-translate-y-1 transition-all duration-300"
                 >
                   <div className="relative h-64 overflow-hidden">
                     <img

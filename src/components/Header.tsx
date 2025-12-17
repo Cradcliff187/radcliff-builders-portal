@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { motion, AnimatePresence } from "framer-motion";
 import rcgLogo from "@/assets/rcg-logo-transparent.png";
 import rcgLogoColor from "@/assets/rcg-logo-color.png";
 
@@ -73,11 +74,13 @@ const Header = () => {
               <Link
                 key={link.to}
                 to={link.to}
-                className={`text-sm font-heading font-semibold uppercase tracking-wider transition-colors ${
-                  location.pathname === link.to
-                    ? "text-secondary"
-                    : "text-white hover:text-secondary"
-                }`}
+                className={`relative text-sm font-heading font-semibold uppercase tracking-wider transition-colors
+                  after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:bg-secondary 
+                  after:transition-transform after:duration-200 after:ease-out after:origin-left
+                  ${location.pathname === link.to
+                    ? "text-secondary after:w-full after:scale-x-100"
+                    : "text-white hover:text-secondary after:w-full after:scale-x-0 hover:after:scale-x-100"
+                  }`}
               >
                 {link.label}
               </Link>
@@ -98,29 +101,51 @@ const Header = () => {
         </div>
 
         {/* Mobile Navigation */}
-        {isMobileMenuOpen && (
-          <nav className="md:hidden py-6 bg-primary border-t border-white/10">
-            {navLinks.map((link) => (
-              <Link
-                key={link.to}
-                to={link.to}
-                className={`block py-3 text-sm font-heading font-semibold uppercase tracking-wider transition-colors ${
-                  location.pathname === link.to
-                    ? "text-secondary"
-                    : "text-white hover:text-secondary"
-                }`}
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                {link.label}
-              </Link>
-            ))}
-            <Button variant="secondary" size="sm" className="mt-4 w-full" asChild>
-              <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>
-                Request Consultation
-              </Link>
-            </Button>
-          </nav>
-        )}
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.nav
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+              className="md:hidden overflow-hidden bg-primary border-t border-white/10"
+            >
+              <div className="py-6">
+                {navLinks.map((link, index) => (
+                  <motion.div
+                    key={link.to}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.05, duration: 0.3 }}
+                  >
+                    <Link
+                      to={link.to}
+                      className={`block py-3 text-sm font-heading font-semibold uppercase tracking-wider transition-colors ${
+                        location.pathname === link.to
+                          ? "text-secondary"
+                          : "text-white hover:text-secondary"
+                      }`}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      {link.label}
+                    </Link>
+                  </motion.div>
+                ))}
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: navLinks.length * 0.05, duration: 0.3 }}
+                >
+                  <Button variant="secondary" size="sm" className="mt-4 w-full" asChild>
+                    <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>
+                      Request Consultation
+                    </Link>
+                  </Button>
+                </motion.div>
+              </div>
+            </motion.nav>
+          )}
+        </AnimatePresence>
       </div>
     </header>
   );

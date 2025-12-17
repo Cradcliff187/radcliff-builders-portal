@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
-import { ChevronLeft, ChevronRight, X } from "lucide-react";
+import { ChevronLeft, ChevronRight, X, Expand } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -70,8 +70,16 @@ const ProjectImageGallery = ({ images, primaryImage }: ProjectImageGalleryProps)
               loading="lazy"
             />
             <div className="absolute inset-0 bg-navy/0 group-hover:bg-navy/40 transition-all duration-300" />
+            
+            {/* Expand Icon */}
+            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 pointer-events-none">
+              <div className="w-12 h-12 bg-white flex items-center justify-center shadow-lg">
+                <Expand className="w-6 h-6 text-secondary" />
+              </div>
+            </div>
+            
             {image.caption && (
-              <div className="absolute bottom-0 left-0 right-0 bg-navy/80 text-white p-2 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div className="absolute bottom-0 left-0 right-0 bg-navy/80 text-white p-2 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
                 {image.caption}
               </div>
             )}
@@ -103,7 +111,7 @@ const ProjectImageGallery = ({ images, primaryImage }: ProjectImageGalleryProps)
             </Button>
 
             {/* Image with crossfade animation */}
-            <div className={`absolute inset-0 flex items-center justify-center p-2 sm:p-4 md:p-8 lg:p-12 ${isMobile ? 'pb-24' : 'pb-28'}`}>
+            <div className="absolute inset-0 flex items-center justify-center p-2 pb-28 sm:p-4 sm:pb-32 md:p-8 md:pb-36 lg:p-12 lg:pb-40">
               <AnimatePresence mode="wait">
                 <motion.img
                   key={currentIndex}
@@ -128,9 +136,33 @@ const ProjectImageGallery = ({ images, primaryImage }: ProjectImageGalleryProps)
               <ChevronRight className="h-6 w-6 md:h-8 md:w-8" />
             </Button>
 
+            {/* Thumbnail Strip */}
+            <div className="absolute bottom-20 left-0 right-0 z-40 bg-navy/80 backdrop-blur-sm py-3 px-4">
+              <div className="flex gap-2 overflow-x-auto scrollbar-hide justify-center max-w-full">
+                {allImages.map((image, index) => (
+                  <button
+                    key={image.id}
+                    ref={(el) => (thumbnailRefs.current[index] = el)}
+                    onClick={() => setCurrentIndex(index)}
+                    className={`flex-shrink-0 w-16 h-12 md:w-20 md:h-14 overflow-hidden transition-all duration-200 rounded-none ${
+                      index === currentIndex 
+                        ? "border-2 border-secondary brightness-100" 
+                        : "border-2 border-transparent brightness-75 hover:brightness-90"
+                    }`}
+                  >
+                    <img
+                      src={image.image_url}
+                      alt={`Thumbnail ${index + 1}`}
+                      className="w-full h-full object-cover"
+                    />
+                  </button>
+                ))}
+              </div>
+            </div>
+
             {/* Caption */}
             {allImages[currentIndex].caption && (
-              <div className={`absolute left-2 right-2 sm:left-4 sm:right-4 md:left-1/2 md:right-auto md:-translate-x-1/2 bg-navy/95 text-white px-3 py-2 sm:px-4 md:px-6 md:py-3 rounded-none max-w-full md:max-w-3xl backdrop-blur-sm z-50 ${isMobile ? 'bottom-24' : 'bottom-28'}`}>
+              <div className="absolute bottom-36 left-2 right-2 sm:bottom-36 sm:left-4 sm:right-4 md:left-1/2 md:right-auto md:-translate-x-1/2 bg-navy/95 text-white px-3 py-2 sm:px-4 md:px-6 md:py-3 rounded-none max-w-full md:max-w-3xl backdrop-blur-sm z-50">
                 <p className="text-center text-xs leading-tight sm:text-sm md:text-base md:leading-relaxed line-clamp-3 md:line-clamp-2">
                   {allImages[currentIndex].caption}
                 </p>
@@ -140,32 +172,6 @@ const ProjectImageGallery = ({ images, primaryImage }: ProjectImageGalleryProps)
             {/* Counter */}
             <div className="absolute top-2 left-2 sm:top-4 sm:left-4 text-white text-xs md:text-sm bg-black/60 backdrop-blur-sm px-2 py-1 rounded-md">
               {currentIndex + 1} / {allImages.length}
-            </div>
-
-            {/* Thumbnail strip */}
-            <div className={`absolute bottom-0 left-0 right-0 bg-navy/80 backdrop-blur-sm rounded-none z-40 ${isMobile ? 'py-2 px-3' : 'py-3 px-6'}`}>
-              <div className={`flex items-center overflow-x-auto scrollbar-hide ${isMobile ? 'gap-2' : 'gap-3 justify-center'}`}>
-                {allImages.map((image, index) => (
-                  <button
-                    key={image.id}
-                    ref={(el) => (thumbnailRefs.current[index] = el)}
-                    onClick={() => setCurrentIndex(index)}
-                    className={`flex-shrink-0 rounded-none overflow-hidden transition-all duration-200 ${
-                      isMobile ? 'w-14 h-10' : 'w-20 h-14'
-                    } ${
-                      index === currentIndex
-                        ? 'border-2 border-gold brightness-100'
-                        : 'border-2 border-transparent brightness-75 hover:brightness-90'
-                    }`}
-                  >
-                    <img
-                      src={image.image_url}
-                      alt={image.caption || `Thumbnail ${index + 1}`}
-                      className="w-full h-full object-cover"
-                    />
-                  </button>
-                ))}
-              </div>
             </div>
           </div>
         </DialogContent>

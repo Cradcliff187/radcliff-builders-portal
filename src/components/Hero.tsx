@@ -1,8 +1,28 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import heroImage from "@/assets/hero-healthcare.jpg";
 
 const Hero = () => {
+  const containerVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" }
+    }
+  };
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 md:pt-24">
       {/* Background Image with Overlay */}
@@ -23,18 +43,25 @@ const Hero = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-20 text-center">
-        <h1 className="text-white mb-6 uppercase leading-tight">
+      <motion.div 
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-20 text-center"
+      >
+        <motion.h1 variants={itemVariants} className="text-white mb-6 uppercase leading-tight">
           Renovations and Buildouts Delivered<br />
           with Precision, Safety, and Trust.
-        </h1>
-        <p className="text-white/90 text-xl md:text-2xl mb-12 max-w-3xl mx-auto leading-relaxed">
+        </motion.h1>
+        <motion.p variants={itemVariants} className="text-white/90 text-xl md:text-2xl mb-12 max-w-3xl mx-auto leading-relaxed">
           Your trusted partner for compliant, efficient renovations in active healthcare, professional, and commercial environments.
-        </p>
-        <Button variant="hero" size="lg" asChild>
-          <Link to="/contact">Start a Conversation</Link>
-        </Button>
-      </div>
+        </motion.p>
+        <motion.div variants={itemVariants}>
+          <Button variant="hero" size="lg" asChild>
+            <Link to="/contact">Start a Conversation</Link>
+          </Button>
+        </motion.div>
+      </motion.div>
 
       {/* Bottom Fade */}
       <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent" />

@@ -81,7 +81,7 @@ const Projects = () => {
               filteredProjects.map((project) => (
                 <Link key={project.id} to={`/projects/${project.slug}`}>
                   <Card
-                    className="overflow-hidden group hover:shadow-xl transition-all duration-300"
+                    className="overflow-hidden group hover:shadow-2xl hover:-translate-y-1 transition-all duration-300"
                   >
                     <div className="relative h-64 overflow-hidden">
                       <img
