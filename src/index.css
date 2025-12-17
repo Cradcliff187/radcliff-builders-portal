@@ -124,3 +124,12 @@ All colors MUST be HSL.
     @apply text-2xl md:text-3xl;
   }
 }
+
+/* Scrollbar hide utility for clean mobile scrolling */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
