@@ -104,14 +104,14 @@ const Industries = () => {
         </div>
 
         {/* CTA Banner */}
-        <div className="mt-16 bg-primary text-white p-12 rounded-none text-center">
-          <h3 className="text-3xl font-heading font-bold uppercase mb-4 tracking-wide">
+        <div className="mt-16 bg-primary text-white px-4 py-8 md:p-12 rounded-none text-center">
+          <h3 className="text-xl md:text-3xl font-heading font-bold uppercase mb-4 tracking-wide">
             Not Sure Which Service Fits Your Project?
           </h3>
-          <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
+          <p className="text-white/90 text-base md:text-lg mb-8 max-w-2xl mx-auto">
             We'll help you find the right solution. Schedule a consultation to discuss your specific needs.
           </p>
-          <Button variant="secondary" size="lg" asChild>
+          <Button variant="secondary" size="lg" className="px-6 md:px-10" asChild>
             <Link to="/contact">
               Get Started Today
               <ArrowRight className="ml-2 w-5 h-5" />
