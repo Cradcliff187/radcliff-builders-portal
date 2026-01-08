@@ -49,7 +49,7 @@ const Hero = () => {
         animate="visible"
         className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-20 text-center"
       >
-        <motion.h1 variants={itemVariants} className="text-4xl md:text-5xl lg:text-6xl text-white mb-6 uppercase leading-tight font-heading font-bold">
+        <motion.h1 variants={itemVariants} className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-white mb-6 uppercase leading-tight font-heading font-bold tracking-wider">
           Renovations and Buildouts Delivered<br />
           with Precision, Safety, and Trust.
         </motion.h1>

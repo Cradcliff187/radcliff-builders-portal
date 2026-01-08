@@ -53,7 +53,7 @@ const Team = () => {
       {/* Hero Section */}
       <section className="pt-20 pb-12 md:pt-24 md:pb-16 bg-primary text-white">
         <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-20 text-center">
-          <h1 className="mb-6 uppercase text-white">Meet the Team</h1>
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl mb-6 uppercase leading-tight tracking-wider text-white">Meet the Team</h1>
           <p className="text-xl text-white/90 mb-6 max-w-3xl mx-auto leading-relaxed">
             Hands-on leadership committed to safety, predictability, and partnership.
           </p>
