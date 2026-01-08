@@ -121,7 +121,7 @@ const Contact = () => {
       {/* Hero Banner */}
       <section className="pt-20 pb-12 md:pt-24 md:pb-16 bg-primary text-white">
         <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-20 text-center">
-          <h1 className="mb-6 uppercase">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl mb-6 uppercase leading-tight tracking-wider">
             {industryParam && industryContent[industryParam] 
               ? industryContent[industryParam].title 
               : "Let's Build Something That Lasts."}
