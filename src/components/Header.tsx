@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import rcgLogo from "@/assets/rcg-logo-transparent.png";
 import rcgLogoColor from "@/assets/rcg-logo-color.png";
 
@@ -11,6 +11,7 @@ const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
   const isHome = location.pathname === "/";
+  const prefersReducedMotion = useReducedMotion();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,7 +34,15 @@ const Header = () => {
   ];
 
   return (
-    <header
+    <>
+      {/* Skip Link for Accessibility */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[60] focus:bg-secondary focus:text-white focus:px-4 focus:py-2 focus:rounded-none focus:font-heading focus:uppercase focus:tracking-wider"
+      >
+        Skip to main content
+      </a>
+      <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled || !isHome
           ? "bg-primary shadow-lg"
@@ -104,19 +113,19 @@ const Header = () => {
         <AnimatePresence>
           {isMobileMenuOpen && (
             <motion.nav
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.3, ease: "easeOut" }}
+              initial={prefersReducedMotion ? {} : { height: 0, opacity: 0 }}
+              animate={prefersReducedMotion ? {} : { height: "auto", opacity: 1 }}
+              exit={prefersReducedMotion ? {} : { height: 0, opacity: 0 }}
+              transition={prefersReducedMotion ? {} : { duration: 0.3, ease: "easeOut" }}
               className="md:hidden overflow-hidden bg-primary border-t border-white/10"
             >
               <div className="py-6">
                 {navLinks.map((link, index) => (
                   <motion.div
                     key={link.to}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.05, duration: 0.3 }}
+                    initial={prefersReducedMotion ? {} : { opacity: 0, x: -20 }}
+                    animate={prefersReducedMotion ? {} : { opacity: 1, x: 0 }}
+                    transition={prefersReducedMotion ? {} : { delay: index * 0.05, duration: 0.3 }}
                   >
                     <Link
                       to={link.to}
@@ -132,9 +141,9 @@ const Header = () => {
                   </motion.div>
                 ))}
                 <motion.div
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: navLinks.length * 0.05, duration: 0.3 }}
+                  initial={prefersReducedMotion ? {} : { opacity: 0, x: -20 }}
+                  animate={prefersReducedMotion ? {} : { opacity: 1, x: 0 }}
+                  transition={prefersReducedMotion ? {} : { delay: navLinks.length * 0.05, duration: 0.3 }}
                 >
                   <Button variant="secondary" size="sm" className="mt-4 w-full" asChild>
                     <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>
@@ -148,6 +157,7 @@ const Header = () => {
         </AnimatePresence>
       </div>
     </header>
+    </>
   );
 };
 

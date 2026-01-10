@@ -1,27 +1,33 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import heroImage from "@/assets/hero-healthcare.jpg";
 
 const Hero = () => {
-  const containerVariants = {
-    hidden: {},
-    visible: {
-      transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.2
-      }
-    }
-  };
+  const prefersReducedMotion = useReducedMotion();
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: { duration: 0.6, ease: "easeOut" as const }
-    }
-  };
+  const containerVariants = prefersReducedMotion
+    ? {}
+    : {
+        hidden: {},
+        visible: {
+          transition: {
+            staggerChildren: 0.15,
+            delayChildren: 0.2
+          }
+        }
+      };
+
+  const itemVariants = prefersReducedMotion
+    ? { hidden: {}, visible: {} }
+    : {
+        hidden: { opacity: 0, y: 20 },
+        visible: { 
+          opacity: 1, 
+          y: 0,
+          transition: { duration: 0.6, ease: "easeOut" as const }
+        }
+      };
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 md:pt-24">

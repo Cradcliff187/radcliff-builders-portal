@@ -24,7 +24,7 @@ const Projects = () => {
     : allProjects.filter((p) => p.industry === selectedIndustry);
 
   return (
-    <main className="min-h-screen">
+    <main id="main-content" className="min-h-screen">
       <SEO
         title="Our Projects | Radcliff Construction Group (RCG)"
         description="View Radcliff Construction Group's portfolio of healthcare, professional, retail, and commercial renovation projects. ICRA-certified construction across Greater Cincinnati, Dayton, Lexington, and Northern Kentucky."
