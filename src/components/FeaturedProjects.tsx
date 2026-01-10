@@ -4,6 +4,7 @@ import { Card } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useFeaturedProjects } from "@/hooks/useCMSContent";
 import PageContainer from "@/components/PageContainer";
+import { handleImageError } from "@/lib/imageUtils";
 
 const FeaturedProjects = () => {
   const { data: projects = [], isLoading } = useFeaturedProjects();
@@ -38,8 +39,9 @@ const FeaturedProjects = () => {
                     <img
                       src={project.image_url}
                       alt={`${project.industry} project: ${project.title}`}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                       loading="lazy"
+                      onError={(e) => handleImageError(e)}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-navy/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </div>

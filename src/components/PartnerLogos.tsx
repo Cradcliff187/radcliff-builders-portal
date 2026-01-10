@@ -2,6 +2,7 @@ import { Carousel, CarouselContent, CarouselItem, CarouselDots } from "@/compone
 import Autoplay from "embla-carousel-autoplay";
 import { usePartnerLogos } from "@/hooks/useCMSContent";
 import PageContainer from "@/components/PageContainer";
+import { handleImageError } from "@/lib/imageUtils";
 
 const PartnerLogos = () => {
   const { data: logos, isLoading } = usePartnerLogos();
@@ -26,8 +27,9 @@ const PartnerLogos = () => {
         <img
           src={logo.image_url}
           alt={logo.alt_text}
-          className="hover:grayscale hover:opacity-70 transition-all duration-300 h-[clamp(50px,6vw,70px)] w-auto max-w-[180px] md:max-w-[220px]"
           loading="lazy"
+          onError={(e) => handleImageError(e)}
+          className="hover:grayscale hover:opacity-70 transition-all duration-300 h-[clamp(50px,6vw,70px)] w-auto max-w-[180px] md:max-w-[220px]"
         />
       </div>
     );

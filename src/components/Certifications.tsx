@@ -1,4 +1,5 @@
 import { FileCheck } from "lucide-react";
+import { handleImageError } from "@/lib/imageUtils";
 
 const certifications = [
   { image: "/assets/certifications/osha-logo-new.png", label: "OSHA 30 Certified" },
@@ -29,6 +30,8 @@ const Certifications = () => {
                   <img 
                     src={cert.image} 
                     alt={cert.label}
+                    loading="lazy"
+                    onError={(e) => handleImageError(e)}
                     className={`${
                       cert.label === "OSHA 30 Certified" ? "h-32" : "h-24"
                     } w-auto object-contain transition-transform duration-300 hover:scale-110`}
