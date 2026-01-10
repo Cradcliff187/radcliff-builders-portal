@@ -43,6 +43,15 @@ const SEO = ({ title, description, image, url }: SEOProps) => {
     updateMetaTag("twitter:title", title);
     updateMetaTag("twitter:description", description);
     updateMetaTag("twitter:image", image || defaultImage);
+
+    // Update or create canonical link
+    let canonicalLink = document.querySelector('link[rel="canonical"]');
+    if (!canonicalLink) {
+      canonicalLink = document.createElement("link");
+      canonicalLink.setAttribute("rel", "canonical");
+      document.head.appendChild(canonicalLink);
+    }
+    canonicalLink.setAttribute("href", currentUrl);
   }, [title, description, image, currentUrl, defaultImage]);
 
   return null;

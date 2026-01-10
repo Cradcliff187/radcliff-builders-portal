@@ -63,19 +63,21 @@ const Footer = () => {
               <a
                 href="tel:859-802-0746"
                 className="flex items-center gap-2 text-white/80 hover:text-secondary transition-colors"
+                aria-label="Call Radcliff Construction Group at (859) 802-0746"
               >
-                <Phone className="w-4 h-4" />
+                <Phone className="w-4 h-4" aria-hidden="true" />
                 (859) 802-0746
               </a>
               <a
                 href="mailto:info@radcliffconstructiongroup.com"
                 className="flex items-center gap-2 text-white/80 hover:text-secondary transition-colors"
+                aria-label="Email Radcliff Construction Group"
               >
-                <Mail className="w-4 h-4" />
+                <Mail className="w-4 h-4" aria-hidden="true" />
                 info@radcliffconstructiongroup.com
               </a>
               <div className="flex items-start gap-2 text-white/80">
-                <MapPin className="w-4 h-4 mt-1 flex-shrink-0" />
+                <MapPin className="w-4 h-4 mt-1 flex-shrink-0" aria-hidden="true" />
                 <span>Regional Construction Services</span>
               </div>
             </div>
