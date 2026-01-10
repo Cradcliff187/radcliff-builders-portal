@@ -89,6 +89,7 @@ const Team = () => {
                       <img
                         src={member.headshot_url}
                         alt={`Photo of ${member.name}, ${member.title} of Radcliff Construction Group`}
+                        loading="lazy"
                         className={`w-full h-full object-cover ${
                           member.name === "Matt Radcliff" ? "object-[center_top]" : ""
                         }`}

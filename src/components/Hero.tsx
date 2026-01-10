@@ -36,6 +36,7 @@ const Hero = () => {
         <img
           src={heroImage}
           alt="Modern healthcare facility interior"
+          fetchPriority="high"
           className="w-full h-full object-cover"
         />
         {/* Stronger overlay to obscure diagonal lines */}

@@ -153,6 +153,7 @@ const ProjectImageGallery = ({ images, primaryImage }: ProjectImageGalleryProps)
                     <img
                       src={image.image_url}
                       alt={`Thumbnail ${index + 1}`}
+                      loading="lazy"
                       className="w-full h-full object-cover"
                     />
                   </button>

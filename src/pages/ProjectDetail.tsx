@@ -2,6 +2,7 @@ import { useParams, Link } from "react-router-dom";
 import { useProjectDetail } from "@/hooks/useProjectDetail";
 import { useProjects } from "@/hooks/useCMSContent";
 import { getValidatedContent, isValidArray } from "@/lib/contentValidation";
+import { handleImageError } from "@/lib/imageUtils";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ProjectImageGallery from "@/components/ProjectImageGallery";
@@ -341,11 +342,13 @@ const ProjectDetail = () => {
                               to={`/projects/${relatedProject.slug}`}
                               className="block group"
                             >
-                              <div className="relative overflow-hidden rounded-none mb-2">
+                              <div className="relative aspect-video overflow-hidden rounded-none mb-2">
                                 <img
                                   src={relatedProject.image_url}
                                   alt={relatedProject.title}
-                                  className="w-full h-32 object-cover transition-transform duration-500 group-hover:scale-110"
+                                  loading="lazy"
+                                  onError={(e) => handleImageError(e)}
+                                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                                 />
                               </div>
                               <h4 className="text-sm font-heading font-semibold text-primary group-hover:text-gold transition-colors uppercase tracking-wide">
@@ -392,6 +395,8 @@ const ProjectDetail = () => {
                       <img
                         src={relatedProject.image_url}
                         alt={relatedProject.title}
+                        loading="lazy"
+                        onError={(e) => handleImageError(e)}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                       />
                     </div>

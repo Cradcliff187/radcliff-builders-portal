@@ -61,6 +61,7 @@ const TeamPreviewGrid = () => {
                   <img
                     src={member.headshot_url}
                     alt={`Photo of ${member.name}, ${member.title} of Radcliff Construction Group`}
+                    loading="lazy"
                     className={`w-full h-full object-cover rounded-full p-8 group-hover:scale-105 transition-transform duration-500 ${
                       member.name === "Matt Radcliff" ? "object-[center_top]" : ""
                     }`}

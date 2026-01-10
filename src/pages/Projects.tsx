@@ -10,6 +10,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useProjects } from "@/hooks/useCMSContent";
+import { handleImageError } from "@/lib/imageUtils";
 
 type Industry = "All" | "Healthcare" | "Professional" | "Retail" | "Commercial";
 
@@ -88,6 +89,7 @@ const Projects = () => {
                         src={project.image_url}
                         alt={`${project.industry} renovation project: ${project.title}`}
                         loading="lazy"
+                        onError={(e) => handleImageError(e)}
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-navy/90 to-transparent" />
