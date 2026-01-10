@@ -15,7 +15,7 @@ import SEO from "@/components/SEO";
 
 const Home = () => {
   return (
-    <main className="min-h-screen">
+    <main id="main-content" className="min-h-screen">
       <SEO
         title="Healthcare & Commercial Renovations | Radcliff Construction Group (RCG)"
         description="ICRA-certified healthcare renovations and commercial buildouts. Specializing in $25K-$500K projects across Greater Cincinnati, Dayton, Lexington, and Northern Kentucky. OSHA 30 certified, multi-site portfolio expertise."

@@ -43,7 +43,7 @@ const Team = () => {
   }, [location]);
 
   return (
-    <main className="min-h-screen">
+    <main id="main-content" className="min-h-screen">
       <SEO
         title="Our Team | Radcliff Construction Group (RCG)"
         description="Meet the Radcliff Construction Group leadership team. Decades of hands-on field experience, ICRA and OSHA 30 training, focused on minimizing disruption in active facilities."

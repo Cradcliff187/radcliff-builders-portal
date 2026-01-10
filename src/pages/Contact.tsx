@@ -111,7 +111,7 @@ const Contact = () => {
   };
 
   return (
-    <main className="min-h-screen">
+    <main id="main-content" className="min-h-screen">
       <SEO
         title="Contact Us | Radcliff Construction Group (RCG)"
         description="Contact Radcliff Construction Group for ICRA-certified healthcare renovations and commercial buildouts. Serving Greater Cincinnati, Dayton, Lexington, and Northern Kentucky. Response within one business day."
