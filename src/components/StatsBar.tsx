@@ -1,30 +1,35 @@
 import { Award, Briefcase, MapPin, Shield } from "lucide-react";
 import PageContainer from "@/components/PageContainer";
-
-const stats = [
-  {
-    icon: Briefcase,
-    number: "25+",
-    label: "Years Experience",
-  },
-  {
-    icon: Award,
-    number: "100+",
-    label: "Projects Completed",
-  },
-  {
-    icon: Shield,
-    number: "OSHA & ICRA",
-    label: "Certified",
-  },
-  {
-    icon: MapPin,
-    number: "4-State",
-    label: "Coverage",
-  },
-];
+import { useSiteSetting } from "@/hooks/useSiteSettings";
 
 const StatsBar = () => {
+  const { value: yearsExp } = useSiteSetting("stat_years_experience", "25+");
+  const { value: projectsCompleted } = useSiteSetting("stat_projects_completed", "100+");
+  const { value: coverage } = useSiteSetting("stat_coverage", "4-State");
+
+  const stats = [
+    {
+      icon: Briefcase,
+      number: yearsExp,
+      label: "Years Experience",
+    },
+    {
+      icon: Award,
+      number: projectsCompleted,
+      label: "Projects Completed",
+    },
+    {
+      icon: Shield,
+      number: "OSHA & ICRA",
+      label: "Certified",
+    },
+    {
+      icon: MapPin,
+      number: coverage,
+      label: "Coverage",
+    },
+  ];
+
   return (
     <section className="py-12 bg-primary">
       <PageContainer>
