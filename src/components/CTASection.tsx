@@ -22,9 +22,9 @@ const CTASection = () => {
             asChild 
             className="bg-white/10 border-2 border-white text-white hover:bg-white hover:text-navy backdrop-blur-sm"
           >
-            <a href="tel:859-802-0746" aria-label="Call Radcliff Construction Group at (859) 802-0746">
+            <a href="tel:859-816-2314" aria-label="Call Radcliff Construction Group at (859) 816-2314">
               <Phone className="w-5 h-5" />
-              (859) 802-0746
+              (859) 816-2314
             </a>
           </Button>
         </div>

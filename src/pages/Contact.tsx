@@ -149,12 +149,12 @@ const Contact = () => {
               <Card className="p-6">
                 <Phone className="w-8 h-8 text-secondary mb-4" />
                 <h3 className="text-xl font-heading font-semibold mb-2 uppercase">Phone</h3>
-                <a
-                  href="tel:859-802-0746"
+              <a
+                  href="tel:859-816-2314"
                   className="text-muted-foreground hover:text-secondary transition-colors"
-                  aria-label="Call Radcliff Construction Group at (859) 802-0746"
+                  aria-label="Call Radcliff Construction Group at (859) 816-2314"
                 >
-                  (859) 802-0746
+                  (859) 816-2314
                 </a>
               </Card>
 

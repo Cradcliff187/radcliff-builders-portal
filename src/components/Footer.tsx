@@ -61,12 +61,12 @@ const Footer = () => {
             </h4>
             <div className="flex flex-col gap-3 text-sm">
               <a
-                href="tel:859-802-0746"
+                href="tel:859-816-2314"
                 className="flex items-center gap-2 text-white/80 hover:text-secondary transition-colors"
-                aria-label="Call Radcliff Construction Group at (859) 802-0746"
+                aria-label="Call Radcliff Construction Group at (859) 816-2314"
               >
                 <Phone className="w-4 h-4" aria-hidden="true" />
-                (859) 802-0746
+                (859) 816-2314
               </a>
               <a
                 href="mailto:info@radcliffconstructiongroup.com"
