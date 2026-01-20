@@ -358,6 +358,36 @@ export type Database = {
         }
         Relationships: []
       }
+      site_settings: {
+        Row: {
+          display_order: number | null
+          id: string
+          setting_group: string
+          setting_key: string
+          setting_label: string
+          setting_value: string
+          updated_at: string | null
+        }
+        Insert: {
+          display_order?: number | null
+          id?: string
+          setting_group: string
+          setting_key: string
+          setting_label: string
+          setting_value: string
+          updated_at?: string | null
+        }
+        Update: {
+          display_order?: number | null
+          id?: string
+          setting_group?: string
+          setting_key?: string
+          setting_label?: string
+          setting_value?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
       team_members: {
         Row: {
           anchor_id: string
