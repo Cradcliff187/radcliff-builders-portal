@@ -210,9 +210,9 @@ const SocialLinks = () => {
       />
 
       <Dialog open={isFormOpen} onOpenChange={setIsFormOpen}>
-        <DialogContent className="max-w-lg rounded-none">
+        <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto rounded-none">
           <DialogHeader>
-            <DialogTitle>
+            <DialogTitle className="uppercase tracking-wide">
               {selectedLink ? "Edit Social Link" : "Add Social Link"}
             </DialogTitle>
           </DialogHeader>
