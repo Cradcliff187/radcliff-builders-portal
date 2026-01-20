@@ -1,4 +1,4 @@
-import { Award, Briefcase, DollarSign, MapPin, Shield } from "lucide-react";
+import { Award, Briefcase, CheckCircle, DollarSign, MapPin } from "lucide-react";
 import PageContainer from "@/components/PageContainer";
 import { useSiteSetting } from "@/hooks/useSiteSettings";
 
@@ -19,9 +19,9 @@ const StatsBar = () => {
       label: "Projects Completed",
     },
     {
-      icon: Shield,
-      number: "OSHA & ICRA",
-      label: "Certified",
+      icon: CheckCircle,
+      number: "98%",
+      label: "Client Satisfaction",
     },
     {
       icon: MapPin,
