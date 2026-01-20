@@ -13,6 +13,7 @@ import { useMutation } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { contactFormSchema, type ContactFormData } from "@/lib/validations/contact";
 import { useSearchParams } from "react-router-dom";
+import { useSiteSetting } from "@/hooks/useSiteSettings";
 import {
   Form,
   FormControl,
@@ -53,6 +54,8 @@ const Contact = () => {
   const { toast } = useToast();
   const [searchParams] = useSearchParams();
   const industryParamRaw = searchParams.get('industry');
+  const { value: phoneNumber } = useSiteSetting("phone_number", "859-816-2314");
+  const { value: emailPrimary } = useSiteSetting("email_primary", "info@radcliffconstructiongroup.com");
   
   // Safely cast to industry enum
   const validIndustries = ["Healthcare", "Professional", "Retail", "Commercial"] as const;
@@ -149,12 +152,12 @@ const Contact = () => {
               <Card className="p-6">
                 <Phone className="w-8 h-8 text-secondary mb-4" />
                 <h3 className="text-xl font-heading font-semibold mb-2 uppercase">Phone</h3>
-              <a
-                  href="tel:859-816-2314"
+                <a
+                  href={`tel:${phoneNumber.replace(/[^0-9]/g, "")}`}
                   className="text-muted-foreground hover:text-secondary transition-colors"
-                  aria-label="Call Radcliff Construction Group at (859) 816-2314"
+                  aria-label={`Call Radcliff Construction Group at ${phoneNumber}`}
                 >
-                  (859) 816-2314
+                  {phoneNumber}
                 </a>
               </Card>
 
@@ -162,10 +165,10 @@ const Contact = () => {
                 <Mail className="w-8 h-8 text-secondary mb-4" />
                 <h3 className="text-xl font-heading font-semibold mb-2 uppercase">Email</h3>
                 <a
-                  href="mailto:info@radcliffconstructiongroup.com"
+                  href={`mailto:${emailPrimary}`}
                   className="text-muted-foreground hover:text-secondary transition-colors break-all"
                 >
-                  info@radcliffconstructiongroup.com
+                  {emailPrimary}
                 </a>
               </Card>
 
