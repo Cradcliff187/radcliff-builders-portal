@@ -26,6 +26,7 @@ import PartnerLogos from "./pages/admin/PartnerLogos";
 import AdminTestimonials from "./pages/admin/Testimonials";
 import SiteSettings from "./pages/admin/SiteSettings";
 import GoogleTools from "./pages/admin/GoogleTools";
+import SocialLinks from "./pages/admin/SocialLinks";
 
 const queryClient = new QueryClient();
 
@@ -60,6 +61,7 @@ const App = () => (
             <Route path="/admin/testimonials" element={<AdminTestimonials />} />
             <Route path="/admin/settings" element={<SiteSettings />} />
             <Route path="/admin/google-tools" element={<GoogleTools />} />
+            <Route path="/admin/social-links" element={<SocialLinks />} />
           </Route>
           
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

@@ -397,6 +397,39 @@ export type Database = {
         }
         Relationships: []
       }
+      social_links: {
+        Row: {
+          created_at: string | null
+          display_order: number | null
+          icon_name: string
+          id: string
+          platform: string
+          published: boolean | null
+          updated_at: string | null
+          url: string
+        }
+        Insert: {
+          created_at?: string | null
+          display_order?: number | null
+          icon_name: string
+          id?: string
+          platform: string
+          published?: boolean | null
+          updated_at?: string | null
+          url?: string
+        }
+        Update: {
+          created_at?: string | null
+          display_order?: number | null
+          icon_name?: string
+          id?: string
+          platform?: string
+          published?: boolean | null
+          updated_at?: string | null
+          url?: string
+        }
+        Relationships: []
+      }
       team_members: {
         Row: {
           anchor_id: string
