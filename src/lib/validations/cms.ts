@@ -87,9 +87,21 @@ export const partnerLogoSchema = z.object({
   published: z.boolean().default(false),
 });
 
+export const testimonialSchema = z.object({
+  quote: z.string().min(50, "Quote must be at least 50 characters").max(1000, "Quote must be less than 1000 characters"),
+  author_name: z.string().min(1, "Author name is required").max(100, "Author name must be less than 100 characters"),
+  author_title: z.string().min(1, "Author title is required").max(100, "Author title must be less than 100 characters"),
+  company_description: z.string().min(1, "Company description is required").max(200, "Company description must be less than 200 characters"),
+  industry: z.enum(["Healthcare", "Professional", "Retail", "Commercial"]).optional().nullable(),
+  project_metrics: z.string().max(100).optional().or(z.literal("")),
+  display_order: z.number().int().min(0).nullable().default(0),
+  published: z.boolean().default(true),
+});
+
 export type ArticleFormData = z.infer<typeof articleSchema>;
 export type CaseStudyFormData = z.infer<typeof caseStudySchema>;
 export type ResourceFormData = z.infer<typeof resourceSchema>;
 export type ProjectFormData = z.infer<typeof projectSchema>;
 export type TeamMemberFormData = z.infer<typeof teamMemberSchema>;
 export type PartnerLogoFormData = z.infer<typeof partnerLogoSchema>;
+export type TestimonialFormData = z.infer<typeof testimonialSchema>;

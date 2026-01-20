@@ -1,40 +1,74 @@
 import { useState, useEffect } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { Quote } from "lucide-react";
 import PageContainer from "@/components/PageContainer";
+import { supabase } from "@/integrations/supabase/client";
+import { Skeleton } from "@/components/ui/skeleton";
 
-const testimonials = [
-  {
-    quote: "What sets RCG apart isn't just their technical expertise—it's how they show up as true partners. They care about our facilities, our patients, and our mission. When challenges arise, they solve them. When timelines matter, they deliver. That's why we keep coming back.",
-    author: "Regional Healthcare Facilities Director",
-    position: "Multi-Site Healthcare System",
-  },
-  {
-    quote: "We needed a contractor who understood the unique challenges of working in an occupied school. RCG delivered a flawless summer renovation—on time, within budget, and ready for students on day one. Their communication and safety protocols were exceptional.",
-    author: "Director of Facilities & Operations",
-    position: "Regional School District",
-  },
-  {
-    quote: "In retail, downtime equals lost revenue. RCG completed our store buildout in record time without sacrificing quality. Their attention to detail and ability to adapt to our tight timeline made them the partner we didn't know we needed.",
-    author: "Regional Construction Manager",
-    position: "National Retail Chain",
-  },
-  {
-    quote: "RCG brings a level of professionalism and reliability that's rare in commercial construction. From preconstruction planning to final walkthrough, they treated our project like it was their own. We've worked with a lot of contractors—RCG stands out.",
-    author: "Property Development Manager",
-    position: "Commercial Real Estate Firm",
-  },
-];
+interface Testimonial {
+  id: string;
+  quote: string;
+  author_name: string;
+  author_title: string;
+  company_description: string;
+  industry: string | null;
+  project_metrics: string | null;
+  display_order: number;
+}
 
 const Testimonials = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  const { data: testimonials, isLoading } = useQuery({
+    queryKey: ["testimonials"],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("testimonials")
+        .select("*")
+        .eq("published", true)
+        .order("display_order", { ascending: true });
+
+      if (error) throw error;
+      return data as Testimonial[];
+    },
+  });
+
   useEffect(() => {
+    if (!testimonials || testimonials.length === 0) return;
+
     const timer = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % testimonials.length);
     }, 8000);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [testimonials]);
+
+  // Reset index when testimonials change
+  useEffect(() => {
+    if (testimonials && currentIndex >= testimonials.length) {
+      setCurrentIndex(0);
+    }
+  }, [testimonials, currentIndex]);
+
+  if (isLoading) {
+    return (
+      <section className="py-24 bg-card">
+        <PageContainer>
+          <div className="max-w-4xl mx-auto text-center">
+            <Skeleton className="w-12 h-12 mx-auto mb-8 rounded-full" />
+            <Skeleton className="h-32 w-full mb-8" />
+            <Skeleton className="h-1 w-24 mx-auto mb-6" />
+            <Skeleton className="h-6 w-48 mx-auto mb-2" />
+            <Skeleton className="h-4 w-32 mx-auto" />
+          </div>
+        </PageContainer>
+      </section>
+    );
+  }
+
+  if (!testimonials || testimonials.length === 0) {
+    return null;
+  }
 
   const current = testimonials[currentIndex];
 
@@ -51,11 +85,16 @@ const Testimonials = () => {
             <div className="h-1 w-24 bg-secondary mx-auto mb-6" />
             <footer>
               <p className="font-heading font-semibold text-lg mb-1">
-                {current.author}
+                — {current.author_name}, {current.author_title}
               </p>
               <p className="text-muted-foreground text-sm">
-                {current.position}
+                {current.company_description}
               </p>
+              {current.project_metrics && (
+                <p className="text-muted-foreground text-xs mt-1">
+                  {current.project_metrics}
+                </p>
+              )}
             </footer>
           </blockquote>
 
