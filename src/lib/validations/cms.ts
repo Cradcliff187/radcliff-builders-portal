@@ -98,6 +98,14 @@ export const testimonialSchema = z.object({
   published: z.boolean().default(true),
 });
 
+export const socialLinkSchema = z.object({
+  platform: z.string().min(1, "Platform name is required").max(50, "Platform name must be less than 50 characters"),
+  url: z.string().url("Must be a valid URL").optional().or(z.literal("")),
+  icon_name: z.string().min(1, "Icon name is required"),
+  display_order: z.number().int().min(0).default(0),
+  published: z.boolean().default(false),
+});
+
 export type ArticleFormData = z.infer<typeof articleSchema>;
 export type CaseStudyFormData = z.infer<typeof caseStudySchema>;
 export type ResourceFormData = z.infer<typeof resourceSchema>;
@@ -105,3 +113,4 @@ export type ProjectFormData = z.infer<typeof projectSchema>;
 export type TeamMemberFormData = z.infer<typeof teamMemberSchema>;
 export type PartnerLogoFormData = z.infer<typeof partnerLogoSchema>;
 export type TestimonialFormData = z.infer<typeof testimonialSchema>;
+export type SocialLinkFormData = z.infer<typeof socialLinkSchema>;

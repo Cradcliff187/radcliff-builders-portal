@@ -301,7 +301,7 @@ export const useContentCounts = () => {
   return useQuery({
     queryKey: ["content_counts"],
     queryFn: async () => {
-      const [articles, projects, caseStudies, resources, teamMembers, partnerLogos, testimonials] = await Promise.all([
+      const [articles, projects, caseStudies, resources, teamMembers, partnerLogos, testimonials, socialLinks] = await Promise.all([
         supabase.from("insights_articles").select("*", { count: "exact", head: true }),
         supabase.from("projects").select("*", { count: "exact", head: true }),
         supabase.from("case_studies").select("*", { count: "exact", head: true }),
@@ -309,6 +309,7 @@ export const useContentCounts = () => {
         supabase.from("team_members").select("*", { count: "exact", head: true }),
         supabase.from("partner_logos").select("*", { count: "exact", head: true }),
         supabase.from("testimonials").select("*", { count: "exact", head: true }),
+        supabase.from("social_links").select("*", { count: "exact", head: true }),
       ]);
 
       return {
@@ -319,6 +320,7 @@ export const useContentCounts = () => {
         teamMembers: teamMembers.count || 0,
         partnerLogos: partnerLogos.count || 0,
         testimonials: testimonials.count || 0,
+        socialLinks: socialLinks.count || 0,
       };
     },
   });

@@ -10,7 +10,8 @@ import {
   Users,
   Settings,
   BarChart3,
-  Quote
+  Quote,
+  Share2
 } from "lucide-react";
 import AdminLayout from "@/components/admin/AdminLayout";
 
@@ -75,8 +76,16 @@ const Dashboard = () => {
       count: counts?.testimonials,
     },
     {
+      title: "Social Links",
+      description: "Manage social media profiles",
+      icon: Share2,
+      path: "/admin/social-links",
+      color: "bg-cyan-500/10 text-cyan-600",
+      count: counts?.socialLinks,
+    },
+    {
       title: "Site Settings",
-      description: "Phone, email, stats, and social links",
+      description: "Phone, email, stats, and more",
       icon: Settings,
       path: "/admin/settings",
       color: "bg-slate-500/10 text-slate-600",

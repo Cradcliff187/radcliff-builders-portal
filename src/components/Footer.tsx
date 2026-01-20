@@ -1,13 +1,24 @@
 import { Link } from "react-router-dom";
-import { Phone, Mail, MapPin } from "lucide-react";
+import { Phone, Mail, MapPin, Linkedin, Facebook, Instagram, Youtube, Twitter, Globe, type LucideIcon } from "lucide-react";
 import { useSiteSetting } from "@/hooks/useSiteSettings";
+import { useSocialLinks } from "@/hooks/useSocialLinks";
 import rcgLogo from "@/assets/rcg-logo-transparent.png";
 import rcgLogoColor from "@/assets/rcg-logo-color.png";
+
+const iconMap: Record<string, LucideIcon> = {
+  Linkedin,
+  Facebook,
+  Instagram,
+  Youtube,
+  Twitter,
+  Globe,
+};
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   const { value: phoneNumber } = useSiteSetting("phone_number", "859-816-2314");
   const { value: emailPrimary } = useSiteSetting("email_primary", "info@radcliffconstructiongroup.com");
+  const { data: socialLinks = [] } = useSocialLinks();
 
   return (
     <footer className="bg-navy text-white py-12">
@@ -28,6 +39,27 @@ const Footer = () => {
             <p className="text-white/80 text-sm leading-relaxed">
               Building relationships. Delivering results.
             </p>
+            {/* Social Links */}
+            {socialLinks.length > 0 && (
+              <div className="flex gap-3 mt-4">
+                {socialLinks.map((link) => {
+                  const Icon = iconMap[link.icon_name];
+                  if (!Icon) return null;
+                  return (
+                    <a
+                      key={link.id}
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Follow us on ${link.platform}`}
+                      className="w-10 h-10 bg-white/10 hover:bg-secondary flex items-center justify-center transition-colors rounded-none"
+                    >
+                      <Icon className="w-5 h-5" />
+                    </a>
+                  );
+                })}
+              </div>
+            )}
           </div>
 
           {/* Quick Links */}
