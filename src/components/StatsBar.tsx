@@ -1,4 +1,4 @@
-import { Award, Briefcase, MapPin, Shield } from "lucide-react";
+import { Award, Briefcase, DollarSign, MapPin, Shield } from "lucide-react";
 import PageContainer from "@/components/PageContainer";
 import { useSiteSetting } from "@/hooks/useSiteSettings";
 
@@ -28,12 +28,17 @@ const StatsBar = () => {
       number: coverage,
       label: "Coverage",
     },
+    {
+      icon: DollarSign,
+      number: "$25K–$500K",
+      label: "Project Range",
+    },
   ];
 
   return (
     <section className="py-12 bg-primary">
       <PageContainer>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 [&>*:last-child:nth-child(odd)]:col-span-2 [&>*:last-child:nth-child(odd)]:md:col-span-1">
           {stats.map((stat) => (
             <div key={stat.label} className="text-center group">
               <stat.icon className="w-8 h-8 text-secondary mx-auto mb-3 group-hover:scale-110 transition-transform" />
