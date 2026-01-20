@@ -57,11 +57,10 @@ const Hero = () => {
         className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-20 text-center"
       >
         <motion.h1 variants={itemVariants} className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-white mb-6 uppercase leading-tight font-heading font-bold tracking-wider">
-          Renovations and Buildouts Delivered<br />
-          with Precision, Safety, and Trust.
+          Your Trusted Partner for Compliant, Efficient Renovations in Sensitive Environments
         </motion.h1>
         <motion.p variants={itemVariants} className="text-white/90 text-xl md:text-2xl mb-12 max-w-3xl mx-auto leading-relaxed">
-          Your trusted partner for compliant, efficient renovations in healthcare, professional, retail, and commercial environments.
+          ICRA-certified healthcare renovations • Professional office buildouts • Retail & multi-site rollouts • Commercial construction — Serving Greater Cincinnati, Dayton, Lexington & Northern Kentucky
         </motion.p>
         <motion.div variants={itemVariants}>
           <Button variant="hero" size="lg" asChild>
