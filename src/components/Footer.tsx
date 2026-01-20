@@ -1,10 +1,13 @@
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin } from "lucide-react";
+import { useSiteSetting } from "@/hooks/useSiteSettings";
 import rcgLogo from "@/assets/rcg-logo-transparent.png";
 import rcgLogoColor from "@/assets/rcg-logo-color.png";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const { value: phoneNumber } = useSiteSetting("phone_number", "859-816-2314");
+  const { value: emailPrimary } = useSiteSetting("email_primary", "info@radcliffconstructiongroup.com");
 
   return (
     <footer className="bg-navy text-white py-12">
@@ -61,20 +64,20 @@ const Footer = () => {
             </h4>
             <div className="flex flex-col gap-3 text-sm">
               <a
-                href="tel:859-816-2314"
+                href={`tel:${phoneNumber.replace(/[^0-9]/g, "")}`}
                 className="flex items-center gap-2 text-white/80 hover:text-secondary transition-colors"
-                aria-label="Call Radcliff Construction Group at (859) 816-2314"
+                aria-label={`Call Radcliff Construction Group at ${phoneNumber}`}
               >
                 <Phone className="w-4 h-4" aria-hidden="true" />
-                (859) 816-2314
+                {phoneNumber}
               </a>
               <a
-                href="mailto:info@radcliffconstructiongroup.com"
+                href={`mailto:${emailPrimary}`}
                 className="flex items-center gap-2 text-white/80 hover:text-secondary transition-colors"
                 aria-label="Email Radcliff Construction Group"
               >
                 <Mail className="w-4 h-4" aria-hidden="true" />
-                info@radcliffconstructiongroup.com
+                {emailPrimary}
               </a>
               <div className="flex items-start gap-2 text-white/80">
                 <MapPin className="w-4 h-4 mt-1 flex-shrink-0" aria-hidden="true" />

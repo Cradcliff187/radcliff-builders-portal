@@ -2,8 +2,12 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Phone, Mail } from "lucide-react";
 import PageContainer from "@/components/PageContainer";
+import { useSiteSetting } from "@/hooks/useSiteSettings";
 
 const CTASection = () => {
+  const { value: phoneNumber } = useSiteSetting("phone_number", "859-816-2314");
+  const { value: emailPrimary } = useSiteSetting("email_primary", "info@radcliffconstructiongroup.com");
+
   return (
     <section className="py-24 bg-primary text-white">
       <PageContainer className="text-center">
@@ -22,17 +26,17 @@ const CTASection = () => {
             asChild 
             className="bg-white/10 border-2 border-white text-white hover:bg-white hover:text-navy backdrop-blur-sm"
           >
-            <a href="tel:859-816-2314" aria-label="Call Radcliff Construction Group at (859) 816-2314">
+            <a href={`tel:${phoneNumber.replace(/[^0-9]/g, "")}`} aria-label={`Call Radcliff Construction Group at ${phoneNumber}`}>
               <Phone className="w-5 h-5" />
-              (859) 816-2314
+              {phoneNumber}
             </a>
           </Button>
         </div>
 
         <div className="flex items-center justify-center gap-2 text-white/80">
           <Mail className="w-5 h-5" />
-          <a href="mailto:info@radcliffconstructiongroup.com" className="hover:text-secondary transition-colors">
-            info@radcliffconstructiongroup.com
+          <a href={`mailto:${emailPrimary}`} className="hover:text-secondary transition-colors">
+            {emailPrimary}
           </a>
         </div>
       </PageContainer>
