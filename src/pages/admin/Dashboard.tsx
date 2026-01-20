@@ -8,7 +8,8 @@ import {
   BookOpen, 
   Download, 
   Users,
-  Settings
+  Settings,
+  BarChart3
 } from "lucide-react";
 import AdminLayout from "@/components/admin/AdminLayout";
 
@@ -70,6 +71,13 @@ const Dashboard = () => {
       icon: Settings,
       path: "/admin/settings",
       color: "bg-slate-500/10 text-slate-600",
+    },
+    {
+      title: "Google Tools",
+      description: "Analytics, Search Console & more",
+      icon: BarChart3,
+      path: "/admin/google-tools",
+      color: "bg-indigo-500/10 text-indigo-600",
     },
   ];
 
