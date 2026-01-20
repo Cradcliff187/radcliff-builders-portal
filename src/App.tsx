@@ -23,6 +23,7 @@ import Resources from "./pages/admin/Resources";
 import AdminProjects from "./pages/admin/Projects";
 import TeamMembers from "./pages/admin/TeamMembers";
 import PartnerLogos from "./pages/admin/PartnerLogos";
+import AdminTestimonials from "./pages/admin/Testimonials";
 import SiteSettings from "./pages/admin/SiteSettings";
 import GoogleTools from "./pages/admin/GoogleTools";
 
@@ -56,6 +57,7 @@ const App = () => (
             <Route path="/admin/projects" element={<AdminProjects />} />
             <Route path="/admin/team-members" element={<TeamMembers />} />
             <Route path="/admin/partner-logos" element={<PartnerLogos />} />
+            <Route path="/admin/testimonials" element={<AdminTestimonials />} />
             <Route path="/admin/settings" element={<SiteSettings />} />
             <Route path="/admin/google-tools" element={<GoogleTools />} />
           </Route>

@@ -257,18 +257,58 @@ export const useAdminPartnerLogos = () => {
   });
 };
 
+export const useAdminTestimonials = () => {
+  const queryClient = useQueryClient();
+
+  useEffect(() => {
+    const channel = supabase
+      .channel('admin-testimonials-changes')
+      .on(
+        'postgres_changes',
+        {
+          event: '*',
+          schema: 'public',
+          table: 'testimonials'
+        },
+        () => {
+          queryClient.invalidateQueries({ queryKey: ["admin_testimonials"] });
+          queryClient.invalidateQueries({ queryKey: ["testimonials"] });
+        }
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
+  }, [queryClient]);
+
+  return useQuery({
+    queryKey: ["admin_testimonials"],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("testimonials")
+        .select("*")
+        .order("display_order", { ascending: true });
+      
+      if (error) throw error;
+      return data;
+    },
+  });
+};
+
 // Hook for content counts (used in dashboard)
 export const useContentCounts = () => {
   return useQuery({
     queryKey: ["content_counts"],
     queryFn: async () => {
-      const [articles, projects, caseStudies, resources, teamMembers, partnerLogos] = await Promise.all([
+      const [articles, projects, caseStudies, resources, teamMembers, partnerLogos, testimonials] = await Promise.all([
         supabase.from("insights_articles").select("*", { count: "exact", head: true }),
         supabase.from("projects").select("*", { count: "exact", head: true }),
         supabase.from("case_studies").select("*", { count: "exact", head: true }),
         supabase.from("resources").select("*", { count: "exact", head: true }),
         supabase.from("team_members").select("*", { count: "exact", head: true }),
         supabase.from("partner_logos").select("*", { count: "exact", head: true }),
+        supabase.from("testimonials").select("*", { count: "exact", head: true }),
       ]);
 
       return {
@@ -278,6 +318,7 @@ export const useContentCounts = () => {
         resources: resources.count || 0,
         teamMembers: teamMembers.count || 0,
         partnerLogos: partnerLogos.count || 0,
+        testimonials: testimonials.count || 0,
       };
     },
   });

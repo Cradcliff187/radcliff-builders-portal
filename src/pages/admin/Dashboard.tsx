@@ -9,7 +9,8 @@ import {
   Download, 
   Users,
   Settings,
-  BarChart3
+  BarChart3,
+  Quote
 } from "lucide-react";
 import AdminLayout from "@/components/admin/AdminLayout";
 
@@ -64,6 +65,14 @@ const Dashboard = () => {
       path: "/admin/partner-logos",
       color: "bg-pink-500/10 text-pink-600",
       count: counts?.partnerLogos,
+    },
+    {
+      title: "Testimonials",
+      description: "Manage client testimonials",
+      icon: Quote,
+      path: "/admin/testimonials",
+      color: "bg-amber-500/10 text-amber-600",
+      count: counts?.testimonials,
     },
     {
       title: "Site Settings",
