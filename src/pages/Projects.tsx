@@ -27,7 +27,7 @@ const Projects = () => {
   return (
     <main id="main-content" className="min-h-screen">
       <SEO
-        title="Our Projects | Radcliff Construction Group (RCG)"
+        title="Project Portfolio | Healthcare & Commercial Construction | Greater Cincinnati | RCG"
         description="View Radcliff Construction Group's portfolio of healthcare, professional, retail, and commercial renovation projects. ICRA-certified construction across Greater Cincinnati, Dayton, Lexington, and Northern Kentucky."
       />
       <Header />

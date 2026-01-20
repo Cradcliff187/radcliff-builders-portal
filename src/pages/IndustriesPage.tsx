@@ -40,7 +40,7 @@ const IndustriesPage = () => {
   return (
     <main id="main-content" className="min-h-screen">
       <SEO
-        title="Industries We Serve | Radcliff Construction Group (RCG)"
+        title="Industries We Serve | Healthcare, Retail, Commercial Construction | Cincinnati Region | RCG"
         description="ICRA-certified healthcare construction, professional office renovations, retail and multi-site buildouts, commercial construction. Serving Greater Cincinnati, Dayton, Lexington, and Northern Kentucky."
       />
       <Header />

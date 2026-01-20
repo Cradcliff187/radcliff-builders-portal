@@ -18,8 +18,8 @@ const Home = () => {
   return (
     <main id="main-content" className="min-h-screen">
       <SEO
-        title="Healthcare & Commercial Renovations | Radcliff Construction Group (RCG)"
-        description="ICRA-certified healthcare renovations and commercial buildouts. Specializing in $25K-$500K projects across Greater Cincinnati, Dayton, Lexington, and Northern Kentucky. OSHA 30 certified, multi-site portfolio expertise."
+        title="ICRA-Certified Healthcare & Commercial Renovations | Cincinnati, Dayton, Lexington | RCG"
+        description="ICRA-certified healthcare renovations and commercial buildouts serving Cincinnati, Dayton, Lexington, and Northern Kentucky. Specializing in $25K-$500K projects. OSHA 30 certified. Request a free estimate."
       />
       <Header />
       <Hero />

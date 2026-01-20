@@ -77,7 +77,7 @@ const Services = () => {
   return (
     <main id="main-content" className="min-h-screen">
       <SEO
-        title="Our Services | Radcliff Construction Group (RCG)"
+        title="Construction Services | Healthcare Renovations & Commercial Buildouts | Cincinnati & NKY | RCG"
         description="Healthcare renovations, professional office buildouts, retail and commercial construction. ICRA-certified, OSHA 30 trained. Full project management for $25K-$500K projects."
       />
       <Header />
