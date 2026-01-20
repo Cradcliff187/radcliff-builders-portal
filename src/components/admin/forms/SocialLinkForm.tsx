@@ -32,6 +32,8 @@ interface SocialLinkFormProps {
     display_order: number;
   };
   onSuccess: (data: SocialLinkFormData) => void;
+  onCancel: () => void;
+  isSubmitting?: boolean;
 }
 
 const iconOptions = [
@@ -52,7 +54,7 @@ const iconMap: Record<string, LucideIcon> = {
   Globe,
 };
 
-export default function SocialLinkForm({ socialLink, onSuccess }: SocialLinkFormProps) {
+export default function SocialLinkForm({ socialLink, onSuccess, onCancel, isSubmitting = false }: SocialLinkFormProps) {
   const isEdit = !!socialLink;
 
   const form = useForm<SocialLinkFormData>({
@@ -187,9 +189,24 @@ export default function SocialLinkForm({ socialLink, onSuccess }: SocialLinkForm
           )}
         />
 
-        <Button type="submit" className="w-full rounded-none">
-          {isEdit ? "Update Social Link" : "Add Social Link"}
-        </Button>
+        <div className="flex justify-end gap-4 pt-4">
+          <Button
+            type="button"
+            variant="outline"
+            onClick={onCancel}
+            disabled={isSubmitting}
+            className="bg-white border-charcoal text-charcoal hover:bg-light-grey uppercase tracking-wider rounded-none"
+          >
+            Cancel
+          </Button>
+          <Button
+            type="submit"
+            disabled={isSubmitting}
+            className="bg-gold text-white hover:bg-gold/90 uppercase tracking-wider rounded-none shadow-lg hover:shadow-xl transition-all"
+          >
+            {isSubmitting ? "Saving..." : isEdit ? "Update Social Link" : "Add Social Link"}
+          </Button>
+        </div>
       </form>
     </Form>
   );

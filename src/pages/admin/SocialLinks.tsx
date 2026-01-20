@@ -41,6 +41,7 @@ const SocialLinks = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
   const [selectedLink, setSelectedLink] = useState<SocialLink | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const columns = [
     {
@@ -109,6 +110,7 @@ const SocialLinks = () => {
   };
 
   const handleSubmit = async (data: SocialLinkFormData) => {
+    setIsSubmitting(true);
     try {
       if (selectedLink) {
         // Update existing
@@ -156,6 +158,8 @@ const SocialLinks = () => {
         description: error.message || "Failed to save social link",
         variant: "destructive",
       });
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -215,6 +219,8 @@ const SocialLinks = () => {
           <SocialLinkForm
             socialLink={selectedLink || undefined}
             onSuccess={handleSubmit}
+            onCancel={() => setIsFormOpen(false)}
+            isSubmitting={isSubmitting}
           />
         </DialogContent>
       </Dialog>
