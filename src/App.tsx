@@ -23,6 +23,7 @@ import Resources from "./pages/admin/Resources";
 import AdminProjects from "./pages/admin/Projects";
 import TeamMembers from "./pages/admin/TeamMembers";
 import PartnerLogos from "./pages/admin/PartnerLogos";
+import SiteSettings from "./pages/admin/SiteSettings";
 
 const queryClient = new QueryClient();
 
@@ -54,6 +55,7 @@ const App = () => (
             <Route path="/admin/projects" element={<AdminProjects />} />
             <Route path="/admin/team-members" element={<TeamMembers />} />
             <Route path="/admin/partner-logos" element={<PartnerLogos />} />
+            <Route path="/admin/settings" element={<SiteSettings />} />
           </Route>
           
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

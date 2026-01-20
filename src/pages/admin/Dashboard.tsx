@@ -7,7 +7,8 @@ import {
   FolderOpen, 
   BookOpen, 
   Download, 
-  Users
+  Users,
+  Settings
 } from "lucide-react";
 import AdminLayout from "@/components/admin/AdminLayout";
 
@@ -62,6 +63,13 @@ const Dashboard = () => {
       path: "/admin/partner-logos",
       color: "bg-pink-500/10 text-pink-600",
       count: counts?.partnerLogos,
+    },
+    {
+      title: "Site Settings",
+      description: "Phone, email, stats, and social links",
+      icon: Settings,
+      path: "/admin/settings",
+      color: "bg-slate-500/10 text-slate-600",
     },
   ];
 
