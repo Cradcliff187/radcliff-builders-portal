@@ -38,7 +38,7 @@ const About = () => {
   return (
     <main id="main-content" className="min-h-screen">
       <SEO
-        title="About Us | Radcliff Construction Group (RCG)"
+        title="About Radcliff Construction Group | Healthcare & Commercial Contractor | Cincinnati Region"
         description="Radcliff Construction Group: Partnership-first construction specializing in $25K-$500K renovations for healthcare, office, and multi-site portfolios. ICRA and OSHA 30 certified."
       />
       <Header />

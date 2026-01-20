@@ -86,7 +86,7 @@ const Insights = () => {
   return (
     <main id="main-content" className="min-h-screen">
       <SEO
-        title="Insights & Resources | Radcliff Construction Group (RCG)"
+        title="Construction Insights & Resources | Healthcare & Commercial Best Practices | RCG"
         description="Construction insights, case studies, and resources from Radcliff Construction Group. Practical guidance for healthcare renovations, commercial buildouts, and multi-site projects."
       />
       <Header />
