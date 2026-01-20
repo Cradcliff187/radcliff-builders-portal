@@ -61,7 +61,7 @@ const Hero = () => {
           with Precision, Safety, and Trust.
         </motion.h1>
         <motion.p variants={itemVariants} className="text-white/90 text-xl md:text-2xl mb-12 max-w-3xl mx-auto leading-relaxed">
-          Your trusted partner for compliant, efficient renovations in active healthcare, professional, and commercial environments.
+          Your trusted partner for compliant, efficient renovations in healthcare, professional, retail, and commercial environments.
         </motion.p>
         <motion.div variants={itemVariants}>
           <Button variant="hero" size="lg" asChild>
