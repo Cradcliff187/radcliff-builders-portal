@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
+import TrustBadges from "@/components/TrustBadges";
 import StatsBar from "@/components/StatsBar";
 import ProblemSolution from "@/components/ProblemSolution";
 import FeaturedProjects from "@/components/FeaturedProjects";
@@ -22,6 +23,7 @@ const Home = () => {
       />
       <Header />
       <Hero />
+      <TrustBadges />
       <StatsBar />
       <ProblemSolution />
       <FeaturedProjects />
