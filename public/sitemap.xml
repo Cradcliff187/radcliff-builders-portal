@@ -2,60 +2,45 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Main Pages -->
   <url>
-    <loc>https://radcliffconstructiongroup.com/</loc>
+    <loc>https://teamradcliff.com/</loc>
+    <lastmod>2025-01-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://radcliffconstructiongroup.com/about</loc>
+    <loc>https://teamradcliff.com/about</loc>
+    <lastmod>2025-01-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://radcliffconstructiongroup.com/team</loc>
+    <loc>https://teamradcliff.com/team</loc>
+    <lastmod>2025-01-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://radcliffconstructiongroup.com/services</loc>
+    <loc>https://teamradcliff.com/services</loc>
+    <lastmod>2025-01-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://radcliffconstructiongroup.com/projects</loc>
+    <loc>https://teamradcliff.com/projects</loc>
+    <lastmod>2025-01-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://radcliffconstructiongroup.com/industries</loc>
+    <loc>https://teamradcliff.com/industries</loc>
+    <lastmod>2025-01-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://radcliffconstructiongroup.com/contact</loc>
+    <loc>https://teamradcliff.com/contact</loc>
+    <lastmod>2025-01-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
-  </url>
-  
-  <!-- Individual Project Pages -->
-  <url>
-    <loc>https://radcliffconstructiongroup.com/projects/perspectives-center-for-austism</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://radcliffconstructiongroup.com/projects/uc-health-orthopedics-office</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://radcliffconstructiongroup.com/projects/uc-health-primary-care</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://radcliffconstructiongroup.com/projects/state-farm</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
 </urlset>
