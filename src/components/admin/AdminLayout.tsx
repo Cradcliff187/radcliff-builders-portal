@@ -8,9 +8,10 @@ import rcgLogoColor from "@/assets/rcg-logo-color.png";
 interface AdminLayoutProps {
   children: React.ReactNode;
   title: string;
+  hideBackLink?: boolean;
 }
 
-export default function AdminLayout({ children, title }: AdminLayoutProps) {
+export default function AdminLayout({ children, title, hideBackLink = false }: AdminLayoutProps) {
   const navigate = useNavigate();
 
   const handleLogout = async () => {
@@ -33,7 +34,7 @@ export default function AdminLayout({ children, title }: AdminLayoutProps) {
                 <img 
                   src={rcgLogoColor} 
                   alt="RCG Logo" 
-                  className="h-8 md:h-10 object-contain"
+                  className="h-8 md:h-12 object-contain hover:scale-105 transform-gpu transition-all duration-300"
                   style={{
                     filter: 'brightness(1.1) contrast(1.15) drop-shadow(0 0 8px rgba(255, 255, 255, 0.3))',
                     imageRendering: '-webkit-optimize-contrast',
@@ -79,15 +80,17 @@ export default function AdminLayout({ children, title }: AdminLayoutProps) {
 
       {/* Main Content */}
       <main className="container mx-auto px-4 md:px-6 lg:px-20 py-6 md:py-8">
-        <div className="mb-6">
-          <Link
-            to="/admin/dashboard"
-            className="inline-flex items-center text-navy hover:text-gold transition-colors text-sm font-medium"
-          >
-            <ArrowLeft className="h-4 w-4 mr-2" />
-            Back to Dashboard
-          </Link>
-        </div>
+        {!hideBackLink && (
+          <div className="mb-6">
+            <Link
+              to="/admin/dashboard"
+              className="inline-flex items-center text-navy hover:text-gold transition-colors text-sm font-medium"
+            >
+              <ArrowLeft className="h-4 w-4 mr-2" />
+              Back to Dashboard
+            </Link>
+          </div>
+        )}
 
         <div className="mb-8">
           <h1 className="text-2xl md:text-4xl font-montserrat font-bold text-navy uppercase tracking-wide">
