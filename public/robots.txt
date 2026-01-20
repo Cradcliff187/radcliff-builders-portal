@@ -13,4 +13,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://radcliffconstructiongroup.com/sitemap.xml
+Sitemap: https://teamradcliff.com/sitemap.xml
