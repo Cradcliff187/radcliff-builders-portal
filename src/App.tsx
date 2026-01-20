@@ -24,6 +24,7 @@ import AdminProjects from "./pages/admin/Projects";
 import TeamMembers from "./pages/admin/TeamMembers";
 import PartnerLogos from "./pages/admin/PartnerLogos";
 import SiteSettings from "./pages/admin/SiteSettings";
+import GoogleTools from "./pages/admin/GoogleTools";
 
 const queryClient = new QueryClient();
 
@@ -56,6 +57,7 @@ const App = () => (
             <Route path="/admin/team-members" element={<TeamMembers />} />
             <Route path="/admin/partner-logos" element={<PartnerLogos />} />
             <Route path="/admin/settings" element={<SiteSettings />} />
+            <Route path="/admin/google-tools" element={<GoogleTools />} />
           </Route>
           
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
