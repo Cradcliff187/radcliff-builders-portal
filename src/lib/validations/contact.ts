@@ -37,6 +37,9 @@ export const contactFormSchema = z.object({
   industry: z
     .enum(["Healthcare", "Professional", "Retail", "Commercial"])
     .optional(),
+  preferred_contact: z.string().optional(),
+  project_timeline: z.string().optional(),
+  referral_source: z.string().optional(),
 });
 
 export type ContactFormData = z.infer<typeof contactFormSchema>;

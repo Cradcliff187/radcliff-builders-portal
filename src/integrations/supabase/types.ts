@@ -63,7 +63,10 @@ export type Database = {
           name: string
           organization: string | null
           phone: string | null
+          preferred_contact: string | null
           project_scope: string | null
+          project_timeline: string | null
+          referral_source: string | null
           status: string | null
           updated_at: string | null
         }
@@ -76,7 +79,10 @@ export type Database = {
           name: string
           organization?: string | null
           phone?: string | null
+          preferred_contact?: string | null
           project_scope?: string | null
+          project_timeline?: string | null
+          referral_source?: string | null
           status?: string | null
           updated_at?: string | null
         }
@@ -89,7 +95,10 @@ export type Database = {
           name?: string
           organization?: string | null
           phone?: string | null
+          preferred_contact?: string | null
           project_scope?: string | null
+          project_timeline?: string | null
+          referral_source?: string | null
           status?: string | null
           updated_at?: string | null
         }

@@ -22,6 +22,14 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 const industryContent = {
   Healthcare: {
@@ -73,6 +81,9 @@ const Contact = () => {
       scope: "",
       message: "",
       industry: industryParam || undefined,
+      preferred_contact: "Either",
+      project_timeline: "",
+      referral_source: "",
     },
   });
 
@@ -88,6 +99,9 @@ const Contact = () => {
           project_scope: data.scope || null,
           message: data.message,
           industry: data.industry || null,
+          preferred_contact: data.preferred_contact || null,
+          project_timeline: data.project_timeline || null,
+          referral_source: data.referral_source || null,
         });
       
       if (error) throw error;
@@ -262,6 +276,37 @@ const Contact = () => {
 
                     <FormField
                       control={form.control}
+                      name="preferred_contact"
+                      render={({ field }) => (
+                        <FormItem className="space-y-3">
+                          <FormLabel>Preferred Contact Method</FormLabel>
+                          <FormControl>
+                            <RadioGroup
+                              onValueChange={field.onChange}
+                              defaultValue={field.value}
+                              className="flex flex-wrap gap-4"
+                              disabled={mutation.isPending}
+                            >
+                              {["Phone Call", "Email", "Either"].map((option) => (
+                                <div key={option} className="flex items-center space-x-2">
+                                  <RadioGroupItem value={option} id={`contact-${option}`} />
+                                  <label 
+                                    htmlFor={`contact-${option}`} 
+                                    className="text-sm font-normal cursor-pointer"
+                                  >
+                                    {option}
+                                  </label>
+                                </div>
+                              ))}
+                            </RadioGroup>
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+
+                    <FormField
+                      control={form.control}
                       name="scope"
                       render={({ field }) => (
                         <FormItem>
@@ -282,6 +327,64 @@ const Contact = () => {
                               {industryContent[industryParam].helperText}
                             </p>
                           )}
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+
+                    <FormField
+                      control={form.control}
+                      name="project_timeline"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Project Timeline</FormLabel>
+                          <Select 
+                            onValueChange={field.onChange} 
+                            defaultValue={field.value}
+                            disabled={mutation.isPending}
+                          >
+                            <FormControl>
+                              <SelectTrigger>
+                                <SelectValue placeholder="Select timeline..." />
+                              </SelectTrigger>
+                            </FormControl>
+                            <SelectContent>
+                              <SelectItem value="This Quarter">This Quarter</SelectItem>
+                              <SelectItem value="Next 6 Months">Next 6 Months</SelectItem>
+                              <SelectItem value="Planning Phase (6+ Months)">Planning Phase (6+ Months)</SelectItem>
+                              <SelectItem value="Just Exploring">Just Exploring</SelectItem>
+                            </SelectContent>
+                          </Select>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+
+                    <FormField
+                      control={form.control}
+                      name="referral_source"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>How Did You Hear About Us?</FormLabel>
+                          <Select 
+                            onValueChange={field.onChange} 
+                            defaultValue={field.value}
+                            disabled={mutation.isPending}
+                          >
+                            <FormControl>
+                              <SelectTrigger>
+                                <SelectValue placeholder="Select one..." />
+                              </SelectTrigger>
+                            </FormControl>
+                            <SelectContent>
+                              <SelectItem value="Google Search">Google Search</SelectItem>
+                              <SelectItem value="LinkedIn">LinkedIn</SelectItem>
+                              <SelectItem value="Referral">Referral</SelectItem>
+                              <SelectItem value="Industry Event">Industry Event</SelectItem>
+                              <SelectItem value="Previous Client">Previous Client</SelectItem>
+                              <SelectItem value="Other">Other</SelectItem>
+                            </SelectContent>
+                          </Select>
                           <FormMessage />
                         </FormItem>
                       )}
