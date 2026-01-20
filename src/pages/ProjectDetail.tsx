@@ -3,6 +3,7 @@ import { useProjectDetail } from "@/hooks/useProjectDetail";
 import { useProjects } from "@/hooks/useCMSContent";
 import { getValidatedContent, isValidArray } from "@/lib/contentValidation";
 import { handleImageError } from "@/lib/imageUtils";
+import SEO from "@/components/SEO";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ProjectImageGallery from "@/components/ProjectImageGallery";
@@ -103,6 +104,15 @@ const ProjectDetail = () => {
 
   return (
     <>
+      <SEO
+        title={`${project.title} | ${project.industry} Construction Project | RCG`}
+        description={
+          project.description 
+            ? project.description.substring(0, 155) + '...' 
+            : `View the ${project.title} project by Radcliff Construction Group. ${project.industry} construction in the Cincinnati region.`
+        }
+        image={project.image_url}
+      />
       <Header />
 
       {/* Hero Section with Large Background Image */}
