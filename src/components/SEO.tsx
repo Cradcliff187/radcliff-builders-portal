@@ -11,7 +11,7 @@ interface SEOProps {
 const SEO = ({ title, description, image, url }: SEOProps) => {
   const location = useLocation();
   const currentUrl = url || `${window.location.origin}${location.pathname}`;
-  const defaultImage = `${window.location.origin}/favicon-rcg.png`;
+  const defaultImage = "https://osothwrzhvgojhomaysk.supabase.co/storage/v1/object/public/brand-assets/rcg-social-share.png";
 
   useEffect(() => {
     // Update document title
