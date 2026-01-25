@@ -1,9 +1,31 @@
 import { FileCheck } from "lucide-react";
 import { handleImageError } from "@/lib/imageUtils";
 
-const certifications = [
+type BaseCertification = {
+  label: string;
+};
+
+type ImageCertification = BaseCertification & {
+  image: string;
+  alt?: string;
+  link?: string;
+};
+
+type IconCertification = BaseCertification & {
+  icon: React.ComponentType<{ className?: string }>;
+};
+
+type Certification = ImageCertification | IconCertification;
+
+const certifications: Certification[] = [
   { image: "/assets/certifications/osha-logo-new.png", label: "OSHA 30 Certified" },
   { image: "/assets/certifications/icra-logo.png", label: "ICRA Certified" },
+  { 
+    image: "https://seal-cincinnati.bbb.org/seals/blue-seal-280-80-bbb-90053745.png", 
+    label: "BBB Accredited",
+    link: "https://www.bbb.org/us/ky/erlanger/profile/construction/radcliff-construction-group-llc-0292-90053745/#sealclick",
+    alt: "Radcliff Construction Group, LLC BBB Business Review"
+  },
   { icon: FileCheck, label: "Licensed" },
 ];
 
@@ -27,15 +49,34 @@ const Certifications = () => {
                 {'icon' in cert ? (
                   <cert.icon className="w-16 h-16 text-secondary" />
                 ) : (
-                  <img 
-                    src={cert.image} 
-                    alt={cert.label}
-                    loading="lazy"
-                    onError={(e) => handleImageError(e)}
-                    className={`${
-                      cert.label === "OSHA 30 Certified" ? "h-32" : "h-24"
-                    } w-auto object-contain transition-transform duration-300 hover:scale-110`}
-                  />
+                  (() => {
+                    const imgElement = (
+                      <img 
+                        src={cert.image} 
+                        alt={'alt' in cert && cert.alt ? cert.alt : cert.label}
+                        loading="lazy"
+                        onError={(e) => handleImageError(e)}
+                        className={`${
+                          cert.label === "OSHA 30 Certified" ? "h-32" : "h-24"
+                        } w-auto object-contain transition-transform duration-300 hover:scale-110`}
+                      />
+                    );
+                    
+                    if ('link' in cert && cert.link) {
+                      return (
+                        <a 
+                          href={cert.link}
+                          target="_blank"
+                          rel="nofollow noopener"
+                          aria-label="View Radcliff Construction Group BBB Business Profile (opens in new tab)"
+                        >
+                          {imgElement}
+                        </a>
+                      );
+                    }
+                    
+                    return imgElement;
+                  })()
                 )}
               </div>
               <span className="text-white font-heading font-semibold uppercase tracking-wider text-sm text-center">
