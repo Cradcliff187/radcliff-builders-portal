@@ -126,6 +126,17 @@ const Footer = () => {
             <ul className="flex flex-col gap-2 text-sm text-white/80">
               <li>OSHA 30 Certified</li>
               <li>ICRA Certified</li>
+              <li>
+                <a 
+                  href="https://www.bbb.org/us/ky/erlanger/profile/construction/radcliff-construction-group-llc-0292-90053745/#sealclick"
+                  target="_blank"
+                  rel="nofollow noopener"
+                  className="hover:text-secondary transition-colors"
+                  aria-label="View BBB Profile (opens in new tab)"
+                >
+                  BBB Accredited (A-)
+                </a>
+              </li>
               <li>Fully Licensed</li>
             </ul>
           </div>

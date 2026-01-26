@@ -154,7 +154,7 @@ const Services = () => {
         <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-20 text-center">
           <h2 className="mb-6 uppercase text-white">Certified Excellence</h2>
           <p className="text-white/90 text-lg max-w-3xl mx-auto leading-relaxed mb-12">
-            Our OSHA 30 and ICRA certifications ensure your project meets the highest standards for safety, compliance, and quality in sensitive environments.
+            Our OSHA 30, ICRA, and BBB certifications ensure your project meets the highest standards for safety, compliance, and quality in sensitive environments.
           </p>
           <div className="flex flex-wrap justify-center items-center gap-12 lg:gap-20">
             {/* OSHA 30 Certification */}
@@ -182,6 +182,27 @@ const Services = () => {
               </div>
               <span className="text-white font-heading font-semibold uppercase tracking-wider text-sm text-center">
                 ICRA Certified
+              </span>
+            </div>
+
+            {/* BBB Accredited */}
+            <div className="flex flex-col items-center gap-3 w-40">
+              <div className="flex items-center justify-center h-32">
+                <a 
+                  href="https://www.bbb.org/us/ky/erlanger/profile/construction/radcliff-construction-group-llc-0292-90053745/#sealclick"
+                  target="_blank"
+                  rel="nofollow noopener"
+                  aria-label="View Radcliff Construction Group BBB Business Profile (opens in new tab)"
+                >
+                  <img 
+                    src="https://seal-cincinnati.bbb.org/seals/blue-seal-280-80-bbb-90053745.png" 
+                    alt="Radcliff Construction Group, LLC BBB Business Review"
+                    className="h-20 w-auto object-contain transition-transform duration-300 hover:scale-110"
+                  />
+                </a>
+              </div>
+              <span className="text-white font-heading font-semibold uppercase tracking-wider text-sm text-center">
+                BBB Accredited
               </span>
             </div>
 
