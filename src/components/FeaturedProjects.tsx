@@ -45,11 +45,11 @@ const FeaturedProjects = () => {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-navy/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </div>
-                  <div className="p-6 min-h-[144px]">
+                  <div className="p-4 sm:p-6 min-h-[144px]">
                     <p className="text-secondary text-sm font-heading font-semibold uppercase tracking-wider mb-2 break-words">
                       {project.industry}
                     </p>
-                    <h3 className="text-xl mb-2 break-words">{project.title}</h3>
+                    <h3 className="text-lg sm:text-xl mb-2 break-words">{project.title}</h3>
                     <p className="text-muted-foreground text-sm leading-relaxed line-clamp-2 break-words">
                       {project.description}
                     </p>

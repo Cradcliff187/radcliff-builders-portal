@@ -160,12 +160,12 @@ const Contact = () => {
       {/* Contact Section */}
       <section className="py-24 bg-background">
         <div className="max-w-[1440px] mx-auto px-6 lg:px-20">
-          <div className="grid grid-cols-1 lg:grid-cols-[minmax(280px,360px)_1fr] gap-12 lg:gap-16">
+          <div className="grid grid-cols-1 lg:grid-cols-[minmax(280px,360px)_1fr] gap-8 lg:gap-16">
             {/* Contact Info */}
-            <div className="space-y-8">
-              <Card className="p-6">
-                <Phone className="w-8 h-8 text-secondary mb-4" />
-                <h3 className="text-xl font-heading font-semibold mb-2 uppercase">Phone</h3>
+            <div className="space-y-6 md:space-y-8">
+              <Card className="p-4 sm:p-6">
+                <Phone className="w-6 h-6 sm:w-8 sm:h-8 text-secondary mb-4" />
+                <h3 className="text-lg sm:text-xl font-heading font-semibold mb-2 uppercase">Phone</h3>
                 <a
                   href={`tel:${phoneNumber.replace(/[^0-9]/g, "")}`}
                   className="text-muted-foreground hover:text-secondary transition-colors"
@@ -175,9 +175,9 @@ const Contact = () => {
                 </a>
               </Card>
 
-              <Card className="p-6">
-                <Mail className="w-8 h-8 text-secondary mb-4" />
-                <h3 className="text-xl font-heading font-semibold mb-2 uppercase">Email</h3>
+              <Card className="p-4 sm:p-6">
+                <Mail className="w-6 h-6 sm:w-8 sm:h-8 text-secondary mb-4" />
+                <h3 className="text-lg sm:text-xl font-heading font-semibold mb-2 uppercase">Email</h3>
                 <a
                   href={`mailto:${emailPrimary}`}
                   className="text-muted-foreground hover:text-secondary transition-colors break-all"
@@ -186,9 +186,9 @@ const Contact = () => {
                 </a>
               </Card>
 
-              <Card className="p-6">
-                <MapPin className="w-8 h-8 text-secondary mb-4" />
-                <h3 className="text-xl font-heading font-semibold mb-2 uppercase">Service Area</h3>
+              <Card className="p-4 sm:p-6">
+                <MapPin className="w-6 h-6 sm:w-8 sm:h-8 text-secondary mb-4" />
+                <h3 className="text-lg sm:text-xl font-heading font-semibold mb-2 uppercase">Service Area</h3>
                 <ul className="mt-4 space-y-2 text-muted-foreground">
                   <li>Cincinnati, OH</li>
                   <li>Dayton, OH</li>
@@ -212,7 +212,7 @@ const Contact = () => {
 
             {/* Contact Form */}
             <div className="flex items-center justify-center lg:justify-start">
-              <Card className="p-8 w-full max-w-[640px]">
+              <Card className="p-6 sm:p-8 w-full max-w-[640px]">
                 <h2 className="mb-8 uppercase">Request Consultation</h2>
                 <Form {...form}>
                   <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">

@@ -156,7 +156,7 @@ const Services = () => {
           <p className="text-white/90 text-lg max-w-3xl mx-auto leading-relaxed mb-12">
             Our OSHA 30, ICRA, and BBB certifications ensure your project meets the highest standards for safety, compliance, and quality in sensitive environments.
           </p>
-          <div className="flex flex-wrap justify-center items-center gap-12 lg:gap-20">
+          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12 lg:gap-20">
             {/* OSHA 30 Certification */}
             <div className="flex flex-col items-center gap-3 w-40">
               <div className="flex items-center justify-center h-32">

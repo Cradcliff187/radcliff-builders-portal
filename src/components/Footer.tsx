@@ -23,7 +23,7 @@ const Footer = () => {
   return (
     <footer className="bg-navy text-white py-12">
       <div className="max-w-[1440px] mx-auto px-6 lg:px-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 mb-12">
           {/* Logo & Tagline */}
           <div>
             <img 
@@ -144,7 +144,7 @@ const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
-          <p className="font-body text-xs" style={{ color: '#F4F7F9' }}>
+          <p className="font-body text-xs text-white/80">
             &copy; 2025 Radcliff Construction Group. All rights reserved.
           </p>
           <Link 

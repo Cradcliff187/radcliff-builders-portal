@@ -96,6 +96,7 @@ const ProjectImageGallery = ({ images, primaryImage }: ProjectImageGalleryProps)
               size="icon"
               className="absolute top-2 right-2 z-50 text-white bg-black/50 hover:bg-black/70 backdrop-blur-sm rounded-full w-10 h-10 md:top-4 md:right-4 md:rounded-none"
               onClick={() => setLightboxOpen(false)}
+              aria-label="Close image gallery"
             >
               <X className="h-5 w-5 md:h-6 md:w-6" />
             </Button>
@@ -106,6 +107,7 @@ const ProjectImageGallery = ({ images, primaryImage }: ProjectImageGalleryProps)
               size="icon"
               className="absolute left-1 md:left-4 top-1/2 -translate-y-1/2 z-50 text-white bg-black/50 hover:bg-black/70 backdrop-blur-sm rounded-full md:rounded-none w-12 h-12 md:w-auto md:h-auto"
               onClick={goToPrevious}
+              aria-label="View previous image"
             >
               <ChevronLeft className="h-6 w-6 md:h-8 md:w-8" />
             </Button>
@@ -132,6 +134,7 @@ const ProjectImageGallery = ({ images, primaryImage }: ProjectImageGalleryProps)
               size="icon"
               className="absolute right-1 md:right-4 top-1/2 -translate-y-1/2 z-50 text-white bg-black/50 hover:bg-black/70 backdrop-blur-sm rounded-full md:rounded-none w-12 h-12 md:w-auto md:h-auto"
               onClick={goToNext}
+              aria-label="View next image"
             >
               <ChevronRight className="h-6 w-6 md:h-8 md:w-8" />
             </Button>
@@ -144,6 +147,7 @@ const ProjectImageGallery = ({ images, primaryImage }: ProjectImageGalleryProps)
                     key={image.id}
                     ref={(el) => (thumbnailRefs.current[index] = el)}
                     onClick={() => setCurrentIndex(index)}
+                    aria-label={`View image ${index + 1}: ${image.caption || 'Project image'}`}
                     className={`flex-shrink-0 w-16 h-12 md:w-20 md:h-14 overflow-hidden transition-all duration-200 rounded-none ${
                       index === currentIndex 
                         ? "border-2 border-secondary brightness-100" 
@@ -171,7 +175,7 @@ const ProjectImageGallery = ({ images, primaryImage }: ProjectImageGalleryProps)
             )}
 
             {/* Counter */}
-            <div className="absolute top-2 left-2 sm:top-4 sm:left-4 text-white text-xs md:text-sm bg-black/60 backdrop-blur-sm px-2 py-1 rounded-md">
+            <div className="absolute top-2 left-2 sm:top-4 sm:left-4 text-white text-xs md:text-sm bg-black/60 backdrop-blur-sm px-2 py-1 rounded-none">
               {currentIndex + 1} / {allImages.length}
             </div>
           </div>

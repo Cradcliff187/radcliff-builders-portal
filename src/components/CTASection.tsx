@@ -34,8 +34,8 @@ const CTASection = () => {
         </div>
 
         <div className="flex items-center justify-center gap-2 text-white/80">
-          <Mail className="w-5 h-5" />
-          <a href={`mailto:${emailPrimary}`} className="hover:text-secondary transition-colors">
+          <Mail className="w-5 h-5" aria-hidden="true" />
+          <a href={`mailto:${emailPrimary}`} className="hover:text-secondary transition-colors" aria-label={`Email Radcliff Construction Group at ${emailPrimary}`}>
             {emailPrimary}
           </a>
         </div>
