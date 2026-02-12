@@ -1,9 +1,11 @@
 import { useParams, Link } from "react-router-dom";
+import { useEffect } from "react";
 import { useProjectDetail } from "@/hooks/useProjectDetail";
 import { useProjects } from "@/hooks/useCMSContent";
 import { getValidatedContent, isValidArray } from "@/lib/contentValidation";
 import { handleImageError } from "@/lib/imageUtils";
 import SEO from "@/components/SEO";
+import { trackProjectView } from "@/lib/analytics";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ProjectImageGallery from "@/components/ProjectImageGallery";
@@ -97,10 +99,69 @@ const ProjectDetail = () => {
   const validSolutions = getValidatedContent(project.solutions);
   const validOutcomes = getValidatedContent(project.outcomes);
   const validKeyFeatures = isValidArray(project.key_features);
-  const hasValidTestimonial = 
-    getValidatedContent(project.testimonial_quote) && 
-    getValidatedContent(project.testimonial_author) && 
+  const hasValidTestimonial =
+    getValidatedContent(project.testimonial_quote) &&
+    getValidatedContent(project.testimonial_author) &&
     getValidatedContent(project.testimonial_title);
+
+  // Track project view and add breadcrumb schema
+  useEffect(() => {
+    if (project) {
+      // Track project view in GA4
+      trackProjectView({
+        projectId: project.id,
+        projectTitle: project.title,
+        projectIndustry: project.industry,
+        projectSlug: slug!,
+        projectLocation: project.location,
+        squareFootage: project.square_footage,
+      });
+
+      // Add BreadcrumbList schema for SEO
+      const breadcrumbSchema = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://teamradcliff.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Projects",
+            "item": "https://teamradcliff.com/projects"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": project.title,
+            "item": `https://teamradcliff.com/projects/${slug}`
+          }
+        ]
+      };
+
+      // Inject breadcrumb schema
+      let schemaScript = document.querySelector('script[data-schema="breadcrumb"]');
+      if (!schemaScript) {
+        schemaScript = document.createElement("script");
+        schemaScript.setAttribute("type", "application/ld+json");
+        schemaScript.setAttribute("data-schema", "breadcrumb");
+        document.head.appendChild(schemaScript);
+      }
+      schemaScript.textContent = JSON.stringify(breadcrumbSchema);
+
+      // Cleanup on unmount
+      return () => {
+        const script = document.querySelector('script[data-schema="breadcrumb"]');
+        if (script) {
+          script.remove();
+        }
+      };
+    }
+  }, [project, slug]);
 
   return (
     <>

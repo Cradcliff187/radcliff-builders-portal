@@ -4,6 +4,7 @@ import { useSiteSetting } from "@/hooks/useSiteSettings";
 import { useSocialLinks } from "@/hooks/useSocialLinks";
 import rcgLogo from "@/assets/rcg-logo-transparent.png";
 import rcgLogoColor from "@/assets/rcg-logo-color.png";
+import { trackClickToCall, trackClickToEmail } from "@/lib/analytics";
 
 const iconMap: Record<string, LucideIcon> = {
   Linkedin,
@@ -99,6 +100,7 @@ const Footer = () => {
                 href={`tel:${phoneNumber.replace(/[^0-9]/g, "")}`}
                 className="flex items-center gap-2 text-white/80 hover:text-secondary transition-colors"
                 aria-label={`Call Radcliff Construction Group at ${phoneNumber}`}
+                onClick={() => trackClickToCall(phoneNumber, 'footer')}
               >
                 <Phone className="w-4 h-4" aria-hidden="true" />
                 {phoneNumber}
@@ -107,6 +109,7 @@ const Footer = () => {
                 href={`mailto:${emailPrimary}`}
                 className="flex items-center gap-2 text-white/80 hover:text-secondary transition-colors"
                 aria-label="Email Radcliff Construction Group"
+                onClick={() => trackClickToEmail(emailPrimary, 'footer')}
               >
                 <Mail className="w-4 h-4" aria-hidden="true" />
                 {emailPrimary}

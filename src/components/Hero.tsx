@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { motion, useReducedMotion } from "framer-motion";
 import heroImage from "@/assets/hero-healthcare.jpg";
+import { trackCTAClick } from "@/lib/analytics";
 
 const Hero = () => {
   const prefersReducedMotion = useReducedMotion();
@@ -65,7 +66,17 @@ const Hero = () => {
           ICRA-certified healthcare renovations • Professional office buildouts • Retail & multi-site rollouts • Commercial construction — Serving Greater Cincinnati, Dayton, Lexington & Northern Kentucky
         </motion.p>
         <motion.div variants={itemVariants}>
-          <Button variant="hero" size="lg" asChild>
+          <Button
+            variant="hero"
+            size="lg"
+            asChild
+            onClick={() => trackCTAClick({
+              ctaType: 'hero_conversation',
+              ctaText: 'Start a Conversation',
+              ctaLocation: 'hero_section',
+              destinationUrl: '/contact'
+            })}
+          >
             <Link to="/contact">Start a Conversation</Link>
           </Button>
         </motion.div>

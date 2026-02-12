@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import rcgLogo from "@/assets/rcg-logo-transparent.png";
 import rcgLogoColor from "@/assets/rcg-logo-color.png";
+import { trackCTAClick, trackMobileMenuToggle } from "@/lib/analytics";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -94,7 +95,17 @@ const Header = () => {
                 {link.label}
               </Link>
             ))}
-            <Button variant="secondary" size="sm" asChild>
+            <Button
+              variant="secondary"
+              size="sm"
+              asChild
+              onClick={() => trackCTAClick({
+                ctaType: 'consultation',
+                ctaText: 'Request Consultation',
+                ctaLocation: 'header',
+                destinationUrl: '/contact'
+              })}
+            >
               <Link to="/contact">Request Consultation</Link>
             </Button>
           </nav>
@@ -102,7 +113,11 @@ const Header = () => {
           {/* Mobile Menu Button */}
           <button
             className="md:hidden text-white"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            onClick={() => {
+              const newState = !isMobileMenuOpen;
+              setIsMobileMenuOpen(newState);
+              trackMobileMenuToggle(newState ? 'open' : 'close');
+            }}
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
@@ -145,8 +160,22 @@ const Header = () => {
                   animate={prefersReducedMotion ? {} : { opacity: 1, x: 0 }}
                   transition={prefersReducedMotion ? {} : { delay: navLinks.length * 0.05, duration: 0.3 }}
                 >
-                  <Button variant="secondary" size="sm" className="mt-4 w-full" asChild>
-                    <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>
+                  <Button
+                    variant="secondary"
+                    size="sm"
+                    className="mt-4 w-full"
+                    asChild
+                    onClick={() => {
+                      trackCTAClick({
+                        ctaType: 'consultation',
+                        ctaText: 'Request Consultation',
+                        ctaLocation: 'mobile_menu',
+                        destinationUrl: '/contact'
+                      });
+                      setIsMobileMenuOpen(false);
+                    }}
+                  >
+                    <Link to="/contact">
                       Request Consultation
                     </Link>
                   </Button>
