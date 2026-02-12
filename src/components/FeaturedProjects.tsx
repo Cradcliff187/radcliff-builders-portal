@@ -31,7 +31,7 @@ const FeaturedProjects = () => {
               </Card>
             ))
           ) : (
-            projects.map((project) => (
+            projects.map((project, index) => (
               <Link
                 key={project.id}
                 to={`/projects/${project.slug}`}
@@ -39,8 +39,7 @@ const FeaturedProjects = () => {
                   projectId: project.id,
                   projectTitle: project.title,
                   projectIndustry: project.industry,
-                  projectSlug: project.slug,
-                  clickLocation: 'featured_section_home'
+                  clickPosition: index
                 })}
               >
                 <Card

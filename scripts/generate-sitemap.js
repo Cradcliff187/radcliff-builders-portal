@@ -21,8 +21,8 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 // Supabase configuration
-const SUPABASE_URL = process.env.VITE_SUPABASE_URL || 'https://osothwrzhvgojhomaysk.supabase.co';
-const SUPABASE_ANON_KEY = process.env.VITE_SUPABASE_PUBLISHABLE_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9zb3Rod3J6aHZnb2pob21heXNrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA4NTQ0NjAsImV4cCI6MjA3NjQzMDQ2MH0.QNPvKTL34De4PZjfldVDBXP560-qeYjoNKOYhs1oOFw';
+const SUPABASE_URL = process.env.VITE_SUPABASE_URL;
+const SUPABASE_ANON_KEY = process.env.VITE_SUPABASE_PUBLISHABLE_KEY;
 
 // Website base URL
 const BASE_URL = 'https://teamradcliff.com';
@@ -65,23 +65,33 @@ function generateUrlEntry(loc, lastmod, changefreq, priority) {
 async function generateSitemap() {
   console.log('🗺️  Generating sitemap.xml...\n');
 
+  let projects = [];
+
   try {
-    // Initialize Supabase client
-    const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-    console.log('✓ Connected to Supabase');
+    // Check if Supabase credentials are available
+    if (!SUPABASE_URL || !SUPABASE_ANON_KEY) {
+      console.warn('⚠️  Supabase credentials not found in environment');
+      console.warn('   Generating static-only sitemap...\n');
+    } else {
+      // Initialize Supabase client
+      const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+      console.log('✓ Connected to Supabase');
 
-    // Fetch all published projects
-    const { data: projects, error } = await supabase
-      .from('projects')
-      .select('slug, updated_at')
-      .eq('published', true)
-      .order('updated_at', { ascending: false });
+      // Fetch all published projects
+      const { data, error } = await supabase
+        .from('projects')
+        .select('slug, updated_at')
+        .eq('published', true)
+        .order('updated_at', { ascending: false });
 
-    if (error) {
-      throw new Error(`Supabase query failed: ${error.message}`);
+      if (error) {
+        console.warn(`⚠️  Supabase query failed: ${error.message}`);
+        console.warn('   Falling back to static-only sitemap...\n');
+      } else {
+        projects = data || [];
+        console.log(`✓ Found ${projects.length} published projects`);
+      }
     }
-
-    console.log(`✓ Found ${projects?.length || 0} published projects`);
 
     // Start building sitemap XML
     let sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
@@ -131,7 +141,8 @@ async function generateSitemap() {
 
     return true;
   } catch (error) {
-    console.error('\n❌ Error generating sitemap:', error.message);
+    // Only fail the build if we can't write the sitemap file
+    console.error('\n❌ FATAL: Failed to write sitemap.xml:', error.message);
     console.error('\nFull error:', error);
     process.exit(1);
   }

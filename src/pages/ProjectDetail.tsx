@@ -307,7 +307,6 @@ const ProjectDetail = () => {
                   <ProjectImageGallery
                     images={project.project_images}
                     primaryImage={project.image_url}
-                    projectId={project.id}
                     projectTitle={project.title}
                   />
                 </div>
