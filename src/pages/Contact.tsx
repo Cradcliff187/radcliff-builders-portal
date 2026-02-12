@@ -15,6 +15,13 @@ import { contactFormSchema, type ContactFormData } from "@/lib/validations/conta
 import { useSearchParams } from "react-router-dom";
 import { useSiteSetting } from "@/hooks/useSiteSettings";
 import {
+  trackContactFormSubmit,
+  trackContactFormSuccess,
+  trackContactFormError,
+  trackClickToCall,
+  trackClickToEmail,
+} from "@/lib/analytics";
+import {
   Form,
   FormControl,
   FormField,
@@ -106,7 +113,12 @@ const Contact = () => {
       
       if (error) throw error;
     },
-    onSuccess: () => {
+    onSuccess: (_, variables) => {
+      // Track successful form submission
+      trackContactFormSuccess({
+        industry: variables.industry,
+      });
+
       toast({
         title: "Thanks for reaching out!",
         description: "We'll be in touch within one business day.",
@@ -114,6 +126,12 @@ const Contact = () => {
       form.reset();
     },
     onError: (error) => {
+      // Track form submission error
+      trackContactFormError(
+        'submission_failed',
+        error instanceof Error ? error.message : 'Unknown error'
+      );
+
       toast({
         title: "Submission Failed",
         description: "Please try again or contact us directly.",
@@ -124,6 +142,16 @@ const Contact = () => {
   });
 
   const onSubmit = (data: ContactFormData) => {
+    // Track form submission attempt
+    trackContactFormSubmit({
+      industry: data.industry,
+      preferredContact: data.preferred_contact,
+      projectTimeline: data.project_timeline,
+      referralSource: data.referral_source,
+      hasMessage: !!data.message,
+      fieldsCompleted: Object.values(data).filter(val => val && val !== '').length,
+    });
+
     mutation.mutate(data);
   };
 
@@ -170,6 +198,7 @@ const Contact = () => {
                   href={`tel:${phoneNumber.replace(/[^0-9]/g, "")}`}
                   className="text-muted-foreground hover:text-secondary transition-colors"
                   aria-label={`Call Radcliff Construction Group at ${phoneNumber}`}
+                  onClick={() => trackClickToCall(phoneNumber, 'contact_page_card')}
                 >
                   {phoneNumber}
                 </a>
@@ -181,6 +210,7 @@ const Contact = () => {
                 <a
                   href={`mailto:${emailPrimary}`}
                   className="text-muted-foreground hover:text-secondary transition-colors break-all"
+                  onClick={() => trackClickToEmail(emailPrimary, 'contact_page_card')}
                 >
                   {emailPrimary}
                 </a>
