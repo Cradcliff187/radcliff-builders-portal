@@ -41,6 +41,44 @@ const ProjectDetail = () => {
   const { data: project, isLoading, error } = useProjectDetail(slug || "");
   const { data: allProjects = [] } = useProjects();
 
+  // Track project view and add breadcrumb schema (must be before early returns per React Hooks rules)
+  useEffect(() => {
+    if (project && slug) {
+      trackProjectView({
+        projectId: project.id,
+        projectTitle: project.title,
+        projectIndustry: project.industry,
+        projectSlug: slug,
+        projectLocation: project.location,
+        squareFootage: project.square_footage,
+      });
+
+      const breadcrumbSchema = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://teamradcliff.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Projects", "item": "https://teamradcliff.com/projects" },
+          { "@type": "ListItem", "position": 3, "name": project.title, "item": `https://teamradcliff.com/projects/${slug}` }
+        ]
+      };
+
+      let schemaScript = document.querySelector('script[data-schema="breadcrumb"]');
+      if (!schemaScript) {
+        schemaScript = document.createElement("script");
+        schemaScript.setAttribute("type", "application/ld+json");
+        schemaScript.setAttribute("data-schema", "breadcrumb");
+        document.head.appendChild(schemaScript);
+      }
+      schemaScript.textContent = JSON.stringify(breadcrumbSchema);
+
+      return () => {
+        const script = document.querySelector('script[data-schema="breadcrumb"]');
+        if (script) script.remove();
+      };
+    }
+  }, [project, slug]);
+
   if (isLoading) {
     return (
       <>
@@ -103,65 +141,6 @@ const ProjectDetail = () => {
     getValidatedContent(project.testimonial_quote) &&
     getValidatedContent(project.testimonial_author) &&
     getValidatedContent(project.testimonial_title);
-
-  // Track project view and add breadcrumb schema
-  useEffect(() => {
-    if (project) {
-      // Track project view in GA4
-      trackProjectView({
-        projectId: project.id,
-        projectTitle: project.title,
-        projectIndustry: project.industry,
-        projectSlug: slug!,
-        projectLocation: project.location,
-        squareFootage: project.square_footage,
-      });
-
-      // Add BreadcrumbList schema for SEO
-      const breadcrumbSchema = {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://teamradcliff.com/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Projects",
-            "item": "https://teamradcliff.com/projects"
-          },
-          {
-            "@type": "ListItem",
-            "position": 3,
-            "name": project.title,
-            "item": `https://teamradcliff.com/projects/${slug}`
-          }
-        ]
-      };
-
-      // Inject breadcrumb schema
-      let schemaScript = document.querySelector('script[data-schema="breadcrumb"]');
-      if (!schemaScript) {
-        schemaScript = document.createElement("script");
-        schemaScript.setAttribute("type", "application/ld+json");
-        schemaScript.setAttribute("data-schema", "breadcrumb");
-        document.head.appendChild(schemaScript);
-      }
-      schemaScript.textContent = JSON.stringify(breadcrumbSchema);
-
-      // Cleanup on unmount
-      return () => {
-        const script = document.querySelector('script[data-schema="breadcrumb"]');
-        if (script) {
-          script.remove();
-        }
-      };
-    }
-  }, [project, slug]);
 
   return (
     <>
