@@ -4,6 +4,7 @@ import { ChevronLeft, ChevronRight, X, Expand } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { trackGalleryInteraction } from "@/lib/analytics";
 
 interface ProjectImage {
   id: string;
@@ -15,9 +16,11 @@ interface ProjectImage {
 interface ProjectImageGalleryProps {
   images: ProjectImage[];
   primaryImage?: string;
+  projectId?: string;
+  projectTitle?: string;
 }
 
-const ProjectImageGallery = ({ images, primaryImage }: ProjectImageGalleryProps) => {
+const ProjectImageGallery = ({ images, primaryImage, projectId, projectTitle }: ProjectImageGalleryProps) => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const isMobile = useIsMobile();
@@ -31,14 +34,37 @@ const ProjectImageGallery = ({ images, primaryImage }: ProjectImageGalleryProps)
   const openLightbox = (index: number) => {
     setCurrentIndex(index);
     setLightboxOpen(true);
+    trackGalleryInteraction({
+      action: 'open',
+      imageIndex: index,
+      totalImages: allImages.length,
+      projectId,
+      projectTitle
+    });
   };
 
   const goToPrevious = () => {
-    setCurrentIndex((prev) => (prev === 0 ? allImages.length - 1 : prev - 1));
+    const newIndex = currentIndex === 0 ? allImages.length - 1 : currentIndex - 1;
+    setCurrentIndex(newIndex);
+    trackGalleryInteraction({
+      action: 'previous',
+      imageIndex: newIndex,
+      totalImages: allImages.length,
+      projectId,
+      projectTitle
+    });
   };
 
   const goToNext = () => {
-    setCurrentIndex((prev) => (prev === allImages.length - 1 ? 0 : prev + 1));
+    const newIndex = currentIndex === allImages.length - 1 ? 0 : currentIndex + 1;
+    setCurrentIndex(newIndex);
+    trackGalleryInteraction({
+      action: 'next',
+      imageIndex: newIndex,
+      totalImages: allImages.length,
+      projectId,
+      projectTitle
+    });
   };
 
   // Auto-scroll active thumbnail into view
@@ -146,7 +172,16 @@ const ProjectImageGallery = ({ images, primaryImage }: ProjectImageGalleryProps)
                   <button
                     key={image.id}
                     ref={(el) => (thumbnailRefs.current[index] = el)}
-                    onClick={() => setCurrentIndex(index)}
+                    onClick={() => {
+                      setCurrentIndex(index);
+                      trackGalleryInteraction({
+                        action: 'thumbnail_click',
+                        imageIndex: index,
+                        totalImages: allImages.length,
+                        projectId,
+                        projectTitle
+                      });
+                    }}
                     aria-label={`View image ${index + 1}: ${image.caption || 'Project image'}`}
                     className={`flex-shrink-0 w-16 h-12 md:w-20 md:h-14 overflow-hidden transition-all duration-200 rounded-none ${
                       index === currentIndex 

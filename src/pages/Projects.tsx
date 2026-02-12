@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useProjects } from "@/hooks/useCMSContent";
 import { handleImageError } from "@/lib/imageUtils";
+import { trackProjectFilter } from "@/lib/analytics";
 
 type Industry = "All" | "Healthcare" | "Professional" | "Retail" | "Commercial";
 
@@ -51,7 +52,11 @@ const Projects = () => {
               <Button
                 key={industry}
                 variant={selectedIndustry === industry ? "secondary" : "outline"}
-                onClick={() => setSelectedIndustry(industry)}
+                onClick={() => {
+                  // Track filter change
+                  trackProjectFilter(industry, selectedIndustry);
+                  setSelectedIndustry(industry);
+                }}
               >
                 {industry}
               </Button>

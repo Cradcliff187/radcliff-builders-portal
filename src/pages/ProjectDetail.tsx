@@ -304,9 +304,11 @@ const ProjectDetail = () => {
                   <h2 className="text-3xl md:text-4xl font-heading font-semibold text-primary mb-6 uppercase tracking-wide">
                     Project Gallery
                   </h2>
-                  <ProjectImageGallery 
+                  <ProjectImageGallery
                     images={project.project_images}
                     primaryImage={project.image_url}
+                    projectId={project.id}
+                    projectTitle={project.title}
                   />
                 </div>
               )}

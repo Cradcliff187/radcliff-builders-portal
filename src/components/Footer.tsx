@@ -4,7 +4,7 @@ import { useSiteSetting } from "@/hooks/useSiteSettings";
 import { useSocialLinks } from "@/hooks/useSocialLinks";
 import rcgLogo from "@/assets/rcg-logo-transparent.png";
 import rcgLogoColor from "@/assets/rcg-logo-color.png";
-import { trackClickToCall, trackClickToEmail } from "@/lib/analytics";
+import { trackClickToCall, trackClickToEmail, trackSocialMediaClick } from "@/lib/analytics";
 
 const iconMap: Record<string, LucideIcon> = {
   Linkedin,
@@ -54,6 +54,11 @@ const Footer = () => {
                       rel="noopener noreferrer"
                       aria-label={`Follow us on ${link.platform}`}
                       className="w-10 h-10 bg-white/10 hover:bg-secondary flex items-center justify-center transition-colors rounded-none"
+                      onClick={() => trackSocialMediaClick({
+                        platform: link.platform,
+                        url: link.url,
+                        location: 'footer'
+                      })}
                     >
                       <Icon className="w-5 h-5" />
                     </a>

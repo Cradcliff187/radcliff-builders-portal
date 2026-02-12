@@ -5,6 +5,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { useFeaturedProjects } from "@/hooks/useCMSContent";
 import PageContainer from "@/components/PageContainer";
 import { handleImageError } from "@/lib/imageUtils";
+import { trackFeaturedProjectClick } from "@/lib/analytics";
 
 const FeaturedProjects = () => {
   const { data: projects = [], isLoading } = useFeaturedProjects();
@@ -31,7 +32,17 @@ const FeaturedProjects = () => {
             ))
           ) : (
             projects.map((project) => (
-              <Link key={project.id} to={`/projects/${project.slug}`}>
+              <Link
+                key={project.id}
+                to={`/projects/${project.slug}`}
+                onClick={() => trackFeaturedProjectClick({
+                  projectId: project.id,
+                  projectTitle: project.title,
+                  projectIndustry: project.industry,
+                  projectSlug: project.slug,
+                  clickLocation: 'featured_section_home'
+                })}
+              >
                 <Card
                   className="overflow-hidden group cursor-pointer hover:shadow-2xl hover:-translate-y-1 transition-all duration-300"
                 >
