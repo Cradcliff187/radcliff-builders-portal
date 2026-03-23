@@ -50,7 +50,7 @@ const ProjectDetail = () => {
         projectIndustry: project.industry,
         projectSlug: slug,
         projectLocation: project.location,
-        squareFootage: project.square_footage,
+        squareFootage: project.square_footage?.toString(),
       });
 
       const breadcrumbSchema = {

@@ -37,7 +37,7 @@ const Hero = () => {
         <img
           src={heroImage}
           alt="Modern healthcare facility interior"
-          fetchpriority="high"
+          fetchPriority="high"
           width="1920"
           height="1080"
           className="w-full h-full object-cover"
